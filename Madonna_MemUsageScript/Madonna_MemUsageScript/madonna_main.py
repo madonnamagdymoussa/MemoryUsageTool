@@ -97,6 +97,16 @@ def process_multi_line_and_continued(line, compiled_regex_patterns, current_info
 
     return False  # If no conditions matched, return False
 
+# Function to write entries to a CSV file
+def write_entries_to_csv(entries, csv_file_path):
+    """Write the parsed entries to a CSV file."""
+    with open(csv_file_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Name', 'Type', 'Size', 'Location'])  # Headers
+        for entry in entries:
+            writer.writerow([entry['SymbolName'], entry['Section'], entry['Size'], entry['MemLocation']])
+
+    print(f"Mapfile parsed successfully and saved to {csv_file_path}")
 
 
 
@@ -116,11 +126,15 @@ def parse_map_file(map_file_path, compiled_regex_patterns):
     return entries
 
 
-# Get the map file path from the JSON config
-map_file_path = file_paths_Dict['map_path']
 
-# Parse the map file and retrieve the entries
+
+# Get the map file path and output CSV file path from the JSON config
+map_file_path = file_paths_Dict['map_path']
+parsed_mapfile_csv = csv_files_Dict['map_file_parsing_csv']
+
+# Parse the map file
 entries = parse_map_file(map_file_path, Compiled_Regex_Patterns_Dict)
 
-# Print or work with the parsed entries as needed
+# Write the parsed entries to a CSV file
+write_entries_to_csv(entries, parsed_mapfile_csv)
 print(entries)
