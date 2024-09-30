@@ -132,26 +132,46 @@ def parse_map_file(map_file_path, compiled_regex_patterns):
 def get_binary_file_extension():
     binary_file_path = file_paths_Dict['binary_file_path']
     file_ext = os.path.splitext(binary_file_path)[-1].lower()
+    '''
+    os.path.splitext(path)
+    Split the pathname path into a pair (root, ext) such that root + ext == path, 
+    and the extension, ext, is empty or begins with a period and contains at most one period.
+    
+    splitext('foo.bar.exe')
+    ('foo.bar', '.exe')
+    splitext('/foo/bar.exe')
+    ('/foo/bar', '.exe')
+     '''
+    # Retrieve supported extensions from the configuration
+    supported_extensions = config['supported_extensions']
 
-    if file_ext in ['.elf', '.out']:
+    if file_ext in supported_extensions:
         return binary_file_path
     else:
-        raise ValueError("Unsupported binary file type. Please provide a .elf or .out file.")
+        raise ValueError(f"Unsupported binary file type. Please provide one of {supported_extensions}.")
+
 
 def run_nm_command(specific_flag_key=None):
-    # Determine the file extension of the binary file
-    binary_file_path = file_paths_Dict['binary_file_path']
-    file_extension = binary_file_path.split('.')[-1].lower()
+    # Retrieve the binary file path and supported extensions from the configuration
+    binary_file_path = file_paths_Dict['binary_file_path']  # Use 'binary_file_path' instead of 'elf_path'
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])  # This is a list
+
+    # Get the actual file extension from the binary file path
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    # Check if the file's extension is in the supported extensions list
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
 
     # Select the appropriate command template based on the file extension
-    if file_extension == 'elf':
+    if file_extension == '.elf':
         nm_command_template = config['commands']['nm_command_elf']
         file_path_key = 'elf_file_path'
-    elif file_extension == 'out':
+    elif file_extension == '.out':
         nm_command_template = config['commands']['nm_command_out']
         file_path_key = 'out_file_path'
     else:
-        raise ValueError("Unsupported binary file extension. Please provide a .elf or .out file.")
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
 
     # If a specific flag key is provided, handle multiple flags
     if specific_flag_key:
