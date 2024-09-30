@@ -2,7 +2,7 @@ import json
 import re
 import csv
 import subprocess
-
+import os
 
 # Load configuration from JSON file
 def load_config(file_path):
@@ -22,7 +22,7 @@ memory_sizes_Dict = config['memory_configuration']  # Changed to reflect the upd
 Regex_templates_Dict = config['regex_templates']  # Load regex templates
 # Extract the NM command template
 commands_Dict = config['commands']  # Load all commands from JSON
-nm_command_template = commands_Dict['nm_command']  # NM command template
+nm_command_template = commands_Dict['nm_command_out']  # NM command template
 
 
 # Function to dynamically create regex patterns based on the sections and templates
@@ -129,30 +129,66 @@ def parse_map_file(map_file_path, compiled_regex_patterns):
     return entries
 
 
+def get_binary_file_extension():
+    binary_file_path = file_paths_Dict['binary_file_path']
+    file_ext = os.path.splitext(binary_file_path)[-1].lower()
+    '''
+    os.path.splitext(path)
+    Split the pathname path into a pair (root, ext) such that root + ext == path, 
+    and the extension, ext, is empty or begins with a period and contains at most one period.
+    
+    splitext('foo.bar.exe')
+    ('foo.bar', '.exe')
+    splitext('/foo/bar.exe')
+    ('/foo/bar', '.exe')
+     '''
+    # Retrieve supported extensions from the configuration
+    supported_extensions = config['supported_extensions']
+
+    if file_ext in supported_extensions:
+        return binary_file_path
+    else:
+        raise ValueError(f"Unsupported binary file type. Please provide one of {supported_extensions}.")
+
+
 def run_nm_command(specific_flag_key=None):
-    # Build the NM command dynamically using the template from the config
-    nm_command_template = config['commands']['nm_command']
+    # Retrieve the binary file path and supported extensions from the configuration
+    binary_file_path = file_paths_Dict['binary_file_path']  # Use 'binary_file_path' instead of 'elf_path'
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])  # This is a list
+
+    # Get the actual file extension from the binary file path
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    # Check if the file's extension is in the supported extensions list
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    # Select the appropriate command template based on the file extension
+    if file_extension == '.elf':
+        nm_command_template = config['commands']['nm_command_elf']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        nm_command_template = config['commands']['nm_command_out']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
 
     # If a specific flag key is provided, handle multiple flags
     if specific_flag_key:
-        # Split the input string by comma and remove any leading/trailing spaces
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-
-        # Fetch the corresponding flags from NM_flags_Dict and join them with a space
         nm_flags = " ".join(NM_flags_Dict.get(key, '') for key in flag_keys if key in NM_flags_Dict)
     else:
-        # Default to all flags if no specific flag is provided
         nm_flags = " ".join(NM_flags_Dict.values())
 
     # Format the command by replacing placeholders with values from the dictionaries
     nm_command = nm_command_template.format(
-        nm_path=file_paths_Dict['nm_path'],  # Path to the 'nm' tool
-        nm_flags=nm_flags,  # Use specific flags or all flags
-        elf_file_path=file_paths_Dict['elf_path'],  # Path to the ELF file
-        nm_objects_txt=file_paths_Dict['nm_objects_txt']  # Output file for nm command
+        nm_path=file_paths_Dict['nm_path'],
+        nm_flags=nm_flags,
+        **{file_path_key: binary_file_path},  # Use either 'elf_file_path' or 'out_file_path'
+        nm_objects_txt=csv_files_Dict['nm_objects_file']
     )
 
-    # Now execute the constructed nm command using subprocess
+    # Execute the constructed nm command using subprocess
     try:
         result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
         print("NM command ran successfully!")
@@ -170,5 +206,5 @@ entries = parse_map_file(map_file_path, Compiled_Regex_Patterns_Dict)
 # Write the parsed entries to a CSV file
 write_entries_to_csv(entries, parsed_mapfile_csv)
 
-#run_nm_command(specific_flag_key='defined_only, print_size')
+run_nm_command(specific_flag_key='defined_only, print_size')
 #print(entries)

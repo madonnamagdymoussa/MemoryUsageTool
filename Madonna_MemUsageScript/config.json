@@ -1,11 +1,14 @@
 {
-    "sections": ["text", "data", "bss", "rodata"],
+    "sections": ["text", "data", "bss", "rodata","intvecs","cinit"],
+    "supported_extensions": [".elf", ".out"],
     "file_paths": {
         "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
         "elf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
         "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
-        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript"
-    },
+        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript",
+        "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt"
+     },
     "NM_flags": {
             "all_symbols": "-a",
             "global_symbols": "-g",
@@ -44,6 +47,8 @@
         "nm_regex": "^([0-9a-f]+)\\s+([0-9a-f]+)\\s+([TtDdbBRr])\\s+(.*)$"
     },
     "commands": {
-        "nm_command": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}"
+    "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
+    "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}"
     }
 }
+
