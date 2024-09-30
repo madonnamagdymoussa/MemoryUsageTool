@@ -16,10 +16,13 @@ config = load_config('config.json')
 # Extract configurations from the loaded JSON
 sections_list = config['sections']  # Ensure this key exists in your JSON
 file_paths_Dict = config['file_paths']  # Update to the new key name if changed
-tool_options_Dict = config['tool_options']  # Update to the new key name if changed
+NM_flags_Dict = config['NM_flags']  # Updated key name for NM flags
 csv_files_Dict = config['csv_file_paths']  # Changed to reflect the updated key name
 memory_sizes_Dict = config['memory_configuration']  # Changed to reflect the updated key name
 Regex_templates_Dict = config['regex_templates']  # Load regex templates
+# Extract the NM command template
+commands_Dict = config['commands']  # Load all commands from JSON
+nm_command_template = commands_Dict['nm_command']  # NM command template
 
 
 # Function to dynamically create regex patterns based on the sections and templates
@@ -126,7 +129,36 @@ def parse_map_file(map_file_path, compiled_regex_patterns):
     return entries
 
 
+def run_nm_command(specific_flag_key=None):
+    # Build the NM command dynamically using the template from the config
+    nm_command_template = config['commands']['nm_command']
 
+    # If a specific flag key is provided, handle multiple flags
+    if specific_flag_key:
+        # Split the input string by comma and remove any leading/trailing spaces
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        print(flag_keys)
+        # Fetch the corresponding flags from NM_flags_Dict and join them with a space
+        nm_flags = " ".join(NM_flags_Dict.get(key, '') for key in flag_keys if key in NM_flags_Dict)
+    else:
+        # Default to all flags if no specific flag is provided
+        nm_flags = " ".join(NM_flags_Dict.values())
+
+    # Format the command by replacing placeholders with values from the dictionaries
+    nm_command = nm_command_template.format(
+        nm_path=file_paths_Dict['nm_path'],  # Path to the 'nm' tool
+        nm_flags=nm_flags,  # Use specific flags or all flags
+        elf_file_path=file_paths_Dict['elf_path'],  # Path to the ELF file
+        nm_objects_txt=csv_files_Dict['nm_objects_file']  # Output file for nm command
+    )
+
+    # Now execute the constructed nm command using subprocess
+    try:
+        result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
+        print("NM command ran successfully!")
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
 
 # Get the map file path and output CSV file path from the JSON config
 map_file_path = file_paths_Dict['map_path']
@@ -137,4 +169,6 @@ entries = parse_map_file(map_file_path, Compiled_Regex_Patterns_Dict)
 
 # Write the parsed entries to a CSV file
 write_entries_to_csv(entries, parsed_mapfile_csv)
-print(entries)
+
+run_nm_command(specific_flag_key='defined_only, print_size')
+#print(entries)

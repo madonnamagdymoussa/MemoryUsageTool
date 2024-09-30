@@ -3,10 +3,25 @@
     "file_paths": {
         "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
         "elf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
-        "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe"
+        "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
+        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript"
     },
-    "tool_options": {
-        "nm_flags": "--defined-only --print-size"
+    "NM_flags": {
+            "all_symbols": "-a",
+            "global_symbols": "-g",
+            "source_info": "-l",
+            "undefined_symbols": "-u",
+            "sort_by_address": "-n",
+            "reverse_sort": "-r",
+            "display_size": "-S",
+            "no_sort": "-p",
+            "only_names": "-j",
+            "specific_section": "-s",
+            "demangle": "--demangle",
+            "size_sort": "--size-sort",
+            "demangle_equivalent": "-C",
+            "defined_only": "--defined-only",
+            "print_size": "--print-size"
     },
     "csv_file_paths": {
         "map_file_parsing_csv": "Mapfile_Parsing.csv",
@@ -25,6 +40,10 @@
         "entry_regex": "{section_pattern}\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
         "multi_line_name_regex": "{section_pattern}$",
         "continued_line_regex": "^\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
-        "continued_name_regex": "^\\s+0x[0-9a-f]+\\s+(.*)"
+        "continued_name_regex": "^\\s+0x[0-9a-f]+\\s+(.*)",
+        "nm_regex": "^([0-9a-f]+)\\s+([0-9a-f]+)\\s+([TtDdbBRr])\\s+(.*)$"
+    },
+    "commands": {
+        "nm_command": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}"
     }
 }
