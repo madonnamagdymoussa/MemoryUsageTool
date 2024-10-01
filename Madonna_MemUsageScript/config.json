@@ -35,8 +35,8 @@
         "memory_usage_file": "Memory_consumption.csv"
     },
     "memory_configuration": {
-        "rom_memory_size_kb": 256,
-        "ram_memory_size_kb": 32
+        "rom_memory_size_MB": 512,
+        "ram_memory_size_MB": 512
     },
 
     "regex_templates": {
