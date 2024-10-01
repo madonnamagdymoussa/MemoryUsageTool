@@ -1,0 +1,7 @@
+Physical_Address,Size,Type,Object_Name
+00000958,0000000c,W,Bus_Fault
+00000000,0000001c,T,gp_fn_vectors
+00000958,0000000c,W,H_fault_Handler
+00000958,0000000c,W,MM_fault_Handler
+00000958,0000000c,W,NMI_Handler
+00000958,0000000c,W,Usage_Fault_Handler
