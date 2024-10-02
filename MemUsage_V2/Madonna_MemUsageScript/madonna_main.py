@@ -293,42 +293,59 @@ def link_memory_and_identify_mismatches():
     # Read data from CSV files
     elf_objects_data = load_csv_data(elf_objects_csv_path, ['Physical_Address', 'Size', 'Type', 'Object_Name'])
     parsed_mapfile_data = load_csv_data(parsed_mapfile_csv_path, ['Name', 'Type', 'Size', 'Location'])
-    #print(parsed_mapfile_data)
-    if not elf_objects_data or not parsed_mapfile_data:
-        print("something went wrong")
-        return  # Exit if any file could not be read
 
-    # Create a lookup dictionary for the parsed map file data
-    parsed_mapfile_lookup = {row['Name'].strip(): row for row in parsed_mapfile_data}
+    if not elf_objects_data or not parsed_mapfile_data:
+        print("Something went wrong")
+        return  # Exit if any file could not be read
 
     # Initialize lists for linked memory and mismatches
     linked_memory_entries = []
     mismatch_entries = []
 
-    # Process the ELF objects
-    for elf_entry in elf_objects_data:
-        object_name = elf_entry['Object_Name'].strip()
-        if object_name in parsed_mapfile_lookup:
-            mapfile_entry = parsed_mapfile_lookup[object_name]
-            linked_memory_entries.append({
-                'Name': object_name,
+    # Process the parsed mapfile entries
+    for mapfile_entry in parsed_mapfile_data:
+        mapfile_name = mapfile_entry['Name'].strip()
+        matched = False
+
+        # Debug: Show the current mapfile entry being processed
+        print(f"Checking mapfile entry: {mapfile_name}")
+
+        # Process the ELF objects
+        for elf_entry in elf_objects_data:
+            object_name = elf_entry['Object_Name'].strip()
+            # Check for match
+            if mapfile_name == object_name:
+                linked_memory_entries.append({
+                    'Name': object_name,
+                    'Type': mapfile_entry['Type'],
+                    'Size': mapfile_entry['Size'],
+                    'Location': mapfile_entry['Location']
+                })
+                matched = True
+                break  # Exit the loop once a match is found
+
+        # Debug: Check if a match was found
+        if matched:
+            print(f"Matched: {mapfile_name}")
+        else:
+            print(f"No match found for: {mapfile_name}")
+            # Append mismatches based on the mapfile entry
+            mismatch_entries.append({
+                'Name': mapfile_name,
                 'Type': mapfile_entry['Type'],
                 'Size': mapfile_entry['Size'],
                 'Location': mapfile_entry['Location']
-            })
-        else:
-            mismatch_entries.append({
-                'Physical_Address': elf_entry.get('Physical_Address', 'N/A').strip(),
-                'Size': elf_entry.get('Size', 'N/A').strip(),
-                'Type': elf_entry.get('Type', 'N/A').strip(),
-                'Object_Name': object_name
             })
 
     # Write linked memory entries to CSV
     save_data_to_csv(linked_memory_csv_path, ['Name', 'Type', 'Size', 'Location'], linked_memory_entries)
     # Write mismatches to CSV
-    save_data_to_csv(mismatch_memory_csv_path, ['Physical_Address', 'Size', 'Type', 'Object_Name'], mismatch_entries)
-    #save_data_to_csv(mismatch_memory_csv_path, ['Object_Name', 'Type', 'Size', 'Physical_Address'], mismatch_entries)
+    save_data_to_csv(mismatch_memory_csv_path, ['Name', 'Type', 'Size', 'Location'], mismatch_entries)
+
+    # Debug: Show the final counts of matches and mismatches
+    print(f"Total matched entries: {len(linked_memory_entries)}")
+    print(f"Total mismatched entries: {len(mismatch_entries)}")
+
 
 # Main program execution
 if __name__ == "__main__":
