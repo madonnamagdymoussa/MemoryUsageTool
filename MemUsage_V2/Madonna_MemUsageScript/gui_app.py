@@ -1,8 +1,11 @@
+from typing import List, Any
+
 import wx
 import json  # To handle JSON operations
 import madonna_main  # Assuming your main processing functions are in this module
 import os
 import tempfile  # To create temporary files
+
 
 def load_config(file_path):
     """Load configuration from a JSON file."""
@@ -12,11 +15,13 @@ def load_config(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
 
+
 class MyApp(wx.App):
     def OnInit(self):
         self.frame = MyFrame()
         self.frame.Show()
         return True
+
 
 class MyFrame(wx.Frame):
     def __init__(self):
@@ -107,23 +112,26 @@ class MyFrame(wx.Frame):
                 self.mapfile_entry.SetValue(map_file_path)
 
     def on_parse_map_file(self, event):
-      config_path = self.config_entry.GetValue()  # Get the config file path as a string
-      map_file_path = self.mapfile_entry.GetValue()  # Get the map file path as a string
+        config_path = self.config_entry.GetValue()  # Get the config file path as a string
+        map_file_path = self.mapfile_entry.GetValue()  # Get the map file path as a string
 
-      if not config_path or not map_file_path:
-        wx.MessageBox("Please provide both a configuration file and a map file.", "Input Error",
-                      wx.OK | wx.ICON_ERROR)
-        return
+        if not config_path or not map_file_path:
+            wx.MessageBox("Please provide both a configuration file and a map file.", "Input Error",
+                          wx.OK | wx.ICON_ERROR)
+            return
 
-      try:
-        # Load the configuration as a dictionary
-        config = load_config(config_path)  # This function returns the config dictionary
+        try:
+            # Load the configuration as a dictionary
+            config = load_config(config_path)  # This function returns the config dictionary
 
-        # Now pass the correct map file path (string) and config (dict) to parse_map_file
-        madonna_main.parse_map_file(map_file_path, madonna_main.Compiled_Regex_Patterns_Dict)  # Ensure correct order of arguments
-        wx.MessageBox("Map file parsed successfully!", "Success", wx.OK | wx.ICON_INFORMATION)
-      except Exception as e:
-         wx.MessageBox(f"Error parsing map file: {e}", "Processing Error", wx.OK | wx.ICON_ERROR)
+            # Now pass the correct map file path (string) and config (dict) to parse_map_file
+            entries: list[Any]=madonna_main.parse_map_file(map_file_path,
+                                        madonna_main.Compiled_Regex_Patterns_Dict)  # Ensure correct order of arguments
+            my_parsed_mapfile_csv: object = madonna_main.csv_files_Dict['map_file_parsing_csv']
+            madonna_main.write_entries_to_csv(entries, my_parsed_mapfile_csv)
+            wx.MessageBox("Map file parsed successfully!", "Success", wx.OK | wx.ICON_INFORMATION)
+        except Exception as e:
+            wx.MessageBox(f"Error parsing map file: {e}", "Processing Error", wx.OK | wx.ICON_ERROR)
 
     def on_run_nm_command(self, event):
         selected_flags = [flag for flag, var in self.checkbox_vars.items() if var.GetValue()]
@@ -136,23 +144,35 @@ class MyFrame(wx.Frame):
 
         try:
             print(f"Running NM Command with flags: {flags_string}")
-            output = madonna_main.run_nm_command(flags_string)  # Call the command function
+            madonna_main.run_nm_command(flags_string)  # Call the command function
+            # Now read the content from the nm_Objects.txt file
+            nm_objects_txt_path = madonna_main.csv_files_Dict[
+                'nm_objects_file']  # Ensure this points to the correct file
 
-            # Check if output is not None
-            if output is not None:  # Changed this check
-                print("NM Command Output:")
-                print(output)
-                self.on_parse_nm_output(output)  # Pass output to parser
-            else:
-                wx.MessageBox("NM command failed to execute.", "Error", wx.OK | wx.ICON_ERROR)
+            try:
+                with open(nm_objects_txt_path, 'r') as nm_temp_file:
+                    nm_output = nm_temp_file.read()  # Read the content of the nm_Objects.txt file
+                    print("NM Command Output:")
+                    print(nm_output)  # Print the output for debugging
 
+                    # Pass the output to the parser function
+                    self.on_parse_nm_output(nm_output)
+            except Exception as e:
+                wx.MessageBox(f"Error reading NM output file: {e}", "File Read Error", wx.OK | wx.ICON_ERROR)
         except Exception as e:
             wx.MessageBox(f"An error occurred while running the NM command: {e}", "Error", wx.OK | wx.ICON_ERROR)
+
     def on_parse_nm_output(self, nm_output):
+        # Debug: Print the type of nm_output
+        print(f"Type of nm_output: {type(nm_output)}")
+
         # Check if nm_output is indeed a string
         if not isinstance(nm_output, str):
             wx.MessageBox("NM output is not in the expected string format.", "Error", wx.OK | wx.ICON_ERROR)
             return
+
+        # Debug: Print out the nm_output content
+        print(f"NM output content: {nm_output}")
 
         # Use a temporary file to store the NM command output
         with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.txt') as nm_temp_file:
@@ -190,7 +210,8 @@ class MyFrame(wx.Frame):
 
             # Update configurations
             config_data["map_path"] = self.mapfile_entry.GetValue()
-            config_data["NM_flags"] = {name: value for name, value in self.nm_flags.items() if value in self.checkbox_vars and self.checkbox_vars[value].GetValue()}
+            config_data["NM_flags"] = {name: value for name, value in self.nm_flags.items() if
+                                       value in self.checkbox_vars and self.checkbox_vars[value].GetValue()}
 
             # Save the updated configuration back to the JSON file
             with open(config_path, 'w') as json_file:
