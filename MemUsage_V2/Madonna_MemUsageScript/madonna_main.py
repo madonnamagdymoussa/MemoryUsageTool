@@ -213,10 +213,11 @@ def parse_nm_output(nm_objects_txt, elf_objects_csv):
     print(f"Writing to: {elf_objects_csv}")
 
     try:
+        print("ana hyna")
         with open(nm_objects_txt, 'r') as infile, open(elf_objects_csv, 'w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
             csv_writer.writerow(['Physical_Address', 'Size', 'Type', 'Object_Name'])  # Write header
-
+            print("ana hyna")
             for line in infile:
                 # Assuming nm output format is: <address> <size> <symbol> <object file>
                 # Example: 0x08000000 0x00000400 my_function.o
@@ -233,7 +234,7 @@ def parse_nm_output(nm_objects_txt, elf_objects_csv):
                 # Write to CSV
                 #csv_writer.writerow([physical_address, size, 'N/A', object_name])  # Placeholder for Type as 'N/A'
                 csv_writer.writerow([physical_address, size, object_name, object_file])  # Placeholder for Type as 'N/A'
-
+                print(physical_address, size, object_name, object_file)
             print("NM output processed and saved to CSV successfully.")
 
     except PermissionError as e:
