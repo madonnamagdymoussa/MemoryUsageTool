@@ -2,6 +2,7 @@ import wx
 import json  # To handle JSON operations
 import madonna_main  # Assuming your main processing functions are in this module
 import os
+import tempfile  # To create temporary files
 
 def load_config(file_path):
     """Load configuration from a JSON file."""
@@ -105,14 +106,6 @@ class MyFrame(wx.Frame):
                 map_file_path = file_dialog.GetPath()
                 self.mapfile_entry.SetValue(map_file_path)
 
-    def on_run_nm_command(self, event):
-        selected_flags = [flag for flag, var in self.checkbox_vars.items() if var.GetValue()]
-        nm_command = f"nm {' '.join(selected_flags)}"
-        print(f"NM Command: {nm_command}")
-        # You may want to execute the command here and handle the output
-
-
-
     def on_parse_map_file(self, event):
       config_path = self.config_entry.GetValue()  # Get the config file path as a string
       map_file_path = self.mapfile_entry.GetValue()  # Get the map file path as a string
@@ -127,50 +120,59 @@ class MyFrame(wx.Frame):
         config = load_config(config_path)  # This function returns the config dictionary
 
         # Now pass the correct map file path (string) and config (dict) to parse_map_file
-        madonna_main.parse_map_file(map_file_path, config)  # Ensure correct order of arguments
+        madonna_main.parse_map_file(map_file_path, madonna_main.Compiled_Regex_Patterns_Dict)  # Ensure correct order of arguments
         wx.MessageBox("Map file parsed successfully!", "Success", wx.OK | wx.ICON_INFORMATION)
       except Exception as e:
          wx.MessageBox(f"Error parsing map file: {e}", "Processing Error", wx.OK | wx.ICON_ERROR)
 
     def on_run_nm_command(self, event):
         selected_flags = [flag for flag, var in self.checkbox_vars.items() if var.GetValue()]
-        flags_string = ','.join(selected_flags)
 
-        # Call the function to execute the nm command
-        output = madonna_main.run_nm_command(flags_string)  # Ensure the flags string is passed
-
-        if output:  # Check if output is not None or empty
-            print("NM Command Output:")
-            print(output)
-            # Call the parse function to handle the NM output
-            self.on_parse_nm_output(output)  # Pass the output to the parser
-        else:
-            print("Failed to run nm command.")
-
-    def on_parse_nm_output(self, nm_output):
-        # Ensure nm_output is a string and not an event
-        if isinstance(nm_output, str):
-            lines = nm_output.strip().split('\n')
-        else:
-            print("Invalid output received.")
+        if not selected_flags:
+            wx.MessageBox("Please select at least one NM flag to run the command.", "Warning", wx.OK | wx.ICON_WARNING)
             return
 
-        parsed_data = []
+        flags_string = ', '.join(selected_flags)
 
-        for line in lines:
-            # Example parsing logic (you can adjust based on NM output format)
-            parts = line.split()
-            if len(parts) >= 3:
-                address = parts[0]
-                size = parts[1]
-                name = ' '.join(parts[2:])  # Join the remaining parts for the name
-                parsed_data.append({'address': address, 'size': size, 'name': name})
+        try:
+            print(f"Running NM Command with flags: {flags_string}")
+            output = madonna_main.run_nm_command(flags_string)  # Call the command function
 
-        # Now you can use parsed_data for display or further processing
-        for entry in parsed_data:
-            print(f"Address: {entry['address']}, Size: {entry['size']}, Name: {entry['name']}")
-            # If you want to display in GUI, uncomment below lines:
-            # self.output_text.AppendText(f"Address: {entry['address']}, Size: {entry['size']}, Name: {entry['name']}\n")
+            # Check if output is not None
+            if output is not None:  # Changed this check
+                print("NM Command Output:")
+                print(output)
+                self.on_parse_nm_output(output)  # Pass output to parser
+            else:
+                wx.MessageBox("NM command failed to execute.", "Error", wx.OK | wx.ICON_ERROR)
+
+        except Exception as e:
+            wx.MessageBox(f"An error occurred while running the NM command: {e}", "Error", wx.OK | wx.ICON_ERROR)
+    def on_parse_nm_output(self, nm_output):
+        # Check if nm_output is indeed a string
+        if not isinstance(nm_output, str):
+            wx.MessageBox("NM output is not in the expected string format.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        # Use a temporary file to store the NM command output
+        with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.txt') as nm_temp_file:
+            nm_temp_file.write(nm_output)  # Write the string output to the temp file
+            nm_objects_txt = nm_temp_file.name  # Get the path of the temp file
+
+        # Define the CSV output path (you can ask the user to provide it via GUI)
+        csv_output_path = os.path.join(os.getcwd(), "parsed_nm_output.csv")  # Example path to save CSV
+
+        try:
+            # Call the madonna_main function to process the NM output and save it to the CSV
+            madonna_main.parse_nm_output(nm_objects_txt, csv_output_path)
+            wx.MessageBox(f"NM output parsed successfully and saved to {csv_output_path}.", "Success",
+                          wx.OK | wx.ICON_INFORMATION)
+        except Exception as e:
+            wx.MessageBox(f"Error parsing NM output: {e}", "Processing Error", wx.OK | wx.ICON_ERROR)
+        finally:
+            # Clean up the temporary file
+            if os.path.exists(nm_objects_txt):
+                os.remove(nm_objects_txt)
 
     def on_save_config(self, event):
         config_path = self.config_entry.GetValue()

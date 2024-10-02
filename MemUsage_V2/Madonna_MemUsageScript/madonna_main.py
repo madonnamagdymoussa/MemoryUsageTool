@@ -165,18 +165,14 @@ def get_binary_file_extension():
 
 
 def run_nm_command(specific_flag_key=None):
-    # Retrieve the binary file path and supported extensions from the configuration
-    binary_file_path = file_paths_Dict['binary_file_path']  # Use 'binary_file_path' instead of 'elf_path'
-    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])  # This is a list
+    binary_file_path = file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
 
-    # Get the actual file extension from the binary file path
     file_extension = os.path.splitext(binary_file_path)[-1].lower()
 
-    # Check if the file's extension is in the supported extensions list
     if file_extension not in supported_extensions:
         raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
 
-    # Select the appropriate command template based on the file extension
     if file_extension == '.elf':
         nm_command_template = config['commands']['nm_command_elf']
         file_path_key = 'elf_file_path'
@@ -186,29 +182,30 @@ def run_nm_command(specific_flag_key=None):
     else:
         raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
 
-    # If a specific flag key is provided, handle multiple flags
     if specific_flag_key:
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
         nm_flags = " ".join(NM_flags_Dict.get(key, '') for key in flag_keys if key in NM_flags_Dict)
     else:
         nm_flags = " ".join(NM_flags_Dict.values())
 
-    # Format the command by replacing placeholders with values from the dictionaries
     nm_command = nm_command_template.format(
         nm_path=file_paths_Dict['nm_path'],
         nm_flags=nm_flags,
-        **{file_path_key: binary_file_path},  # Use either 'elf_file_path' or 'out_file_path'
+        **{file_path_key: binary_file_path},
         nm_objects_txt=csv_files_Dict['nm_objects_file']
     )
 
-    # Execute the constructed nm command using subprocess
+    print("Constructed NM Command:", nm_command)  # Debug: Show the command being run
+
     try:
         result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
         print("NM command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Command failed with return code {e.returncode}")
         print(f"Error output: {e.stderr}")
-
+        return None
 
 def parse_nm_output(nm_objects_txt, elf_objects_csv):
     # Debug print to check the file paths
