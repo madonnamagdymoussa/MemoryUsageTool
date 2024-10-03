@@ -392,6 +392,41 @@ def count_type_sizes(csv_file, sections_list):
 
         return section_sizes
 
+
+def generate_memory_consumption_csv(file_path, sizes):
+    # Calculate total ROM and RAM sizes
+    rom_total = sizes['text'] + sizes['rodata']
+    ram_total = sizes['bss'] + sizes['data']
+
+    # Convert sizes to KB
+    rom_kb = rom_total / 1024  # Total ROM size in KB
+    ram_kb = ram_total / 1024  # Total RAM size in KB
+
+    # Calculate percentages for ROM and RAM
+    total_memory = rom_kb + ram_kb
+    rom_percent = (rom_kb / total_memory * 100) if total_memory > 0 else 0
+    ram_percent = (ram_kb / total_memory * 100) if total_memory > 0 else 0
+
+    # Write results to a CSV file
+    with open(file_path, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+
+        # Write header
+        writer.writerow(['Subject', 'Info'])
+
+        # Write memory section sizes
+        writer.writerow(['.text', sizes['text']])
+        writer.writerow(['.data', sizes['data']])
+        writer.writerow(['.rodata', sizes['rodata']])
+        writer.writerow(['.bss', sizes['bss']])
+
+        # Write total sizes
+        writer.writerow(['ROM (total)', f"{rom_kb:.2f} KB"])
+        writer.writerow(['RAM (total)', f"{ram_kb:.2f} KB"])
+
+        # Write percentages
+        writer.writerow(['ROM (%)', f"{rom_percent:.2f}% ({rom_kb:.2f} KB)"])
+        writer.writerow(['RAM (%)', f"{ram_percent:.2f}% ({ram_kb:.2f} KB)"])
     # Further logic for processing sizes (like totaling them) would go here
 # Main program execution
 if __name__ == "__main__":
@@ -422,11 +457,13 @@ if __name__ == "__main__":
 
         # Link memory and identify mismatches
         link_memory_and_identify_mismatches()
+
         #csv_files_Dict
-        sections_list = ['text', 'data', 'bss', 'rodata']  # Define your sections list
+        #sections_list = ['text', 'data', 'bss', 'rodata']  # Define your sections list
         sizes = count_type_sizes(csv_files_Dict['linked_memory_file'],sections_list)
-        print("******************SIZES************************")
-        print(sizes)
+        generate_memory_consumption_csv(csv_files_Dict['memory_usage_file'], sizes)
+        #print("******************SIZES************************")
+        #print(sizes)
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")

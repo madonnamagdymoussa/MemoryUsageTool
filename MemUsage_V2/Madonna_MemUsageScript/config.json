@@ -30,8 +30,8 @@
         "memory_usage_file": "Memory_consumption.csv"
     },
     "memory_configuration": {
-        "rom_memory_size_MB": 512,
-        "ram_memory_size_MB": 512
+        "rom_memory_size_KB": 524288,
+        "ram_memory_size_KB": 524288
     },
     "regex_templates": {
         "entry_regex": "{section_pattern}\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
