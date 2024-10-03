@@ -68,6 +68,10 @@ class MyFrame(wx.Frame):
         self.save_config_button.Bind(wx.EVT_BUTTON, self.on_save_config)
         self.sizer.Add(self.save_config_button, 0, wx.ALL | wx.CENTER, 5)
 
+        self.memory_usage_button = wx.Button(self.panel, label="Calculate Memory Usage")
+        self.memory_usage_button.Bind(wx.EVT_BUTTON, self.on_calculate_memory_usage)
+        self.sizer.Add(self.memory_usage_button, 0, wx.ALL | wx.CENTER, 5)
+
         self.panel.SetSizer(self.sizer)
         self.SetSize((500, 400))
 
@@ -172,6 +176,28 @@ class MyFrame(wx.Frame):
 
         except Exception as e:
             wx.MessageBox(f"An error occurred while running the NM command: {e}", "Error", wx.OK | wx.ICON_ERROR)
+
+    def on_calculate_memory_usage(self, event):
+        try:
+            # You might want to fetch paths or any other needed data here
+            config_path = self.config_entry.GetValue()  # Get the config file path
+            if not config_path:
+                wx.MessageBox("Please provide a configuration file.", "Input Error", wx.OK | wx.ICON_ERROR)
+                return
+
+            # Assuming you have a function like madonna_main.calculate_memory_usage
+            # Replace with the correct function name and arguments if necessary
+            madonna_main.link_memory_and_identify_mismatches()
+            sizes = madonna_main.count_type_sizes(madonna_main.csv_files_Dict['linked_memory_file'],
+                                                  madonna_main.sections_list)
+            madonna_main.generate_memory_consumption_csv(madonna_main.csv_files_Dict['memory_usage_file'], sizes)
+
+            # After calculating, display the result to the user
+            memory_usage_str = '\n'.join([f"{section}: {size} bytes" for section, size in sizes.items()])
+            wx.MessageBox(f"Memory Usage:\n{memory_usage_str}", "Memory Usage", wx.OK | wx.ICON_INFORMATION)
+
+        except Exception as e:
+            wx.MessageBox(f"Error calculating memory usage: {e}", "Processing Error", wx.OK | wx.ICON_ERROR)
 
     def on_parse_nm_output(self, nm_output):
         # Debug: Print the type of nm_output
