@@ -3,9 +3,7 @@
         "text",
         "data",
         "bss",
-        "rodata",
-        "intvecs",
-        "cinit"
+        "rodata"
     ],
     "supported_extensions": [
         ".elf",
@@ -40,7 +38,8 @@
         "multi_line_name_regex": "{section_pattern}$",
         "continued_line_regex": "^\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
         "continued_name_regex": "^\\s+0x[0-9a-f]+\\s+(.*)",
-        "nm_regex": "^([0-9a-f]+)\\s+([0-9a-f]+)\\s+([TtDdbBRr])\\s+(.*)$"
+        "nm_regex": "^([0-9a-f]+)\\s+([0-9a-f]+)\\s+([TtDdbBRr])\\s+(.*)$",
+        "size_extraction_regex": "(\\d+)\\(0x[0-9A-Fa-f]+\\)"
     },
     "commands": {
         "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",

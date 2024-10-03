@@ -346,7 +346,53 @@ def link_memory_and_identify_mismatches():
     print(f"Total matched entries: {len(linked_memory_entries)}")
     print(f"Total mismatched entries: {len(mismatch_entries)}")
 
+def count_type_sizes(csv_file, sections_list):
+        """Count the total sizes for each type based on the configuration."""
+        # Initialize section sizes based on provided sections list
+        section_sizes = {section: 0 for section in sections_list}
+        print("Initial section sizes:", section_sizes)
 
+        try:
+            with open(csv_file, mode='r', newline='') as file:
+                reader = csv.reader(file, delimiter=',')  # Adjust delimiter if needed
+                headers = next(reader, None)  # Skip header
+
+                for row in reader:
+                    if len(row) < 4:
+                        print("Skipping malformed row:", row)  # Debugging line
+                        continue  # Skip malformed rows
+
+                    item_type = row[1].strip()  # Strip whitespace
+                    size_string = row[2].strip()  # Accessing size string by index (third column)
+
+                    # Debugging output for item_type
+                    print(f"Item type found: {repr(item_type)}")  # Print with representation
+
+                    # Remove leading dot from item_type if it exists
+                    item_type = item_type.lstrip('.')
+
+                    try:
+                        # Convert size directly (assuming size_string is formatted correctly)
+                        size = int(size_string.split()[0])  # Get the first part as size
+                        print(f"Size extracted: {size}")  # Debugging output for size
+
+                        # Add size to the corresponding type if it exists
+                        if item_type in section_sizes:
+                            section_sizes[item_type] += size
+                        else:
+                            print(f"Unknown type: {item_type}")  # Handle unknown types
+
+                    except ValueError:
+                        print(f"Invalid size format: {size_string}")  # Debugging line for size conversion
+
+        except FileNotFoundError:
+            print(f"File not found: {csv_file}")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+        return section_sizes
+
+    # Further logic for processing sizes (like totaling them) would go here
 # Main program execution
 if __name__ == "__main__":
     try:
@@ -364,6 +410,7 @@ if __name__ == "__main__":
         # Run the NM command with or without specific flags
         run_nm_command(specific_flag_key='defined_only, print_size') # Adjust flag key as necessary
 
+
         # Parse the map file
         #parsed_entries = parse_map_file(file_paths_Dict['map_file_path'], Compiled_Regex_Patterns_Dict)
 
@@ -375,6 +422,11 @@ if __name__ == "__main__":
 
         # Link memory and identify mismatches
         link_memory_and_identify_mismatches()
+        #csv_files_Dict
+        sections_list = ['text', 'data', 'bss', 'rodata']  # Define your sections list
+        sizes = count_type_sizes(csv_files_Dict['linked_memory_file'],sections_list)
+        print("******************SIZES************************")
+        print(sizes)
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")
