@@ -1,0 +1,1250 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 DMA.o
+ .text.DMA_ErrorHandler
+                0x00000000       0x20 DMA.o
+ .rodata.AlternateSourceAddressPointerRegisters
+                0x00000000       0x80 DMA.o
+ .rodata.AlternateDestinationAddressPointerRegisters
+                0x00000000       0x80 DMA.o
+ .rodata.AlternateDMA_ChannelControlWordRegisters
+                0x00000000       0x80 DMA.o
+ .text.DMA_SoftwareTransferHandler
+                0x00000000       0x24 DMA.o
+ .text.DMA_DisableChannelAttributes
+                0x00000000       0x70 DMA.o
+ .text.DMA_ConfigureControlTableBaseAddress
+                0x00000000       0x28 DMA.o
+ .text.DMA_ChannelAlternateControlStructureSet
+                0x00000000      0x158 DMA.o
+ .text.DMA_ConfigureChannelsRequests
+                0x00000000       0x24 DMA.o
+ .text.DMA_DeAssignChannel
+                0x00000000       0x5c DMA.o
+ .text.DMA_MemoryToMemory_Transfer
+                0x00000000       0x34 DMA.o
+ .text.DMA_ChannelScatterGatherSet
+                0x00000000       0x60 DMA.o
+ .text.DMA_ChannelPeripheralScatterGatherSet
+                0x00000000       0x60 DMA.o
+ .text.DMA_RegisterCallbackFunction_SoftwareTransfer
+                0x00000000       0x24 DMA.o
+ .text.DMA_RegisterCallbackFunction_ErrorHandler
+                0x00000000       0x24 DMA.o
+ .text          0x00000000        0x0 DMA_config.o
+ .data.DMAChannel8_UARTChannel0RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel9_UARTChannel0TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel22_UARTChannel1RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel23_UARTChannel1TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel0_UARTChannel2RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel23_UARTChannel2TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel16_UARTChannel3RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel17_UARTChannel3TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel18_UARTChannel4RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel19_UARTChannel4TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel6_UARTChannel5RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel7_UARTChannel5TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel10_UARTChannel6RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel11_UARTChannel6TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel20_UARTChannel7RX
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel21_UARTChannel7TX
+                0x00000000       0x10 DMA_config.o
+ .data.DMA_ChannelsConfigTX
+                0x00000000       0x20 DMA_config.o
+ .data.DMA_ChannelsConfigRX
+                0x00000000       0x20 DMA_config.o
+ .data.DMAChannel0_MemToMem
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel1_MemToMem
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel28_MemToMem
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel29_MemToMem
+                0x00000000       0x10 DMA_config.o
+ .data.DMAChannel26_MemToMem
+                0x00000000       0x10 DMA_config.o
+ .data.Pt_DMAChannel28_MemToMem
+                0x00000000        0x4 DMA_config.o
+ .data.Pt_DMAChannel29_MemToMem
+                0x00000000        0x4 DMA_config.o
+ .data.Pt_DMAChannel0_MemToMem
+                0x00000000        0x4 DMA_config.o
+ .data.Pt_DMAChannel1_MemToMem
+                0x00000000        0x4 DMA_config.o
+ .data.DMA_ControlTable_Arr
+                0x00000000       0x30 DMA_config.o
+ .data.DMA_ControlTable_PeripheralScatterGatherArr
+                0x00000000       0x30 DMA_config.o
+ .text          0x00000000        0x0 GPIO.o
+ .text.EXTIAIntHandler
+                0x00000000       0x1c GPIO.o
+ .text.EXTIBIntHandler
+                0x00000000       0x1c GPIO.o
+ .text.EXTICIntHandler
+                0x00000000       0x1c GPIO.o
+ .text.EXTIDIntHandler
+                0x00000000       0x1c GPIO.o
+ .text.EXTIEIntHandler
+                0x00000000       0x1c GPIO.o
+ .text.EXTIFIntHandler
+                0x00000000       0x1c GPIO.o
+ .rodata.GPIO_AlternateFunctionSelect_Registers
+                0x00000000       0x18 GPIO.o
+ .rodata.GPIO_InterruptSense_Registers
+                0x00000000       0x18 GPIO.o
+ .rodata.GPIO_InterruptEvent_Registers
+                0x00000000       0x18 GPIO.o
+ .rodata.GPIO_InterruptMask_Registers
+                0x00000000       0x18 GPIO.o
+ .rodata.GPIO_PortControl_Registers
+                0x00000000       0x18 GPIO.o
+ .rodata.GPIO_InterruptClear_Registers
+                0x00000000       0x18 GPIO.o
+ .data.GPIO_BIT_BAND_Registers
+                0x00000000       0x18 GPIO.o
+ .text.GPIO_TogglePinValue
+                0x00000000       0x4c GPIO.o
+ .text.GPIO_ConfigureAlternateFunctionSelect
+                0x00000000       0x90 GPIO.o
+ .text.GPIO_ConfigureAnalogModeSelect
+                0x00000000       0x28 GPIO.o
+ .text.GPIO_ConfigurePortControl
+                0x00000000       0x60 GPIO.o
+ .text.GPIO_EXTIClearInterrupt
+                0x00000000       0x4c GPIO.o
+ .text.GPIO_ConfigureInterruptMask
+                0x00000000       0x90 GPIO.o
+ .text.GPIO_ToggleBitBandBits
+                0x00000000       0x54 GPIO.o
+ .text.GPIO_ReadBitBandBits
+                0x00000000       0x34 GPIO.o
+ .text.GPIO_WriteBitBandBits
+                0x00000000       0x84 GPIO.o
+ .text.GPIO_EnableAFSEL_GPTM
+                0x00000000       0x5a GPIO.o
+ .text.GPIO_EnableAFSEL_UART
+                0x00000000       0x7a GPIO.o
+ .text.RegisterCallbackFunction
+                0x00000000       0x24 GPIO.o
+ .text          0x00000000        0x0 GPIO_config.o
+ .rodata.Timer0A_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer0B_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer1A_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer1B_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer2A_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer2B_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer3A_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer3B_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer4A_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer4B_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer5A_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.Timer5B_32_64Bit
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART0_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART1_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART2_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART3_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART4_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART5_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART6_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .rodata.UART7_AFSELConfig
+                0x00000000        0x3 GPIO_config.o
+ .data.GPIO_ConfigurePin_PF2
+                0x00000000        0x2 GPIO_config.o
+ .data.GPIO_ConfigurePin_PF3
+                0x00000000        0x2 GPIO_config.o
+ .rodata.GPIO_TimerAFSELConfig_ArrPtrStruct
+                0x00000000       0x30 GPIO_config.o
+ .rodata.GPIO_AFSELUARTConfig_ArrPtrStruct
+                0x00000000       0x20 GPIO_config.o
+ .text          0x00000000        0x0 GPTM.o
+ .rodata.GPTM_16_32_BitTimerA_IntervalLoad
+                0x00000000       0x18 GPTM.o
+ .rodata.GPTM_32_64_BitTimerA_IntervalLoad
+                0x00000000       0x18 GPTM.o
+ .rodata.GPTM_16BitTimerB_IntervalLoad
+                0x00000000       0x18 GPTM.o
+ .rodata.GPTM_32BitTimerB_IntervalLoad
+                0x00000000       0x18 GPTM.o
+ .rodata.GPTM_32_64_BitTimerA_Match
+                0x00000000       0x18 GPTM.o
+ .rodata.GPTM_32BitTimerB_Match
+                0x00000000       0x18 GPTM.o
+ .rodata.GPTM_TimerMode
+                0x00000000       0x60 GPTM.o
+ .rodata.GPTM_Control
+                0x00000000       0x30 GPTM.o
+ .rodata.GPTM_ConfigurationRegisters
+                0x00000000       0x30 GPTM.o
+ .rodata.GPTM_ICRRegisters
+                0x00000000       0x30 GPTM.o
+ .rodata.GPTM_RISRegisters
+                0x00000000       0x30 GPTM.o
+ .text.GPTM_EnableClkTimer
+                0x00000000       0x80 GPTM.o
+ .text.GPTM_EnableTimer
+                0x00000000       0x5c GPTM.o
+ .text.GPTM_DisableTimer
+                0x00000000       0x5c GPTM.o
+ .text.GPTM_InitializePWM
+                0x00000000      0x124 GPTM.o
+ .text.GPTM_GeneratePWM
+                0x00000000       0xb0 GPTM.o
+ .text.GPTM_InitializeDelayMode
+                0x00000000       0xb4 GPTM.o
+ .text.GPTM_GenerateDelay
+                0x00000000       0xcc GPTM.o
+ .text          0x00000000        0x0 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer0A
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer0B
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer1A
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer1B
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer2A
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer2B
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer3A
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer3B
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer4A
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer4B
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer5A
+                0x00000000        0x4 GPTM_config.o
+ .rodata.GPTM_Config_32BitTimer5B
+                0x00000000        0x4 GPTM_config.o
+ .data.GPTM_Config_ArrPtrStruct
+                0x00000000       0x30 GPTM_config.o
+ .text          0x00000000        0x0 HC-05.o
+ .text.HC05_Initialization
+                0x00000000       0x1c HC-05.o
+ .text.HC05_Initialization_DMA
+                0x00000000       0x20 HC-05.o
+ .text.HC05_SendString_DMA
+                0x00000000       0x26 HC-05.o
+ .text.HC05_ReceiveString_DMA
+                0x00000000       0x26 HC-05.o
+ .text.HC05_ReadChar
+                0x00000000       0x18 HC-05.o
+ .text.HC05_WriteChar
+                0x00000000       0x18 HC-05.o
+ .text.HC05_WriteString
+                0x00000000       0x28 HC-05.o
+ .text          0x00000000        0x0 main.o
+ .data.charater1
+                0x00000000        0x1 main.o
+ .data.ptr_charater1
+                0x00000000        0x4 main.o
+ .data.ListA    0x00000000        0x4 main.o
+ .data.ListB    0x00000000        0x4 main.o
+ .data.ListC    0x00000000        0x4 main.o
+ .data.ListD    0x00000000        0x8 main.o
+ .data.ListE    0x00000000        0x8 main.o
+ .data.ListF    0x00000000        0x8 main.o
+ .data.SourceBufferUART
+                0x00000000        0x8 main.o
+ .data.SourceIndexCounterDMA
+                0x00000000        0x4 main.o
+ .data.SourceIndexCounterDMA356
+                0x00000000        0x4 main.o
+ .data.unused_var1
+                0x00000000        0x4 main.o
+ .data.unused_var2
+                0x00000000        0x4 main.o
+ .data.unused_var3
+                0x00000000        0x4 main.o
+ .data.unused_var4
+                0x00000000        0x4 main.o
+ .text.UnusedFunc1
+                0x00000000       0x2a main.o
+ .data.static_var.0
+                0x00000000        0x4 main.o
+ .text          0x00000000        0x0 NVIC.o
+ .rodata.Set_Pending_Register
+                0x00000000       0x10 NVIC.o
+ .rodata.Clear_Pending_Register
+                0x00000000       0x10 NVIC.o
+ .rodata.Interrupt_Priority_Register
+                0x00000000       0x20 NVIC.o
+ .text.NVIC_Set_Pending
+                0x00000000       0x4c NVIC.o
+ .text.NVIC_Clear_Pending
+                0x00000000       0x4c NVIC.o
+ .text.NVIC_SetPriorityGrouping
+                0x00000000       0x38 NVIC.o
+ .text.NVIC_AssignPriority
+                0x00000000      0x134 NVIC.o
+ .text          0x00000000        0x0 startup.o
+ .text          0x00000000        0x0 SystemControl.o
+ .rodata.SC_PWMDIV
+                0x00000000        0x8 SystemControl.o
+ .text.SC_EnableRunModeClockPWM
+                0x00000000       0x30 SystemControl.o
+ .text.SC_Initialization
+                0x00000000      0x12c SystemControl.o
+ .text.SC_PWMClkIntialization
+                0x00000000       0x4c SystemControl.o
+ .text.SC_GetPWMFrequency
+                0x00000000       0x48 SystemControl.o
+ .text.SC_ADC_ClkIntialization
+                0x00000000       0x2c SystemControl.o
+ .text          0x00000000        0x0 SystemControl_Config.o
+ .data.ConfigSystemSrc_PLL
+                0x00000000        0x5 SystemControl_Config.o
+ .data.ConfigSystemSrc_PrecisionInternalOSC
+                0x00000000        0x5 SystemControl_Config.o
+ .data.ConfigSystemSrc_PrecisionInternalOSC_DIV4
+                0x00000000        0x5 SystemControl_Config.o
+ .data.PWM_Module0
+                0x00000000        0x3 SystemControl_Config.o
+ .text          0x00000000        0x0 SystickTimer.o
+ .text.SystickHandler
+                0x00000000       0x1c SystickTimer.o
+ .text.SysTickGenerateDelay_Polling
+                0x00000000       0x74 SystickTimer.o
+ .text.Systick_RegisterCallbackFunction
+                0x00000000       0x1c SystickTimer.o
+ .text.Systick_ClearFlag
+                0x00000000       0x1c SystickTimer.o
+ .text          0x00000000        0x0 UART.o
+ .data.UART_InterruptNum_Arr
+                0x00000000        0x8 UART.o
+ .rodata.UART_DataRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_FlagRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_InterruptClearRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_IntegerBaudRateDivisorRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_FractionalBaudRateDivisorRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_ClockConfigurationRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_ControlRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_LineControlRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_InterruptMaskRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_MaskedInterruptStatusRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_DMAControlRegisters
+                0x00000000       0x20 UART.o
+ .rodata.UART_InterruptFIFOLevelSelect
+                0x00000000       0x20 UART.o
+ .text.UART0_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART1_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART2_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART3_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART4_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART5_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART6_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART7_IntHandler
+                0x00000000       0x90 UART.o
+ .text.UART_Initialization
+                0x00000000      0x110 UART.o
+ .text.UART_ConfigureInterruptSource
+                0x00000000       0xb8 UART.o
+ .text.UART_TransmitChar_Polling
+                0x00000000       0x5c UART.o
+ .text.UART_RecieveChar_Polling
+                0x00000000       0x58 UART.o
+ .text.UART_TransmitChar_Interrupt
+                0x00000000       0x64 UART.o
+ .text.UART_RecieveChar_Interrupt
+                0x00000000       0x60 UART.o
+ .text.UART_Transmit_DMA
+                0x00000000       0x98 UART.o
+ .text.UART_Receive_DMA
+                0x00000000       0x3c UART.o
+ .text.UART_DMA_Reload_PrimaryControlStructure
+                0x00000000       0x54 UART.o
+ .text.UART_DMA_Reload_AlternateControlStructure
+                0x00000000       0x54 UART.o
+ .text.UART_RecCharwTimeOut
+                0x00000000       0x5c UART.o
+ .text.UART0_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART1_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART2_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART3_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART4_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART5_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART6_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text.UART7_RegisterCallbackFunction
+                0x00000000       0x24 UART.o
+ .text          0x00000000        0x0 UART_config.o
+ .data.UARTChannel1_Config
+                0x00000000        0xc UART_config.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x00000000         0x20000000         xr
+sram             0x20000000         0x20000000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x00000000      0xe08
+ *(.vectors*)
+ .vectors       0x00000000       0x1c startup.o
+                0x00000000                gp_fn_vectors
+ *(.text*)
+ .text.DMA_PeripheralInitialization
+                0x0000001c       0x38 DMA.o
+                0x0000001c                DMA_PeripheralInitialization
+ .text.DMA_EnableChannelAttributes
+                0x00000054       0x8c DMA.o
+                0x00000054                DMA_EnableChannelAttributes
+ .text.DMA_EnableChannel
+                0x000000e0       0x2c DMA.o
+                0x000000e0                DMA_EnableChannel
+ .text.DMA_ChannelControlStructureSet
+                0x0000010c      0x158 DMA.o
+                0x0000010c                DMA_ChannelControlStructureSet
+ .text.DMA_ConfigureChannelSoftwareRequest
+                0x00000264       0x58 DMA.o
+                0x00000264                DMA_ConfigureChannelSoftwareRequest
+ .text.DMA_ConfigurePeripheralInterrupt
+                0x000002bc       0x38 DMA.o
+                0x000002bc                DMA_ConfigurePeripheralInterrupt
+ .text.DMA_ConfigureChannelInterrupt
+                0x000002f4       0x54 DMA.o
+                0x000002f4                DMA_ConfigureChannelInterrupt
+ .text.DMA_ConfigurePriority
+                0x00000348       0x58 DMA.o
+                0x00000348                DMA_ConfigurePriority
+ .text.DMA_AssignChannel
+                0x000003a0       0x58 DMA.o
+                0x000003a0                DMA_AssignChannel
+ .text.GPIO_EnableRunModeClockGateControl
+                0x000003f8       0x60 GPIO.o
+ .text.GPIO_SetPinStatus
+                0x00000458       0x90 GPIO.o
+                0x00000458                GPIO_SetPinStatus
+ .text.GPIO_SetData
+                0x000004e8       0x90 GPIO.o
+                0x000004e8                GPIO_SetData
+ .text.GPIO_ConfigureDigitalEnable
+                0x00000578       0x90 GPIO.o
+                0x00000578                GPIO_ConfigureDigitalEnable
+ .text.GPIO_ConfigureCommit
+                0x00000608       0x80 GPIO.o
+                0x00000608                GPIO_ConfigureCommit
+ .text.GPIO_ConfigureOutputPin
+                0x00000688       0x5a GPIO.o
+                0x00000688                GPIO_ConfigureOutputPin
+ *fill*         0x000006e2        0x2 
+ .text.GPIO_SetPinDirection
+                0x000006e4       0x90 GPIO.o
+                0x000006e4                GPIO_SetPinDirection
+ .text.GPIO_SetInputStatus
+                0x00000774       0x4c GPIO.o
+                0x00000774                GPIO_SetInputStatus
+ .text.GPIO_ConfigureInputPin
+                0x000007c0       0x64 GPIO.o
+                0x000007c0                GPIO_ConfigureInputPin
+ .text.main     0x00000824       0x9c main.o
+                0x00000824                main
+ .text.NVIC_Enable_Interrupt
+                0x000008c0       0x4c NVIC.o
+                0x000008c0                NVIC_Enable_Interrupt
+ .text.NVIC_Clear_Interrupt
+                0x0000090c       0x4c NVIC.o
+                0x0000090c                NVIC_Clear_Interrupt
+ .text.Default_Handler
+                0x00000958        0xc startup.o
+                0x00000958                MM_fault_Handler
+                0x00000958                Bus_Fault
+                0x00000958                Default_Handler
+                0x00000958                H_fault_Handler
+                0x00000958                Usage_Fault_Handler
+                0x00000958                NMI_Handler
+ .text.Reset_Handler
+                0x00000964       0x80 startup.o
+                0x00000964                Reset_Handler
+ .text.SC_GetOscillatorValue
+                0x000009e4       0x48 SystemControl.o
+ .text.SC_GetSystemClock
+                0x00000a2c       0x9c SystemControl.o
+                0x00000a2c                SC_GetSystemClock
+ .text.SysTickEnable
+                0x00000ac8       0x1c SystickTimer.o
+ .text.SysTickDisable
+                0x00000ae4       0x1c SystickTimer.o
+ .text.SysTickFrequencyGet
+                0x00000b00       0x44 SystickTimer.o
+ .text.SysTickConfigureClockSource
+                0x00000b44       0x2c SystickTimer.o
+                0x00000b44                SysTickConfigureClockSource
+ .text.SysTickGenerateDelay_Interrupt
+                0x00000b70       0x58 SystickTimer.o
+                0x00000b70                SysTickGenerateDelay_Interrupt
+ *(.rodata*)
+ .rodata.SourceAddressPointerRegisters
+                0x00000bc8       0x80 DMA.o
+                0x00000bc8                SourceAddressPointerRegisters
+ .rodata.DestinationAddressPointerRegisters
+                0x00000c48       0x80 DMA.o
+                0x00000c48                DestinationAddressPointerRegisters
+ .rodata.DMA_ChannelControlWordRegisters
+                0x00000cc8       0x80 DMA.o
+ .rodata.GPIO_Direction_Registers
+                0x00000d48       0x18 GPIO.o
+ .rodata.GPIO_Data_Registers
+                0x00000d60       0x18 GPIO.o
+ .rodata.GPIO_DigitalEnable_Registers
+                0x00000d78       0x18 GPIO.o
+ .rodata.GPIO_LOCK_Registers
+                0x00000d90       0x18 GPIO.o
+ .rodata.GPIO_Port_Commit
+                0x00000da8       0x18 GPIO.o
+ .rodata.GPIO_PullUp_Registers
+                0x00000dc0       0x18 GPIO.o
+ .rodata.Interrupt_Enable_Registers
+                0x00000dd8       0x10 NVIC.o
+ .rodata.Interrupt_Clear_Registers
+                0x00000de8       0x10 NVIC.o
+ .rodata.SC_SYSDIV
+                0x00000df8       0x10 SystemControl.o
+                0x00000df8                SC_SYSDIV
+                0x00000e08                _E_text = .
+
+.glue_7         0x00000e08        0x0
+ .glue_7        0x00000e08        0x0 linker stubs
+
+.glue_7t        0x00000e08        0x0
+ .glue_7t       0x00000e08        0x0 linker stubs
+
+.vfp11_veneer   0x00000e08        0x0
+ .vfp11_veneer  0x00000e08        0x0 linker stubs
+
+.v4_bx          0x00000e08        0x0
+ .v4_bx         0x00000e08        0x0 linker stubs
+
+.iplt           0x00000e08        0x0
+ .iplt          0x00000e08        0x0 DMA.o
+
+.rel.dyn        0x00000e08        0x0
+ .rel.iplt      0x00000e08        0x0 DMA.o
+
+.data           0x20000000        0x0 load address 0x00000e08
+                0x20000000                _S_DATA = .
+ *(.data)
+ .data          0x20000000        0x0 DMA.o
+ .data          0x20000000        0x0 DMA_config.o
+ .data          0x20000000        0x0 GPIO.o
+ .data          0x20000000        0x0 GPIO_config.o
+ .data          0x20000000        0x0 GPTM.o
+ .data          0x20000000        0x0 GPTM_config.o
+ .data          0x20000000        0x0 HC-05.o
+ .data          0x20000000        0x0 main.o
+ .data          0x20000000        0x0 NVIC.o
+ .data          0x20000000        0x0 startup.o
+ .data          0x20000000        0x0 SystemControl.o
+ .data          0x20000000        0x0 SystemControl_Config.o
+ .data          0x20000000        0x0 SystickTimer.o
+ .data          0x20000000        0x0 UART.o
+ .data          0x20000000        0x0 UART_config.o
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _E_DATA = .
+
+.data.DMA_ChannelMapSelectRegisters
+                0x20000000       0x10 load address 0x00000e08
+ .data.DMA_ChannelMapSelectRegisters
+                0x20000000       0x10 DMA.o
+
+.igot.plt       0x20000010        0x0 load address 0x00000e18
+ .igot.plt      0x20000010        0x0 DMA.o
+
+.data.DMAChannel30_MemToMem
+                0x20000010       0x10 load address 0x00000e18
+ .data.DMAChannel30_MemToMem
+                0x20000010       0x10 DMA_config.o
+                0x20000010                DMAChannel30_MemToMem
+
+.data.Pt_DMAChannel30_MemToMem
+                0x20000020        0x4 load address 0x00000e28
+ .data.Pt_DMAChannel30_MemToMem
+                0x20000020        0x4 DMA_config.o
+                0x20000020                Pt_DMAChannel30_MemToMem
+
+.data.GPIO_ConfigurePin_PF4
+                0x20000024        0x2 load address 0x00000e2c
+ .data.GPIO_ConfigurePin_PF4
+                0x20000024        0x2 GPIO_config.o
+                0x20000024                GPIO_ConfigurePin_PF4
+
+.data.GPIO_ConfigurePin_PF1
+                0x20000028        0x2 load address 0x00000e2e
+ .data.GPIO_ConfigurePin_PF1
+                0x20000028        0x2 GPIO_config.o
+                0x20000028                GPIO_ConfigurePin_PF1
+
+.data.GPIO_ConfigurePin_PF0
+                0x2000002c        0x2 load address 0x00000e30
+ .data.GPIO_ConfigurePin_PF0
+                0x2000002c        0x2 GPIO_config.o
+                0x2000002c                GPIO_ConfigurePin_PF0
+
+.bss            0x20000400     0x19f4 load address 0x00000e32
+                0x20000400                _S_BSS = .
+ *(.bss*)
+ .bss           0x20000400        0x0 DMA.o
+ .bss.DMA_InterruptFlag
+                0x20000400        0x1 DMA.o
+ .bss.ScatterGatherFlag
+                0x20000401        0x1 DMA.o
+                0x20000401                ScatterGatherFlag
+ *fill*         0x20000402      0x3fe 
+ .bss.ui8ControlTable
+                0x20000800      0x400 DMA.o
+                0x20000800                ui8ControlTable
+ .bss.DMA_SoftwareTransfer_Callback
+                0x20000c00       0x80 DMA.o
+ .bss.DMA_ErrorHandler_Callback
+                0x20000c80       0x80 DMA.o
+ .bss.handlerCounter
+                0x20000d00        0x4 DMA.o
+                0x20000d00                handlerCounter
+ .bss           0x20000d04        0x0 DMA_config.o
+ .bss           0x20000d04        0x0 GPIO.o
+ .bss.EXTI_Callback
+                0x20000d04       0x18 GPIO.o
+ .bss           0x20000d1c        0x0 GPIO_config.o
+ .bss           0x20000d1c        0x0 GPTM.o
+ .bss           0x20000d1c        0x0 GPTM_config.o
+ .bss           0x20000d1c        0x0 HC-05.o
+ .bss           0x20000d1c        0x0 main.o
+ .bss.SourceBuffer_DMA
+                0x20000d1c      0x400 main.o
+                0x20000d1c                SourceBuffer_DMA
+ .bss.DestBufferA
+                0x2000111c        0x1 main.o
+                0x2000111c                DestBufferA
+ *fill*         0x2000111d        0x3 
+ .bss.DestBufferB
+                0x20001120        0x1 main.o
+                0x20001120                DestBufferB
+ *fill*         0x20001121        0x3 
+ .bss.DestBuffer_DMA
+                0x20001124      0x400 main.o
+                0x20001124                DestBuffer_DMA
+ .bss.ListDest  0x20001524       0x18 main.o
+                0x20001524                ListDest
+ .bss.IndexCounter
+                0x2000153c        0x4 main.o
+                0x2000153c                IndexCounter
+ .bss.indexCounter
+                0x20001540        0x4 main.o
+                0x20001540                indexCounter
+ .bss.MySystemClock
+                0x20001544        0x4 main.o
+                0x20001544                MySystemClock
+ .bss.SourceArray512
+                0x20001548      0x200 main.o
+                0x20001548                SourceArray512
+ .bss.DestArray512
+                0x20001748      0x200 main.o
+                0x20001748                DestArray512
+ .bss.IdleLoopCounter
+                0x20001948        0x4 main.o
+                0x20001948                IdleLoopCounter
+ .bss           0x2000194c        0x0 NVIC.o
+ .bss           0x2000194c        0x0 startup.o
+ .bss.Stack_top
+                0x2000194c      0x400 startup.o
+ .bss           0x20001d4c        0x0 SystemControl.o
+ .bss           0x20001d4c        0x0 SystemControl_Config.o
+ .bss           0x20001d4c        0x0 SystickTimer.o
+ .bss.Systick_Callback
+                0x20001d4c        0x4 SystickTimer.o
+ .bss           0x20001d50        0x0 UART.o
+ .bss.UARTDMA_TxFlag
+                0x20001d50        0x1 UART.o
+                0x20001d50                UARTDMA_TxFlag
+ .bss.UARTDMA_RxFlag
+                0x20001d51        0x1 UART.o
+                0x20001d51                UARTDMA_RxFlag
+ *fill*         0x20001d52        0x2 
+ .bss.UART0_Callback
+                0x20001d54       0x14 UART.o
+ .bss.UART1_Callback
+                0x20001d68       0x14 UART.o
+ .bss.UART2_Callback
+                0x20001d7c       0x14 UART.o
+ .bss.UART3_Callback
+                0x20001d90       0x14 UART.o
+ .bss.UART4_Callback
+                0x20001da4       0x14 UART.o
+ .bss.UART5_Callback
+                0x20001db8       0x14 UART.o
+ .bss.UART6_Callback
+                0x20001dcc       0x14 UART.o
+ .bss.UART7_Callback
+                0x20001de0       0x14 UART.o
+ .bss           0x20001df4        0x0 UART_config.o
+                0x20001df4                _E_BSS = .
+LOAD DMA.o
+LOAD DMA_config.o
+LOAD GPIO.o
+LOAD GPIO_config.o
+LOAD GPTM.o
+LOAD GPTM_config.o
+LOAD HC-05.o
+LOAD main.o
+LOAD NVIC.o
+LOAD startup.o
+LOAD SystemControl.o
+LOAD SystemControl_Config.o
+LOAD SystickTimer.o
+LOAD UART.o
+LOAD UART_config.o
+OUTPUT(DMA_Project.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000     0x774d
+ .debug_info    0x00000000      0xfd1 DMA.o
+ .debug_info    0x00000fd1      0x7ae DMA_config.o
+ .debug_info    0x0000177f     0x105b GPIO.o
+ .debug_info    0x000027da      0x441 GPIO_config.o
+ .debug_info    0x00002c1b      0xbbb GPTM.o
+ .debug_info    0x000037d6      0x2a1 GPTM_config.o
+ .debug_info    0x00003a77      0x4b0 HC-05.o
+ .debug_info    0x00003f27      0x886 main.o
+ .debug_info    0x000047ad      0x46f NVIC.o
+ .debug_info    0x00004c1c      0x1b5 startup.o
+ .debug_info    0x00004dd1      0x779 SystemControl.o
+ .debug_info    0x0000554a      0x2f9 SystemControl_Config.o
+ .debug_info    0x00005843      0x38e SystickTimer.o
+ .debug_info    0x00005bd1     0x19f3 UART.o
+ .debug_info    0x000075c4      0x189 UART_config.o
+
+.debug_abbrev   0x00000000     0x1296
+ .debug_abbrev  0x00000000      0x220 DMA.o
+ .debug_abbrev  0x00000220       0xd8 DMA_config.o
+ .debug_abbrev  0x000002f8      0x1ac GPIO.o
+ .debug_abbrev  0x000004a4       0xca GPIO_config.o
+ .debug_abbrev  0x0000056e      0x17c GPTM.o
+ .debug_abbrev  0x000006ea       0xbd GPTM_config.o
+ .debug_abbrev  0x000007a7       0xe8 HC-05.o
+ .debug_abbrev  0x0000088f      0x14e main.o
+ .debug_abbrev  0x000009dd      0x11b NVIC.o
+ .debug_abbrev  0x00000af8       0xe8 startup.o
+ .debug_abbrev  0x00000be0      0x1eb SystemControl.o
+ .debug_abbrev  0x00000dcb       0x88 SystemControl_Config.o
+ .debug_abbrev  0x00000e53      0x175 SystickTimer.o
+ .debug_abbrev  0x00000fc8      0x246 UART.o
+ .debug_abbrev  0x0000120e       0x88 UART_config.o
+
+.debug_loc      0x00000000     0x24c8
+ .debug_loc     0x00000000      0x6f0 DMA.o
+ .debug_loc     0x000006f0      0x864 GPIO.o
+ .debug_loc     0x00000f54      0x254 GPTM.o
+ .debug_loc     0x000011a8      0x1e8 HC-05.o
+ .debug_loc     0x00001390       0x94 main.o
+ .debug_loc     0x00001424      0x228 NVIC.o
+ .debug_loc     0x0000164c       0x7c startup.o
+ .debug_loc     0x000016c8      0x248 SystemControl.o
+ .debug_loc     0x00001910      0x2b8 SystickTimer.o
+ .debug_loc     0x00001bc8      0x900 UART.o
+
+.debug_aranges  0x00000000      0x500
+ .debug_aranges
+                0x00000000       0xc0 DMA.o
+ .debug_aranges
+                0x000000c0       0x18 DMA_config.o
+ .debug_aranges
+                0x000000d8       0xf0 GPIO.o
+ .debug_aranges
+                0x000001c8       0x18 GPIO_config.o
+ .debug_aranges
+                0x000001e0       0x50 GPTM.o
+ .debug_aranges
+                0x00000230       0x18 GPTM_config.o
+ .debug_aranges
+                0x00000248       0x50 HC-05.o
+ .debug_aranges
+                0x00000298       0x28 main.o
+ .debug_aranges
+                0x000002c0       0x48 NVIC.o
+ .debug_aranges
+                0x00000308       0x28 startup.o
+ .debug_aranges
+                0x00000330       0x50 SystemControl.o
+ .debug_aranges
+                0x00000380       0x18 SystemControl_Config.o
+ .debug_aranges
+                0x00000398       0x60 SystickTimer.o
+ .debug_aranges
+                0x000003f8       0xf0 UART.o
+ .debug_aranges
+                0x000004e8       0x18 UART_config.o
+
+.debug_ranges   0x00000000      0x3e8
+ .debug_ranges  0x00000000       0xb0 DMA.o
+ .debug_ranges  0x000000b0       0xe0 GPIO.o
+ .debug_ranges  0x00000190       0x40 GPTM.o
+ .debug_ranges  0x000001d0       0x40 HC-05.o
+ .debug_ranges  0x00000210       0x18 main.o
+ .debug_ranges  0x00000228       0x38 NVIC.o
+ .debug_ranges  0x00000260       0x18 startup.o
+ .debug_ranges  0x00000278       0x40 SystemControl.o
+ .debug_ranges  0x000002b8       0x50 SystickTimer.o
+ .debug_ranges  0x00000308       0xe0 UART.o
+
+.debug_line     0x00000000     0x1dce
+ .debug_line    0x00000000      0x510 DMA.o
+ .debug_line    0x00000510       0x47 DMA_config.o
+ .debug_line    0x00000557      0x542 GPIO.o
+ .debug_line    0x00000a99       0x49 GPIO_config.o
+ .debug_line    0x00000ae2      0x29d GPTM.o
+ .debug_line    0x00000d7f       0x3f GPTM_config.o
+ .debug_line    0x00000dbe      0x111 HC-05.o
+ .debug_line    0x00000ecf       0xdf main.o
+ .debug_line    0x00000fae      0x1c1 NVIC.o
+ .debug_line    0x0000116f       0xc4 startup.o
+ .debug_line    0x00001233      0x26d SystemControl.o
+ .debug_line    0x000014a0       0x51 SystemControl_Config.o
+ .debug_line    0x000014f1      0x1bc SystickTimer.o
+ .debug_line    0x000016ad      0x6d8 UART.o
+ .debug_line    0x00001d85       0x49 UART_config.o
+
+.debug_str      0x00000000     0x3ed4
+ .debug_str     0x00000000      0xff0 DMA.o
+                               0x1183 (size before relaxing)
+ .debug_str     0x00000ff0      0x297 DMA_config.o
+                                0xa9a (size before relaxing)
+ .debug_str     0x00001287      0x85c GPIO.o
+                                0xacc (size before relaxing)
+ .debug_str     0x00001ae3      0x21d GPIO_config.o
+                                0x480 (size before relaxing)
+ .debug_str     0x00001d00      0x73c GPTM.o
+                                0x9cb (size before relaxing)
+ .debug_str     0x0000243c      0x153 GPTM_config.o
+                                0x421 (size before relaxing)
+ .debug_str     0x0000258f      0x1b7 HC-05.o
+                                0x61c (size before relaxing)
+ .debug_str     0x00002746      0x15c main.o
+                                0xa59 (size before relaxing)
+ .debug_str     0x000028a2      0x2c5 NVIC.o
+                                0x471 (size before relaxing)
+ .debug_str     0x00002b67       0x85 startup.o
+                                0x199 (size before relaxing)
+ .debug_str     0x00002bec      0x5e0 SystemControl.o
+                                0x755 (size before relaxing)
+ .debug_str     0x000031cc       0x86 SystemControl_Config.o
+                                0x466 (size before relaxing)
+ .debug_str     0x00003252      0x159 SystickTimer.o
+                                0x32b (size before relaxing)
+ .debug_str     0x000033ab      0xb1b UART.o
+                               0x16d8 (size before relaxing)
+ .debug_str     0x00003ec6        0xe UART_config.o
+                                0x236 (size before relaxing)
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 DMA.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a DMA_config.o
+ .comment       0x00000049       0x4a GPIO.o
+ .comment       0x00000049       0x4a GPIO_config.o
+ .comment       0x00000049       0x4a GPTM.o
+ .comment       0x00000049       0x4a GPTM_config.o
+ .comment       0x00000049       0x4a HC-05.o
+ .comment       0x00000049       0x4a main.o
+ .comment       0x00000049       0x4a NVIC.o
+ .comment       0x00000049       0x4a startup.o
+ .comment       0x00000049       0x4a SystemControl.o
+ .comment       0x00000049       0x4a SystemControl_Config.o
+ .comment       0x00000049       0x4a SystickTimer.o
+ .comment       0x00000049       0x4a UART.o
+ .comment       0x00000049       0x4a UART_config.o
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e DMA.o
+ .ARM.attributes
+                0x0000002e       0x2e DMA_config.o
+ .ARM.attributes
+                0x0000005c       0x2e GPIO.o
+ .ARM.attributes
+                0x0000008a       0x2e GPIO_config.o
+ .ARM.attributes
+                0x000000b8       0x2e GPTM.o
+ .ARM.attributes
+                0x000000e6       0x2e GPTM_config.o
+ .ARM.attributes
+                0x00000114       0x2e HC-05.o
+ .ARM.attributes
+                0x00000142       0x2e main.o
+ .ARM.attributes
+                0x00000170       0x2e NVIC.o
+ .ARM.attributes
+                0x0000019e       0x2e startup.o
+ .ARM.attributes
+                0x000001cc       0x2e SystemControl.o
+ .ARM.attributes
+                0x000001fa       0x2e SystemControl_Config.o
+ .ARM.attributes
+                0x00000228       0x2e SystickTimer.o
+ .ARM.attributes
+                0x00000256       0x2e UART.o
+ .ARM.attributes
+                0x00000284       0x2e UART_config.o
+
+.debug_frame    0x00000000     0x1150
+ .debug_frame   0x00000000      0x328 DMA.o
+ .debug_frame   0x00000328      0x3f0 GPIO.o
+ .debug_frame   0x00000718      0x120 GPTM.o
+ .debug_frame   0x00000838       0xfc HC-05.o
+ .debug_frame   0x00000934       0x58 main.o
+ .debug_frame   0x0000098c      0x100 NVIC.o
+ .debug_frame   0x00000a8c       0x50 startup.o
+ .debug_frame   0x00000adc      0x114 SystemControl.o
+ .debug_frame   0x00000bf0      0x154 SystickTimer.o
+ .debug_frame   0x00000d44      0x40c UART.o
+
+Cross Reference Table
+
+Symbol                                            File
+AlternateDestinationAddressPointerRegisters       DMA.o
+AlternateSourceAddressPointerRegisters            DMA.o
+Bus_Fault                                         startup.o
+ConfigSystemSrc_PLL                               SystemControl_Config.o
+ConfigSystemSrc_PrecisionInternalOSC              SystemControl_Config.o
+ConfigSystemSrc_PrecisionInternalOSC_DIV4         SystemControl_Config.o
+DMAChannel0_MemToMem                              DMA_config.o
+DMAChannel0_UARTChannel2RX                        DMA_config.o
+DMAChannel10_UARTChannel6RX                       DMA_config.o
+DMAChannel11_UARTChannel6TX                       DMA_config.o
+DMAChannel16_UARTChannel3RX                       DMA_config.o
+DMAChannel17_UARTChannel3TX                       DMA_config.o
+DMAChannel18_UARTChannel4RX                       DMA_config.o
+DMAChannel19_UARTChannel4TX                       DMA_config.o
+DMAChannel1_MemToMem                              DMA_config.o
+DMAChannel20_UARTChannel7RX                       DMA_config.o
+DMAChannel21_UARTChannel7TX                       DMA_config.o
+DMAChannel22_UARTChannel1RX                       DMA_config.o
+DMAChannel23_UARTChannel1TX                       DMA_config.o
+DMAChannel23_UARTChannel2TX                       DMA_config.o
+DMAChannel26_MemToMem                             DMA_config.o
+DMAChannel28_MemToMem                             DMA_config.o
+DMAChannel29_MemToMem                             DMA_config.o
+DMAChannel30_MemToMem                             DMA_config.o
+DMAChannel6_UARTChannel5RX                        DMA_config.o
+DMAChannel7_UARTChannel5TX                        DMA_config.o
+DMAChannel8_UARTChannel0RX                        DMA_config.o
+DMAChannel9_UARTChannel0TX                        DMA_config.o
+DMA_AssignChannel                                 DMA.o
+                                                  main.o
+DMA_ChannelAlternateControlStructureSet           DMA.o
+                                                  UART.o
+DMA_ChannelControlStructureSet                    DMA.o
+                                                  UART.o
+                                                  main.o
+DMA_ChannelPeripheralScatterGatherSet             DMA.o
+DMA_ChannelScatterGatherSet                       DMA.o
+DMA_ChannelsConfigRX                              DMA_config.o
+                                                  UART.o
+DMA_ChannelsConfigTX                              DMA_config.o
+                                                  UART.o
+DMA_ConfigureChannelInterrupt                     DMA.o
+                                                  main.o
+DMA_ConfigureChannelSoftwareRequest               DMA.o
+                                                  main.o
+                                                  HC-05.o
+DMA_ConfigureChannelsRequests                     DMA.o
+DMA_ConfigureControlTableBaseAddress              DMA.o
+DMA_ConfigurePeripheralInterrupt                  DMA.o
+                                                  main.o
+DMA_ConfigurePriority                             DMA.o
+                                                  HC-05.o
+DMA_ControlTable_Arr                              DMA_config.o
+                                                  DMA.o
+DMA_ControlTable_PeripheralScatterGatherArr       DMA_config.o
+                                                  DMA.o
+DMA_DeAssignChannel                               DMA.o
+DMA_DisableChannelAttributes                      DMA.o
+DMA_EnableChannel                                 DMA.o
+                                                  main.o
+                                                  HC-05.o
+DMA_EnableChannelAttributes                       DMA.o
+                                                  main.o
+DMA_ErrorHandler                                  DMA.o
+DMA_MemoryToMemory_Transfer                       DMA.o
+DMA_PeripheralInitialization                      DMA.o
+                                                  main.o
+                                                  HC-05.o
+DMA_RegisterCallbackFunction_ErrorHandler         DMA.o
+DMA_RegisterCallbackFunction_SoftwareTransfer     DMA.o
+DMA_SoftwareTransferHandler                       DMA.o
+Default_Handler                                   startup.o
+DestArray512                                      main.o
+DestBufferA                                       main.o
+DestBufferB                                       main.o
+DestBuffer_DMA                                    main.o
+DestinationAddressPointerRegisters                DMA.o
+EXTIAIntHandler                                   GPIO.o
+EXTIBIntHandler                                   GPIO.o
+EXTICIntHandler                                   GPIO.o
+EXTIDIntHandler                                   GPIO.o
+EXTIEIntHandler                                   GPIO.o
+EXTIFIntHandler                                   GPIO.o
+GPIO_AFSELUARTConfig_ArrPtrStruct                 GPIO_config.o
+                                                  HC-05.o
+GPIO_BIT_BAND_Registers                           GPIO.o
+GPIO_ConfigureAlternateFunctionSelect             GPIO.o
+GPIO_ConfigureAnalogModeSelect                    GPIO.o
+GPIO_ConfigureCommit                              GPIO.o
+GPIO_ConfigureDigitalEnable                       GPIO.o
+GPIO_ConfigureInputPin                            GPIO.o
+                                                  main.o
+GPIO_ConfigureInterruptMask                       GPIO.o
+GPIO_ConfigureOutputPin                           GPIO.o
+                                                  main.o
+GPIO_ConfigurePin_PF0                             GPIO_config.o
+                                                  main.o
+GPIO_ConfigurePin_PF1                             GPIO_config.o
+                                                  main.o
+GPIO_ConfigurePin_PF2                             GPIO_config.o
+GPIO_ConfigurePin_PF3                             GPIO_config.o
+GPIO_ConfigurePin_PF4                             GPIO_config.o
+                                                  main.o
+GPIO_ConfigurePortControl                         GPIO.o
+GPIO_EXTIClearInterrupt                           GPIO.o
+GPIO_EnableAFSEL_GPTM                             GPIO.o
+                                                  GPTM.o
+GPIO_EnableAFSEL_UART                             GPIO.o
+                                                  UART.o
+GPIO_ReadBitBandBits                              GPIO.o
+GPIO_SetData                                      GPIO.o
+GPIO_SetInputStatus                               GPIO.o
+GPIO_SetPinDirection                              GPIO.o
+GPIO_SetPinStatus                                 GPIO.o
+GPIO_TimerAFSELConfig_ArrPtrStruct                GPIO_config.o
+GPIO_ToggleBitBandBits                            GPIO.o
+GPIO_TogglePinValue                               GPIO.o
+GPIO_WriteBitBandBits                             GPIO.o
+                                                  DMA.o
+GPTM_Config_32BitTimer0A                          GPTM_config.o
+GPTM_Config_32BitTimer0B                          GPTM_config.o
+GPTM_Config_32BitTimer1A                          GPTM_config.o
+GPTM_Config_32BitTimer1B                          GPTM_config.o
+GPTM_Config_32BitTimer2A                          GPTM_config.o
+GPTM_Config_32BitTimer2B                          GPTM_config.o
+GPTM_Config_32BitTimer3A                          GPTM_config.o
+GPTM_Config_32BitTimer3B                          GPTM_config.o
+GPTM_Config_32BitTimer4A                          GPTM_config.o
+GPTM_Config_32BitTimer4B                          GPTM_config.o
+GPTM_Config_32BitTimer5A                          GPTM_config.o
+GPTM_Config_32BitTimer5B                          GPTM_config.o
+GPTM_Config_ArrPtrStruct                          GPTM_config.o
+                                                  UART.o
+GPTM_GenerateDelay                                GPTM.o
+                                                  UART.o
+GPTM_GeneratePWM                                  GPTM.o
+GPTM_InitializeDelayMode                          GPTM.o
+GPTM_InitializePWM                                GPTM.o
+HC05_Initialization                               HC-05.o
+HC05_Initialization_DMA                           HC-05.o
+HC05_ReadChar                                     HC-05.o
+HC05_ReceiveString_DMA                            HC-05.o
+HC05_SendString_DMA                               HC-05.o
+HC05_WriteChar                                    HC-05.o
+HC05_WriteString                                  HC-05.o
+H_fault_Handler                                   startup.o
+IdleLoopCounter                                   main.o
+IndexCounter                                      main.o
+ListA                                             main.o
+                                                  DMA_config.o
+ListB                                             main.o
+                                                  DMA_config.o
+ListC                                             main.o
+                                                  DMA_config.o
+ListD                                             main.o
+                                                  DMA_config.o
+ListDest                                          main.o
+                                                  DMA_config.o
+ListE                                             main.o
+                                                  DMA_config.o
+ListF                                             main.o
+                                                  DMA_config.o
+MM_fault_Handler                                  startup.o
+MySystemClock                                     main.o
+NMI_Handler                                       startup.o
+NVIC_AssignPriority                               NVIC.o
+NVIC_Clear_Interrupt                              NVIC.o
+                                                  DMA.o
+NVIC_Clear_Pending                                NVIC.o
+NVIC_Enable_Interrupt                             NVIC.o
+                                                  UART.o
+                                                  SystickTimer.o
+                                                  DMA.o
+NVIC_SetPriorityGrouping                          NVIC.o
+NVIC_Set_Pending                                  NVIC.o
+PWM_Module0                                       SystemControl_Config.o
+Pt_DMAChannel0_MemToMem                           DMA_config.o
+Pt_DMAChannel1_MemToMem                           DMA_config.o
+Pt_DMAChannel28_MemToMem                          DMA_config.o
+Pt_DMAChannel29_MemToMem                          DMA_config.o
+Pt_DMAChannel30_MemToMem                          DMA_config.o
+                                                  main.o
+                                                  DMA.o
+RegisterCallbackFunction                          GPIO.o
+Reset_Handler                                     startup.o
+SC_ADC_ClkIntialization                           SystemControl.o
+SC_GetPWMFrequency                                SystemControl.o
+SC_GetSystemClock                                 SystemControl.o
+                                                  SystickTimer.o
+                                                  main.o
+SC_Initialization                                 SystemControl.o
+SC_PWMClkIntialization                            SystemControl.o
+SC_PWMDIV                                         SystemControl.o
+SC_SYSDIV                                         SystemControl.o
+ScatterGatherFlag                                 DMA.o
+SourceAddressPointerRegisters                     DMA.o
+SourceArray512                                    main.o
+SourceBufferUART                                  main.o
+SourceBuffer_DMA                                  main.o
+SourceIndexCounterDMA                             main.o
+SourceIndexCounterDMA356                          main.o
+SysTickConfigureClockSource                       SystickTimer.o
+                                                  main.o
+SysTickGenerateDelay_Interrupt                    SystickTimer.o
+                                                  main.o
+SysTickGenerateDelay_Polling                      SystickTimer.o
+SystickHandler                                    SystickTimer.o
+Systick_ClearFlag                                 SystickTimer.o
+Systick_RegisterCallbackFunction                  SystickTimer.o
+Timer0A_32_64Bit                                  GPIO_config.o
+Timer0B_32_64Bit                                  GPIO_config.o
+Timer1A_32_64Bit                                  GPIO_config.o
+Timer1B_32_64Bit                                  GPIO_config.o
+Timer2A_32_64Bit                                  GPIO_config.o
+Timer2B_32_64Bit                                  GPIO_config.o
+Timer3A_32_64Bit                                  GPIO_config.o
+Timer3B_32_64Bit                                  GPIO_config.o
+Timer4A_32_64Bit                                  GPIO_config.o
+Timer4B_32_64Bit                                  GPIO_config.o
+Timer5A_32_64Bit                                  GPIO_config.o
+Timer5B_32_64Bit                                  GPIO_config.o
+UART0_AFSELConfig                                 GPIO_config.o
+UART0_IntHandler                                  UART.o
+UART0_RegisterCallbackFunction                    UART.o
+UART1_AFSELConfig                                 GPIO_config.o
+UART1_IntHandler                                  UART.o
+UART1_RegisterCallbackFunction                    UART.o
+UART2_AFSELConfig                                 GPIO_config.o
+UART2_IntHandler                                  UART.o
+UART2_RegisterCallbackFunction                    UART.o
+UART3_AFSELConfig                                 GPIO_config.o
+UART3_IntHandler                                  UART.o
+UART3_RegisterCallbackFunction                    UART.o
+UART4_AFSELConfig                                 GPIO_config.o
+UART4_IntHandler                                  UART.o
+UART4_RegisterCallbackFunction                    UART.o
+UART5_AFSELConfig                                 GPIO_config.o
+UART5_IntHandler                                  UART.o
+UART5_RegisterCallbackFunction                    UART.o
+UART6_AFSELConfig                                 GPIO_config.o
+UART6_IntHandler                                  UART.o
+UART6_RegisterCallbackFunction                    UART.o
+UART7_AFSELConfig                                 GPIO_config.o
+UART7_IntHandler                                  UART.o
+UART7_RegisterCallbackFunction                    UART.o
+UARTChannel1_Config                               UART_config.o
+                                                  HC-05.o
+UARTDMA_RxFlag                                    UART.o
+                                                  DMA.o
+UARTDMA_TxFlag                                    UART.o
+                                                  DMA.o
+UART_ConfigureInterruptSource                     UART.o
+UART_DMA_Reload_AlternateControlStructure         UART.o
+UART_DMA_Reload_PrimaryControlStructure           UART.o
+UART_FlagRegisters                                UART.o
+UART_Initialization                               UART.o
+                                                  HC-05.o
+UART_InterruptClearRegisters                      UART.o
+UART_InterruptNum_Arr                             UART.o
+UART_RecCharwTimeOut                              UART.o
+UART_Receive_DMA                                  UART.o
+UART_RecieveChar_Interrupt                        UART.o
+UART_RecieveChar_Polling                          UART.o
+                                                  HC-05.o
+UART_TransmitChar_Interrupt                       UART.o
+UART_TransmitChar_Polling                         UART.o
+                                                  HC-05.o
+UART_Transmit_DMA                                 UART.o
+UnusedFunc1                                       main.o
+Usage_Fault_Handler                               startup.o
+_E_BSS                                            startup.o
+_E_DATA                                           startup.o
+_E_text                                           startup.o
+_S_BSS                                            startup.o
+_S_DATA                                           startup.o
+charater1                                         main.o
+gp_fn_vectors                                     startup.o
+handlerCounter                                    DMA.o
+indexCounter                                      main.o
+main                                              main.o
+                                                  startup.o
+ptr_charater1                                     main.o
+ui8ControlTable                                   DMA.o
+                                                  UART.o
