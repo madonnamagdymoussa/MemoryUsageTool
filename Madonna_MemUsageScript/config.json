@@ -1,0 +1,55 @@
+{
+    "sections": [
+        "text",
+        "data",
+        "bss",
+        "rodata"
+    ],
+    "supported_extensions": [
+        ".elf",
+        ".out"
+    ],
+    "file_paths": {
+        "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
+        "elf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
+        "objdump_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objdump.exe",
+        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript",
+        "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt"
+    },
+    "NM_flags": {
+        "defined_only": "--defined-only",
+        "print_size": "--print-size"
+    },
+    "ObjDump_flags": {
+        "disassemble_all": "-D"
+    },
+    "csv_file_paths": {
+        "map_file_parsing_csv": "Mapfile_Parsing.csv",
+        "nm_objects_file": "nm_Objects.txt",
+        "elf_objects_file": "elf_Objects.csv",
+        "linked_memory_file": "Linked_Memory.csv",
+        "mismatch_memory_file": "Linked_Mismatch.csv",
+        "memory_usage_file": "Memory_consumption.csv",
+        "assembly_file": "Assembly_Output.txt"
+    },
+    "memory_configuration": {
+        "rom_memory_size_KB": 524288,
+        "ram_memory_size_KB": 524288
+    },
+    "regex_templates": {
+        "entry_regex": "{section_pattern}\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
+        "multi_line_name_regex": "{section_pattern}$",
+        "continued_line_regex": "^\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
+        "continued_name_regex": "^\\s+0x[0-9a-f]+\\s+(.*)",
+        "nm_regex": "^([0-9a-f]+)\\s+([0-9a-f]+)\\s+([TtDdbBRr])\\s+(.*)$",
+        "size_extraction_regex": "(\\d+)\\(0x[0-9A-Fa-f]+\\)"
+    },
+    "commands": {
+        "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
+        "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}",
+        "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}"
+    },
+    "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map"
+}
