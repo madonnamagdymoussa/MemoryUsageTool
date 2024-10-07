@@ -485,6 +485,129 @@ def run_objdump_command(specific_flag_key=None):
         return None
 
 
+def run_readelf_command(config):
+    readelf_path = config['file_paths']['readelf_path']
+    binary_file_path = config['file_paths']['binary_file_path']
+    readelf_flags = config['Readelf_flags']['section_headers']
+    output_text_file = config['csv_file_paths']['readelf_output_file']  # Use the correct key
+
+    # Construct the readelf command
+    command = f"{readelf_path} {readelf_flags} {binary_file_path}"
+    print(f"Running readelf command: {command}")
+
+    try:
+        # Run the command and capture the output
+        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                text=True)
+        print("Readelf command executed successfully!")
+        raw_output = result.stdout
+        print(f"Raw output: {raw_output[:500]}")  # Print first 500 chars for sanity check
+
+        # Clean the output to remove any misplaced commas
+        cleaned_output = clean_readelf_output(raw_output)
+
+        # Write output to text file
+        with open(output_text_file, 'w') as file:
+            file.write(cleaned_output)  # Write cleaned output to the text file
+        print(f"Readelf output successfully written to {output_text_file}")
+
+        return cleaned_output
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred during execution: {e}")
+        print(f"Error output: {e.stderr}")
+
+def parse_dynamic_readelf_output(raw_output, output_txt):
+    """Parse readelf output to extract section names."""
+    lines = raw_output.splitlines()
+    section_names = []
+
+    section_header_start = False
+
+    for line in lines:
+        # Start capturing section headers after encountering the "Section Headers:" line
+        if "Section Headers:" in line:
+            section_header_start = True
+            continue
+
+        # Stop capturing when encountering the footer ("Key to Flags" or other delimiters)
+        if "Key to Flags" in line:
+            section_header_start = False
+            continue
+
+        # Capture relevant lines once section header starts
+        if section_header_start:
+            # Match section names like .text, .data, .bss, etc.
+            match = re.search(r'\.(\w+)', line)
+            if match:
+                section_name = match.group(0)  # Get the matched section name
+                section_names.append(section_name)
+
+    # Write unique section names to the text file
+    if section_names:
+        unique_section_names = set(section_names)  # Remove duplicates
+        with open(output_txt, mode='w') as file:
+            for name in unique_section_names:
+                file.write(f"{name}\n")  # Write each section name on a new line
+
+        print(f"Readelf output successfully written to {output_txt}")
+    else:
+        print("No valid section names found in the output.")
+
+    return section_names  # Return the section names for further processing
+def parse_readelf_output_and_update_json(readelf_output, json_file_path):
+    # Updated regex pattern to capture section names without square brackets
+    section_pattern = r'^\s*\d+\s+(\.\w+)'  # Match lines with section names starting with a dot
+    sections = []
+
+    # Split the output into lines and process each line
+    for line in readelf_output.splitlines():
+        match = re.search(section_pattern, line)
+        if match:
+            section_name = match.group(1)  # Capture the section name with the dot
+            sections.append(section_name)
+
+    # Load the existing JSON configuration
+    with open(json_file_path, 'r') as json_file:
+        config = json.load(json_file)
+
+    # Update the sections in the configuration
+    config['sections'] = sections
+
+    # Save the updated configuration back to the JSON file
+    with open(json_file_path, 'w') as json_file:
+        json.dump(config, json_file, indent=4)
+
+    print(f"Extracted section names: {sections}")
+    print(f"Updated sections in JSON configuration: {config['sections']}")
+
+def update_sections_in_json(section_names, json_file_path):
+    """Update the 'sections' part of the JSON configuration with new section names."""
+    try:
+        #with open(json_file_path, 'r') as f:
+            #config = json.load(f)
+
+        # Ensure 'sections' key exists and update it with new section names
+        if 'sections' not in config:
+            config['sections'] = []
+        config['sections'] = list(set(config['sections'] + section_names))  # Add new sections and ensure uniqueness
+
+        with open(json_file_path, 'w') as f:
+            json.dump(config, f, indent=4)
+
+        print(f"Updated sections in JSON configuration: {section_names}")
+    except FileNotFoundError:
+        print(f"Error: The file {json_file_path} was not found.")
+    except json.JSONDecodeError:
+        print(f"Error: Failed to decode JSON from the file {json_file_path}.")
+
+
+def clean_readelf_output(raw_output):
+    """Clean the raw output from readelf to preserve line breaks."""
+    # Normalize line endings and strip unnecessary characters
+    cleaned_output = raw_output.replace('\r\n', '\n')  # Convert Windows line endings to Unix
+    cleaned_output = cleaned_output.strip()  # Remove leading and trailing spaces
+    return cleaned_output
+
 # Main program execution
 if __name__ == "__main__":
     try:
@@ -493,12 +616,30 @@ if __name__ == "__main__":
         map_file_path = file_paths_Dict['map_path']
         parsed_mapfile_csv = csv_files_Dict['map_file_parsing_csv']
 
-        # Parse the map file
+        # Specify the path to your JSON configuration file
+        json_file_path = "config.json"
+
+        ############################################
+
+        #'''
+        # Run readelf command and get output
+        readelf_output = run_readelf_command(config)
+
+        if readelf_output:  # Check if output is not None
+            section_names = parse_dynamic_readelf_output(readelf_output, csv_files_Dict['readelf_output_file'])  # Get section names
+            update_sections_in_json(section_names, json_file_path)  # Update JSON with section names
+        else:
+            print("Failed to run readelf command or no output was produced.")
+       #'''
+        ############################################
+
         entries = parse_map_file(map_file_path, Compiled_Regex_Patterns_Dict)
+
 
         # Write the parsed entries to a CSV file
         write_entries_to_csv(entries, parsed_mapfile_csv)
 
+       
         # Run the NM command with or without specific flags
         run_nm_command(specific_flag_key='defined_only, print_size')  # Adjust flag key as necessary
 
@@ -522,6 +663,8 @@ if __name__ == "__main__":
         #print(sizes)
 
         run_objdump_command(specific_flag_key='disassemble_all')
+
+
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")

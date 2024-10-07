@@ -1,9 +1,27 @@
 {
     "sections": [
-        "text",
+        "rodata",
+        ".data",
+        ".debug_str",
+        ".vectors",
+        ".symtab",
+        ".debug_line",
+        ".text",
+        ".debug_aranges",
         "data",
+        ".debug_frame",
+        ".debug_loc",
+        ".bss",
+        ".comment",
+        ".rodata",
+        ".ARM",
+        ".shstrtab",
+        ".debug_info",
+        ".debug_abbrev",
+        ".debug_ranges",
+        "text",
         "bss",
-        "rodata"
+        ".strtab"
     ],
     "supported_extensions": [
         ".elf",
@@ -15,14 +33,19 @@
         "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
         "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
         "objdump_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objdump.exe",
+        "readelf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-readelf.exe",
         "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript",
         "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt"
     },
     "NM_flags": {
-        "undefined_symbols": "-u"
+        "defined_only": "--defined-only",
+        "print_size": "--print-size"
     },
     "ObjDump_flags": {
         "disassemble_all": "-D"
+    },
+    "Readelf_flags": {
+        "section_headers": "-S"
     },
     "csv_file_paths": {
         "map_file_parsing_csv": "Mapfile_Parsing.csv",
@@ -31,7 +54,8 @@
         "linked_memory_file": "Linked_Memory.csv",
         "mismatch_memory_file": "Linked_Mismatch.csv",
         "memory_usage_file": "Memory_consumption.csv",
-        "assembly_file": "Assembly_Output.txt"
+        "assembly_file": "Assembly_Output.txt",
+        "readelf_output_file": "readelf.txt"
     },
     "memory_configuration": {
         "rom_memory_size_KB": 524288,
@@ -48,7 +72,8 @@
     "commands": {
         "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
         "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}",
-        "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}"
+        "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
+        "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}"
     },
     "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map"
 }

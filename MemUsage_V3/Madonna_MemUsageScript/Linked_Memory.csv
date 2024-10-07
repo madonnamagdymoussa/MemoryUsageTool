@@ -30,28 +30,98 @@ SysTickFrequencyGet,.text,68 (0x44),SystickTimer.o
 SysTickConfigureClockSource,.text,44 (0x2c),SystickTimer.o
 SysTickGenerateDelay_Interrupt,.text,88 (0x58),SystickTimer.o
 SourceAddressPointerRegisters,.rodata,128 (0x80),DMA.o
+AlternateSourceAddressPointerRegisters,.rodata,128 (0x80),DMA.o
 DestinationAddressPointerRegisters,.rodata,128 (0x80),DMA.o
+AlternateDestinationAddressPointerRegisters,.rodata,128 (0x80),DMA.o
+AlternateDMA_ChannelControlWordRegisters,.rodata,128 (0x80),DMA.o
 DMA_ChannelControlWordRegisters,.rodata,128 (0x80),DMA.o
 GPIO_Direction_Registers,.rodata,24 (0x18),GPIO.o
+GPIO_AlternateFunctionSelect_Registers,.rodata,24 (0x18),GPIO.o
+GPIO_InterruptSense_Registers,.rodata,24 (0x18),GPIO.o
+GPIO_InterruptEvent_Registers,.rodata,24 (0x18),GPIO.o
+GPIO_InterruptMask_Registers,.rodata,24 (0x18),GPIO.o
 GPIO_Data_Registers,.rodata,24 (0x18),GPIO.o
 GPIO_DigitalEnable_Registers,.rodata,24 (0x18),GPIO.o
+GPIO_PortControl_Registers,.rodata,24 (0x18),GPIO.o
 GPIO_LOCK_Registers,.rodata,24 (0x18),GPIO.o
 GPIO_Port_Commit,.rodata,24 (0x18),GPIO.o
+GPIO_InterruptClear_Registers,.rodata,24 (0x18),GPIO.o
 GPIO_PullUp_Registers,.rodata,24 (0x18),GPIO.o
+Timer0A_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer0B_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer1A_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer1B_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer2A_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer2B_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer3A_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer3B_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer4A_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer4B_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer5A_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+Timer5B_32_64Bit,.rodata,3 (0x3),GPIO_config.o
+UART0_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART1_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART2_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART3_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART4_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART5_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART6_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+UART7_AFSELConfig,.rodata,3 (0x3),GPIO_config.o
+GPIO_TimerAFSELConfig_ArrPtrStruct,.rodata,48 (0x30),GPIO_config.o
+GPIO_AFSELUARTConfig_ArrPtrStruct,.rodata,32 (0x20),GPIO_config.o
+GPTM_16_32_BitTimerA_IntervalLoad,.rodata,24 (0x18),GPTM.o
+GPTM_32_64_BitTimerA_IntervalLoad,.rodata,24 (0x18),GPTM.o
+GPTM_16BitTimerB_IntervalLoad,.rodata,24 (0x18),GPTM.o
+GPTM_32BitTimerB_IntervalLoad,.rodata,24 (0x18),GPTM.o
+GPTM_32_64_BitTimerA_Match,.rodata,24 (0x18),GPTM.o
+GPTM_32BitTimerB_Match,.rodata,24 (0x18),GPTM.o
+GPTM_TimerMode,.rodata,96 (0x60),GPTM.o
+GPTM_Control,.rodata,48 (0x30),GPTM.o
+GPTM_ConfigurationRegisters,.rodata,48 (0x30),GPTM.o
+GPTM_ICRRegisters,.rodata,48 (0x30),GPTM.o
+GPTM_RISRegisters,.rodata,48 (0x30),GPTM.o
+GPTM_Config_32BitTimer0A,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer0B,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer1A,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer1B,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer2A,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer2B,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer3A,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer3B,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer4A,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer4B,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer5A,.rodata,4 (0x4),GPTM_config.o
+GPTM_Config_32BitTimer5B,.rodata,4 (0x4),GPTM_config.o
 Interrupt_Enable_Registers,.rodata,16 (0x10),NVIC.o
 Interrupt_Clear_Registers,.rodata,16 (0x10),NVIC.o
+Set_Pending_Register,.rodata,16 (0x10),NVIC.o
+Clear_Pending_Register,.rodata,16 (0x10),NVIC.o
+Interrupt_Priority_Register,.rodata,32 (0x20),NVIC.o
 SC_SYSDIV,.rodata,16 (0x10),SystemControl.o
-DMA_ChannelMapSelectRegisters,.data,16 (0x10),load address 0x00000e08
+SC_PWMDIV,.rodata,8 (0x8),SystemControl.o
+UART_DataRegisters,.rodata,32 (0x20),UART.o
+UART_FlagRegisters,.rodata,32 (0x20),UART.o
+UART_InterruptClearRegisters,.rodata,32 (0x20),UART.o
+UART_IntegerBaudRateDivisorRegisters,.rodata,32 (0x20),UART.o
+UART_FractionalBaudRateDivisorRegisters,.rodata,32 (0x20),UART.o
+UART_ClockConfigurationRegisters,.rodata,32 (0x20),UART.o
+UART_ControlRegisters,.rodata,32 (0x20),UART.o
+UART_LineControlRegisters,.rodata,32 (0x20),UART.o
+UART_InterruptMaskRegisters,.rodata,32 (0x20),UART.o
+UART_MaskedInterruptStatusRegisters,.rodata,32 (0x20),UART.o
+UART_DMAControlRegisters,.rodata,32 (0x20),UART.o
+UART_InterruptFIFOLevelSelect,.rodata,32 (0x20),UART.o
+DMA_ChannelMapSelectRegisters,.data,16 (0x10),load address 0x00001460
 DMA_ChannelMapSelectRegisters,.data,16 (0x10),DMA.o
-DMAChannel30_MemToMem,.data,16 (0x10),load address 0x00000e18
+DMAChannel30_MemToMem,.data,16 (0x10),load address 0x00001470
 DMAChannel30_MemToMem,.data,16 (0x10),DMA_config.o
-Pt_DMAChannel30_MemToMem,.data,4 (0x4),load address 0x00000e28
+Pt_DMAChannel30_MemToMem,.data,4 (0x4),load address 0x00001480
 Pt_DMAChannel30_MemToMem,.data,4 (0x4),DMA_config.o
-GPIO_ConfigurePin_PF4,.data,2 (0x2),load address 0x00000e2c
+GPIO_ConfigurePin_PF4,.data,2 (0x2),load address 0x00001484
 GPIO_ConfigurePin_PF4,.data,2 (0x2),GPIO_config.o
-GPIO_ConfigurePin_PF1,.data,2 (0x2),load address 0x00000e2e
+GPIO_ConfigurePin_PF1,.data,2 (0x2),load address 0x00001486
 GPIO_ConfigurePin_PF1,.data,2 (0x2),GPIO_config.o
-GPIO_ConfigurePin_PF0,.data,2 (0x2),load address 0x00000e30
+GPIO_ConfigurePin_PF0,.data,2 (0x2),load address 0x00001488
 GPIO_ConfigurePin_PF0,.data,2 (0x2),GPIO_config.o
 DMA_InterruptFlag,.bss,1 (0x1),DMA.o
 ScatterGatherFlag,.bss,1 (0x1),DMA.o

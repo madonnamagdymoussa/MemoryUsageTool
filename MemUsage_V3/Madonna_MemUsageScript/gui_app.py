@@ -191,6 +191,7 @@ class MyFrame(wx.Frame):
             sizes = madonna_main.count_type_sizes(madonna_main.csv_files_Dict['linked_memory_file'],
                                                   madonna_main.sections_list)
             madonna_main.generate_memory_consumption_csv(madonna_main.csv_files_Dict['memory_usage_file'], sizes)
+            madonna_main.run_objdump_command(specific_flag_key='disassemble_all')
 
             # After calculating, display the result to the user
             memory_usage_str = '\n'.join([f"{section}: {size} bytes" for section, size in sizes.items()])
