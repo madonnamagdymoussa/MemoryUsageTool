@@ -4,12 +4,6 @@ Discarded input sections
  .text          0x00000000        0x0 DMA.o
  .text.DMA_ErrorHandler
                 0x00000000       0x20 DMA.o
- .rodata.AlternateSourceAddressPointerRegisters
-                0x00000000       0x80 DMA.o
- .rodata.AlternateDestinationAddressPointerRegisters
-                0x00000000       0x80 DMA.o
- .rodata.AlternateDMA_ChannelControlWordRegisters
-                0x00000000       0x80 DMA.o
  .text.DMA_SoftwareTransferHandler
                 0x00000000       0x24 DMA.o
  .text.DMA_DisableChannelAttributes
@@ -104,18 +98,6 @@ Discarded input sections
                 0x00000000       0x1c GPIO.o
  .text.EXTIFIntHandler
                 0x00000000       0x1c GPIO.o
- .rodata.GPIO_AlternateFunctionSelect_Registers
-                0x00000000       0x18 GPIO.o
- .rodata.GPIO_InterruptSense_Registers
-                0x00000000       0x18 GPIO.o
- .rodata.GPIO_InterruptEvent_Registers
-                0x00000000       0x18 GPIO.o
- .rodata.GPIO_InterruptMask_Registers
-                0x00000000       0x18 GPIO.o
- .rodata.GPIO_PortControl_Registers
-                0x00000000       0x18 GPIO.o
- .rodata.GPIO_InterruptClear_Registers
-                0x00000000       0x18 GPIO.o
  .data.GPIO_BIT_BAND_Registers
                 0x00000000       0x18 GPIO.o
  .text.GPIO_TogglePinValue
@@ -143,77 +125,11 @@ Discarded input sections
  .text.RegisterCallbackFunction
                 0x00000000       0x24 GPIO.o
  .text          0x00000000        0x0 GPIO_config.o
- .rodata.Timer0A_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer0B_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer1A_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer1B_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer2A_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer2B_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer3A_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer3B_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer4A_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer4B_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer5A_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.Timer5B_32_64Bit
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART0_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART1_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART2_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART3_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART4_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART5_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART6_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
- .rodata.UART7_AFSELConfig
-                0x00000000        0x3 GPIO_config.o
  .data.GPIO_ConfigurePin_PF2
                 0x00000000        0x2 GPIO_config.o
  .data.GPIO_ConfigurePin_PF3
                 0x00000000        0x2 GPIO_config.o
- .rodata.GPIO_TimerAFSELConfig_ArrPtrStruct
-                0x00000000       0x30 GPIO_config.o
- .rodata.GPIO_AFSELUARTConfig_ArrPtrStruct
-                0x00000000       0x20 GPIO_config.o
  .text          0x00000000        0x0 GPTM.o
- .rodata.GPTM_16_32_BitTimerA_IntervalLoad
-                0x00000000       0x18 GPTM.o
- .rodata.GPTM_32_64_BitTimerA_IntervalLoad
-                0x00000000       0x18 GPTM.o
- .rodata.GPTM_16BitTimerB_IntervalLoad
-                0x00000000       0x18 GPTM.o
- .rodata.GPTM_32BitTimerB_IntervalLoad
-                0x00000000       0x18 GPTM.o
- .rodata.GPTM_32_64_BitTimerA_Match
-                0x00000000       0x18 GPTM.o
- .rodata.GPTM_32BitTimerB_Match
-                0x00000000       0x18 GPTM.o
- .rodata.GPTM_TimerMode
-                0x00000000       0x60 GPTM.o
- .rodata.GPTM_Control
-                0x00000000       0x30 GPTM.o
- .rodata.GPTM_ConfigurationRegisters
-                0x00000000       0x30 GPTM.o
- .rodata.GPTM_ICRRegisters
-                0x00000000       0x30 GPTM.o
- .rodata.GPTM_RISRegisters
-                0x00000000       0x30 GPTM.o
  .text.GPTM_EnableClkTimer
                 0x00000000       0x80 GPTM.o
  .text.GPTM_EnableTimer
@@ -229,30 +145,6 @@ Discarded input sections
  .text.GPTM_GenerateDelay
                 0x00000000       0xcc GPTM.o
  .text          0x00000000        0x0 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer0A
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer0B
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer1A
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer1B
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer2A
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer2B
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer3A
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer3B
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer4A
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer4B
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer5A
-                0x00000000        0x4 GPTM_config.o
- .rodata.GPTM_Config_32BitTimer5B
-                0x00000000        0x4 GPTM_config.o
  .data.GPTM_Config_ArrPtrStruct
                 0x00000000       0x30 GPTM_config.o
  .text          0x00000000        0x0 HC-05.o
@@ -300,12 +192,6 @@ Discarded input sections
  .data.static_var.0
                 0x00000000        0x4 main.o
  .text          0x00000000        0x0 NVIC.o
- .rodata.Set_Pending_Register
-                0x00000000       0x10 NVIC.o
- .rodata.Clear_Pending_Register
-                0x00000000       0x10 NVIC.o
- .rodata.Interrupt_Priority_Register
-                0x00000000       0x20 NVIC.o
  .text.NVIC_Set_Pending
                 0x00000000       0x4c NVIC.o
  .text.NVIC_Clear_Pending
@@ -316,8 +202,6 @@ Discarded input sections
                 0x00000000      0x134 NVIC.o
  .text          0x00000000        0x0 startup.o
  .text          0x00000000        0x0 SystemControl.o
- .rodata.SC_PWMDIV
-                0x00000000        0x8 SystemControl.o
  .text.SC_EnableRunModeClockPWM
                 0x00000000       0x30 SystemControl.o
  .text.SC_Initialization
@@ -349,30 +233,6 @@ Discarded input sections
  .text          0x00000000        0x0 UART.o
  .data.UART_InterruptNum_Arr
                 0x00000000        0x8 UART.o
- .rodata.UART_DataRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_FlagRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_InterruptClearRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_IntegerBaudRateDivisorRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_FractionalBaudRateDivisorRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_ClockConfigurationRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_ControlRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_LineControlRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_InterruptMaskRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_MaskedInterruptStatusRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_DMAControlRegisters
-                0x00000000       0x20 UART.o
- .rodata.UART_InterruptFIFOLevelSelect
-                0x00000000       0x20 UART.o
  .text.UART0_IntHandler
                 0x00000000       0x90 UART.o
  .text.UART1_IntHandler
@@ -441,10 +301,13 @@ sram             0x20000000         0x20000000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0xe08
+.vectors        0x00000000       0x1c
  *(.vectors*)
  .vectors       0x00000000       0x1c startup.o
                 0x00000000                gp_fn_vectors
+                0x0000001c                _E_vectors = .
+
+.text           0x0000001c      0xbac
  *(.text*)
  .text.DMA_PeripheralInitialization
                 0x0000001c       0x38 DMA.o
@@ -536,55 +399,256 @@ Linker script and memory map
  .text.SysTickGenerateDelay_Interrupt
                 0x00000b70       0x58 SystickTimer.o
                 0x00000b70                SysTickGenerateDelay_Interrupt
+                0x00000bc8                _E_text = .
+
+.glue_7         0x00000bc8        0x0
+ .glue_7        0x00000bc8        0x0 linker stubs
+
+.glue_7t        0x00000bc8        0x0
+ .glue_7t       0x00000bc8        0x0 linker stubs
+
+.vfp11_veneer   0x00000bc8        0x0
+ .vfp11_veneer  0x00000bc8        0x0 linker stubs
+
+.v4_bx          0x00000bc8        0x0
+ .v4_bx         0x00000bc8        0x0 linker stubs
+
+.iplt           0x00000bc8        0x0
+ .iplt          0x00000bc8        0x0 DMA.o
+
+.rodata         0x00000bc8      0x898
  *(.rodata*)
  .rodata.SourceAddressPointerRegisters
                 0x00000bc8       0x80 DMA.o
                 0x00000bc8                SourceAddressPointerRegisters
- .rodata.DestinationAddressPointerRegisters
+ .rodata.AlternateSourceAddressPointerRegisters
                 0x00000c48       0x80 DMA.o
-                0x00000c48                DestinationAddressPointerRegisters
- .rodata.DMA_ChannelControlWordRegisters
+                0x00000c48                AlternateSourceAddressPointerRegisters
+ .rodata.DestinationAddressPointerRegisters
                 0x00000cc8       0x80 DMA.o
+                0x00000cc8                DestinationAddressPointerRegisters
+ .rodata.AlternateDestinationAddressPointerRegisters
+                0x00000d48       0x80 DMA.o
+                0x00000d48                AlternateDestinationAddressPointerRegisters
+ .rodata.AlternateDMA_ChannelControlWordRegisters
+                0x00000dc8       0x80 DMA.o
+ .rodata.DMA_ChannelControlWordRegisters
+                0x00000e48       0x80 DMA.o
  .rodata.GPIO_Direction_Registers
-                0x00000d48       0x18 GPIO.o
+                0x00000ec8       0x18 GPIO.o
+ .rodata.GPIO_AlternateFunctionSelect_Registers
+                0x00000ee0       0x18 GPIO.o
+ .rodata.GPIO_InterruptSense_Registers
+                0x00000ef8       0x18 GPIO.o
+ .rodata.GPIO_InterruptEvent_Registers
+                0x00000f10       0x18 GPIO.o
+ .rodata.GPIO_InterruptMask_Registers
+                0x00000f28       0x18 GPIO.o
  .rodata.GPIO_Data_Registers
-                0x00000d60       0x18 GPIO.o
+                0x00000f40       0x18 GPIO.o
  .rodata.GPIO_DigitalEnable_Registers
-                0x00000d78       0x18 GPIO.o
+                0x00000f58       0x18 GPIO.o
+ .rodata.GPIO_PortControl_Registers
+                0x00000f70       0x18 GPIO.o
  .rodata.GPIO_LOCK_Registers
-                0x00000d90       0x18 GPIO.o
+                0x00000f88       0x18 GPIO.o
  .rodata.GPIO_Port_Commit
-                0x00000da8       0x18 GPIO.o
+                0x00000fa0       0x18 GPIO.o
+ .rodata.GPIO_InterruptClear_Registers
+                0x00000fb8       0x18 GPIO.o
  .rodata.GPIO_PullUp_Registers
-                0x00000dc0       0x18 GPIO.o
+                0x00000fd0       0x18 GPIO.o
+ .rodata.Timer0A_32_64Bit
+                0x00000fe8        0x3 GPIO_config.o
+                0x00000fe8                Timer0A_32_64Bit
+ *fill*         0x00000feb        0x1 
+ .rodata.Timer0B_32_64Bit
+                0x00000fec        0x3 GPIO_config.o
+                0x00000fec                Timer0B_32_64Bit
+ *fill*         0x00000fef        0x1 
+ .rodata.Timer1A_32_64Bit
+                0x00000ff0        0x3 GPIO_config.o
+                0x00000ff0                Timer1A_32_64Bit
+ *fill*         0x00000ff3        0x1 
+ .rodata.Timer1B_32_64Bit
+                0x00000ff4        0x3 GPIO_config.o
+                0x00000ff4                Timer1B_32_64Bit
+ *fill*         0x00000ff7        0x1 
+ .rodata.Timer2A_32_64Bit
+                0x00000ff8        0x3 GPIO_config.o
+                0x00000ff8                Timer2A_32_64Bit
+ *fill*         0x00000ffb        0x1 
+ .rodata.Timer2B_32_64Bit
+                0x00000ffc        0x3 GPIO_config.o
+                0x00000ffc                Timer2B_32_64Bit
+ *fill*         0x00000fff        0x1 
+ .rodata.Timer3A_32_64Bit
+                0x00001000        0x3 GPIO_config.o
+                0x00001000                Timer3A_32_64Bit
+ *fill*         0x00001003        0x1 
+ .rodata.Timer3B_32_64Bit
+                0x00001004        0x3 GPIO_config.o
+                0x00001004                Timer3B_32_64Bit
+ *fill*         0x00001007        0x1 
+ .rodata.Timer4A_32_64Bit
+                0x00001008        0x3 GPIO_config.o
+                0x00001008                Timer4A_32_64Bit
+ *fill*         0x0000100b        0x1 
+ .rodata.Timer4B_32_64Bit
+                0x0000100c        0x3 GPIO_config.o
+                0x0000100c                Timer4B_32_64Bit
+ *fill*         0x0000100f        0x1 
+ .rodata.Timer5A_32_64Bit
+                0x00001010        0x3 GPIO_config.o
+                0x00001010                Timer5A_32_64Bit
+ *fill*         0x00001013        0x1 
+ .rodata.Timer5B_32_64Bit
+                0x00001014        0x3 GPIO_config.o
+                0x00001014                Timer5B_32_64Bit
+ *fill*         0x00001017        0x1 
+ .rodata.UART0_AFSELConfig
+                0x00001018        0x3 GPIO_config.o
+                0x00001018                UART0_AFSELConfig
+ *fill*         0x0000101b        0x1 
+ .rodata.UART1_AFSELConfig
+                0x0000101c        0x3 GPIO_config.o
+                0x0000101c                UART1_AFSELConfig
+ *fill*         0x0000101f        0x1 
+ .rodata.UART2_AFSELConfig
+                0x00001020        0x3 GPIO_config.o
+                0x00001020                UART2_AFSELConfig
+ *fill*         0x00001023        0x1 
+ .rodata.UART3_AFSELConfig
+                0x00001024        0x3 GPIO_config.o
+                0x00001024                UART3_AFSELConfig
+ *fill*         0x00001027        0x1 
+ .rodata.UART4_AFSELConfig
+                0x00001028        0x3 GPIO_config.o
+                0x00001028                UART4_AFSELConfig
+ *fill*         0x0000102b        0x1 
+ .rodata.UART5_AFSELConfig
+                0x0000102c        0x3 GPIO_config.o
+                0x0000102c                UART5_AFSELConfig
+ *fill*         0x0000102f        0x1 
+ .rodata.UART6_AFSELConfig
+                0x00001030        0x3 GPIO_config.o
+                0x00001030                UART6_AFSELConfig
+ *fill*         0x00001033        0x1 
+ .rodata.UART7_AFSELConfig
+                0x00001034        0x3 GPIO_config.o
+                0x00001034                UART7_AFSELConfig
+ *fill*         0x00001037        0x1 
+ .rodata.GPIO_TimerAFSELConfig_ArrPtrStruct
+                0x00001038       0x30 GPIO_config.o
+                0x00001038                GPIO_TimerAFSELConfig_ArrPtrStruct
+ .rodata.GPIO_AFSELUARTConfig_ArrPtrStruct
+                0x00001068       0x20 GPIO_config.o
+                0x00001068                GPIO_AFSELUARTConfig_ArrPtrStruct
+ .rodata.GPTM_16_32_BitTimerA_IntervalLoad
+                0x00001088       0x18 GPTM.o
+ .rodata.GPTM_32_64_BitTimerA_IntervalLoad
+                0x000010a0       0x18 GPTM.o
+ .rodata.GPTM_16BitTimerB_IntervalLoad
+                0x000010b8       0x18 GPTM.o
+ .rodata.GPTM_32BitTimerB_IntervalLoad
+                0x000010d0       0x18 GPTM.o
+ .rodata.GPTM_32_64_BitTimerA_Match
+                0x000010e8       0x18 GPTM.o
+ .rodata.GPTM_32BitTimerB_Match
+                0x00001100       0x18 GPTM.o
+ .rodata.GPTM_TimerMode
+                0x00001118       0x60 GPTM.o
+ .rodata.GPTM_Control
+                0x00001178       0x30 GPTM.o
+ .rodata.GPTM_ConfigurationRegisters
+                0x000011a8       0x30 GPTM.o
+ .rodata.GPTM_ICRRegisters
+                0x000011d8       0x30 GPTM.o
+ .rodata.GPTM_RISRegisters
+                0x00001208       0x30 GPTM.o
+ .rodata.GPTM_Config_32BitTimer0A
+                0x00001238        0x4 GPTM_config.o
+                0x00001238                GPTM_Config_32BitTimer0A
+ .rodata.GPTM_Config_32BitTimer0B
+                0x0000123c        0x4 GPTM_config.o
+                0x0000123c                GPTM_Config_32BitTimer0B
+ .rodata.GPTM_Config_32BitTimer1A
+                0x00001240        0x4 GPTM_config.o
+                0x00001240                GPTM_Config_32BitTimer1A
+ .rodata.GPTM_Config_32BitTimer1B
+                0x00001244        0x4 GPTM_config.o
+                0x00001244                GPTM_Config_32BitTimer1B
+ .rodata.GPTM_Config_32BitTimer2A
+                0x00001248        0x4 GPTM_config.o
+                0x00001248                GPTM_Config_32BitTimer2A
+ .rodata.GPTM_Config_32BitTimer2B
+                0x0000124c        0x4 GPTM_config.o
+                0x0000124c                GPTM_Config_32BitTimer2B
+ .rodata.GPTM_Config_32BitTimer3A
+                0x00001250        0x4 GPTM_config.o
+                0x00001250                GPTM_Config_32BitTimer3A
+ .rodata.GPTM_Config_32BitTimer3B
+                0x00001254        0x4 GPTM_config.o
+                0x00001254                GPTM_Config_32BitTimer3B
+ .rodata.GPTM_Config_32BitTimer4A
+                0x00001258        0x4 GPTM_config.o
+                0x00001258                GPTM_Config_32BitTimer4A
+ .rodata.GPTM_Config_32BitTimer4B
+                0x0000125c        0x4 GPTM_config.o
+                0x0000125c                GPTM_Config_32BitTimer4B
+ .rodata.GPTM_Config_32BitTimer5A
+                0x00001260        0x4 GPTM_config.o
+                0x00001260                GPTM_Config_32BitTimer5A
+ .rodata.GPTM_Config_32BitTimer5B
+                0x00001264        0x4 GPTM_config.o
+                0x00001264                GPTM_Config_32BitTimer5B
  .rodata.Interrupt_Enable_Registers
-                0x00000dd8       0x10 NVIC.o
+                0x00001268       0x10 NVIC.o
  .rodata.Interrupt_Clear_Registers
-                0x00000de8       0x10 NVIC.o
+                0x00001278       0x10 NVIC.o
+ .rodata.Set_Pending_Register
+                0x00001288       0x10 NVIC.o
+ .rodata.Clear_Pending_Register
+                0x00001298       0x10 NVIC.o
+ .rodata.Interrupt_Priority_Register
+                0x000012a8       0x20 NVIC.o
  .rodata.SC_SYSDIV
-                0x00000df8       0x10 SystemControl.o
-                0x00000df8                SC_SYSDIV
-                0x00000e08                _E_text = .
+                0x000012c8       0x10 SystemControl.o
+                0x000012c8                SC_SYSDIV
+ .rodata.SC_PWMDIV
+                0x000012d8        0x8 SystemControl.o
+                0x000012d8                SC_PWMDIV
+ .rodata.UART_DataRegisters
+                0x000012e0       0x20 UART.o
+ .rodata.UART_FlagRegisters
+                0x00001300       0x20 UART.o
+                0x00001300                UART_FlagRegisters
+ .rodata.UART_InterruptClearRegisters
+                0x00001320       0x20 UART.o
+                0x00001320                UART_InterruptClearRegisters
+ .rodata.UART_IntegerBaudRateDivisorRegisters
+                0x00001340       0x20 UART.o
+ .rodata.UART_FractionalBaudRateDivisorRegisters
+                0x00001360       0x20 UART.o
+ .rodata.UART_ClockConfigurationRegisters
+                0x00001380       0x20 UART.o
+ .rodata.UART_ControlRegisters
+                0x000013a0       0x20 UART.o
+ .rodata.UART_LineControlRegisters
+                0x000013c0       0x20 UART.o
+ .rodata.UART_InterruptMaskRegisters
+                0x000013e0       0x20 UART.o
+ .rodata.UART_MaskedInterruptStatusRegisters
+                0x00001400       0x20 UART.o
+ .rodata.UART_DMAControlRegisters
+                0x00001420       0x20 UART.o
+ .rodata.UART_InterruptFIFOLevelSelect
+                0x00001440       0x20 UART.o
 
-.glue_7         0x00000e08        0x0
- .glue_7        0x00000e08        0x0 linker stubs
+.rel.dyn        0x00001460        0x0
+ .rel.iplt      0x00001460        0x0 DMA.o
 
-.glue_7t        0x00000e08        0x0
- .glue_7t       0x00000e08        0x0 linker stubs
-
-.vfp11_veneer   0x00000e08        0x0
- .vfp11_veneer  0x00000e08        0x0 linker stubs
-
-.v4_bx          0x00000e08        0x0
- .v4_bx         0x00000e08        0x0 linker stubs
-
-.iplt           0x00000e08        0x0
- .iplt          0x00000e08        0x0 DMA.o
-
-.rel.dyn        0x00000e08        0x0
- .rel.iplt      0x00000e08        0x0 DMA.o
-
-.data           0x20000000        0x0 load address 0x00000e08
+.data           0x20000000        0x0 load address 0x00001460
                 0x20000000                _S_DATA = .
  *(.data)
  .data          0x20000000        0x0 DMA.o
@@ -606,44 +670,44 @@ Linker script and memory map
                 0x20000000                _E_DATA = .
 
 .data.DMA_ChannelMapSelectRegisters
-                0x20000000       0x10 load address 0x00000e08
+                0x20000000       0x10 load address 0x00001460
  .data.DMA_ChannelMapSelectRegisters
                 0x20000000       0x10 DMA.o
 
-.igot.plt       0x20000010        0x0 load address 0x00000e18
+.igot.plt       0x20000010        0x0 load address 0x00001470
  .igot.plt      0x20000010        0x0 DMA.o
 
 .data.DMAChannel30_MemToMem
-                0x20000010       0x10 load address 0x00000e18
+                0x20000010       0x10 load address 0x00001470
  .data.DMAChannel30_MemToMem
                 0x20000010       0x10 DMA_config.o
                 0x20000010                DMAChannel30_MemToMem
 
 .data.Pt_DMAChannel30_MemToMem
-                0x20000020        0x4 load address 0x00000e28
+                0x20000020        0x4 load address 0x00001480
  .data.Pt_DMAChannel30_MemToMem
                 0x20000020        0x4 DMA_config.o
                 0x20000020                Pt_DMAChannel30_MemToMem
 
 .data.GPIO_ConfigurePin_PF4
-                0x20000024        0x2 load address 0x00000e2c
+                0x20000024        0x2 load address 0x00001484
  .data.GPIO_ConfigurePin_PF4
                 0x20000024        0x2 GPIO_config.o
                 0x20000024                GPIO_ConfigurePin_PF4
 
 .data.GPIO_ConfigurePin_PF1
-                0x20000028        0x2 load address 0x00000e2e
+                0x20000028        0x2 load address 0x00001486
  .data.GPIO_ConfigurePin_PF1
                 0x20000028        0x2 GPIO_config.o
                 0x20000028                GPIO_ConfigurePin_PF1
 
 .data.GPIO_ConfigurePin_PF0
-                0x2000002c        0x2 load address 0x00000e30
+                0x2000002c        0x2 load address 0x00001488
  .data.GPIO_ConfigurePin_PF0
                 0x2000002c        0x2 GPIO_config.o
                 0x2000002c                GPIO_ConfigurePin_PF0
 
-.bss            0x20000400     0x19f4 load address 0x00000e32
+.bss            0x20000400     0x19f4 load address 0x0000148a
                 0x20000400                _S_BSS = .
  *(.bss*)
  .bss           0x20000400        0x0 DMA.o

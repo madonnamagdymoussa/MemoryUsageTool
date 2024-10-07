@@ -7,13 +7,19 @@ MEMORY{
 
 SECTIONS{
 
-  .text : {
-  KEEP(*(.vectors*))
-  *(.text*)
-  *(.rodata*)
-  _E_text = . ;
-  
-   }>flash
+    .vectors : {
+        KEEP(*(.vectors*))
+        _E_vectors = .;  
+    } > flash
+
+    .text : {
+        *(.text*)
+        _E_text = .;  
+    } > flash
+
+    .rodata : {
+        KEEP(*(.rodata*))
+    } > flash
    
    .data : {
 
