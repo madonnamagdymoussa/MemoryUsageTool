@@ -21,6 +21,7 @@ def load_config(file_path):
         return json.load(file)
 
 
+
 # Load the configuration
 config = load_config('config.json')
 
@@ -108,7 +109,8 @@ def process_multi_line_and_continued(line, compiled_regex_patterns, current_info
                 'MemLocation': location
             }
             entries.append(symbol_info)  # Append to the entries list
-
+            print("****************==Entries==***********************")
+            print(entries)
             # Clear current info for the next entry
             current_info.clear()
             return True  # Exit after processing the continued line
@@ -489,7 +491,7 @@ def run_readelf_command(config):
     readelf_path = config['file_paths']['readelf_path']
     binary_file_path = config['file_paths']['binary_file_path']
     readelf_flags = config['Readelf_flags']['section_headers']
-    output_text_file = config['csv_file_paths']['readelf_output_file']  # Use the correct key
+    output_text_file = config['csv_file_paths']['readelf_output_file']
 
     # Construct the readelf command
     command = f"{readelf_path} {readelf_flags} {binary_file_path}"
@@ -505,7 +507,8 @@ def run_readelf_command(config):
 
         # Clean the output to remove any misplaced commas
         cleaned_output = clean_readelf_output(raw_output)
-
+        print("*************************Cleaned Output*************************")
+        print(cleaned_output)
         # Write output to text file
         with open(output_text_file, 'w') as file:
             file.write(cleaned_output)  # Write cleaned output to the text file
@@ -516,10 +519,11 @@ def run_readelf_command(config):
         print(f"An error occurred during execution: {e}")
         print(f"Error output: {e.stderr}")
 
-def parse_dynamic_readelf_output(raw_output, output_txt):
-    """Parse readelf output to extract section names."""
+
+def parse_dynamic_readelf_output(raw_output, output_txt, output_json):
+    """Parse readelf output to extract section names and flags, and store in a flat dictionary mapping section names to RAM/ROM."""
     lines = raw_output.splitlines()
-    section_names = []
+    memory_allocation = {}  # Dictionary for storing sections with RAM/ROM allocations
 
     section_header_start = False
 
@@ -536,24 +540,82 @@ def parse_dynamic_readelf_output(raw_output, output_txt):
 
         # Capture relevant lines once section header starts
         if section_header_start:
-            # Match section names like .text, .data, .bss, etc.
-            match = re.search(r'\.(\w+)', line)
-            if match:
-                section_name = match.group(0)  # Get the matched section name
-                section_names.append(section_name)
+            # Match the section name (e.g., .text, .data, etc.)
+            section_match = re.search(r'\.\w+', line)
+            # Match the flags (e.g., WAXMS, etc.)
+            flags_match = re.search(r'\b[WAXMSIGLTCEoyp]+\b', line)
 
-    # Write unique section names to the text file
-    if section_names:
-        unique_section_names = set(section_names)  # Remove duplicates
+            # Check if the regex matched anything
+            if section_match and flags_match:
+                section_name = section_match.group(0)  # Extract section name (e.g., .text)
+                flags = flags_match.group(0)  # Extract flags (e.g., WAXMS)
+
+                # Check the flags and append the section to the memory allocation dictionary
+                if 'A' in flags:  # If it's allocated in memory
+                    if 'W' in flags:  # If it's writable (RAM)
+                        memory_allocation[section_name] = "RAM"
+                    else:  # If not writable (ROM)
+                        memory_allocation[section_name] = "ROM"
+
+    # Write section names to the text file
+    if memory_allocation:
         with open(output_txt, mode='w') as file:
-            for name in unique_section_names:
-                file.write(f"{name}\n")  # Write each section name on a new line
+            for section in memory_allocation.keys():
+                file.write(f"{section}\n")  # Write each section name on a new line
 
         print(f"Readelf output successfully written to {output_txt}")
     else:
-        print("No valid section names found in the output.")
+        print("No valid sections found in the output.")
 
-    return section_names  # Return the section names for further processing
+    # Load existing JSON content, if any
+    try:
+        with open(output_json, 'r') as json_file:
+            existing_data = json.load(json_file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        existing_data = {}  # If the file doesn't exist or is empty, start with an empty dictionary
+
+    # Copy the keys from "MemoryAllocation" to "sections"
+    sections_list = list(memory_allocation.keys()) if memory_allocation else []  # Ensure sections_list is not None
+
+    # Ensure no redundant or malformed entries
+    if sections_list is None:
+        sections_list = []  # Ensure sections_list is initialized properly if it's None
+    sections_list = list(set(sections_list))  # Ensure uniqueness of section names
+    print("********************=== The Section List ===*************************")
+    print(sections_list)
+
+    def clean_sections(sections_list):
+        """Clean sections list by removing unwanted strings and dictionary-like elements."""
+        cleaned_sections = []
+        for section in sections_list:
+            # Only add valid sections (ignore strings that contain '[' or '{')
+            if section and isinstance(section, str) and ('[' not in section and '{' not in section):
+                cleaned_sections.append(section)
+        return cleaned_sections
+
+    # Clear the "sections" field in the existing data
+    existing_data["sections"] = []  # Reset sections to an empty list
+
+    # Write the cleared data back to the JSON file (if needed, to reflect the cleared state)
+    with open(output_json, mode='w') as json_file:
+        json.dump(existing_data, json_file, indent=4)
+
+    # Clean the sections_list to remove invalid entries
+    if sections_list:  # Check if sections_list has valid data
+        cleaned_sections_list = clean_sections(sections_list)
+
+        # Now update the sections and memory allocation after clearing
+        existing_data["sections"] = cleaned_sections_list
+        existing_data["MemoryAllocation"] = memory_allocation
+
+        # Write the updated data back to the JSON file
+        with open(output_json, mode='w') as json_file:
+            json.dump(existing_data, json_file, indent=4)
+    else:
+        print("No sections to clean or write to the JSON file.")
+
+    return cleaned_sections_list  # Return the cleaned section names
+
 def parse_readelf_output_and_update_json(readelf_output, json_file_path):
     # Updated regex pattern to capture section names without square brackets
     section_pattern = r'^\s*\d+\s+(\.\w+)'  # Match lines with section names starting with a dot
@@ -583,14 +645,25 @@ def parse_readelf_output_and_update_json(readelf_output, json_file_path):
 def update_sections_in_json(section_names, json_file_path):
     """Update the 'sections' part of the JSON configuration with new section names."""
     try:
-        #with open(json_file_path, 'r') as f:
-            #config = json.load(f)
+        # Open and load the existing JSON configuration
+        with open(json_file_path, 'r') as f:
+            config = json.load(f)
 
-        # Ensure 'sections' key exists and update it with new section names
+        # Ensure 'sections' key exists and is a list
         if 'sections' not in config:
             config['sections'] = []
-        config['sections'] = list(set(config['sections'] + section_names))  # Add new sections and ensure uniqueness
 
+        # Ensure section_names is a list
+        if not isinstance(section_names, list):
+            section_names = list(section_names)  # Convert it to a list if it's not
+
+        # Ensure all items in section_names are strings (or hashable types)
+        section_names = [str(name) for name in section_names]
+
+        # Add new section names and ensure uniqueness using set
+        config['sections'] = list(set(config['sections'] + section_names))
+
+        # Save the updated config back to the JSON file
         with open(json_file_path, 'w') as f:
             json.dump(config, f, indent=4)
 
@@ -599,7 +672,6 @@ def update_sections_in_json(section_names, json_file_path):
         print(f"Error: The file {json_file_path} was not found.")
     except json.JSONDecodeError:
         print(f"Error: Failed to decode JSON from the file {json_file_path}.")
-
 
 def clean_readelf_output(raw_output):
     """Clean the raw output from readelf to preserve line breaks."""
@@ -621,25 +693,31 @@ if __name__ == "__main__":
 
         ############################################
 
-        #'''
-        # Run readelf command and get output
-        readelf_output = run_readelf_command(config)
 
+        # Run readelf command and get output
+
+        readelf_output = run_readelf_command(config)
+        section_names = parse_dynamic_readelf_output(readelf_output, csv_files_Dict['readelf_output_file'],
+                                                     json_file_path)  # Get section names
+        update_sections_in_json(section_names, json_file_path)  # Update JSON with section names
+
+        '''
         if readelf_output:  # Check if output is not None
-            section_names = parse_dynamic_readelf_output(readelf_output, csv_files_Dict['readelf_output_file'])  # Get section names
+            section_names = parse_dynamic_readelf_output(readelf_output, csv_files_Dict['readelf_output_file'], json_file_path)  # Get section names
             update_sections_in_json(section_names, json_file_path)  # Update JSON with section names
         else:
             print("Failed to run readelf command or no output was produced.")
-       #'''
+       '''
         ############################################
 
+        print("######################2bl ma 23mel parsing lel maps ########################")
         entries = parse_map_file(map_file_path, Compiled_Regex_Patterns_Dict)
-
+        print("######################Parsing map 5yles ########################")
 
         # Write the parsed entries to a CSV file
         write_entries_to_csv(entries, parsed_mapfile_csv)
 
-       
+
         # Run the NM command with or without specific flags
         run_nm_command(specific_flag_key='defined_only, print_size')  # Adjust flag key as necessary
 
@@ -657,12 +735,12 @@ if __name__ == "__main__":
 
         #csv_files_Dict
         #sections_list = ['text', 'data', 'bss', 'rodata']  # Define your sections list
-        sizes = count_type_sizes(csv_files_Dict['linked_memory_file'], sections_list)
-        generate_memory_consumption_csv(csv_files_Dict['memory_usage_file'], sizes)
+        #sizes = count_type_sizes(csv_files_Dict['linked_memory_file'], sections_list)
+        #generate_memory_consumption_csv(csv_files_Dict['memory_usage_file'], sizes)
         #print("******************SIZES************************")
         #print(sizes)
 
-        run_objdump_command(specific_flag_key='disassemble_all')
+        #run_objdump_command(specific_flag_key='disassemble_all')
 
 
 

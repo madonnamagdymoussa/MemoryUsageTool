@@ -1,27 +1,10 @@
 {
     "sections": [
-        "rodata",
-        ".data",
-        ".debug_str",
-        ".vectors",
-        ".symtab",
-        ".debug_line",
-        ".text",
-        ".debug_aranges",
-        "data",
-        ".debug_frame",
-        ".debug_loc",
-        ".bss",
-        ".comment",
         ".rodata",
-        ".ARM",
-        ".shstrtab",
-        ".debug_info",
-        ".debug_abbrev",
-        ".debug_ranges",
-        "text",
-        "bss",
-        ".strtab"
+        ".vectors",
+        ".bss",
+        ".data",
+        ".text"
     ],
     "supported_extensions": [
         ".elf",
@@ -75,5 +58,12 @@
         "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
         "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}"
     },
-    "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map"
+    "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
+    "MemoryAllocation": {
+        ".vectors": "ROM",
+        ".rodata": "ROM",
+        ".text": "ROM",
+        ".data": "RAM",
+        ".bss": "RAM"
+    }
 }
