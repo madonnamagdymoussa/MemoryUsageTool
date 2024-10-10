@@ -1,5 +1,5 @@
-.vectors
-.rodata
-.text
-.data
-.bss
+vectors
+rodata
+text
+data
+bss

@@ -1,10 +1,10 @@
 {
     "sections": [
-        ".rodata",
-        ".vectors",
-        ".bss",
-        ".data",
-        ".text"
+        "vectors",
+        "text",
+        "data",
+        "rodata",
+        "bss"
     ],
     "supported_extensions": [
         ".elf",
@@ -60,10 +60,10 @@
     },
     "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
     "MemoryAllocation": {
-        ".vectors": "ROM",
-        ".rodata": "ROM",
-        ".text": "ROM",
-        ".data": "RAM",
-        ".bss": "RAM"
+        "vectors": "ROM",
+        "rodata": "ROM",
+        "text": "ROM",
+        "data": "RAM",
+        "bss": "RAM"
     }
 }

@@ -547,7 +547,7 @@ def parse_dynamic_readelf_output(raw_output, output_txt, output_json):
 
             # Check if the regex matched anything
             if section_match and flags_match:
-                section_name = section_match.group(0)  # Extract section name (e.g., .text)
+                section_name = section_match.group(0)[1:]  # Extract section name (e.g., .text)
                 flags = flags_match.group(0)  # Extract flags (e.g., WAXMS)
 
                 # Check the flags and append the section to the memory allocation dictionary
@@ -735,12 +735,12 @@ if __name__ == "__main__":
 
         #csv_files_Dict
         #sections_list = ['text', 'data', 'bss', 'rodata']  # Define your sections list
-        #sizes = count_type_sizes(csv_files_Dict['linked_memory_file'], sections_list)
-        #generate_memory_consumption_csv(csv_files_Dict['memory_usage_file'], sizes)
-        #print("******************SIZES************************")
-        #print(sizes)
+        sizes = count_type_sizes(csv_files_Dict['linked_memory_file'], sections_list)
+        generate_memory_consumption_csv(csv_files_Dict['memory_usage_file'], sizes)
+        print("******************SIZES************************")
+        print(sizes)
 
-        #run_objdump_command(specific_flag_key='disassemble_all')
+        run_objdump_command(specific_flag_key='disassemble_all')
 
 
 
