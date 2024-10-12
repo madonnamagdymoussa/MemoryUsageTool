@@ -1,0 +1,9 @@
+Subject,Info
+.text,5872
+.data,132
+.rodata,2180
+.bss,8486
+ROM (total),7.86 KB
+RAM (total),8.42 KB
+ROM (%),48.30% (7.86 KB)
+RAM (%),51.70% (8.42 KB)
