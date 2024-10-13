@@ -1,10 +1,10 @@
 {
     "sections": [
-        "bss",
-        "text",
-        "data",
         "rodata",
-        "vectors"
+        "text",
+        "bss",
+        "vectors",
+        "data"
     ],
     "supported_extensions": [
         ".elf",
@@ -56,7 +56,9 @@
         "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
         "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}",
         "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
-        "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}"
+        "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}",
+        "size_command": "{size_path} {size_flags} {binary_file_path} > {SizeFile_txt} ",
+        "strip_command": "{strip_path} {strip_flags} {binary_file_path} {strip_output_flag} {stripped_elf}"
     },
     "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
     "MemoryAllocation": {
@@ -66,23 +68,15 @@
         "data": "RAM",
         "bss": "RAM"
     },
-    "Tasking_VX_ToolSet_file_paths": {
-        "map_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.map",
-        "elf_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
-        "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
-        "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
-        "objdump_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objdump.exe",
-        "readelf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-readelf.exe",
-        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript",
-        "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt"
-    },
     "HighTech_file_paths": {
         "map_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.map",
         "elf_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
         "binary_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
         "nm_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-nm.exe",
         "objdump_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-objdump.exe",
-        "readelf_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-readelf.exe"
+        "readelf_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-readelf.exe",
+        "size_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-size.exe",
+        "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe"
     },
     "HighTech_Object_file_paths": {
         "main_Obj_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\src\\shared_main.o",
@@ -96,7 +90,9 @@
         "mismatch_memory_file": "HighTech_Linked_Mismatch.csv",
         "memory_usage_file": "HighTech_Memory_consumption.csv",
         "assembly_file": "HighTech_Assembly_Output.txt",
-        "readelf_output_file": "HighTech_readelf.txt"
+        "readelf_output_file": "HighTech_readelf.txt",
+        "size_output_file": "HighTech_SizeOutput.txt",
+        "stripped_output_elf_file": "HighTech_StrippedElf.elf"
     },
     "HighTech_ObjDump_flags": {
         "SourceCodeIntermixedDisassembly": "-S",
@@ -107,9 +103,29 @@
         "SymbolTable": "-t",
         "DynamicSymbolTable": "-T"
     },
+    "HighTech_NM_flags": {
+        "defined_only": "--defined-only",
+        "print_size": "--print-size"
+    },
+    "HighTech_Size_flags": {
+        "format": "-A",
+        "SizeDecimal": "-d"
+    },
+    "HighTech_Strip_flags": {
+        "RemoveDebugging": "-g",
+        "RemoveUnneededSymbols": "--strip-unneeded",
+        "OutputFile": "-o"
+    },
     "HighTech_supported_extensions": [
         ".elf",
         ".out",
         ".o"
+    ],
+    "HighTech_sections": [
+        "bss",
+        "text",
+        "data",
+        "rodata",
+        "vectors"
     ]
 }

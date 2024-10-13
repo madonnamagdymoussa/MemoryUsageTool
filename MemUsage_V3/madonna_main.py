@@ -42,6 +42,9 @@ HighTech_file_paths_Dict = config['HighTech_file_paths']  # Update to the new ke
 HighTech_csv_files_Dict = config['HighTech_csv_file_paths']
 HighTech_ObjDump_flags_Dict = config['HighTech_ObjDump_flags']  # Updated key name for NM flags
 HighTech_Object_file_paths_Dict = config['HighTech_Object_file_paths']
+HighTech_NM_flags_Dict = config['HighTech_NM_flags']  # Updated key name for NM flags
+HighTech_Size_flags_Dict = config['HighTech_Size_flags']
+HighTech_Strip_flags_Dict = config['HighTech_Strip_flags']
 #sections_list = config.get('sections', {})  # Default to an empty dict if 'sections' is not found
 
 
@@ -491,7 +494,7 @@ def run_objdump_command(specific_flag_key=None):
         return None
 
 
-#############################################################################
+###########################################################################################################
 def HighTech_Run_Objdump_Command(specific_flag_key=None, binary_file_path=None):
     # Retrieve binary file path and supported extensions from the configuration
     #binary_file_path = HighTech_file_paths_Dict['binary_file_path']
@@ -541,6 +544,146 @@ def HighTech_Run_Objdump_Command(specific_flag_key=None, binary_file_path=None):
         print("Objdump command ran successfully!")
         print("Raw output:", result.stdout)  # Debug: Print raw output
         return result.stdout.strip()  # Return the stdout output
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+#####################################################################################################
+
+def HighTech_run_nm_command(specific_flag_key=None):
+    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        nm_command_template = config['commands']['nm_command_elf']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        nm_command_template = config['commands']['nm_command_out']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        nm_flags = " ".join(HighTech_NM_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_NM_flags_Dict)
+    else:
+        nm_flags = " ".join(HighTech_NM_flags_Dict.values())
+
+    nm_command = nm_command_template.format(
+        nm_path=HighTech_file_paths_Dict['nm_path'],
+        nm_flags=nm_flags,
+        **{file_path_key: binary_file_path},
+        nm_objects_txt=HighTech_csv_files_Dict['nm_objects_file']
+    )
+
+    print("Constructed NM Command:", nm_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
+        print("NM command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+#####################################################################################################
+'''
+HighTech_file_paths_Dict = config['HighTech_file_paths']  # Update to the new key name if changed
+HighTech_csv_files_Dict = config['HighTech_csv_file_paths']
+HighTech_ObjDump_flags_Dict = config['HighTech_ObjDump_flags']  # Updated key name for NM flags
+HighTech_Object_file_paths_Dict = config['HighTech_Object_file_paths']
+HighTech_NM_flags_Dict = config['HighTech_NM_flags']  # Updated key name for NM flags
+'''
+def HighTech_run_Size_command(specific_flag_key=None):
+    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        size_command_template = config['commands']['size_command']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        size_command_template = config['commands']['size_command']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        size_flags = " ".join(HighTech_Size_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_Size_flags_Dict)
+    else:
+        size_flags = " ".join(HighTech_Size_flags_Dict.values())
+
+    size_command = size_command_template.format(
+        size_path=HighTech_file_paths_Dict['size_utility_path'],
+        size_flags=size_flags,
+        binary_file_path=binary_file_path,
+        SizeFile_txt=HighTech_csv_files_Dict['size_output_file']
+    )
+
+    print("Constructed Size Command:", size_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(size_command, shell=True, check=True, capture_output=True, text=True)
+        print("Size command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+#####################################################################################################
+def HighTech_run_Strip_command(specific_flag_key=None):
+    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        size_command_template = config['commands']['strip_command']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        size_command_template = config['commands']['strip_command']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        strip_flags = " ".join(HighTech_Strip_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_Strip_flags_Dict)
+    else:
+        strip_flags = " ".join(HighTech_Strip_flags_Dict.values())
+
+    strip_command = size_command_template.format(
+        strip_path=HighTech_file_paths_Dict['strip_utility_path'],
+        strip_flags=strip_flags,
+        binary_file_path=binary_file_path,
+        strip_output_flag=HighTech_Strip_flags_Dict['OutputFile'],
+        stripped_elf=HighTech_csv_files_Dict['stripped_output_elf_file']
+    )
+
+    print("Constructed Strip Command:", strip_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(strip_command, shell=True, check=True, capture_output=True, text=True)
+        print("Strip command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Command failed with return code {e.returncode}")
         print(f"Error output: {e.stderr}")
@@ -721,10 +864,13 @@ def clean_readelf_output(raw_output):
 if __name__ == "__main__":
     try:
 
-        #HighTech_Run_Objdump_Command(specific_flag_key='DisassembleAll', binary_file_path=None)
+        HighTech_Run_Objdump_Command(specific_flag_key='Disassemble', binary_file_path=None)
+        HighTech_run_nm_command(specific_flag_key='defined_only, print_size')
+        HighTech_run_Size_command(specific_flag_key='format')
+        HighTech_run_Strip_command(specific_flag_key='RemoveDebugging')
         #HighTech_Object_file_paths_Dict
-        filepath = HighTech_Object_file_paths_Dict["main_Obj_file_path"]
-        HighTech_Run_Objdump_Command(specific_flag_key='SectionHeaders', binary_file_path=filepath)
+        #filepath = HighTech_Object_file_paths_Dict["main_Obj_file_path"]
+        #HighTech_Run_Objdump_Command(specific_flag_key='SectionHeaders', binary_file_path=filepath)
         # Get the map file path and output CSV file path from the JSON config
         map_file_path = file_paths_Dict['map_path']
         parsed_mapfile_csv = csv_files_Dict['map_file_parsing_csv']

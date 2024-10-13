@@ -1,0 +1,366 @@
+0000fe1c a $core_id
+0000fe38 a $fcx
+0000fe28 a $isp
+0000fe3c a $lcx
+0000fe00 a $pcxi
+8000a492 T ___virtio
+8000a492 T ___virtio_hnd
+80006134 0000001a T __ashldi3
+8000c03c D __crt0_config
+70000000 B __CSA_BASE_CPU0_
+60000000 B __CSA_BASE_CPU1_
+50000000 B __CSA_BASE_CPU2_
+8000b014 R __CTOR_END__
+8000aff4 R __CTOR_LIST__
+70005f38 00000004 D __ctype_ptr__
+80009f2a 00000056 T __d2b
+8000600a 0000008a T __divdi3
+800096b0 00000002 T __env_lock
+800096b2 00000002 T __env_unlock
+8000a43e 0000000a W __errno
+8000a390 00000032 T __fpclassifyf
+700050ac 00000018 d __gcov_.bsp_board_led_Init
+700050c4 00000018 d __gcov_.bsp_board_led_InitAll
+70005058 00000018 d __gcov_.bsp_board_led_Set
+70005000 00000018 d __gcov_.bsp_board_wdg_Disable
+7000513c 00000018 d __gcov_.bsp_isr_Init
+700050e8 00000018 d __gcov_.bsp_isr_RegisterHandler
+70005510 00000018 d __gcov_.bsp_uc_ccu_SelectExtClk0
+700054f8 00000018 d __gcov_.bsp_uc_ccu_SelectExtClk1
+70005408 00000018 d __gcov_.bsp_uc_core_EnableDCache
+70005420 00000018 d __gcov_.bsp_uc_core_EnableICache
+700053f0 00000018 d __gcov_.bsp_uc_core_GetCurrentCore
+700053d8 00000018 d __gcov_.bsp_uc_core_GetCurrentInterruptPriority
+700054c8 00000018 d __gcov_.bsp_uc_core_StartAllCores
+700054e0 00000018 d __gcov_.bsp_uc_core_StartCore
+70005438 00000018 d __gcov_.bsp_uc_dflash_SetWs
+700052e8 00000018 d __gcov_.bsp_uc_InitClock
+70005300 00000018 d __gcov_.bsp_uc_intc_EnableExternalInterrupts
+70005294 00000018 d __gcov_.bsp_uc_intc_InitBIV
+70005330 00000018 d __gcov_.bsp_uc_intc_SetBIV
+70005318 00000018 d __gcov_.bsp_uc_intc_stm_SetSRC
+70005450 00000018 d __gcov_.bsp_uc_pflash_SetWs
+700054b0 00000018 d __gcov_.bsp_uc_port_EnableInput
+70005498 00000018 d __gcov_.bsp_uc_port_EnableOutput
+70005468 00000018 d __gcov_.bsp_uc_port_GetGPIO
+70005480 00000018 d __gcov_.bsp_uc_port_SetGPIO
+70005570 00000018 d __gcov_.bsp_uc_scu_EnablePLL
+70005558 00000018 d __gcov_.bsp_uc_scu_EnablePLLEray
+70005588 00000018 d __gcov_.bsp_uc_scu_EnableXOSC
+70005528 00000018 d __gcov_.bsp_uc_scu_SetCcuCon
+70005540 00000018 d __gcov_.bsp_uc_scu_SwitchSystemClock
+700055a0 00000018 d __gcov_.bsp_uc_scu_wdt_DisableCpuWatchdog
+700055b8 00000018 d __gcov_.bsp_uc_scu_wdt_DisableSafetyWatchdog
+70005390 00000018 d __gcov_.bsp_uc_stm_ClearChannelIsrFlag
+700053a8 00000018 d __gcov_.bsp_uc_stm_EnableChannelIsr
+70005360 00000018 d __gcov_.bsp_uc_stm_GetChannelCurrentValue
+70005378 00000018 d __gcov_.bsp_uc_stm_IsChannelIsrFlag
+700053c0 00000018 d __gcov_.bsp_uc_stm_ReloadChannel
+70005348 00000018 d __gcov_.bsp_uc_stm_Wait
+70005650 00000018 d __gcov_.Crt0PostInit
+700056a4 00000018 d __gcov_.Crt0PreInit
+70005154 00000018 d __gcov_.isr_undef_handler
+700056bc 00000018 d __gcov_.shared_main
+700056d4 00000018 d __gcov_.TimerMulticoreIsrHandler
+7000525c 00000018 d __gcov_.Trap_0_Handler
+70005244 00000018 d __gcov_.Trap_1_Handler
+7000522c 00000018 d __gcov_.Trap_2_Handler
+70005214 00000018 d __gcov_.Trap_3_Handler
+700051fc 00000018 d __gcov_.Trap_4_Handler
+700051e4 00000018 d __gcov_.Trap_5_Handler
+700051cc 00000018 d __gcov_.Trap_6_Handler
+70005178 00000018 d __gcov_.Trap_7_Handler
+80005026 00000032 T __gcov_close
+80005f3c 00000056 T __gcov_init
+80004d84 00000020 T __gcov_merge_add
+80004fc6 00000060 T __gcov_open
+8000516c 00000018 T __gcov_read_counter
+80005184 000000d2 T __gcov_read_summary
+8000515e 0000000e T __gcov_read_unsigned
+80004fa2 00000024 T __gcov_rewrite
+80005256 00000036 T __gcov_seek
+70006694 00001020 B __gcov_var
+80005064 00000012 T __gcov_write_counter
+80005088 000000d6 T __gcov_write_summary
+80005076 00000012 T __gcov_write_tag_length
+80005058 0000000c T __gcov_write_unsigned
+70005f68 00000018 b __gcov0.bsp_board_led_Init
+70005f80 00000018 b __gcov0.bsp_board_led_InitAll
+70005f58 00000010 b __gcov0.bsp_board_led_Set
+70005f50 00000008 b __gcov0.bsp_board_wdg_Disable
+70005fc0 00000040 b __gcov0.bsp_isr_Init
+70005f98 00000028 b __gcov0.bsp_isr_RegisterHandler
+700063b8 00000018 b __gcov0.bsp_uc_ccu_SelectExtClk0
+700063a0 00000018 b __gcov0.bsp_uc_ccu_SelectExtClk1
+70006278 00000028 b __gcov0.bsp_uc_core_EnableDCache
+700062a0 00000030 b __gcov0.bsp_uc_core_EnableICache
+70006268 00000010 b __gcov0.bsp_uc_core_GetCurrentCore
+70006258 00000010 b __gcov0.bsp_uc_core_GetCurrentInterruptPriority
+70006360 00000018 b __gcov0.bsp_uc_core_StartAllCores
+70006378 00000028 b __gcov0.bsp_uc_core_StartCore
+700062d0 00000018 b __gcov0.bsp_uc_dflash_SetWs
+70006188 00000040 b __gcov0.bsp_uc_InitClock
+700061c8 00000010 b __gcov0.bsp_uc_intc_EnableExternalInterrupts
+70006158 00000030 b __gcov0.bsp_uc_intc_InitBIV
+700061e0 00000028 b __gcov0.bsp_uc_intc_SetBIV
+700061d8 00000008 b __gcov0.bsp_uc_intc_stm_SetSRC
+700062e8 00000018 b __gcov0.bsp_uc_pflash_SetWs
+70006348 00000018 b __gcov0.bsp_uc_port_EnableInput
+70006310 00000038 b __gcov0.bsp_uc_port_EnableOutput
+70006300 00000008 b __gcov0.bsp_uc_port_GetGPIO
+70006308 00000008 b __gcov0.bsp_uc_port_SetGPIO
+70006510 00000040 b __gcov0.bsp_uc_scu_EnablePLL
+700064e0 00000030 b __gcov0.bsp_uc_scu_EnablePLLEray
+70006550 00000048 b __gcov0.bsp_uc_scu_EnableXOSC
+700063d0 00000028 b __gcov0.bsp_uc_scu_SetCcuCon
+700063f8 000000e8 b __gcov0.bsp_uc_scu_SwitchSystemClock
+70006598 00000020 b __gcov0.bsp_uc_scu_wdt_DisableCpuWatchdog
+700065b8 00000018 b __gcov0.bsp_uc_scu_wdt_DisableSafetyWatchdog
+70006240 00000008 b __gcov0.bsp_uc_stm_ClearChannelIsrFlag
+70006248 00000008 b __gcov0.bsp_uc_stm_EnableChannelIsr
+70006230 00000008 b __gcov0.bsp_uc_stm_GetChannelCurrentValue
+70006238 00000008 b __gcov0.bsp_uc_stm_IsChannelIsrFlag
+70006250 00000008 b __gcov0.bsp_uc_stm_ReloadChannel
+70006208 00000028 b __gcov0.bsp_uc_stm_Wait
+700065d0 00000040 b __gcov0.Crt0PostInit
+70006610 00000030 b __gcov0.Crt0PreInit
+70006000 00000010 b __gcov0.isr_undef_handler
+70006640 00000010 b __gcov0.shared_main
+70006650 00000028 b __gcov0.TimerMulticoreIsrHandler
+70006138 00000020 b __gcov0.Trap_0_Handler
+700060f0 00000048 b __gcov0.Trap_1_Handler
+700060b8 00000038 b __gcov0.Trap_2_Handler
+70006070 00000048 b __gcov0.Trap_3_Handler
+70006048 00000028 b __gcov0.Trap_4_Handler
+70006038 00000010 b __gcov0.Trap_5_Handler
+70006028 00000010 b __gcov0.Trap_6_Handler
+70006010 00000018 b __gcov0.Trap_7_Handler
+70007708 00000001 B __HEAP
+00001000 00000001 A __HEAP_END
+00001000 A __HEAP_SIZE
+80009b16 00000042 T __hi0bits
+80009bbe 00000010 T __i2b
+80009b58 00000066 T __lo0bits
+80009d64 000000ba T __lshift
+80005f92 00000026 T __lshrdi3
+8000a5fe 00000016 T __make_fp
+70005b30 00000408 D __malloc_av_
+700076b8 00000028 B __malloc_current_mallinfo
+8000736e 00000002 T __malloc_lock
+700076e4 00000004 B __malloc_max_sbrked_mem
+700076e0 00000004 B __malloc_max_total_mem
+70005b28 00000004 D __malloc_sbrk_base
+700076e8 00000004 B __malloc_top_pad
+70005b2c 00000004 D __malloc_trim_threshold
+80007370 00000002 T __malloc_unlock
+80009e1e 00000042 T __mcmp
+80009e60 000000ca T __mdiff
+8000af88 00000008 R __mprec_bigtens
+8000af90 00000064 R __mprec_tens
+8000af80 00000008 R __mprec_tinytens
+80009a94 00000082 T __multadd
+80009bce 0000011a T __multiply
+8000a6c0 000000c6 T __pack_f
+80005fc8 00000042 T __popcountsi2
+80009ce8 0000007c T __pow5mult
+80008aac 00000094 T __register_exitproc
+8000760c 00000008 T __sclose
+800096b4 0000005e T __sflags
+800063d4 0000002c T __sfmoreglue
+800064e2 00000088 T __sfp
+8000656a 00000002 T __sfp_lock_acquire
+8000656c 00000002 T __sfp_lock_release
+80009712 0000026c T __sfvwrite_r
+80006400 000000e2 T __sinit
+80006dd6 000000d4 T __smakebuf_r
+8000a3c2 0000001a T __sprint_r
+80007590 00000026 T __sread
+800073a8 000000dc T __srefill_r
+800075e2 0000002a T __sseek
+70004000 B __STACK_BASE_CPU0_
+60004000 B __STACK_BASE_CPU1_
+50004000 B __STACK_BASE_CPU2_
+800075b6 0000002c T __swrite
+80008a1a 00000092 T __swsetup_r
+8000a59c 0000003c T __truncdfsf2
+8000614e 0000009c T __udiv6432
+80006094 000000a0 T __udivdi3
+8000a5d8 00000026 T __umoddi3
+8000a614 000000ac T __unpack_d
+8000a48e 00000010 T __virtio_dummy_hnd
+80009a2c 00000056 T _Balloc
+80009a82 00000012 T _Bfree
+8000a3dc 00000062 T _calloc_r
+800063c8 0000000c T _cleanup_r
+80004a68 t _clear_exec_end
+80004a60 t _clear_exec_loop
+80008b40 0000001e T _close_r
+80004a88 t _copy_exec_end
+80004a7c t _copy_exec_loop
+80000020 T _crt0_reset
+80004a48 t _ctor_exec_end
+80004a38 t _ctor_exec_loop
+8000aca0 00000101 R _ctype_
+8000ada1 00000180 r _ctype_b
+80008c78 00000a36 T _dtoa_r
+8000a550 00000010 T _exit
+800049bc t _exit
+800061fe 00000086 T _fclose_r
+80006292 00000112 T _fflush_r
+80006d54 00000082 T _findenv_r
+8000656e 00000088 T _fopen_r
+8000661c 0000008e T _fread_r
+80006776 000001ac T _free_r
+80006922 00000272 T _fseek_r
+80006ba2 00000020 T _fstat_r
+80006bc2 0000006c T _ftell_r
+80006c3c 00000042 T _fwalk
+80006c7e 00000046 T _fwalk_reent
+80006cc4 0000006a T _fwrite_r
+80002828 00000012 t _GLOBAL__sub_I_65535_0_board_led
+800029c4 00000012 t _GLOBAL__sub_I_65535_0_bsp_board_led_InitAll
+800048be 00000012 t _GLOBAL__sub_I_65535_0_bsp_uc_scu_wdt_DisableSafetyWatchdog
+80002d08 00000012 t _GLOBAL__sub_I_65535_0_isr_undef_handler
+80002d1a 00000012 t _GLOBAL__sub_I_65535_0_Trap_0_Handler
+80004d72 00000012 t _GLOBAL__sub_I_65535_0_unusedVar1
+8000ac44 00000004 R _global_impure_ptr
+70005700 00000004 D _impure_ptr
+8000997e 0000001e T _isatty_r
+8000999c 0000000a T _localeconv_r
+800099a6 0000001e T _lseek_r
+80006ec4 0000049a T _malloc_r
+800066bc 000000ba T _malloc_trim_r
+70007700 00000004 V _my_errno
+80007372 00000024 T _open_r
+80009f80 00000020 T _read_r
+80009fa0 000003f0 T _realloc_r
+80007484 0000001e T _sbrk_r
+7000d000 A _SMALL_DATA_
+80013014 A _SMALL_DATA2_
+800048d0 T _start
+80007660 00000106 T _strtol_r
+800049d4 t _table_bss_clear_loop
+800049f0 t _table_bss_clear_loop_end
+800049fc t _table_data_copy_loop
+80004a20 t _table_data_copy_loop_end
+80007778 0000126a T _vfprintf_r
+800089fa 00000020 T _write_r
+8000a53e 00000012 T abort
+800061ea 0000000a T atexit
+800061f4 0000000a T atoi
+8000ac90 00000010 r blanks.3917
+a0000000 t BMHD
+8000a788 00000040 R board_led
+800028da 000000ea T bsp_board_led_Init
+8000283a 000000a0 T bsp_board_led_InitAll
+80002800 00000028 T bsp_board_wdg_Disable
+80002a24 000001c4 T bsp_isr_Init
+80002be8 00000120 T bsp_isr_RegisterHandler
+80001000 00000004 T BSP_ISR_VECTOR_TABLE_CPU0
+80001800 00000004 T BSP_ISR_VECTOR_TABLE_CPU1
+80002000 00000004 T BSP_ISR_VECTOR_TABLE_CPU2
+80000100 T BSP_TRAP_VECTOR_TABLE
+800042d6 0000012e T bsp_uc_core_EnableICache
+80004404 00000068 T bsp_uc_core_GetCurrentCore
+80003dd0 0000009e T bsp_uc_core_StartAllCores
+80003c7e 00000152 T bsp_uc_core_StartCore
+80004214 000000c2 T bsp_uc_dflash_SetWs
+800046d0 000001ee T bsp_uc_InitClock
+800045dc 000000f4 T bsp_uc_intc_SetBIV
+80004152 000000c2 T bsp_uc_pflash_SetWs
+80003e6e 00000234 T bsp_uc_port_EnableOutput
+800040a2 000000b0 T bsp_uc_port_SetGPIO
+80003122 000002d6 T bsp_uc_scu_EnablePLL
+80002e80 000002a2 T bsp_uc_scu_EnableXOSC
+80003b66 00000118 T bsp_uc_scu_SetCcuCon
+800033f8 0000076e T bsp_uc_scu_SwitchSystemClock
+80002db8 000000c8 T bsp_uc_scu_wdt_DisableCpuWatchdog
+80002d2c 0000008c T bsp_uc_scu_wdt_DisableSafetyWatchdog
+8000446c 0000004a T bsp_uc_stm_GetChannelCurrentValue
+800044b6 00000126 T bsp_uc_stm_Wait
+70100000 00000080 B BspIsrRamTable_Cpu0
+60100000 00000080 B BspIsrRamTable_Cpu1
+50100000 00000080 B BspIsrRamTable_Cpu2
+80004a4c t clear_exec
+8000a46e 00000008 T close
+80004a6c t copy_exec
+80004da4 00000026 t crc32_unsigned
+800049cc W Crt0BssInit
+80004a24 W Crt0CtorInit
+800049f4 W Crt0DataInit
+80004c0a 00000168 T Crt0PostInit
+80004b0c 000000fe T Crt0PreInit
+00000100 A CSA_REGIONS
+00004000 A CSA_SIZE
+70005f40 00000004 D environ
+700076f0 00000004 B errno
+80006284 0000000e T fclose
+800063a4 00000024 T fflush
+70006680 00000004 b fn_buffer
+800065f6 00000012 T fopen
+80006608 00000014 T fprintf
+800066aa 00000012 T fread
+80006eb6 0000000e T free
+80004eb6 0000003c t free_fn_data
+80006b94 0000000e T fseek
+8000a44e 00000020 T fstat
+80006c2e 0000000e T ftell
+80006d2e 00000012 T fwrite
+70006688 00000004 b gcov_dump_complete
+80004f2a 00000012 t gcov_error
+80005f2c 00000010 T gcov_exit
+8000528c 00000ca0 t gcov_exit.part.3
+80004ef2 00000038 t gcov_histo_index
+70006690 00000004 b gcov_list
+7000668c 00000004 b gcov_max_filename
+80004e3a 0000007c t gcov_read_words
+80004f3c 00000066 t gcov_version.isra.1
+80004dca 00000034 t gcov_write_block
+80004dfe 0000003c t gcov_write_words
+80006d40 00000014 T getenv
+70006684 00000004 b gi_filename
+70005f48 00000004 d heap_top.2289
+70005704 00000424 d impure_data
+700076f8 00000004 b initial_env
+80000000 A INT_FLASH_MEMORY_BASE
+00400000 A INT_FLASH_MEMORY_SIZE
+8000a448 00000006 T isatty
+800029d6 0000004e T isr_undef_handler
+8000af3c 00000038 r lconv
+80007396 00000012 t lflush
+8000a51e 00000020 T lock_safety_wdtcon
+8000a4d2 0000002c T lock_wdtcon
+80004958 t loop_csa
+8000a476 00000008 T lseek
+80006eaa 0000000c T malloc
+800099c4 00000018 T memchr
+80005fb8 00000010 T memcpy
+800099dc 00000050 T memmove
+8000735e 00000010 T memset
+8000a47e 00000008 T open
+8000af74 0000000c r p05.2420
+80008b5e 0000011a t quorem
+8000a486 00000008 T read
+70006678 00000004 b run_accounted
+8000a560 0000003c T sbrk
+800074a2 0000000e T setbuf
+800074b0 000000e0 T setvbuf
+80004a8c 00000080 T shared_main
+00001000 A SHARED_STACK_SIZE
+80007614 00000014 T strlen
+80007628 00000038 T strncmp
+80007766 00000012 T strtol
+7000667c 00000004 b sum_buffer
+80000200 000000ae T Trap_0_Handler
+800002ae 000001a4 T Trap_1_Handler
+80000452 00000146 T Trap_2_Handler
+80000598 000001a2 T Trap_3_Handler
+8000073a 000000d8 T Trap_4_Handler
+80000812 00000056 T Trap_5_Handler
+80000868 00000056 T Trap_6_Handler
+800008be 00000084 T Trap_7_Handler
+8000a4fe 00000020 T unlock_safety_wdtcon
+8000a4a6 0000002c T unlock_wdtcon
+800089e4 00000016 T vfprintf
+8000a49e 00000008 T write
+8000ac80 00000010 r zeroes.3918

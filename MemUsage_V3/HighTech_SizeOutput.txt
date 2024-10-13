@@ -1,0 +1,44 @@
+C:\Users\DELL\htc-workspace\tc27x_bsp_example\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\tc27x_bsp_example.elf  :
+section                         size         addr
+.bmhd_0_org                       32   2684354560
+.crt0_boot                        12   2147483680
+.bsp_trap_reset                 2116   2147483904
+.CPU0.bsp_isr_vector_table      2048   2147487744
+.CPU1.bsp_isr_vector_table      2048   2147489792
+.CPU2.bsp_isr_vector_table      2048   2147491840
+.CPU0.bsp_isr_ram_table          128   1880096768
+.CPU1.bsp_isr_ram_table          128   1611661312
+.CPU2.bsp_isr_ram_table          128   1343225856
+.CPU0.csa                      16384   1879048192
+.CPU1.csa                      16384   1610612736
+.CPU2.csa                      16384   1342177280
+.CPU0.stack                     4096   1879064576
+.CPU1.stack                     4096   1610629120
+.CPU2.stack                     4096   1342193664
+.code                          32646   2147493888
+.rodata                         2156   2147526536
+.ctors                            32   2147528692
+.data                           3920   1879068672
+.bss                            6072   1879072592
+.heap                           4096   1879078664
+.CPU0.clear_sec                   40   2147532644
+.CPU0.copy_sec                    72   2147532684
+.CPU1.clear_sec                   16   2147532756
+.CPU1.copy_sec                    36   2147532772
+.CPU2.clear_sec                   16   2147532808
+.CPU2.copy_sec                    36   2147532824
+.crt0_config                     132   2147532860
+.comment                          83            0
+.debug_aranges                  4424            0
+.debug_info                   289242            0
+.debug_abbrev                  34292            0
+.debug_line                    61742            0
+.debug_frame                    5612            0
+.debug_str                      1625            0
+.debug_loc                     46280            0
+.debug_ranges                   3248            0
+.version_info                 520283            0
+.debug_macro                 2723872            0
+Total                        3810101
+
+
