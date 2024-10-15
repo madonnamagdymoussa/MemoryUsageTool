@@ -45,6 +45,7 @@ HighTech_Object_file_paths_Dict = config['HighTech_Object_file_paths']
 HighTech_NM_flags_Dict = config['HighTech_NM_flags']  # Updated key name for NM flags
 HighTech_Size_flags_Dict = config['HighTech_Size_flags']
 HighTech_Strip_flags_Dict = config['HighTech_Strip_flags']
+HighTech_addr2line_flags_Dict = config['HighTech_addr2line_flags']
 #sections_list = config.get('sections', {})  # Default to an empty dict if 'sections' is not found
 
 
@@ -690,6 +691,53 @@ def HighTech_run_Strip_command(specific_flag_key=None):
         return None
 
 
+#####################################################################################################
+def HighTech_run_addr2line_path_command(specific_flag_key=None, Address=None):
+    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        addr2line_command = config['commands']['addr2line_command']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        addr2line_command = config['commands']['addr2line_command']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        strip_flags = " ".join(HighTech_addr2line_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_addr2line_flags_Dict)
+    else:
+        strip_flags = " ".join(HighTech_addr2line_flags_Dict.values())
+
+    addr2line_command = addr2line_command.format(
+        addr2line_Path=HighTech_file_paths_Dict['addr2line_path'],
+        ExecutableName_flag=HighTech_addr2line_flags_Dict['ExecutableName'],
+        binary_file_path=binary_file_path.strip(),
+        flags=strip_flags,
+        HexadecimalAddress=Address,
+        addr2line_Output_txt=HighTech_csv_files_Dict['addr2line_output_file']
+    )
+
+    print("Constructed addr2line Command:", addr2line_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(addr2line_command, shell=True, check=True, capture_output=True, text=True)
+        print("Strip command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+
 def run_readelf_command(config):
     readelf_path = config['file_paths']['readelf_path']
     binary_file_path = config['file_paths']['binary_file_path']
@@ -867,7 +915,10 @@ if __name__ == "__main__":
         HighTech_Run_Objdump_Command(specific_flag_key='Disassemble', binary_file_path=None)
         HighTech_run_nm_command(specific_flag_key='defined_only, print_size')
         HighTech_run_Size_command(specific_flag_key='format')
+        #HighTech_run_addr2line_path_command(specific_flag_key='DisplayFunctionName')
         HighTech_run_Strip_command(specific_flag_key='RemoveDebugging')
+
+        #HighTech_run_Size_command(specific_flag_key='format')
         #HighTech_Object_file_paths_Dict
         #filepath = HighTech_Object_file_paths_Dict["main_Obj_file_path"]
         #HighTech_Run_Objdump_Command(specific_flag_key='SectionHeaders', binary_file_path=filepath)
@@ -924,6 +975,7 @@ if __name__ == "__main__":
         print(sizes)
 
         run_objdump_command(specific_flag_key='disassemble_all')
+        HighTech_run_addr2line_path_command(specific_flag_key='DisplayFunctionName', Address='800032a0')
 
 
 

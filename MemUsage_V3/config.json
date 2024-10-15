@@ -1,10 +1,10 @@
 {
     "sections": [
-        "rodata",
-        "text",
+        "data",
         "bss",
         "vectors",
-        "data"
+        "text",
+        "rodata"
     ],
     "supported_extensions": [
         ".elf",
@@ -58,7 +58,8 @@
         "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
         "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}",
         "size_command": "{size_path} {size_flags} {binary_file_path} > {SizeFile_txt} ",
-        "strip_command": "{strip_path} {strip_flags} {binary_file_path} {strip_output_flag} {stripped_elf}"
+        "strip_command": "{strip_path} {strip_flags} {binary_file_path} {strip_output_flag} {stripped_elf}",
+        "addr2line_command": "{addr2line_Path} {ExecutableName_flag}{binary_file_path} {flags} {HexadecimalAddress} > {addr2line_Output_txt}"
     },
     "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
     "MemoryAllocation": {
@@ -76,7 +77,8 @@
         "objdump_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-objdump.exe",
         "readelf_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-readelf.exe",
         "size_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-size.exe",
-        "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe"
+        "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe",
+        "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
     },
     "HighTech_Object_file_paths": {
         "main_Obj_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\src\\shared_main.o",
@@ -92,7 +94,8 @@
         "assembly_file": "HighTech_Assembly_Output.txt",
         "readelf_output_file": "HighTech_readelf.txt",
         "size_output_file": "HighTech_SizeOutput.txt",
-        "stripped_output_elf_file": "HighTech_StrippedElf.elf"
+        "stripped_output_elf_file": "HighTech_StrippedElf.elf",
+        "addr2line_output_file": "HighTech_addr2line.txt"
     },
     "HighTech_ObjDump_flags": {
         "SourceCodeIntermixedDisassembly": "-S",
@@ -102,6 +105,11 @@
         "DisassembleAll": "-D",
         "SymbolTable": "-t",
         "DynamicSymbolTable": "-T"
+    },
+    "HighTech_addr2line_flags": {
+        "DisplayFunctionName": "-f",
+        "StripDirectoryName": "-s",
+        "ExecutableName": "--exe="
     },
     "HighTech_NM_flags": {
         "defined_only": "--defined-only",

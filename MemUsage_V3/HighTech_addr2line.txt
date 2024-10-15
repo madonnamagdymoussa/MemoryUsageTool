@@ -1,0 +1,2 @@
+bsp_uc_scu_EnablePLL
+C:\Users\DELL\htc-workspace\tc27x_bsp_example\_iROM_TC27X_TRIBOARD_TC2X7_V1_0/../bsp/uc/bsp_uc.c:179
