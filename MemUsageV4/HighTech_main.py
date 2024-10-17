@@ -385,10 +385,127 @@ def print_memory_regions_as_json(memory_regions, file_path):
         json.dump(output_data, json_file, indent=4)
 
 
+def parse_hightech_size_output(size_output_file):
+    # Regular expression to match the section entries
+    section_pattern = re.compile(r"^(\S+)\s+([0-9a-fx]+)\s+([0-9a-fx]+)$", re.IGNORECASE)
+    total_pattern = re.compile(r"^Total\s+([0-9a-fx]+)$", re.IGNORECASE)
+
+    sections = []
+    total_size = None
+
+    try:
+        with open(size_output_file, 'r') as file:
+            lines = file.readlines()
+
+            for line in lines:
+                # Check for a section line using regex
+                match = section_pattern.match(line.strip())
+                if match:
+                    section_name = match.group(1)
+                    section_size = int(match.group(2), 16)  # Convert hex size to integer
+                    section_addr = int(match.group(3), 16)  # Convert hex address to integer
+
+                    sections.append({
+                        "section": section_name,
+                        "size": section_size,
+                        "address": section_addr
+                    })
+
+                # Check for the total size line
+                total_match = total_pattern.match(line.strip())
+                if total_match:
+                    total_size = int(total_match.group(1), 16)  # Convert hex total to integer
+
+        # Debug: Print parsed information
+        print("Parsed Sections:", sections)
+        print("Total Size:", total_size)
+
+        # Optionally, save parsed data to a JSON file
+        parsed_output = {
+            "sections": sections,
+            "total_size": total_size
+        }
+
+        # Save as JSON if needed
+        with open("parsed_size_output.json", "w") as json_file:
+            json.dump(parsed_output, json_file, indent=4)
+
+        return parsed_output
+
+    except FileNotFoundError:
+        print(f"Error: File {size_output_file} not found.")
+        return None
+
+
+def HighTech_Parse_and_Save_Size_Output(size_output_file, output_json_file):
+    # Regular expression to match the section entries
+    section_pattern = re.compile(r"^(\S+)\s+([0-9a-fx]+)\s+([0-9a-fx]+)$", re.IGNORECASE)
+    total_pattern = re.compile(r"^Total\s+([0-9a-fx]+)$", re.IGNORECASE)
+
+    sections = []
+    total_size = None
+
+    try:
+        with open(size_output_file, 'r') as file:
+            lines = file.readlines()
+
+            for line in lines:
+                # Check for a section line using regex
+                match = section_pattern.match(line.strip())
+                if match:
+                    section_name = match.group(1)
+                    section_size_decimal = int(match.group(2), 16)  # Convert hex size to integer
+                    section_size_hexa = match.group(2)  # Convert hex size to integer
+                    section_addr = match.group(3)
+                    #section_addr = int(match.group(3), 16)  # Convert hex address to integer
+
+                    sections.append({
+                        "SectionName": section_name,
+                        "SectionSize_Decimal_Bytes": section_size_decimal,
+                        "SectionSize_Hexa_Bytes": section_size_hexa,
+                        "SectionAddress": section_addr
+                    })
+
+                # Check for the total size line
+                total_match = total_pattern.match(line.strip())
+                if total_match:
+                    total_size_decimal = int(total_match.group(1), 16)  # Convert hex total to integer
+                    total_size_hexa = total_match.group(1)
+
+        # Prepare parsed data
+        parsed_output = {
+            "HighTechSections": sections,
+            "total_size_decimal_Bytes": total_size_decimal,
+            "total_size_hexa_Bytes": total_size_hexa
+        }
+
+        # Load existing data from the output JSON file if it exists
+        try:
+            with open(output_json_file, "r") as json_file:
+                existing_data = json.load(json_file)
+        except (FileNotFoundError, json.JSONDecodeError):
+            existing_data = {}
+
+        # Update the existing data with parsed output
+        existing_data.update(parsed_output)
+
+        # Save the updated data back to the JSON file
+        with open(output_json_file, "w") as json_file:
+            json.dump(existing_data, json_file, indent=4)
+
+        print(f"Parsed sections added to {output_json_file}")
+        return existing_data
+
+    except FileNotFoundError:
+        print(f"Error: File {size_output_file} not found.")
+        return None
+
+
 # Main program execution
 if __name__ == "__main__":
     try:
 
+        Config_file_path = "config.json"
         HighTech_Run_Objdump_Command(specific_flag_key='Disassemble', binary_file_path=None)
         HighTech_run_nm_command(specific_flag_key='defined_only, print_size')
         HighTech_run_Size_command(specific_flag_key='format, SizeDecimal')
@@ -405,8 +522,8 @@ if __name__ == "__main__":
         if memory_block_content:
             # Step 2: Parse the extracted MEMORY block
             parsed_memory = parse_memory_regions(memory_block_content)
-            output_file_path = "config.json"
-            print_memory_regions_as_json(parsed_memory, output_file_path)
+
+            print_memory_regions_as_json(parsed_memory, Config_file_path)
             # Print the parsed memory regions
             for region in parsed_memory:
                 print(f"Name: {region['name']}, Attributes: {region['attributes']}, "
@@ -414,6 +531,8 @@ if __name__ == "__main__":
         else:
             print("No MEMORY block found in the linker script.")
 
+        size_output_file = HighTech_csv_files_Dict['size_output_file']
+        parsed_data = HighTech_Parse_and_Save_Size_Output(size_output_file, Config_file_path)
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")
