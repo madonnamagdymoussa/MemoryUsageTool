@@ -1,11 +1,4 @@
 {
-    "sections": [
-        "data",
-        "vectors",
-        "bss",
-        "text",
-        "rodata"
-    ],
     "supported_extensions": [
         ".elf",
         ".out"
@@ -211,5 +204,231 @@
             "length": "0x8000",
             "end_address": "0x90008000"
         }
-    ]
+    ],
+    "HighTechSections": [
+        {
+            "SectionName": ".bmhd_0_org",
+            "SectionSize_Decimal_Bytes": 32,
+            "SectionSize_Hexa_Bytes": "0x20",
+            "SectionAddress": "0xa0000000"
+        },
+        {
+            "SectionName": ".crt0_boot",
+            "SectionSize_Decimal_Bytes": 12,
+            "SectionSize_Hexa_Bytes": "0xc",
+            "SectionAddress": "0x80000020"
+        },
+        {
+            "SectionName": ".bsp_trap_reset",
+            "SectionSize_Decimal_Bytes": 596,
+            "SectionSize_Hexa_Bytes": "0x254",
+            "SectionAddress": "0x80000100"
+        },
+        {
+            "SectionName": ".CPU0.bsp_isr_vector_table",
+            "SectionSize_Decimal_Bytes": 2048,
+            "SectionSize_Hexa_Bytes": "0x800",
+            "SectionAddress": "0x80000800"
+        },
+        {
+            "SectionName": ".CPU1.bsp_isr_vector_table",
+            "SectionSize_Decimal_Bytes": 2048,
+            "SectionSize_Hexa_Bytes": "0x800",
+            "SectionAddress": "0x80001000"
+        },
+        {
+            "SectionName": ".CPU2.bsp_isr_vector_table",
+            "SectionSize_Decimal_Bytes": 2048,
+            "SectionSize_Hexa_Bytes": "0x800",
+            "SectionAddress": "0x80001800"
+        },
+        {
+            "SectionName": ".CPU0.bsp_isr_ram_table",
+            "SectionSize_Decimal_Bytes": 128,
+            "SectionSize_Hexa_Bytes": "0x80",
+            "SectionAddress": "0x70100000"
+        },
+        {
+            "SectionName": ".CPU1.bsp_isr_ram_table",
+            "SectionSize_Decimal_Bytes": 128,
+            "SectionSize_Hexa_Bytes": "0x80",
+            "SectionAddress": "0x60100000"
+        },
+        {
+            "SectionName": ".CPU2.bsp_isr_ram_table",
+            "SectionSize_Decimal_Bytes": 128,
+            "SectionSize_Hexa_Bytes": "0x80",
+            "SectionAddress": "0x50100000"
+        },
+        {
+            "SectionName": ".CPU0.csa",
+            "SectionSize_Decimal_Bytes": 16384,
+            "SectionSize_Hexa_Bytes": "0x4000",
+            "SectionAddress": "0x70000000"
+        },
+        {
+            "SectionName": ".CPU1.csa",
+            "SectionSize_Decimal_Bytes": 16384,
+            "SectionSize_Hexa_Bytes": "0x4000",
+            "SectionAddress": "0x60000000"
+        },
+        {
+            "SectionName": ".CPU2.csa",
+            "SectionSize_Decimal_Bytes": 16384,
+            "SectionSize_Hexa_Bytes": "0x4000",
+            "SectionAddress": "0x50000000"
+        },
+        {
+            "SectionName": ".CPU0.stack",
+            "SectionSize_Decimal_Bytes": 4096,
+            "SectionSize_Hexa_Bytes": "0x1000",
+            "SectionAddress": "0x70004000"
+        },
+        {
+            "SectionName": ".CPU1.stack",
+            "SectionSize_Decimal_Bytes": 4096,
+            "SectionSize_Hexa_Bytes": "0x1000",
+            "SectionAddress": "0x60004000"
+        },
+        {
+            "SectionName": ".CPU2.stack",
+            "SectionSize_Decimal_Bytes": 4096,
+            "SectionSize_Hexa_Bytes": "0x1000",
+            "SectionAddress": "0x50004000"
+        },
+        {
+            "SectionName": ".code",
+            "SectionSize_Decimal_Bytes": 4422,
+            "SectionSize_Hexa_Bytes": "0x1146",
+            "SectionAddress": "0x80002000"
+        },
+        {
+            "SectionName": ".rodata",
+            "SectionSize_Decimal_Bytes": 64,
+            "SectionSize_Hexa_Bytes": "0x40",
+            "SectionAddress": "0x80003148"
+        },
+        {
+            "SectionName": ".ctors",
+            "SectionSize_Decimal_Bytes": 8,
+            "SectionSize_Hexa_Bytes": "0x8",
+            "SectionAddress": "0x80003188"
+        },
+        {
+            "SectionName": ".heap",
+            "SectionSize_Decimal_Bytes": 4096,
+            "SectionSize_Hexa_Bytes": "0x1000",
+            "SectionAddress": "0x70005000"
+        },
+        {
+            "SectionName": ".CPU0.clear_sec",
+            "SectionSize_Decimal_Bytes": 40,
+            "SectionSize_Hexa_Bytes": "0x28",
+            "SectionAddress": "0x80003190"
+        },
+        {
+            "SectionName": ".CPU0.copy_sec",
+            "SectionSize_Decimal_Bytes": 72,
+            "SectionSize_Hexa_Bytes": "0x48",
+            "SectionAddress": "0x800031b8"
+        },
+        {
+            "SectionName": ".CPU1.clear_sec",
+            "SectionSize_Decimal_Bytes": 16,
+            "SectionSize_Hexa_Bytes": "0x10",
+            "SectionAddress": "0x80003200"
+        },
+        {
+            "SectionName": ".CPU1.copy_sec",
+            "SectionSize_Decimal_Bytes": 36,
+            "SectionSize_Hexa_Bytes": "0x24",
+            "SectionAddress": "0x80003210"
+        },
+        {
+            "SectionName": ".CPU2.clear_sec",
+            "SectionSize_Decimal_Bytes": 16,
+            "SectionSize_Hexa_Bytes": "0x10",
+            "SectionAddress": "0x80003234"
+        },
+        {
+            "SectionName": ".CPU2.copy_sec",
+            "SectionSize_Decimal_Bytes": 36,
+            "SectionSize_Hexa_Bytes": "0x24",
+            "SectionAddress": "0x80003244"
+        },
+        {
+            "SectionName": ".crt0_config",
+            "SectionSize_Decimal_Bytes": 132,
+            "SectionSize_Hexa_Bytes": "0x84",
+            "SectionAddress": "0x80003268"
+        },
+        {
+            "SectionName": ".comment",
+            "SectionSize_Decimal_Bytes": 83,
+            "SectionSize_Hexa_Bytes": "0x53",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_aranges",
+            "SectionSize_Decimal_Bytes": 1080,
+            "SectionSize_Hexa_Bytes": "0x438",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_info",
+            "SectionSize_Decimal_Bytes": 69488,
+            "SectionSize_Hexa_Bytes": "0x10f70",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_abbrev",
+            "SectionSize_Decimal_Bytes": 2433,
+            "SectionSize_Hexa_Bytes": "0x981",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_line",
+            "SectionSize_Decimal_Bytes": 26408,
+            "SectionSize_Hexa_Bytes": "0x6728",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_frame",
+            "SectionSize_Decimal_Bytes": 1400,
+            "SectionSize_Hexa_Bytes": "0x578",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_str",
+            "SectionSize_Decimal_Bytes": 654,
+            "SectionSize_Hexa_Bytes": "0x28e",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_loc",
+            "SectionSize_Decimal_Bytes": 212,
+            "SectionSize_Hexa_Bytes": "0xd4",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_ranges",
+            "SectionSize_Decimal_Bytes": 528,
+            "SectionSize_Hexa_Bytes": "0x210",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".version_info",
+            "SectionSize_Decimal_Bytes": 71713,
+            "SectionSize_Hexa_Bytes": "0x11821",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_macro",
+            "SectionSize_Decimal_Bytes": 2723872,
+            "SectionSize_Hexa_Bytes": "0x299020",
+            "SectionAddress": "0x0"
+        }
+    ],
+    "total_size_decimal_Bytes": 2975417,
+    "total_size_hexa_Bytes": "0x2d66b9"
 }
