@@ -1,0 +1,42 @@
+C:\Users\DELL\htc-workspace\tc27x_bsp_example\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\tc27x_bsp_example.elf  :
+section                          size         addr
+.bmhd_0_org                      0x20   0xa0000000
+.crt0_boot                        0xc   0x80000020
+.bsp_trap_reset                 0x254   0x80000100
+.CPU0.bsp_isr_vector_table      0x800   0x80000800
+.CPU1.bsp_isr_vector_table      0x800   0x80001000
+.CPU2.bsp_isr_vector_table      0x800   0x80001800
+.CPU0.bsp_isr_ram_table          0x80   0x70100000
+.CPU1.bsp_isr_ram_table          0x80   0x60100000
+.CPU2.bsp_isr_ram_table          0x80   0x50100000
+.CPU0.csa                      0x4000   0x70000000
+.CPU1.csa                      0x4000   0x60000000
+.CPU2.csa                      0x4000   0x50000000
+.CPU0.stack                    0x1000   0x70004000
+.CPU1.stack                    0x1000   0x60004000
+.CPU2.stack                    0x1000   0x50004000
+.code                          0x1146   0x80002000
+.rodata                          0x40   0x80003148
+.ctors                            0x8   0x80003188
+.heap                          0x1000   0x70005000
+.CPU0.clear_sec                  0x28   0x80003190
+.CPU0.copy_sec                   0x48   0x800031b8
+.CPU1.clear_sec                  0x10   0x80003200
+.CPU1.copy_sec                   0x24   0x80003210
+.CPU2.clear_sec                  0x10   0x80003234
+.CPU2.copy_sec                   0x24   0x80003244
+.crt0_config                     0x84   0x80003268
+.comment                         0x53          0x0
+.debug_aranges                  0x438          0x0
+.debug_info                   0x10f70          0x0
+.debug_abbrev                   0x981          0x0
+.debug_line                    0x6728          0x0
+.debug_frame                    0x578          0x0
+.debug_str                      0x28e          0x0
+.debug_loc                       0xd4          0x0
+.debug_ranges                   0x210          0x0
+.version_info                 0x11821          0x0
+.debug_macro                 0x299020          0x0
+Total                        0x2d66b9
+
+

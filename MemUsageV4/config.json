@@ -1,0 +1,215 @@
+{
+    "sections": [
+        "data",
+        "vectors",
+        "bss",
+        "text",
+        "rodata"
+    ],
+    "supported_extensions": [
+        ".elf",
+        ".out"
+    ],
+    "file_paths": {
+        "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
+        "elf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
+        "objdump_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objdump.exe",
+        "readelf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-readelf.exe",
+        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript",
+        "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt",
+        "size_utility_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-size.exe",
+        "strip_utility_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-strip.exe",
+        "addr2line_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-addr2line.exe"
+    },
+    "NM_flags": {
+        "defined_only": "--defined-only",
+        "print_size": "--print-size"
+    },
+    "ObjDump_flags": {
+        "disassemble_all": "-D"
+    },
+    "Readelf_flags": {
+        "section_headers": "-S"
+    },
+    "csv_file_paths": {
+        "map_file_parsing_csv": "Mapfile_Parsing.csv",
+        "nm_objects_file": "nm_Objects.txt",
+        "elf_objects_file": "elf_Objects.csv",
+        "linked_memory_file": "Linked_Memory.csv",
+        "mismatch_memory_file": "Linked_Mismatch.csv",
+        "memory_usage_file": "Memory_consumption.csv",
+        "assembly_file": "Assembly_Output.txt",
+        "readelf_output_file": "readelf.txt"
+    },
+    "memory_configuration": {
+        "rom_memory_size_KB": 524288,
+        "ram_memory_size_KB": 524288
+    },
+    "regex_templates": {
+        "entry_regex": "{section_pattern}\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
+        "multi_line_name_regex": "{section_pattern}$",
+        "continued_line_regex": "^\\s+0x[0-9a-f]+\\s+0x([0-9a-f]+)\\s+(.*)",
+        "continued_name_regex": "^\\s+0x[0-9a-f]+\\s+(.*)",
+        "nm_regex": "^([0-9a-f]+)\\s+([0-9a-f]+)\\s+([TtDdbBRr])\\s+(.*)$",
+        "size_extraction_regex": "(\\d+)\\(0x[0-9A-Fa-f]+\\)"
+    },
+    "commands": {
+        "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
+        "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}",
+        "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
+        "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}",
+        "size_command": "{size_path} {size_flags} {binary_file_path} > {SizeFile_txt} ",
+        "strip_command": "{strip_path} {strip_flags} {binary_file_path} {strip_output_flag} {stripped_elf}",
+        "addr2line_command": "{addr2line_Path} {ExecutableName_flag}{binary_file_path} {flags} {HexadecimalAddress} > {addr2line_Output_txt}"
+    },
+    "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
+    "MemoryAllocation": {
+        "vectors": "ROM",
+        "rodata": "ROM",
+        "text": "ROM",
+        "data": "RAM",
+        "bss": "RAM"
+    },
+    "HighTech_file_paths": {
+        "map_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.map",
+        "elf_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
+        "linkerScript_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\ld\\tc27x_memory.ld",
+        "binary_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
+        "nm_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-nm.exe",
+        "objdump_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-objdump.exe",
+        "readelf_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-readelf.exe",
+        "size_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-size.exe",
+        "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe",
+        "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+    },
+    "HighTech_Object_file_paths": {
+        "main_Obj_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\src\\shared_main.o",
+        "tc2x_crt0_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\crt0\\tc2x_crt0.o"
+    },
+    "HighTech_csv_file_paths": {
+        "map_file_parsing_csv": "HighTech_MapFile_Parsing.csv",
+        "nm_objects_file": "HighTech_nm_Objects.txt",
+        "elf_objects_file": "HighTech_elf_Objects.csv",
+        "linked_memory_file": "HighTech_Linked_Memory.csv",
+        "mismatch_memory_file": "HighTech_Linked_Mismatch.csv",
+        "memory_usage_file": "HighTech_Memory_consumption.csv",
+        "assembly_file": "HighTech_Assembly_Output.txt",
+        "readelf_output_file": "HighTech_readelf.txt",
+        "size_output_file": "HighTech_SizeOutput.txt",
+        "stripped_output_elf_file": "HighTech_StrippedElf.elf",
+        "addr2line_output_file": "HighTech_addr2line.txt"
+    },
+    "HighTech_ObjDump_flags": {
+        "SourceCodeIntermixedDisassembly": "-S",
+        "SectionHeaders": "-h",
+        "All_Headers": "-x",
+        "Disassemble": "-d",
+        "DisassembleAll": "-D",
+        "SymbolTable": "-t",
+        "DynamicSymbolTable": "-T"
+    },
+    "HighTech_addr2line_flags": {
+        "DisplayFunctionName": "-f",
+        "StripDirectoryName": "-s",
+        "ExecutableName": "--exe="
+    },
+    "HighTech_NM_flags": {
+        "defined_only": "--defined-only",
+        "print_size": "--print-size"
+    },
+    "HighTech_Size_flags": {
+        "format": "-A",
+        "SizeDecimal": "-x"
+    },
+    "HighTech_Strip_flags": {
+        "RemoveDebugging": "-g",
+        "RemoveUnneededSymbols": "--strip-unneeded",
+        "OutputFile": "-o"
+    },
+    "HighTech_supported_extensions": [
+        ".elf",
+        ".out",
+        ".o"
+    ],
+    "HighTech_sections": [
+        "bss",
+        "text",
+        "data",
+        "rodata",
+        "vectors"
+    ],
+    "HighTechMemoryRegions": [
+        {
+            "name": "int_flash0",
+            "attributes": "rx",
+            "origin": "0x80000000",
+            "length": "0x200000",
+            "end_address": "0x80200000"
+        },
+        {
+            "name": "int_flash1",
+            "attributes": "rx",
+            "origin": "0x80200000",
+            "length": "0x200000",
+            "end_address": "0x80400000"
+        },
+        {
+            "name": "pspr_cpu0",
+            "attributes": "rx",
+            "origin": "0x70100000",
+            "length": "0x6000",
+            "end_address": "0x70106000"
+        },
+        {
+            "name": "pspr_cpu1",
+            "attributes": "rx",
+            "origin": "0x60100000",
+            "length": "0x8000",
+            "end_address": "0x60108000"
+        },
+        {
+            "name": "pspr_cpu2",
+            "attributes": "rx",
+            "origin": "0x50100000",
+            "length": "0x8000",
+            "end_address": "0x50108000"
+        },
+        {
+            "name": "dspr_cpu0",
+            "attributes": "w!x",
+            "origin": "0x70000000",
+            "length": "0x1c000",
+            "end_address": "0x7001c000"
+        },
+        {
+            "name": "dspr_cpu1",
+            "attributes": "w!x",
+            "origin": "0x60000000",
+            "length": "0x1e000",
+            "end_address": "0x6001e000"
+        },
+        {
+            "name": "dspr_cpu2",
+            "attributes": "w!x",
+            "origin": "0x50000000",
+            "length": "0x1e000",
+            "end_address": "0x5001e000"
+        },
+        {
+            "name": "lmu",
+            "attributes": "wx",
+            "origin": "0xB0000000",
+            "length": "0x8000",
+            "end_address": "0xb0008000"
+        },
+        {
+            "name": "lmu_cached",
+            "attributes": "wx",
+            "origin": "0x90000000",
+            "length": "0x8000",
+            "end_address": "0x90008000"
+        }
+    ]
+}

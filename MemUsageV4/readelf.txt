@@ -1,0 +1,5 @@
+vectors
+rodata
+text
+data
+bss
