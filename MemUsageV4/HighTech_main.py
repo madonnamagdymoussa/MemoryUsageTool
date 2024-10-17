@@ -8,7 +8,7 @@ import subprocess
 import os
 
 
-############################## Load Configurations From Json file #########################################
+############################## Functions for Json file #########################################
 def load_config(file_path):
     """Load configuration from a JSON file."""
     if not os.path.exists(file_path):
@@ -16,6 +16,11 @@ def load_config(file_path):
 
     with open(file_path, 'r') as file:
         return json.load(file)
+
+# Save the updated JSON data back to the file
+def save_json(file_path, data):
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
 
 
 # Load the configuration
@@ -385,65 +390,14 @@ def print_memory_regions_as_json(memory_regions, file_path):
         json.dump(output_data, json_file, indent=4)
 
 
-def parse_hightech_size_output(size_output_file):
-    # Regular expression to match the section entries
-    section_pattern = re.compile(r"^(\S+)\s+([0-9a-fx]+)\s+([0-9a-fx]+)$", re.IGNORECASE)
-    total_pattern = re.compile(r"^Total\s+([0-9a-fx]+)$", re.IGNORECASE)
-
-    sections = []
-    total_size = None
-
-    try:
-        with open(size_output_file, 'r') as file:
-            lines = file.readlines()
-
-            for line in lines:
-                # Check for a section line using regex
-                match = section_pattern.match(line.strip())
-                if match:
-                    section_name = match.group(1)
-                    section_size = int(match.group(2), 16)  # Convert hex size to integer
-                    section_addr = int(match.group(3), 16)  # Convert hex address to integer
-
-                    sections.append({
-                        "section": section_name,
-                        "size": section_size,
-                        "address": section_addr
-                    })
-
-                # Check for the total size line
-                total_match = total_pattern.match(line.strip())
-                if total_match:
-                    total_size = int(total_match.group(1), 16)  # Convert hex total to integer
-
-        # Debug: Print parsed information
-        print("Parsed Sections:", sections)
-        print("Total Size:", total_size)
-
-        # Optionally, save parsed data to a JSON file
-        parsed_output = {
-            "sections": sections,
-            "total_size": total_size
-        }
-
-        # Save as JSON if needed
-        with open("parsed_size_output.json", "w") as json_file:
-            json.dump(parsed_output, json_file, indent=4)
-
-        return parsed_output
-
-    except FileNotFoundError:
-        print(f"Error: File {size_output_file} not found.")
-        return None
-
-
 def HighTech_Parse_and_Save_Size_Output(size_output_file, output_json_file):
     # Regular expression to match the section entries
     section_pattern = re.compile(r"^(\S+)\s+([0-9a-fx]+)\s+([0-9a-fx]+)$", re.IGNORECASE)
     total_pattern = re.compile(r"^Total\s+([0-9a-fx]+)$", re.IGNORECASE)
 
     sections = []
-    total_size = None
+    total_size_decimal = None
+    total_size_hexa = None
 
     try:
         with open(size_output_file, 'r') as file:
@@ -455,15 +409,15 @@ def HighTech_Parse_and_Save_Size_Output(size_output_file, output_json_file):
                 if match:
                     section_name = match.group(1)
                     section_size_decimal = int(match.group(2), 16)  # Convert hex size to integer
-                    section_size_hexa = match.group(2)  # Convert hex size to integer
+                    section_size_hexa = match.group(2)  # Keep hex size as string
                     section_addr = match.group(3)
-                    #section_addr = int(match.group(3), 16)  # Convert hex address to integer
 
                     sections.append({
                         "SectionName": section_name,
                         "SectionSize_Decimal_Bytes": section_size_decimal,
                         "SectionSize_Hexa_Bytes": section_size_hexa,
-                        "SectionAddress": section_addr
+                        "SectionAddress": section_addr,
+                        "MemoryType": None
                     })
 
                 # Check for the total size line
@@ -499,6 +453,39 @@ def HighTech_Parse_and_Save_Size_Output(size_output_file, output_json_file):
     except FileNotFoundError:
         print(f"Error: File {size_output_file} not found.")
         return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+
+def add_memory_type_to_sections(high_tech_sections, high_tech_memory_regions):
+    # Convert SectionAddress from hex string to integer for comparison
+    for section in high_tech_sections:
+        try:
+            section_address = int(section.get("SectionAddress", "0"), 16)
+
+            # Loop through memory regions to find the matching range
+            memory_type_found = False
+            for region in high_tech_memory_regions:
+                origin = int(region.get("origin", "0"), 16)
+                end_address = int(region.get("end_address", "0"), 16)
+
+                # Check if the section address is within the range of the memory region
+                if origin <= section_address <= end_address:
+                    # Add the memory type to the section dictionary
+                    section["MemoryType"] = region.get("name", "Unknown")
+                    memory_type_found = True
+                    break  # Stop searching once a match is found
+
+            # If no matching region is found, set MemoryType to None
+            if not memory_type_found:
+                section["MemoryType"] = "None"
+
+        except ValueError as e:
+            print(f"Error processing section {section.get('SectionName', 'Unknown')}: {e}")
+            section["MemoryType"] = "Error"
+
+    return high_tech_sections
 
 
 # Main program execution
@@ -533,6 +520,19 @@ if __name__ == "__main__":
 
         size_output_file = HighTech_csv_files_Dict['size_output_file']
         parsed_data = HighTech_Parse_and_Save_Size_Output(size_output_file, Config_file_path)
+
+        high_tech_sections = config.get("HighTechSections", [])
+        high_tech_memory_regions = config.get("HighTechMemoryRegions", [])
+        # Call the function to add MemoryType to each section
+        updated_sections = add_memory_type_to_sections(high_tech_sections, high_tech_memory_regions)
+
+        # Print the updated sections
+        print(updated_sections)
+
+        config["HighTechSections"] = updated_sections
+        save_json(Config_file_path, config)
+
+        print("JSON file updated successfully!")
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")
