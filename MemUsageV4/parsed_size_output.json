@@ -1,0 +1,190 @@
+{
+    "sections": [
+        {
+            "section": ".bmhd_0_org",
+            "size": 32,
+            "address": 2684354560
+        },
+        {
+            "section": ".crt0_boot",
+            "size": 12,
+            "address": 2147483680
+        },
+        {
+            "section": ".bsp_trap_reset",
+            "size": 596,
+            "address": 2147483904
+        },
+        {
+            "section": ".CPU0.bsp_isr_vector_table",
+            "size": 2048,
+            "address": 2147485696
+        },
+        {
+            "section": ".CPU1.bsp_isr_vector_table",
+            "size": 2048,
+            "address": 2147487744
+        },
+        {
+            "section": ".CPU2.bsp_isr_vector_table",
+            "size": 2048,
+            "address": 2147489792
+        },
+        {
+            "section": ".CPU0.bsp_isr_ram_table",
+            "size": 128,
+            "address": 1880096768
+        },
+        {
+            "section": ".CPU1.bsp_isr_ram_table",
+            "size": 128,
+            "address": 1611661312
+        },
+        {
+            "section": ".CPU2.bsp_isr_ram_table",
+            "size": 128,
+            "address": 1343225856
+        },
+        {
+            "section": ".CPU0.csa",
+            "size": 16384,
+            "address": 1879048192
+        },
+        {
+            "section": ".CPU1.csa",
+            "size": 16384,
+            "address": 1610612736
+        },
+        {
+            "section": ".CPU2.csa",
+            "size": 16384,
+            "address": 1342177280
+        },
+        {
+            "section": ".CPU0.stack",
+            "size": 4096,
+            "address": 1879064576
+        },
+        {
+            "section": ".CPU1.stack",
+            "size": 4096,
+            "address": 1610629120
+        },
+        {
+            "section": ".CPU2.stack",
+            "size": 4096,
+            "address": 1342193664
+        },
+        {
+            "section": ".code",
+            "size": 4422,
+            "address": 2147491840
+        },
+        {
+            "section": ".rodata",
+            "size": 64,
+            "address": 2147496264
+        },
+        {
+            "section": ".ctors",
+            "size": 8,
+            "address": 2147496328
+        },
+        {
+            "section": ".heap",
+            "size": 4096,
+            "address": 1879068672
+        },
+        {
+            "section": ".CPU0.clear_sec",
+            "size": 40,
+            "address": 2147496336
+        },
+        {
+            "section": ".CPU0.copy_sec",
+            "size": 72,
+            "address": 2147496376
+        },
+        {
+            "section": ".CPU1.clear_sec",
+            "size": 16,
+            "address": 2147496448
+        },
+        {
+            "section": ".CPU1.copy_sec",
+            "size": 36,
+            "address": 2147496464
+        },
+        {
+            "section": ".CPU2.clear_sec",
+            "size": 16,
+            "address": 2147496500
+        },
+        {
+            "section": ".CPU2.copy_sec",
+            "size": 36,
+            "address": 2147496516
+        },
+        {
+            "section": ".crt0_config",
+            "size": 132,
+            "address": 2147496552
+        },
+        {
+            "section": ".comment",
+            "size": 83,
+            "address": 0
+        },
+        {
+            "section": ".debug_aranges",
+            "size": 1080,
+            "address": 0
+        },
+        {
+            "section": ".debug_info",
+            "size": 69488,
+            "address": 0
+        },
+        {
+            "section": ".debug_abbrev",
+            "size": 2433,
+            "address": 0
+        },
+        {
+            "section": ".debug_line",
+            "size": 26408,
+            "address": 0
+        },
+        {
+            "section": ".debug_frame",
+            "size": 1400,
+            "address": 0
+        },
+        {
+            "section": ".debug_str",
+            "size": 654,
+            "address": 0
+        },
+        {
+            "section": ".debug_loc",
+            "size": 212,
+            "address": 0
+        },
+        {
+            "section": ".debug_ranges",
+            "size": 528,
+            "address": 0
+        },
+        {
+            "section": ".version_info",
+            "size": 71713,
+            "address": 0
+        },
+        {
+            "section": ".debug_macro",
+            "size": 2723872,
+            "address": 0
+        }
+    ],
+    "total_size": 2975417
+}

@@ -290,6 +290,46 @@ def HighTech_run_addr2line_path_command(specific_flag_key=None, Address=None):
         return None
 
 
+
+###########################################################################################################
+#                    Functions For processing NM outputs                                                  #
+###########################################################################################################
+def HighTech_parse_nm_output(nm_objects_txt, elf_objects_csv):
+    # Debug print to check the file paths
+    print(f"Reading from: {nm_objects_txt}")
+    print(f"Writing to: {elf_objects_csv}")
+
+    try:
+
+        with open(nm_objects_txt, 'r') as infile, open(elf_objects_csv, 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow(['Physical_Address', 'Size', 'Type', 'Object_Name'])  # Write header
+            for line in infile:
+                # Assuming nm output format is: <address> <size> <symbol> <object file>
+                # Example: 0x08000000 0x00000400 my_function.o
+                parts = line.split()
+
+                if len(parts) < 4:
+                    continue  # Skip lines that don't have enough parts
+
+                physical_address = parts[0]  # Address
+                size = parts[1]  # Size
+                object_name = parts[2]  # Symbol
+                object_file = parts[3]  # Object File
+
+                # Write to CSV
+                #csv_writer.writerow([physical_address, size, 'N/A', object_name])  # Placeholder for Type as 'N/A'
+                csv_writer.writerow([physical_address, size, object_name, object_file])  # Placeholder for Type as 'N/A'
+                print(physical_address, size, object_name, object_file)
+            print("NM output processed and saved to CSV successfully.")
+
+    except PermissionError as e:
+        print(f"Permission error: {e}")
+    except FileNotFoundError as e:
+        print(f"File not found: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 ###########################################################################################################
 #                    Functions For calculating memory usage for each section                              #
 ###########################################################################################################
@@ -549,6 +589,51 @@ def add_consumed_size_to_memory_regions(high_tech_sections, high_tech_memory_reg
 
     return high_tech_memory_regions
 
+
+def create_memory_consumption_csv(high_tech_sections, high_tech_memory_regions,
+                                  filename="HighTech_Memory_consumption.csv"):
+    # Open the CSV file in write mode
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        # Write the first table for HighTechSections
+        writer.writerow(["Section Name", "Section Size in Bytes (Decimal Format)",
+                         "Section Size in Bytes (Hexadecimal Format)", "Section Address",
+                         "Memory Name", "Consumed Percentage from MemoryType"])
+
+        for section in high_tech_sections:
+            writer.writerow([
+                section.get("SectionName", "N/A"),
+                section.get("SectionSize_Decimal_Bytes", "N/A"),
+                section.get("SectionSize_Hexa_Bytes", "N/A"),
+                section.get("SectionAddress", "N/A"),
+                section.get("MemoryType", "N/A"),
+                section.get("consumed_percentage_MemType", "N/A")
+            ])
+
+        # Leave a blank line between the two tables
+        writer.writerow([])
+
+        # Write the second table for HighTechMemoryRegions
+        writer.writerow(["Memory Name", "Attributes", "Origin Address",
+                         "Length in Hexa Bytes", "Length in Decimal Bytes",
+                         "End Address", "Consumed Size", "Percentage Consumed Size"])
+
+        for region in high_tech_memory_regions:
+            writer.writerow([
+                region.get("name", "N/A"),
+                region.get("attributes", "N/A"),
+                region.get("origin", "N/A"),
+                region.get("length_hexa_bytes", "N/A"),
+                region.get("length_decimal_bytes", "N/A"),
+                region.get("end_address", "N/A"),
+                region.get("Consumed_Size", "N/A"),
+                region.get("PercentageConsumedSize", "N/A")
+            ])
+
+    print(f"Memory consumption details have been written to {filename}.")
+
+
 # Main program execution
 if __name__ == "__main__":
     try:
@@ -605,6 +690,12 @@ if __name__ == "__main__":
         config["HighTechMemoryRegions"] = updated_memory_regions
         save_json(Config_file_path, config)
 
+        create_memory_consumption_csv(high_tech_sections, high_tech_memory_regions,
+                                      filename="HighTech_Memory_consumption.csv")
+        ########################### End of Calculating Memory Usage ###########################
+
+        ########################### Processing NM Outputs ###########################
+        HighTech_parse_nm_output(HighTech_csv_files_Dict['nm_objects_file'], HighTech_csv_files_Dict['elf_objects_file'])
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")

@@ -4,14 +4,6 @@ import csv
 import subprocess
 import os
 
-'''
-# Load configuration from JSON file
-def load_config(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
-'''
-
-
 def load_config(file_path):
     """Load configuration from a JSON file."""
     if not os.path.exists(file_path):
@@ -736,6 +728,10 @@ def HighTech_run_addr2line_path_command(specific_flag_key=None, Address=None):
         print(f"Command failed with return code {e.returncode}")
         print(f"Error output: {e.stderr}")
         return None
+
+
+
+
 
 
 def run_readelf_command(config):
