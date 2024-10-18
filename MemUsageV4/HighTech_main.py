@@ -521,6 +521,34 @@ def add_consumed_percentage_to_sections(high_tech_sections, high_tech_memory_reg
     return high_tech_sections
 
 
+def add_consumed_size_to_memory_regions(high_tech_sections, high_tech_memory_regions):
+    # Initialize consumed size for each memory region
+    for region in high_tech_memory_regions:
+        region["Consumed_Size"] = 0
+
+    # Sum up the section sizes based on their MemoryType
+    for section in high_tech_sections:
+        memory_type = section.get("MemoryType")
+        section_size = section.get("SectionSize_Decimal_Bytes", 0)
+
+        # Find the corresponding memory region and add the section size
+        for region in high_tech_memory_regions:
+            if region.get("name") == memory_type:
+                region["Consumed_Size"] += section_size
+                break
+
+    # Calculate the percentage consumed for each memory region
+    for region in high_tech_memory_regions:
+        total_memory_size = region.get("length_decimal_bytes", 0)
+        consumed_size = region.get("Consumed_Size", 0)
+
+        if total_memory_size > 0:
+            region["PercentageConsumedSize"] = (consumed_size / total_memory_size) * 100
+        else:
+            region["PercentageConsumedSize"] = 0.0  # Handle edge case where total size is zero
+
+    return high_tech_memory_regions
+
 # Main program execution
 if __name__ == "__main__":
     try:
@@ -571,6 +599,12 @@ if __name__ == "__main__":
         updated_sections = add_consumed_percentage_to_sections(high_tech_sections, high_tech_memory_regions)
         config["HighTechSections"] = updated_sections
         save_json(Config_file_path, config)
+
+        # Add consumed size and percentage
+        updated_memory_regions = add_consumed_size_to_memory_regions(high_tech_sections, high_tech_memory_regions)
+        config["HighTechMemoryRegions"] = updated_memory_regions
+        save_json(Config_file_path, config)
+
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")

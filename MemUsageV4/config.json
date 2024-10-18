@@ -133,7 +133,9 @@
             "origin": "0x80000000",
             "length_hexa_bytes": "0x200000",
             "length_decimal_bytes": 2097152,
-            "end_address": "0x80200000"
+            "end_address": "0x80200000",
+            "Consumed_Size": 11594,
+            "PercentageConsumedSize": 0.5528450012207031
         },
         {
             "name": "int_flash1",
@@ -141,7 +143,9 @@
             "origin": "0x80200000",
             "length_hexa_bytes": "0x200000",
             "length_decimal_bytes": 2097152,
-            "end_address": "0x80400000"
+            "end_address": "0x80400000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "pspr_cpu0",
@@ -149,7 +153,9 @@
             "origin": "0x70100000",
             "length_hexa_bytes": "0x6000",
             "length_decimal_bytes": 24576,
-            "end_address": "0x70106000"
+            "end_address": "0x70106000",
+            "Consumed_Size": 128,
+            "PercentageConsumedSize": 0.5208333333333333
         },
         {
             "name": "pspr_cpu1",
@@ -157,7 +163,9 @@
             "origin": "0x60100000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x60108000"
+            "end_address": "0x60108000",
+            "Consumed_Size": 128,
+            "PercentageConsumedSize": 0.390625
         },
         {
             "name": "pspr_cpu2",
@@ -165,7 +173,9 @@
             "origin": "0x50100000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x50108000"
+            "end_address": "0x50108000",
+            "Consumed_Size": 128,
+            "PercentageConsumedSize": 0.390625
         },
         {
             "name": "dspr_cpu0",
@@ -173,7 +183,9 @@
             "origin": "0x70000000",
             "length_hexa_bytes": "0x1c000",
             "length_decimal_bytes": 114688,
-            "end_address": "0x7001c000"
+            "end_address": "0x7001c000",
+            "Consumed_Size": 24576,
+            "PercentageConsumedSize": 21.428571428571427
         },
         {
             "name": "dspr_cpu1",
@@ -181,7 +193,9 @@
             "origin": "0x60000000",
             "length_hexa_bytes": "0x1e000",
             "length_decimal_bytes": 122880,
-            "end_address": "0x6001e000"
+            "end_address": "0x6001e000",
+            "Consumed_Size": 20480,
+            "PercentageConsumedSize": 16.666666666666664
         },
         {
             "name": "dspr_cpu2",
@@ -189,7 +203,9 @@
             "origin": "0x50000000",
             "length_hexa_bytes": "0x1e000",
             "length_decimal_bytes": 122880,
-            "end_address": "0x5001e000"
+            "end_address": "0x5001e000",
+            "Consumed_Size": 20480,
+            "PercentageConsumedSize": 16.666666666666664
         },
         {
             "name": "lmu",
@@ -197,7 +213,9 @@
             "origin": "0xB0000000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0xb0008000"
+            "end_address": "0xb0008000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "lmu_cached",
@@ -205,7 +223,9 @@
             "origin": "0x90000000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x90008000"
+            "end_address": "0x90008000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         }
     ],
     "HighTechSections": [
