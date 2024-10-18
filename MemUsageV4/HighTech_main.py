@@ -367,7 +367,8 @@ def print_memory_regions_as_json(memory_regions, file_path):
             "name": region['name'],
             "attributes": region['attributes'],
             "origin": region['origin'],
-            "length": hex(length_bytes),  # Convert length to hexadecimal
+            "length_hexa_bytes": hex(length_bytes),  # Convert length to hexadecimal
+            "length_decimal_bytes": length_bytes,  # Convert length to hexadecimal
             "end_address": hex(end_address)  # Store end address in hexadecimal
         }
 
@@ -417,7 +418,7 @@ def HighTech_Parse_and_Save_Size_Output(size_output_file, output_json_file):
                         "SectionSize_Decimal_Bytes": section_size_decimal,
                         "SectionSize_Hexa_Bytes": section_size_hexa,
                         "SectionAddress": section_addr,
-                        "MemoryType": None
+
                     })
 
                 # Check for the total size line
@@ -459,13 +460,16 @@ def HighTech_Parse_and_Save_Size_Output(size_output_file, output_json_file):
 
 
 def add_memory_type_to_sections(high_tech_sections, high_tech_memory_regions):
-    # Convert SectionAddress from hex string to integer for comparison
+    # Iterate over each section in the high_tech_sections list
     for section in high_tech_sections:
         try:
+            # Convert SectionAddress from hex string to integer for comparison
             section_address = int(section.get("SectionAddress", "0"), 16)
 
-            # Loop through memory regions to find the matching range
+            # Flag to indicate if a matching memory region is found
             memory_type_found = False
+
+            # Loop through memory regions to find the matching range
             for region in high_tech_memory_regions:
                 origin = int(region.get("origin", "0"), 16)
                 end_address = int(region.get("end_address", "0"), 16)
@@ -484,6 +488,35 @@ def add_memory_type_to_sections(high_tech_sections, high_tech_memory_regions):
         except ValueError as e:
             print(f"Error processing section {section.get('SectionName', 'Unknown')}: {e}")
             section["MemoryType"] = "Error"
+
+    return high_tech_sections
+
+
+def add_consumed_percentage_to_sections(high_tech_sections, high_tech_memory_regions):
+    # Create a mapping of memory region names to their total sizes
+    memory_region_sizes = {region["name"]: region["length_decimal_bytes"] for region in high_tech_memory_regions}
+
+    # Iterate over each section to calculate and add the consumed percentage
+    for section in high_tech_sections:
+        memory_type = section.get("MemoryType")
+
+        # Check if the section has a valid memory type and corresponding memory region size
+        if memory_type in memory_region_sizes:
+            # Get the section size in bytes
+            section_size = section.get("SectionSize_Decimal_Bytes", 0)
+
+            # Get the total memory size of the corresponding memory type
+            total_memory_size = memory_region_sizes[memory_type]
+
+            # Calculate the consumed percentage
+            consumed_percentage = (section_size / total_memory_size) * 100
+
+            # Add the calculated percentage to the section dictionary
+            section["consumed_percentage_MemType"] = round(consumed_percentage,
+                                                           4)  # Round to 4 decimal places for clarity
+        else:
+            # If no matching memory type is found, set the percentage to None or an appropriate value
+            section["consumed_percentage_MemType"] = None
 
     return high_tech_sections
 
@@ -521,8 +554,8 @@ if __name__ == "__main__":
         size_output_file = HighTech_csv_files_Dict['size_output_file']
         parsed_data = HighTech_Parse_and_Save_Size_Output(size_output_file, Config_file_path)
 
-        high_tech_sections = config.get("HighTechSections", [])
-        high_tech_memory_regions = config.get("HighTechMemoryRegions", [])
+        high_tech_sections = config.get("HighTechSections")
+        high_tech_memory_regions = config.get("HighTechMemoryRegions")
         # Call the function to add MemoryType to each section
         updated_sections = add_memory_type_to_sections(high_tech_sections, high_tech_memory_regions)
 
@@ -533,6 +566,11 @@ if __name__ == "__main__":
         save_json(Config_file_path, config)
 
         print("JSON file updated successfully!")
+
+        # Add consumed percentage
+        updated_sections = add_consumed_percentage_to_sections(high_tech_sections, high_tech_memory_regions)
+        config["HighTechSections"] = updated_sections
+        save_json(Config_file_path, config)
 
     except Exception as e:
         print(f"An error occurred during execution: {e}")
