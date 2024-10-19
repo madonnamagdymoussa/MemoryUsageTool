@@ -1,0 +1,27 @@
+D:\gcc_arm_none_eabi\gcc-arm-none-eabi-10.3-2021.10-win32\Unit3_Revision\HC-05_UART\DMA_Project.elf  :
+section                                  size         addr
+.vectors                                 0x1c          0x0
+.rodata                                 0xcd2         0x1c
+.text                                  0x16f0        0xcf0
+.data                                     0x0   0x20000000
+.data.DMA_ChannelMapSelectRegisters      0x10   0x20000000
+.data.DMAChannel30_MemToMem              0x10   0x20000010
+.data.Pt_DMAChannel30_MemToMem            0x4   0x20000020
+.data.GPIO_BIT_BAND_Registers            0x18   0x20000024
+.data.GPIO_ConfigurePin_PF4               0x2   0x2000003c
+.data.GPIO_ConfigurePin_PF1               0x2   0x20000040
+.data.GPIO_ConfigurePin_PF0               0x2   0x20000044
+.bss                                   0x2538   0x20000400
+.debug_info                            0x77a8          0x0
+.debug_abbrev                          0x12c6          0x0
+.debug_loc                             0x253e          0x0
+.debug_aranges                          0x520          0x0
+.debug_ranges                           0x3f8          0x0
+.debug_line                            0x1e99          0x0
+.debug_str                             0x3f15          0x0
+.comment                                 0x49          0x0
+.ARM.attributes                          0x2e          0x0
+.debug_frame                           0x1800          0x0
+Total                                 0x17841
+
+

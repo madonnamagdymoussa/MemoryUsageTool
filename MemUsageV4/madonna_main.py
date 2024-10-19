@@ -4,6 +4,7 @@ import csv
 import subprocess
 import os
 
+
 def load_config(file_path):
     """Load configuration from a JSON file."""
     if not os.path.exists(file_path):
@@ -28,6 +29,9 @@ Regex_templates_Dict = config['regex_templates']  # Load regex templates
 # Extract the NM command template
 commands_Dict = config['commands']  # Load all commands from JSON
 nm_command_template = commands_Dict['nm_command_out']  # NM command template
+Size_flags_Dict = config['HighTech_Size_flags']
+Strip_flags_Dict = config['Strip_flags']
+addr2line_flags_Dict = config['addr2line_flags']
 
 ####################################### High Tech Config ####################################################
 HighTech_file_paths_Dict = config['HighTech_file_paths']  # Update to the new key name if changed
@@ -38,7 +42,292 @@ HighTech_NM_flags_Dict = config['HighTech_NM_flags']  # Updated key name for NM 
 HighTech_Size_flags_Dict = config['HighTech_Size_flags']
 HighTech_Strip_flags_Dict = config['HighTech_Strip_flags']
 HighTech_addr2line_flags_Dict = config['HighTech_addr2line_flags']
+
+
 #sections_list = config.get('sections', {})  # Default to an empty dict if 'sections' is not found
+
+
+###########################################################################################################
+#                                    Arm-none-eabi Commands                                               #
+###########################################################################################################
+#  Obj dump Command
+#  NM Command
+#  Size Command
+#  Strip Command
+#  addr2line Command
+#  readelf Command
+
+################################## Obj Dump Command ##################################
+def run_objdump_command(specific_flag_key=None):
+    # Retrieve binary file path and supported extensions from the configuration
+    binary_file_path = file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
+
+    # Get the file extension of the binary file
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    # Check if the file extension is supported
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    # Fetch the objdump command template from the configuration
+    objdump_command_template = config['commands']['objdump_command']
+
+    # Choose file_path_key based on the file extension (both use the same binary path)
+    if file_extension == '.elf':
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        file_path_key = 'binary_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    # Handle specific flags if provided
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        objdump_flags = " ".join(ObjDump_flags_Dict.get(key, '') for key in flag_keys if key in ObjDump_flags_Dict)
+    else:
+        objdump_flags = config.get('objdump_flags', '-d')  # Default flag if none provided
+
+    # Construct the objdump command using the template
+    objdump_command = objdump_command_template.format(
+        objdump_path=file_paths_Dict['objdump_path'],
+        objdump_flags=objdump_flags,
+        binary_file_path=binary_file_path,
+        Assembly_txt=csv_files_Dict['assembly_file']
+    )
+
+    print("Constructed Objdump Command:", objdump_command)  # Debug: Show the command being run
+
+    try:
+        # Run the constructed command
+        result = subprocess.run(objdump_command, shell=True, check=True, capture_output=True, text=True)
+        print("Objdump command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()  # Return the stdout output
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+
+################################## NM Command ##################################
+def run_nm_command(specific_flag_key=None):
+    binary_file_path = file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        nm_command_template = config['commands']['nm_command_elf']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        nm_command_template = config['commands']['nm_command_out']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        nm_flags = " ".join(NM_flags_Dict.get(key, '') for key in flag_keys if key in NM_flags_Dict)
+    else:
+        nm_flags = " ".join(NM_flags_Dict.values())
+
+    nm_command = nm_command_template.format(
+        nm_path=file_paths_Dict['nm_path'],
+        nm_flags=nm_flags,
+        **{file_path_key: binary_file_path},
+        nm_objects_txt=csv_files_Dict['nm_objects_file']
+    )
+
+    print("Constructed NM Command:", nm_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
+        print("NM command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+
+################################## readelf Command ##################################
+def run_readelf_command(config):
+    readelf_path = config['file_paths']['readelf_path']
+    binary_file_path = config['file_paths']['binary_file_path']
+    readelf_flags = config['Readelf_flags']['section_headers']
+    output_text_file = config['csv_file_paths']['readelf_output_file']
+
+    # Construct the readelf command
+    command = f"{readelf_path} {readelf_flags} {binary_file_path}"
+    print(f"Running readelf command: {command}")
+
+    try:
+        # Run the command and capture the output
+        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                text=True)
+        print("Readelf command executed successfully!")
+        raw_output = result.stdout
+        #print(f"Raw output: {raw_output[:500]}")  # Print first 500 chars for sanity check
+
+        # Clean the output to remove any misplaced commas
+        cleaned_output = clean_readelf_output(raw_output)
+        print("*************************Cleaned Output*************************")
+        print(cleaned_output)
+        # Write output to text file
+        with open(output_text_file, 'w') as file:
+            file.write(cleaned_output)  # Write cleaned output to the text file
+        print(f"Readelf output successfully written to {output_text_file}")
+
+        return cleaned_output
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred during execution: {e}")
+        print(f"Error output: {e.stderr}")
+
+
+################################## Size Command ##################################
+def run_Size_command(specific_flag_key=None):
+    binary_file_path = file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        size_command_template = config['commands']['size_command']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        size_command_template = config['commands']['size_command']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        size_flags = " ".join(
+            Size_flags_Dict.get(key, '') for key in flag_keys if key in Size_flags_Dict)
+    else:
+        size_flags = " ".join(Size_flags_Dict.values())
+
+    size_command = size_command_template.format(
+        size_path=file_paths_Dict['size_utility_path'],
+        size_flags=size_flags,
+        binary_file_path=binary_file_path,
+        SizeFile_txt=csv_files_Dict['size_output_file']
+    )
+
+    print("Constructed Size Command:", size_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(size_command, shell=True, check=True, capture_output=True, text=True)
+        print("Size command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+
+################################## Strip Command ##################################
+def run_Strip_command(specific_flag_key=None):
+    binary_file_path = file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        Strip_command_template = config['commands']['strip_command']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        Strip_command_template = config['commands']['strip_command']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        strip_flags = " ".join(
+            Strip_flags_Dict.get(key, '') for key in flag_keys if key in Strip_flags_Dict)
+    else:
+        strip_flags = " ".join(Strip_flags_Dict.values())
+
+    strip_command = Strip_command_template.format(
+        strip_path=file_paths_Dict['strip_utility_path'],
+        strip_flags=strip_flags,
+        binary_file_path=binary_file_path,
+        strip_output_flag=Strip_flags_Dict['OutputFile'],
+        stripped_elf=csv_files_Dict['stripped_output_elf_file']
+    )
+
+    print("Constructed Strip Command:", strip_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(strip_command, shell=True, check=True, capture_output=True, text=True)
+        print("Strip command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
+
+################################################# addr2line Command ####################################################
+def run_addr2line_path_command(specific_flag_key=None, Address=None):
+    binary_file_path = file_paths_Dict['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
+
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    if file_extension not in supported_extensions:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
+
+    if file_extension == '.elf':
+        addr2line_command = config['commands']['addr2line_command']
+        file_path_key = 'elf_file_path'
+    elif file_extension == '.out':
+        addr2line_command = config['commands']['addr2line_command']
+        file_path_key = 'out_file_path'
+    else:
+        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
+
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        strip_flags = " ".join(
+            addr2line_flags_Dict.get(key, '') for key in flag_keys if key in addr2line_flags_Dict)
+    else:
+        strip_flags = " ".join(addr2line_flags_Dict.values())
+
+    addr2line_command = addr2line_command.format(
+        addr2line_Path=file_paths_Dict['addr2line_path'],
+        ExecutableName_flag=addr2line_flags_Dict['ExecutableName'],
+        binary_file_path=binary_file_path.strip(),
+        flags=strip_flags,
+        HexadecimalAddress=Address,
+        addr2line_Output_txt=csv_files_Dict['addr2line_output_file']
+    )
+
+    print("Constructed addr2line Command:", addr2line_command)  # Debug: Show the command being run
+
+    try:
+        result = subprocess.run(addr2line_command, shell=True, check=True, capture_output=True, text=True)
+        print("Strip command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
 
 
 # Function to dynamically create regex patterns based on the sections and templates
@@ -166,50 +455,6 @@ def get_binary_file_extension():
         return binary_file_path
     else:
         raise ValueError(f"Unsupported binary file type. Please provide one of {supported_extensions}.")
-
-
-def run_nm_command(specific_flag_key=None):
-    binary_file_path = file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
-
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    if file_extension == '.elf':
-        nm_command_template = config['commands']['nm_command_elf']
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        nm_command_template = config['commands']['nm_command_out']
-        file_path_key = 'out_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        nm_flags = " ".join(NM_flags_Dict.get(key, '') for key in flag_keys if key in NM_flags_Dict)
-    else:
-        nm_flags = " ".join(NM_flags_Dict.values())
-
-    nm_command = nm_command_template.format(
-        nm_path=file_paths_Dict['nm_path'],
-        nm_flags=nm_flags,
-        **{file_path_key: binary_file_path},
-        nm_objects_txt=csv_files_Dict['nm_objects_file']
-    )
-
-    print("Constructed NM Command:", nm_command)  # Debug: Show the command being run
-
-    try:
-        result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
-        print("NM command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
 
 
 def parse_nm_output(nm_objects_txt, elf_objects_csv):
@@ -435,338 +680,6 @@ def generate_memory_consumption_csv(file_path, sizes):
     # Further logic for processing sizes (like totaling them) would go here
 
 
-def run_objdump_command(specific_flag_key=None):
-    # Retrieve binary file path and supported extensions from the configuration
-    binary_file_path = file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
-
-    # Get the file extension of the binary file
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    # Check if the file extension is supported
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    # Fetch the objdump command template from the configuration
-    objdump_command_template = config['commands']['objdump_command']
-
-    # Choose file_path_key based on the file extension (both use the same binary path)
-    if file_extension == '.elf':
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        file_path_key = 'binary_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    # Handle specific flags if provided
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        objdump_flags = " ".join(ObjDump_flags_Dict.get(key, '') for key in flag_keys if key in ObjDump_flags_Dict)
-    else:
-        objdump_flags = config.get('objdump_flags', '-d')  # Default flag if none provided
-
-    # Construct the objdump command using the template
-    objdump_command = objdump_command_template.format(
-        objdump_path=file_paths_Dict['objdump_path'],
-        objdump_flags=objdump_flags,
-        binary_file_path=binary_file_path,
-        Assembly_txt=csv_files_Dict['assembly_file']
-    )
-
-    print("Constructed Objdump Command:", objdump_command)  # Debug: Show the command being run
-
-    try:
-        # Run the constructed command
-        result = subprocess.run(objdump_command, shell=True, check=True, capture_output=True, text=True)
-        print("Objdump command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()  # Return the stdout output
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
-
-
-###########################################################################################################
-def HighTech_Run_Objdump_Command(specific_flag_key=None, binary_file_path=None):
-    # Retrieve binary file path and supported extensions from the configuration
-    #binary_file_path = HighTech_file_paths_Dict['binary_file_path']
-    binary_file_path = binary_file_path or HighTech_file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out', '.o'])
-
-    # Get the file extension of the binary file
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    # Check if the file extension is supported
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    # Fetch the objdump command template from the configuration
-    objdump_command_template = config['commands']['objdump_command']
-
-    # Choose file_path_key based on the file extension (both use the same binary path)
-    if file_extension == '.elf':
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        file_path_key = 'binary_file_path'
-    elif file_extension == '.o':
-        file_path_key = 'binary_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    # Handle specific flags if provided
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        objdump_flags = " ".join(HighTech_ObjDump_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_ObjDump_flags_Dict)
-    else:
-        objdump_flags = config.get('HighTech_ObjDump_flags_Dict', '-S')  # Default flag if none provided
-
-    # Construct the objdump command using the template
-    objdump_command = objdump_command_template.format(
-        objdump_path=HighTech_file_paths_Dict['objdump_path'],
-        objdump_flags=objdump_flags,
-        binary_file_path=binary_file_path,
-        Assembly_txt=HighTech_csv_files_Dict['assembly_file']
-    )
-
-    print("Constructed Objdump Command:", objdump_command)  # Debug: Show the command being run
-
-    try:
-        # Run the constructed command
-        result = subprocess.run(objdump_command, shell=True, check=True, capture_output=True, text=True)
-        print("Objdump command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()  # Return the stdout output
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
-#####################################################################################################
-
-def HighTech_run_nm_command(specific_flag_key=None):
-    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
-
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    if file_extension == '.elf':
-        nm_command_template = config['commands']['nm_command_elf']
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        nm_command_template = config['commands']['nm_command_out']
-        file_path_key = 'out_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        nm_flags = " ".join(HighTech_NM_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_NM_flags_Dict)
-    else:
-        nm_flags = " ".join(HighTech_NM_flags_Dict.values())
-
-    nm_command = nm_command_template.format(
-        nm_path=HighTech_file_paths_Dict['nm_path'],
-        nm_flags=nm_flags,
-        **{file_path_key: binary_file_path},
-        nm_objects_txt=HighTech_csv_files_Dict['nm_objects_file']
-    )
-
-    print("Constructed NM Command:", nm_command)  # Debug: Show the command being run
-
-    try:
-        result = subprocess.run(nm_command, shell=True, check=True, capture_output=True, text=True)
-        print("NM command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
-
-#####################################################################################################
-'''
-HighTech_file_paths_Dict = config['HighTech_file_paths']  # Update to the new key name if changed
-HighTech_csv_files_Dict = config['HighTech_csv_file_paths']
-HighTech_ObjDump_flags_Dict = config['HighTech_ObjDump_flags']  # Updated key name for NM flags
-HighTech_Object_file_paths_Dict = config['HighTech_Object_file_paths']
-HighTech_NM_flags_Dict = config['HighTech_NM_flags']  # Updated key name for NM flags
-'''
-def HighTech_run_Size_command(specific_flag_key=None):
-    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
-
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    if file_extension == '.elf':
-        size_command_template = config['commands']['size_command']
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        size_command_template = config['commands']['size_command']
-        file_path_key = 'out_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        size_flags = " ".join(HighTech_Size_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_Size_flags_Dict)
-    else:
-        size_flags = " ".join(HighTech_Size_flags_Dict.values())
-
-    size_command = size_command_template.format(
-        size_path=HighTech_file_paths_Dict['size_utility_path'],
-        size_flags=size_flags,
-        binary_file_path=binary_file_path,
-        SizeFile_txt=HighTech_csv_files_Dict['size_output_file']
-    )
-
-    print("Constructed Size Command:", size_command)  # Debug: Show the command being run
-
-    try:
-        result = subprocess.run(size_command, shell=True, check=True, capture_output=True, text=True)
-        print("Size command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
-
-#####################################################################################################
-def HighTech_run_Strip_command(specific_flag_key=None):
-    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
-
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    if file_extension == '.elf':
-        size_command_template = config['commands']['strip_command']
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        size_command_template = config['commands']['strip_command']
-        file_path_key = 'out_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        strip_flags = " ".join(HighTech_Strip_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_Strip_flags_Dict)
-    else:
-        strip_flags = " ".join(HighTech_Strip_flags_Dict.values())
-
-    strip_command = size_command_template.format(
-        strip_path=HighTech_file_paths_Dict['strip_utility_path'],
-        strip_flags=strip_flags,
-        binary_file_path=binary_file_path,
-        strip_output_flag=HighTech_Strip_flags_Dict['OutputFile'],
-        stripped_elf=HighTech_csv_files_Dict['stripped_output_elf_file']
-    )
-
-    print("Constructed Strip Command:", strip_command)  # Debug: Show the command being run
-
-    try:
-        result = subprocess.run(strip_command, shell=True, check=True, capture_output=True, text=True)
-        print("Strip command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
-
-
-#####################################################################################################
-def HighTech_run_addr2line_path_command(specific_flag_key=None, Address=None):
-    binary_file_path = HighTech_file_paths_Dict['binary_file_path']
-    supported_extensions = config.get('HighTech_supported_extensions', ['.elf', '.out'])
-
-    file_extension = os.path.splitext(binary_file_path)[-1].lower()
-
-    if file_extension not in supported_extensions:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Supported types: {supported_extensions}")
-
-    if file_extension == '.elf':
-        addr2line_command = config['commands']['addr2line_command']
-        file_path_key = 'elf_file_path'
-    elif file_extension == '.out':
-        addr2line_command = config['commands']['addr2line_command']
-        file_path_key = 'out_file_path'
-    else:
-        raise ValueError(f"Unsupported binary file extension {file_extension}. Please provide a valid binary file.")
-
-    if specific_flag_key:
-        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
-        strip_flags = " ".join(HighTech_addr2line_flags_Dict.get(key, '') for key in flag_keys if key in HighTech_addr2line_flags_Dict)
-    else:
-        strip_flags = " ".join(HighTech_addr2line_flags_Dict.values())
-
-    addr2line_command = addr2line_command.format(
-        addr2line_Path=HighTech_file_paths_Dict['addr2line_path'],
-        ExecutableName_flag=HighTech_addr2line_flags_Dict['ExecutableName'],
-        binary_file_path=binary_file_path.strip(),
-        flags=strip_flags,
-        HexadecimalAddress=Address,
-        addr2line_Output_txt=HighTech_csv_files_Dict['addr2line_output_file']
-    )
-
-    print("Constructed addr2line Command:", addr2line_command)  # Debug: Show the command being run
-
-    try:
-        result = subprocess.run(addr2line_command, shell=True, check=True, capture_output=True, text=True)
-        print("Strip command ran successfully!")
-        print("Raw output:", result.stdout)  # Debug: Print raw output
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output: {e.stderr}")
-        return None
-
-
-
-
-
-
-def run_readelf_command(config):
-    readelf_path = config['file_paths']['readelf_path']
-    binary_file_path = config['file_paths']['binary_file_path']
-    readelf_flags = config['Readelf_flags']['section_headers']
-    output_text_file = config['csv_file_paths']['readelf_output_file']
-
-    # Construct the readelf command
-    command = f"{readelf_path} {readelf_flags} {binary_file_path}"
-    print(f"Running readelf command: {command}")
-
-    try:
-        # Run the command and capture the output
-        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                text=True)
-        print("Readelf command executed successfully!")
-        raw_output = result.stdout
-        print(f"Raw output: {raw_output[:500]}")  # Print first 500 chars for sanity check
-
-        # Clean the output to remove any misplaced commas
-        cleaned_output = clean_readelf_output(raw_output)
-        print("*************************Cleaned Output*************************")
-        print(cleaned_output)
-        # Write output to text file
-        with open(output_text_file, 'w') as file:
-            file.write(cleaned_output)  # Write cleaned output to the text file
-        print(f"Readelf output successfully written to {output_text_file}")
-
-        return cleaned_output
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred during execution: {e}")
-        print(f"Error output: {e.stderr}")
-
-
 def parse_dynamic_readelf_output(raw_output, output_txt, output_json):
     """Parse readelf output to extract section names and flags, and store in a flat dictionary mapping section names to RAM/ROM."""
     lines = raw_output.splitlines()
@@ -896,6 +809,9 @@ def update_sections_in_json(section_names, json_file_path):
         print(f"Error: Failed to decode JSON from the file {json_file_path}.")
 
 
+###########################################################################################################
+#                    Functions For calculating memory usage for each section                              #
+###########################################################################################################
 def extract_memory_block(file_path):
     # Read the linker script file
     with open(file_path, 'r') as file:
@@ -917,14 +833,19 @@ def extract_memory_block(file_path):
 
 def parse_memory_regions(memory_block):
     # Define the regex to match individual memory regions within the MEMORY block
-    memory_pattern = re.compile(
-        r'(\w+)\s*\(([^)]+)\):\s*org\s*=\s*([0xA-Fa-f0-9]+),\s*len\s*=\s*([\dKMG]+)',
-        re.MULTILINE
-    )
 
-    # Extract memory regions
-    memory_regions = []
-    for match in memory_pattern.finditer(memory_block):
+    #memory_pattern = re.compile(
+     #   r'(\w+)\s*\(([^)]+)\)\s*:\s*ORIGIN\s*=\s*([0xA-Fa-f0-9]+),\s*LENGTH\s*=\s*([\dKMG]+)',
+      #  re.MULTILINE
+     #)
+
+   memory_pattern = re.compile(
+        r'(\w+)\s*\(([^)]+)\)\s*:\s*(?:ORIGIN|org|ORG|source)\s*=\s*([0xA-Fa-f0-9]+)\s*,\s*(?:LENGTH|len|LEN|size)\s*=\s*([\dKMG]+)',
+        re.MULTILINE | re.IGNORECASE
+   )
+   # Extract memory regions
+   memory_regions = []
+   for match in memory_pattern.finditer(memory_block):
         name = match.group(1)
         attributes = match.group(2).strip()
         origin = match.group(3)
@@ -939,16 +860,17 @@ def parse_memory_regions(memory_block):
         }
         memory_regions.append(memory_region)
 
-    return memory_regions
+   return memory_regions
+
 
 def convert_length_to_bytes(length):
     """Converts a memory length string (like '2M', '32K') to bytes."""
     if 'K' in length:
         return int(length.replace('K', '')) * 1024
     elif 'M' in length:
-        return int(length.replace('M', '')) * 1024**2
+        return int(length.replace('M', '')) * 1024 ** 2
     elif 'G' in length:
-        return int(length.replace('G', '')) * 1024**3
+        return int(length.replace('G', '')) * 1024 ** 3
     else:
         return int(length)
 
@@ -984,11 +906,113 @@ def print_memory_regions_as_json(memory_regions, file_path):
                 print(f"Error decoding JSON from {file_path}. Starting with an empty structure.")
 
     # Update the existing dictionary with new memory regions
-    output_data["HighTechMemoryRegions"] = processed_regions
+    output_data["MemoryRegions"] = processed_regions
 
     # Dump to JSON file
     with open(file_path, 'w') as json_file:
         json.dump(output_data, json_file, indent=4)
+
+
+
+def Parse_and_Save_Size_Output(size_output_file, output_json_file):
+    # Regular expression to match the section entries
+    section_pattern = re.compile(r"^(\S+)\s+([0-9a-fx]+)\s+([0-9a-fx]+)$", re.IGNORECASE)
+    total_pattern = re.compile(r"^Total\s+([0-9a-fx]+)$", re.IGNORECASE)
+
+    sections = []
+    total_size_decimal = None
+    total_size_hexa = None
+
+    try:
+        with open(size_output_file, 'r') as file:
+            lines = file.readlines()
+
+            for line in lines:
+                # Check for a section line using regex
+                match = section_pattern.match(line.strip())
+                if match:
+                    section_name = match.group(1)
+                    section_size_decimal = int(match.group(2), 16)  # Convert hex size to integer
+                    section_size_hexa = match.group(2)  # Keep hex size as string
+                    section_addr = match.group(3)
+
+                    sections.append({
+                        "SectionName": section_name,
+                        "SectionSize_Decimal_Bytes": section_size_decimal,
+                        "SectionSize_Hexa_Bytes": section_size_hexa,
+                        "SectionAddress": section_addr
+
+                    })
+
+                # Check for the total size line
+                total_match = total_pattern.match(line.strip())
+                if total_match:
+                    total_size_decimal = int(total_match.group(1), 16)  # Convert hex total to integer
+                    total_size_hexa = total_match.group(1)
+
+        # Prepare parsed data
+        parsed_output = {
+            "ARM_Sections": sections,
+            "ARM_total_size_decimal_Bytes": total_size_decimal,
+            "ARM_total_size_hexa_Bytes": total_size_hexa
+        }
+
+        # Load existing data from the output JSON file if it exists
+        try:
+            with open(output_json_file, "r") as json_file:
+                existing_data = json.load(json_file)
+        except (FileNotFoundError, json.JSONDecodeError):
+            existing_data = {}
+
+        # Update the existing data with parsed output
+        existing_data.update(parsed_output)
+
+        # Save the updated data back to the JSON file
+        with open(output_json_file, "w") as json_file:
+            json.dump(existing_data, json_file, indent=4)
+
+        print(f"Parsed sections added to {output_json_file}")
+        return existing_data
+
+    except FileNotFoundError:
+        print(f"Error: File {size_output_file} not found.")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+def add_memory_type_to_sections(sections, memory_regions):
+    # Iterate over each section in the high_tech_sections list
+    for section in sections:
+        try:
+            # Convert SectionAddress from hex string to integer for comparison
+            section_address = int(section.get("SectionAddress", "0"), 16)
+
+            # Flag to indicate if a matching memory region is found
+            memory_type_found = False
+
+            # Loop through memory regions to find the matching range
+            for region in memory_regions:
+                origin = int(region.get("origin", "0"), 16)
+                end_address = int(region.get("end_address", "0"), 16)
+
+                # Check if the section address is within the range of the memory region
+                if origin <= section_address <= end_address:
+                    # Add the memory type to the section dictionary
+                    section["MemoryType"] = region.get("name", "Unknown")
+                    memory_type_found = True
+                    break  # Stop searching once a match is found
+
+            # If no matching region is found, set MemoryType to None
+            if not memory_type_found:
+                section["MemoryType"] = "None"
+
+        except ValueError as e:
+            print(f"Error processing section {section.get('SectionName', 'Unknown')}: {e}")
+            section["MemoryType"] = "Error"
+
+    return sections
+
 
 
 
@@ -1004,11 +1028,11 @@ def clean_readelf_output(raw_output):
 if __name__ == "__main__":
     try:
 
-        HighTech_Run_Objdump_Command(specific_flag_key='Disassemble', binary_file_path=None)
-        HighTech_run_nm_command(specific_flag_key='defined_only, print_size')
-        HighTech_run_Size_command(specific_flag_key='format, SizeDecimal')
+        #HighTech_Run_Objdump_Command(specific_flag_key='Disassemble', binary_file_path=None)
+        #HighTech_run_nm_command(specific_flag_key='defined_only, print_size')
+        #HighTech_run_Size_command(specific_flag_key='format, SizeDecimal')
         #HighTech_run_addr2line_path_command(specific_flag_key='DisplayFunctionName')
-        HighTech_run_Strip_command(specific_flag_key='RemoveDebugging')
+        #HighTech_run_Strip_command(specific_flag_key='RemoveDebugging')
 
         #HighTech_run_Size_command(specific_flag_key='format')
         #HighTech_Object_file_paths_Dict
@@ -1067,19 +1091,23 @@ if __name__ == "__main__":
         print(sizes)
 
         run_objdump_command(specific_flag_key='disassemble_all')
-        HighTech_run_addr2line_path_command(specific_flag_key='DisplayFunctionName', Address='800020fa')
+
 
         # Usage Example:
-        linker_script_path = HighTech_file_paths_Dict['linkerScript_path']  # Replace with the path to your linker script
+        linker_script_path = file_paths_Dict[
+            'linkerScript_path']  # Replace with the path to your linker script
 
         # Step 1: Extract MEMORY block
         memory_block_content = extract_memory_block(linker_script_path)
-
+        print(memory_block_content)
         if memory_block_content:
+            print("************ana hyna s***************")
             # Step 2: Parse the extracted MEMORY block
             parsed_memory = parse_memory_regions(memory_block_content)
             output_file_path = "config.json"
+            sizeOutput_file_path = csv_files_Dict['size_output_file']
             print_memory_regions_as_json(parsed_memory, output_file_path)
+            Parse_and_Save_Size_Output(sizeOutput_file_path, output_file_path)
             # Print the parsed memory regions
             for region in parsed_memory:
                 print(f"Name: {region['name']}, Attributes: {region['attributes']}, "
@@ -1087,8 +1115,8 @@ if __name__ == "__main__":
         else:
             print("No MEMORY block found in the linker script.")
 
-
-
-
+        run_Size_command(specific_flag_key='format, SizeDecimal')
+        run_Strip_command(specific_flag_key='RemoveDebugging')
+        run_addr2line_path_command(specific_flag_key='DisplayFunctionName', Address='e3e')
     except Exception as e:
         print(f"An error occurred during execution: {e}")

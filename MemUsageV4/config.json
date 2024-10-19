@@ -1,4 +1,11 @@
 {
+    "sections": [
+        "vectors",
+        "text",
+        "rodata",
+        "data",
+        "bss"
+    ],
     "supported_extensions": [
         ".elf",
         ".out"
@@ -6,6 +13,7 @@
     "file_paths": {
         "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
         "elf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "linkerScript_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\linker_script.ld",
         "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
         "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
         "objdump_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objdump.exe",
@@ -26,6 +34,20 @@
     "Readelf_flags": {
         "section_headers": "-S"
     },
+    "Size_flags": {
+        "format": "-A",
+        "SizeDecimal": "-x"
+    },
+    "Strip_flags": {
+        "RemoveDebugging": "-g",
+        "RemoveUnneededSymbols": "--strip-unneeded",
+        "OutputFile": "-o"
+    },
+    "addr2line_flags": {
+        "DisplayFunctionName": "-f",
+        "StripDirectoryName": "-s",
+        "ExecutableName": "--exe="
+    },
     "csv_file_paths": {
         "map_file_parsing_csv": "Mapfile_Parsing.csv",
         "nm_objects_file": "nm_Objects.txt",
@@ -34,7 +56,10 @@
         "mismatch_memory_file": "Linked_Mismatch.csv",
         "memory_usage_file": "Memory_consumption.csv",
         "assembly_file": "Assembly_Output.txt",
-        "readelf_output_file": "readelf.txt"
+        "readelf_output_file": "readelf.txt",
+        "size_output_file": "SizeOutput.txt",
+        "stripped_output_elf_file": "StrippedElf.elf",
+        "addr2line_output_file": "Addr2line.txt"
     },
     "memory_configuration": {
         "rom_memory_size_KB": 524288,
@@ -527,5 +552,157 @@
         }
     ],
     "total_size_decimal_Bytes": 2975417,
-    "total_size_hexa_Bytes": "0x2d66b9"
+    "total_size_hexa_Bytes": "0x2d66b9",
+    "MemoryRegions": [
+        {
+            "name": "flash",
+            "attributes": "RX",
+            "origin": "0x00000000",
+            "length": "0x20000000",
+            "end_address": "0x20000000"
+        },
+        {
+            "name": "sram",
+            "attributes": "RWX",
+            "origin": "0x20000000",
+            "length": "0x20000000",
+            "end_address": "0x40000000"
+        }
+    ],
+    "ARM_Sections": [
+        {
+            "SectionName": ".vectors",
+            "SectionSize_Decimal_Bytes": 28,
+            "SectionSize_Hexa_Bytes": "0x1c",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".rodata",
+            "SectionSize_Decimal_Bytes": 3282,
+            "SectionSize_Hexa_Bytes": "0xcd2",
+            "SectionAddress": "0x1c"
+        },
+        {
+            "SectionName": ".text",
+            "SectionSize_Decimal_Bytes": 5872,
+            "SectionSize_Hexa_Bytes": "0x16f0",
+            "SectionAddress": "0xcf0"
+        },
+        {
+            "SectionName": ".data",
+            "SectionSize_Decimal_Bytes": 0,
+            "SectionSize_Hexa_Bytes": "0x0",
+            "SectionAddress": "0x20000000"
+        },
+        {
+            "SectionName": ".data.DMA_ChannelMapSelectRegisters",
+            "SectionSize_Decimal_Bytes": 16,
+            "SectionSize_Hexa_Bytes": "0x10",
+            "SectionAddress": "0x20000000"
+        },
+        {
+            "SectionName": ".data.DMAChannel30_MemToMem",
+            "SectionSize_Decimal_Bytes": 16,
+            "SectionSize_Hexa_Bytes": "0x10",
+            "SectionAddress": "0x20000010"
+        },
+        {
+            "SectionName": ".data.Pt_DMAChannel30_MemToMem",
+            "SectionSize_Decimal_Bytes": 4,
+            "SectionSize_Hexa_Bytes": "0x4",
+            "SectionAddress": "0x20000020"
+        },
+        {
+            "SectionName": ".data.GPIO_BIT_BAND_Registers",
+            "SectionSize_Decimal_Bytes": 24,
+            "SectionSize_Hexa_Bytes": "0x18",
+            "SectionAddress": "0x20000024"
+        },
+        {
+            "SectionName": ".data.GPIO_ConfigurePin_PF4",
+            "SectionSize_Decimal_Bytes": 2,
+            "SectionSize_Hexa_Bytes": "0x2",
+            "SectionAddress": "0x2000003c"
+        },
+        {
+            "SectionName": ".data.GPIO_ConfigurePin_PF1",
+            "SectionSize_Decimal_Bytes": 2,
+            "SectionSize_Hexa_Bytes": "0x2",
+            "SectionAddress": "0x20000040"
+        },
+        {
+            "SectionName": ".data.GPIO_ConfigurePin_PF0",
+            "SectionSize_Decimal_Bytes": 2,
+            "SectionSize_Hexa_Bytes": "0x2",
+            "SectionAddress": "0x20000044"
+        },
+        {
+            "SectionName": ".bss",
+            "SectionSize_Decimal_Bytes": 9528,
+            "SectionSize_Hexa_Bytes": "0x2538",
+            "SectionAddress": "0x20000400"
+        },
+        {
+            "SectionName": ".debug_info",
+            "SectionSize_Decimal_Bytes": 30632,
+            "SectionSize_Hexa_Bytes": "0x77a8",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_abbrev",
+            "SectionSize_Decimal_Bytes": 4806,
+            "SectionSize_Hexa_Bytes": "0x12c6",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_loc",
+            "SectionSize_Decimal_Bytes": 9534,
+            "SectionSize_Hexa_Bytes": "0x253e",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_aranges",
+            "SectionSize_Decimal_Bytes": 1312,
+            "SectionSize_Hexa_Bytes": "0x520",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_ranges",
+            "SectionSize_Decimal_Bytes": 1016,
+            "SectionSize_Hexa_Bytes": "0x3f8",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_line",
+            "SectionSize_Decimal_Bytes": 7833,
+            "SectionSize_Hexa_Bytes": "0x1e99",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_str",
+            "SectionSize_Decimal_Bytes": 16149,
+            "SectionSize_Hexa_Bytes": "0x3f15",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".comment",
+            "SectionSize_Decimal_Bytes": 73,
+            "SectionSize_Hexa_Bytes": "0x49",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".ARM.attributes",
+            "SectionSize_Decimal_Bytes": 46,
+            "SectionSize_Hexa_Bytes": "0x2e",
+            "SectionAddress": "0x0"
+        },
+        {
+            "SectionName": ".debug_frame",
+            "SectionSize_Decimal_Bytes": 6144,
+            "SectionSize_Hexa_Bytes": "0x1800",
+            "SectionAddress": "0x0"
+        }
+    ],
+    "ARM_total_size_decimal_Bytes": 96321,
+    "ARM_total_size_hexa_Bytes": "0x17841"
 }

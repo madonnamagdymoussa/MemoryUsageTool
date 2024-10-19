@@ -11,6 +11,7 @@ import pyttsx3
 import speech_recognition as sr
 import threading
 import warnings
+import requests
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 print(spacy.__file__)  # Check where spaCy is installed
@@ -114,6 +115,50 @@ def listen_for_commands():
             print("Sorry, I did not understand that.")
         except sr.RequestError as e:
             print(f"Could not request results from Google Speech Recognition service; {e}")
+
+
+def search_google(query):
+    # Construct the search API URL (Example with Google Custom Search)
+    api_key = 'YOUR_API_KEY'  # Replace with your Google API key
+    search_engine_id = 'YOUR_SEARCH_ENGINE_ID'  # Replace with your Custom Search Engine ID
+    search_url = f"https://www.googleapis.com/customsearch/v1?q={query}&key={api_key}&cx={search_engine_id}"
+
+    # Send request to the search engine
+    try:
+        response = requests.get(search_url)
+        data = response.json()
+
+        # Extract top result
+        if "items" in data:
+            top_result = data["items"][0]
+            title = top_result.get("title", "No Title")
+            snippet = top_result.get("snippet", "No Description")
+            link = top_result.get("link", "No Link")
+
+            # Speak and return the answer
+            answer = f"{title}: {snippet}. For more details, visit {link}."
+            speak(answer)
+            return answer
+        else:
+            speak("I could not find any relevant information.")
+            return "No results found."
+    except Exception as e:
+        print(f"Error during search: {e}")
+        speak("There was an error searching the web.")
+        return None
+
+
+def ask_question(question):
+    # Process the question (optional)
+    doc = nlp(question)
+    key_terms = [token.text for token in doc if not token.is_stop and not token.is_punct]
+    query = " ".join(key_terms)
+
+    # Perform search and get result
+    result = search_google(query)
+    if result:
+        print(result)
+
 def start_voice_assistant():
     while True:
         # Assume this function gets a voice command
@@ -524,9 +569,15 @@ def extract_memory_block(file_path):
 
 def parse_memory_regions(memory_block):
     # Define the regex to match individual memory regions within the MEMORY block
+
+   # memory_pattern = re.compile(
+    #    r'(\w+)\s*\(([^)]+)\):\s*org\s*=\s*([0xA-Fa-f0-9]+),\s*len\s*=\s*([\dKMG]+)',
+      #  re.MULTILINE
+    # )
+
     memory_pattern = re.compile(
-        r'(\w+)\s*\(([^)]+)\):\s*org\s*=\s*([0xA-Fa-f0-9]+),\s*len\s*=\s*([\dKMG]+)',
-        re.MULTILINE
+        r'(\w+)\s*\(([^)]+)\)\s*:\s*(?:ORIGIN|org|ORG|source)\s*=\s*([0xA-Fa-f0-9]+)\s*,\s*(?:LENGTH|len|LEN|size)\s*=\s*([\dKMG]+)',
+        re.MULTILINE | re.IGNORECASE
     )
 
     # Extract memory regions
@@ -803,8 +854,51 @@ def create_memory_consumption_csv(high_tech_sections, high_tech_memory_regions,
     print(f"Memory consumption details have been written to {filename}.")
 
 
+def duckduckgo_search(query):
+    url = f"https://api.duckduckgo.com/?q={query}&format=json"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        print(response.json())  # Print the raw response for debugging
+        return response.json()
+    else:
+        print(f"Error: Unable to fetch results (Status code: {response.status_code})")
+        return None
 
 
+def display_results(results):
+    if results:
+        related_topics = results.get('RelatedTopics', [])
+        if not related_topics:
+            print("No related topics found.")
+            return
+
+        for item in related_topics:
+            if 'Text' in item and 'FirstURL' in item:
+                print(f"Title: {item['Text']}")
+                print(f"Link: {item['FirstURL']}\n")
+    else:
+        print("No results found.")
+
+
+def listen_for_query():
+    recognizer = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        print("Please say your search query...")
+        recognizer.adjust_for_ambient_noise(source)
+        audio = recognizer.listen(source)
+
+        try:
+            query = recognizer.recognize_google(audio)
+            print(f"You said: {query}")
+            return query
+        except sr.UnknownValueError:
+            print("Sorry, I did not understand that.")
+            return None
+        except sr.RequestError:
+            print("Could not request results from the speech recognition service.")
+            return None
 # Main program execution
 if __name__ == "__main__":
     try:
@@ -814,7 +908,25 @@ if __name__ == "__main__":
         #voice_thread.daemon = True
         #voice_thread.start()
 
+        #listening for commands
         #start_voice_assistant()
+
+        #query = "What is memory usage?"
+
+        # Perform the search
+        #results = duckduckgo_search(query)
+
+        # Display the results
+        #display_results(results)
+
+        # Listen for a search query
+        query = listen_for_query()
+
+        # If a valid query is recognized, perform the search
+        if query:
+            results = duckduckgo_search(query)
+            display_results(results)
+
         Config_file_path = "config.json"
         #HighTech_Run_Objdump_Command(specific_flag_key='Disassemble', binary_file_path=None)
         #HighTech_run_nm_command(specific_flag_key='defined_only, print_size')
