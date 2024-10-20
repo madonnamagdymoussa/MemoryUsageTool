@@ -36,7 +36,10 @@
             "linked_memory_file_csv": "Linked_Memory_arm_none_eabi.csv",
             "mismatch_memory_file_csv": "Linked_Mismatch_arm_none_eabi.csv",
             "memory_usage_file_csv": "Memory_consumption_arm_none_eabi.csv",
-            "assembly_file_txt": "Assembly_Output.txt"
+            "assembly_file_txt": "Assembly_Output.txt",
+            "size_sections_file_txt": "SizeOutput.txt",
+            "addr2line_file_txt": "Addr2line.txt",
+            "stripped_file_elf": "StrippedElf.elf"
         },
         "tricore": {
             "map_file_parsing_csv": "Mapfile_Parsing_tricore.csv",
@@ -45,13 +48,17 @@
             "linked_memory_file_csv": "Linked_Memory_tricore.csv",
             "mismatch_memory_file_csv": "Linked_Mismatch_tricore.csv",
             "memory_usage_file_csv": "Memory_consumption_tricore.csv",
-            "assembly_file_txt": "HighTech_Assembly_Output.txt"
+            "assembly_file_txt": "HighTech_Assembly_Output.txt",
+            "size_sections_file_txt": "HighTech_SizeOutput.txt",
+            "addr2line_file_txt": "HighTech_addr2line.txt",
+            "stripped_file_elf": "HighTech_StrippedElf.elf"
         }
     },
 
     "gnu_commands": {
         "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
         "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}",
+        "nm_command":     "{nm_path} {nm_flags} {binary_file_path} > {nm_objects_txt}",
         "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
         "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}",
         "size_command": "{size_path} {size_flags} {binary_file_path} > {SizeFile_txt} ",
@@ -66,9 +73,28 @@
             "print_size": "--print-size"
         },
         "ObjDump_flags": {
-            "disassemble_all": "-D",
-            "section_headers": "-h"
-        }
+        "SourceCodeIntermixedDisassembly": "-S",
+        "SectionHeaders": "-h",
+        "All_Headers": "-x",
+        "Disassemble": "-d",
+        "DisassembleAll": "-D",
+        "SymbolTable": "-t",
+        "DynamicSymbolTable": "-T"
+        },
+        "Size_flags": {
+        "format": "-A",
+        "SizeHexaDecimal": "-x"
+        },
+        "Strip_flags": {
+        "RemoveDebugging": "-g",
+        "RemoveUnneededSymbols": "--strip-unneeded",
+        "OutputFile": "-o"
+       },
+        "Addr2line_flags": {
+        "DisplayFunctionName": "-f",
+        "StripDirectoryName": "-s",
+        "ExecutableName": "--exe="
+      }
     }
 }
 }
