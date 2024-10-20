@@ -13,6 +13,11 @@ def load_config(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
 
+# Save the updated JSON data back to the file
+def save_json(file_path, data):
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
+
 
 # Load the configuration
 config = load_config('config.json')
@@ -890,7 +895,8 @@ def print_memory_regions_as_json(memory_regions, file_path):
             "name": region['name'],
             "attributes": region['attributes'],
             "origin": region['origin'],
-            "length": hex(length_bytes),  # Convert length to hexadecimal
+            "length_hexa_bytes": hex(length_bytes),  # Convert length to hexadecimal
+            "length_decimal_bytes": length_bytes,  # Convert length to hexadecimal
             "end_address": hex(end_address)  # Store end address in hexadecimal
         }
 
@@ -911,6 +917,7 @@ def print_memory_regions_as_json(memory_regions, file_path):
     # Dump to JSON file
     with open(file_path, 'w') as json_file:
         json.dump(output_data, json_file, indent=4)
+
 
 
 
@@ -997,7 +1004,7 @@ def add_memory_type_to_sections(sections, memory_regions):
                 end_address = int(region.get("end_address", "0"), 16)
 
                 # Check if the section address is within the range of the memory region
-                if origin <= section_address <= end_address:
+                if origin <= section_address < end_address:
                     # Add the memory type to the section dictionary
                     section["MemoryType"] = region.get("name", "Unknown")
                     memory_type_found = True
@@ -1012,6 +1019,106 @@ def add_memory_type_to_sections(sections, memory_regions):
             section["MemoryType"] = "Error"
 
     return sections
+
+def add_consumed_percentage_to_sections(Sections, memory_regions):
+    # Create a mapping of memory region names to their total sizes
+    memory_region_sizes = {region["name"]: region["length_decimal_bytes"] for region in memory_regions}
+
+    # Iterate over each section to calculate and add the consumed percentage
+    for section in Sections:
+        memory_type = section.get("MemoryType")
+
+        # Check if the section has a valid memory type and corresponding memory region size
+        if memory_type in memory_region_sizes:
+            # Get the section size in bytes
+            section_size = section.get("SectionSize_Decimal_Bytes", 0)
+
+            # Get the total memory size of the corresponding memory type
+            total_memory_size = memory_region_sizes[memory_type]
+
+            # Calculate the consumed percentage
+            consumed_percentage = (section_size / total_memory_size) * 100
+
+            # Add the calculated percentage to the section dictionary
+            section["consumed_percentage_MemType"] = round(consumed_percentage,
+                                                           4)  # Round to 4 decimal places for clarity
+        else:
+            # If no matching memory type is found, set the percentage to None or an appropriate value
+            section["consumed_percentage_MemType"] = None
+
+    return Sections
+
+def add_consumed_size_to_memory_regions(sections, memory_regions):
+    # Initialize consumed size for each memory region
+    for region in memory_regions:
+        region["Consumed_Size"] = 0
+
+    # Sum up the section sizes based on their MemoryType
+    for section in sections:
+        memory_type = section.get("MemoryType")
+        section_size = section.get("SectionSize_Decimal_Bytes", 0)
+
+        # Find the corresponding memory region and add the section size
+        for region in memory_regions:
+            if region.get("name") == memory_type:
+                region["Consumed_Size"] += section_size
+                break
+
+    # Calculate the percentage consumed for each memory region
+    for region in memory_regions:
+        total_memory_size = region.get("length_decimal_bytes", 0)
+        consumed_size = region.get("Consumed_Size", 0)
+
+        if total_memory_size > 0:
+            region["PercentageConsumedSize"] = (consumed_size / total_memory_size) * 100
+        else:
+            region["PercentageConsumedSize"] = 0.0  # Handle edge case where total size is zero
+
+    return memory_regions
+
+
+def create_memory_consumption_csv(sections, memory_regions,
+                                  filename="Memory_consumption.csv"):
+    # Open the CSV file in write mode
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        # Write the first table for HighTechSections
+        writer.writerow(["Section Name", "Section Size in Bytes (Decimal Format)",
+                         "Section Size in Bytes (Hexadecimal Format)", "Section Address",
+                         "Memory Name", "Consumed Percentage from MemoryType"])
+
+        for section in sections:
+            writer.writerow([
+                section.get("SectionName", "N/A"),
+                section.get("SectionSize_Decimal_Bytes", "N/A"),
+                section.get("SectionSize_Hexa_Bytes", "N/A"),
+                section.get("SectionAddress", "N/A"),
+                section.get("MemoryType", "N/A"),
+                section.get("consumed_percentage_MemType", "N/A")
+            ])
+
+        # Leave a blank line between the two tables
+        writer.writerow([])
+
+        # Write the second table for HighTechMemoryRegions
+        writer.writerow(["Memory Name", "Attributes", "Origin Address",
+                         "Length in Hexa Bytes", "Length in Decimal Bytes",
+                         "End Address", "Consumed Size", "Percentage Consumed Size"])
+
+        for region in memory_regions:
+            writer.writerow([
+                region.get("name", "N/A"),
+                region.get("attributes", "N/A"),
+                region.get("origin", "N/A"),
+                region.get("length_hexa_bytes", "N/A"),
+                region.get("length_decimal_bytes", "N/A"),
+                region.get("end_address", "N/A"),
+                region.get("Consumed_Size", "N/A"),
+                region.get("PercentageConsumedSize", "N/A")
+            ])
+
+    print(f"Memory consumption details have been written to {filename}.")
 
 
 
@@ -1101,13 +1208,32 @@ if __name__ == "__main__":
         memory_block_content = extract_memory_block(linker_script_path)
         print(memory_block_content)
         if memory_block_content:
-            print("************ana hyna s***************")
             # Step 2: Parse the extracted MEMORY block
             parsed_memory = parse_memory_regions(memory_block_content)
             output_file_path = "config.json"
             sizeOutput_file_path = csv_files_Dict['size_output_file']
             print_memory_regions_as_json(parsed_memory, output_file_path)
             Parse_and_Save_Size_Output(sizeOutput_file_path, output_file_path)
+
+            #add_memory_type_to_sections(sections, memory_regions)
+            sections = config.get("ARM_Sections")
+            memory_regions = config.get("MemoryRegions")
+            # Call the function to add MemoryType to each section
+            updated_sections = add_memory_type_to_sections(sections, memory_regions)
+            print(updated_sections)
+
+            config["ARM_Sections"] = updated_sections
+            save_json(output_file_path, config)
+            updated_sections = add_consumed_percentage_to_sections(sections, memory_regions)
+            config["HighTechSections"] = updated_sections
+            save_json(output_file_path, config)
+
+            updated_memory_regions = add_consumed_size_to_memory_regions(sections, memory_regions)
+            config["HighTechMemoryRegions"] = updated_memory_regions
+            save_json(output_file_path, config)
+
+            create_memory_consumption_csv(sections, memory_regions,
+                                          filename="Memory_consumption.csv")
             # Print the parsed memory regions
             for region in parsed_memory:
                 print(f"Name: {region['name']}, Attributes: {region['attributes']}, "

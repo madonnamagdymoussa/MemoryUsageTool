@@ -1,0 +1,74 @@
+{
+    "toolchains_binary-utilities_filePaths": {
+        "arm_none_eabi": {
+        "map_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.map",
+        "elf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "linkerScript_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\linker_script.ld",
+        "binary_file_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\Unit3_Revision\\HC-05_UART\\DMA_Project.elf",
+        "nm_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-gcc-nm.exe",
+        "objdump_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objdump.exe",
+        "readelf_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-readelf.exe",
+        "nm_objects_txt": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript",
+        "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt",
+        "size_utility_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-size.exe",
+        "strip_utility_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-strip.exe",
+        "addr2line_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-addr2line.exe"
+
+        },
+        "tricore": {
+         "map_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.map",
+         "elf_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
+         "linkerScript_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\ld\\tc27x_memory.ld",
+         "binary_file_path": "C:\\Users\\DELL\\htc-workspace\\tc27x_bsp_example\\_iROM_TC27X_TRIBOARD_TC2X7_V1_0\\tc27x_bsp_example.elf",
+         "nm_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-nm.exe",
+         "objdump_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-objdump.exe",
+         "readelf_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-readelf.exe",
+         "size_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-size.exe",
+         "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe",
+         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+        }
+    },
+    "toolchains_output_files": {
+        "arm_none_eabi": {
+            "map_file_parsing_csv": "Mapfile_Parsing_arm_none_eabi.csv",
+            "nm_objects_file_txt": "nm_Objects_arm_none_eabi.txt",
+            "elf_objects_file_csv": "elf_Objects_arm_none_eabi.csv",
+            "linked_memory_file_csv": "Linked_Memory_arm_none_eabi.csv",
+            "mismatch_memory_file_csv": "Linked_Mismatch_arm_none_eabi.csv",
+            "memory_usage_file_csv": "Memory_consumption_arm_none_eabi.csv",
+            "assembly_file_txt": "Assembly_Output.txt"
+        },
+        "tricore": {
+            "map_file_parsing_csv": "Mapfile_Parsing_tricore.csv",
+            "nm_objects_file_txt": "nm_Objects_tricore.txt",
+            "elf_objects_file_csv": "elf_Objects_tricore.csv",
+            "linked_memory_file_csv": "Linked_Memory_tricore.csv",
+            "mismatch_memory_file_csv": "Linked_Mismatch_tricore.csv",
+            "memory_usage_file_csv": "Memory_consumption_tricore.csv",
+            "assembly_file_txt": "HighTech_Assembly_Output.txt"
+        }
+    },
+
+    "gnu_commands": {
+        "nm_command_elf": "{nm_path} {nm_flags} {elf_file_path} > {nm_objects_txt}",
+        "nm_command_out": "{nm_path} {nm_flags} {out_file_path} > {nm_objects_txt}",
+        "objdump_command": "{objdump_path} {objdump_flags} {binary_file_path} > {Assembly_txt}",
+        "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}",
+        "size_command": "{size_path} {size_flags} {binary_file_path} > {SizeFile_txt} ",
+        "strip_command": "{strip_path} {strip_flags} {binary_file_path} {strip_output_flag} {stripped_elf}",
+        "addr2line_command": "{addr2line_Path} {ExecutableName_flag}{binary_file_path} {flags} {HexadecimalAddress} > {addr2line_Output_txt}"
+    },
+
+    "toolchains_command_flags": {
+    "gnu_command_flags": {
+        "NM_flags": {
+            "defined_only": "--defined-only",
+            "print_size": "--print-size"
+        },
+        "ObjDump_flags": {
+            "disassemble_all": "-D",
+            "section_headers": "-h"
+        }
+    }
+}
+}

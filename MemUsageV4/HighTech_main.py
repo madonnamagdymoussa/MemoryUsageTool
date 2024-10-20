@@ -735,7 +735,7 @@ def add_memory_type_to_sections(high_tech_sections, high_tech_memory_regions):
                 end_address = int(region.get("end_address", "0"), 16)
 
                 # Check if the section address is within the range of the memory region
-                if origin <= section_address <= end_address:
+                if origin <= section_address < end_address:
                     # Add the memory type to the section dictionary
                     section["MemoryType"] = region.get("name", "Unknown")
                     memory_type_found = True
