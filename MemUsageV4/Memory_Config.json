@@ -1,0 +1,134 @@
+{
+    "arm_none_eabi_MemoryRegions": [
+        {
+            "name": "flash",
+            "attributes": "RX",
+            "origin": "0x00000000",
+            "length_hexa_bytes": "0x20000000",
+            "length_decimal_bytes": 536870912,
+            "end_address": "0x20000000"
+        },
+        {
+            "name": "sram",
+            "attributes": "RWX",
+            "origin": "0x20000000",
+            "length_hexa_bytes": "0x20000000",
+            "length_decimal_bytes": 536870912,
+            "end_address": "0x40000000"
+        }
+    ],
+    "tricore_MemoryRegions": [
+        {
+            "name": "int_flash0",
+            "attributes": "rx",
+            "origin": "0x80000000",
+            "length_hexa_bytes": "0x200000",
+            "length_decimal_bytes": 2097152,
+            "end_address": "0x80200000"
+        },
+        {
+            "name": "int_flash1",
+            "attributes": "rx",
+            "origin": "0x80200000",
+            "length_hexa_bytes": "0x200000",
+            "length_decimal_bytes": 2097152,
+            "end_address": "0x80400000"
+        },
+        {
+            "name": "pspr_cpu0",
+            "attributes": "rx",
+            "origin": "0x70100000",
+            "length_hexa_bytes": "0x6000",
+            "length_decimal_bytes": 24576,
+            "end_address": "0x70106000"
+        },
+        {
+            "name": "pspr_cpu1",
+            "attributes": "rx",
+            "origin": "0x60100000",
+            "length_hexa_bytes": "0x8000",
+            "length_decimal_bytes": 32768,
+            "end_address": "0x60108000"
+        },
+        {
+            "name": "pspr_cpu2",
+            "attributes": "rx",
+            "origin": "0x50100000",
+            "length_hexa_bytes": "0x8000",
+            "length_decimal_bytes": 32768,
+            "end_address": "0x50108000"
+        },
+        {
+            "name": "dspr_cpu0",
+            "attributes": "w!x",
+            "origin": "0x70000000",
+            "length_hexa_bytes": "0x1c000",
+            "length_decimal_bytes": 114688,
+            "end_address": "0x7001c000"
+        },
+        {
+            "name": "dspr_cpu1",
+            "attributes": "w!x",
+            "origin": "0x60000000",
+            "length_hexa_bytes": "0x1e000",
+            "length_decimal_bytes": 122880,
+            "end_address": "0x6001e000"
+        },
+        {
+            "name": "dspr_cpu2",
+            "attributes": "w!x",
+            "origin": "0x50000000",
+            "length_hexa_bytes": "0x1e000",
+            "length_decimal_bytes": 122880,
+            "end_address": "0x5001e000"
+        },
+        {
+            "name": "lmu",
+            "attributes": "wx",
+            "origin": "0xB0000000",
+            "length_hexa_bytes": "0x8000",
+            "length_decimal_bytes": 32768,
+            "end_address": "0xb0008000"
+        },
+        {
+            "name": "lmu_cached",
+            "attributes": "wx",
+            "origin": "0x90000000",
+            "length_hexa_bytes": "0x8000",
+            "length_decimal_bytes": 32768,
+            "end_address": "0x90008000"
+        },
+        {
+            "name": "bmhd_0",
+            "attributes": "rx",
+            "origin": "0xa0000000",
+            "length_hexa_bytes": "0x20",
+            "length_decimal_bytes": 32,
+            "end_address": "0xa0000020"
+        },
+        {
+            "name": "bmhd_1",
+            "attributes": "rx",
+            "origin": "0xa0020000",
+            "length_hexa_bytes": "0x20",
+            "length_decimal_bytes": 32,
+            "end_address": "0xa0020020"
+        },
+        {
+            "name": "bmhd_2",
+            "attributes": "rx",
+            "origin": "0xa000ffe0",
+            "length_hexa_bytes": "0x20",
+            "length_decimal_bytes": 32,
+            "end_address": "0xa0010000"
+        },
+        {
+            "name": "bmhd_3",
+            "attributes": "rx",
+            "origin": "0xa001ffe0",
+            "length_hexa_bytes": "0x20",
+            "length_decimal_bytes": 32,
+            "end_address": "0xa0020000"
+        }
+    ]
+}

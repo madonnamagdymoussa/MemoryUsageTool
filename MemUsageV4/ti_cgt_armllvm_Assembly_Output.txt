@@ -1,0 +1,3081 @@
+
+D:\Interrupt_driver_tivac\HC-05_UART\Debug\HC-05_UART.out:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+0000026c <GPIO_EnableRunModeClockGateControl>:
+     26c: 1c b5        	push	{r2, r3, r4, lr}
+     26e: 8d f8 00 00  	strb.w	r0, [sp]
+     272: b9 48        	ldr	r0, [pc, #740]          @ 0x558 <$d>
+     274: b8 49        	ldr	r1, [pc, #736]          @ 0x558 <$d>
+     276: b8 4b        	ldr	r3, [pc, #736]          @ 0x558 <$d>
+     278: 00 68        	ldr	r0, [r0]
+     27a: 9d f8 00 40  	ldrb.w	r4, [sp]
+     27e: 0a 68        	ldr	r2, [r1]
+     280: 00 f0 3f 00  	and	r0, r0, #63
+     284: 01 21        	movs	r1, #1
+     286: a1 40        	lsls	r1, r4
+     288: 01 43        	orrs	r1, r0
+     28a: 61 f3 05 02  	bfi	r2, r1, #0, #6
+     28e: 1a 60        	str	r2, [r3]
+
+00000290 <$C$L1>:
+     290: b1 48        	ldr	r0, [pc, #708]          @ 0x558 <$d>
+     292: 9d f8 00 20  	ldrb.w	r2, [sp]
+     296: 01 68        	ldr	r1, [r0]
+     298: 01 20        	movs	r0, #1
+     29a: 90 40        	lsls	r0, r2
+     29c: 08 40        	ands	r0, r1
+     29e: 10 f0 3f 0f  	tst.w	r0, #63
+     2a2: f5 d0        	beq	0x290 <$C$L1>           @ imm = #-22
+     2a4: 1c bd        	pop	{r2, r3, r4, pc}
+
+000002a6 <EXTIAIntHandler>:
+     2a6: 08 b5        	push	{r3, lr}
+     2a8: ac 48        	ldr	r0, [pc, #688]          @ 0x55c <$C$CON2>
+     2aa: 00 68        	ldr	r0, [r0]
+     2ac: 10 b1        	cbz	r0, 0x2b4 <$C$L2>       @ imm = #4
+     2ae: ab 48        	ldr	r0, [pc, #684]          @ 0x55c <$C$CON2>
+     2b0: 00 68        	ldr	r0, [r0]
+     2b2: 80 47        	blx	r0
+
+000002b4 <$C$L2>:
+     2b4: 08 bd        	pop	{r3, pc}
+
+000002b6 <EXTIBIntHandler>:
+     2b6: 08 b5        	push	{r3, lr}
+     2b8: a9 48        	ldr	r0, [pc, #676]          @ 0x560 <$C$CON3>
+     2ba: 00 68        	ldr	r0, [r0]
+     2bc: 10 b1        	cbz	r0, 0x2c4 <$C$L3>       @ imm = #4
+     2be: a8 48        	ldr	r0, [pc, #672]          @ 0x560 <$C$CON3>
+     2c0: 00 68        	ldr	r0, [r0]
+     2c2: 80 47        	blx	r0
+
+000002c4 <$C$L3>:
+     2c4: 08 bd        	pop	{r3, pc}
+
+000002c6 <EXTICIntHandler>:
+     2c6: 08 b5        	push	{r3, lr}
+     2c8: c9 48        	ldr	r0, [pc, #804]          @ 0x5f0 <$d>
+     2ca: 00 68        	ldr	r0, [r0]
+     2cc: 10 b1        	cbz	r0, 0x2d4 <$C$L4>       @ imm = #4
+     2ce: c8 48        	ldr	r0, [pc, #800]          @ 0x5f0 <$d>
+     2d0: 00 68        	ldr	r0, [r0]
+     2d2: 80 47        	blx	r0
+
+000002d4 <$C$L4>:
+     2d4: 08 bd        	pop	{r3, pc}
+
+000002d6 <EXTIDIntHandler>:
+     2d6: 08 b5        	push	{r3, lr}
+     2d8: c6 48        	ldr	r0, [pc, #792]          @ 0x5f4 <$C$CON5>
+     2da: 00 68        	ldr	r0, [r0]
+     2dc: 10 b1        	cbz	r0, 0x2e4 <$C$L5>       @ imm = #4
+     2de: c5 48        	ldr	r0, [pc, #788]          @ 0x5f4 <$C$CON5>
+     2e0: 00 68        	ldr	r0, [r0]
+     2e2: 80 47        	blx	r0
+
+000002e4 <$C$L5>:
+     2e4: 08 bd        	pop	{r3, pc}
+
+000002e6 <EXTIEIntHandler>:
+     2e6: 08 b5        	push	{r3, lr}
+     2e8: c3 48        	ldr	r0, [pc, #780]          @ 0x5f8 <$C$CON6>
+     2ea: 00 68        	ldr	r0, [r0]
+     2ec: 10 b1        	cbz	r0, 0x2f4 <$C$L6>       @ imm = #4
+     2ee: c2 48        	ldr	r0, [pc, #776]          @ 0x5f8 <$C$CON6>
+     2f0: 00 68        	ldr	r0, [r0]
+     2f2: 80 47        	blx	r0
+
+000002f4 <$C$L6>:
+     2f4: 08 bd        	pop	{r3, pc}
+
+000002f6 <EXTIFIntHandler>:
+     2f6: 08 b5        	push	{r3, lr}
+     2f8: c0 48        	ldr	r0, [pc, #768]          @ 0x5fc <$C$CON7>
+     2fa: 00 68        	ldr	r0, [r0]
+     2fc: 10 b1        	cbz	r0, 0x304 <$C$L7>       @ imm = #4
+     2fe: bf 48        	ldr	r0, [pc, #764]          @ 0x5fc <$C$CON7>
+     300: 00 68        	ldr	r0, [r0]
+     302: 80 47        	blx	r0
+
+00000304 <$C$L7>:
+     304: 08 bd        	pop	{r3, pc}
+
+00000306 <GPIO_SetPinStatus>:
+     306: 38 b5        	push	{r3, r4, r5, lr}
+     308: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     30c: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     310: 8d f8 00 00  	strb.w	r0, [sp]
+     314: 35 e0        	b	0x382 <$C$L10>          @ imm = #106
+
+00000316 <$C$L8>:
+     316: 9d f8 00 10  	ldrb.w	r1, [sp]
+     31a: b9 4b        	ldr	r3, [pc, #740]          @ 0x600 <$C$CON8>
+     31c: 9d f8 00 00  	ldrb.w	r0, [sp]
+     320: b7 4a        	ldr	r2, [pc, #732]          @ 0x600 <$C$CON8>
+     322: b7 4d        	ldr	r5, [pc, #732]          @ 0x600 <$C$CON8>
+     324: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     328: 53 f8 21 10  	ldr.w	r1, [r3, r1, lsl #2]
+     32c: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     330: 9d f8 00 30  	ldrb.w	r3, [sp]
+     334: 09 68        	ldr	r1, [r1]
+     336: 02 68        	ldr	r2, [r0]
+     338: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     33c: 01 20        	movs	r0, #1
+     33e: a0 40        	lsls	r0, r4
+     340: 81 43        	bics	r1, r0
+     342: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     346: 1a 60        	str	r2, [r3]
+     348: 22 e0        	b	0x390 <$C$L11>          @ imm = #68
+
+0000034a <$C$L9>:
+     34a: 9d f8 00 00  	ldrb.w	r0, [sp]
+     34e: ac 4b        	ldr	r3, [pc, #688]          @ 0x600 <$C$CON8>
+     350: 9d f8 00 10  	ldrb.w	r1, [sp]
+     354: aa 4a        	ldr	r2, [pc, #680]          @ 0x600 <$C$CON8>
+     356: aa 4d        	ldr	r5, [pc, #680]          @ 0x600 <$C$CON8>
+     358: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     35c: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     360: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     364: 9d f8 00 30  	ldrb.w	r3, [sp]
+     368: 00 68        	ldr	r0, [r0]
+     36a: 0a 68        	ldr	r2, [r1]
+     36c: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     370: 00 f0 ff 00  	and	r0, r0, #255
+     374: 01 21        	movs	r1, #1
+     376: a1 40        	lsls	r1, r4
+     378: 01 43        	orrs	r1, r0
+     37a: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     37e: 1a 60        	str	r2, [r3]
+     380: 06 e0        	b	0x390 <$C$L11>          @ imm = #12
+
+00000382 <$C$L10>:
+     382: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     386: 00 28        	cmp	r0, #0
+     388: c5 d0        	beq	0x316 <$C$L8>           @ imm = #-118
+     38a: 40 1e        	subs	r0, r0, #1
+     38c: dd d0        	beq	0x34a <$C$L9>           @ imm = #-70
+     38e: ff e7        	b	0x390 <$C$L11>          @ imm = #-2
+
+00000390 <$C$L11>:
+     390: 38 bd        	pop	{r3, r4, r5, pc}
+
+00000392 <GPIO_SetData>:
+     392: 38 b5        	push	{r3, r4, r5, lr}
+     394: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     398: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     39c: 8d f8 00 00  	strb.w	r0, [sp]
+     3a0: 35 e0        	b	0x40e <$C$L14>          @ imm = #106
+
+000003a2 <$C$L12>:
+     3a2: 9d f8 00 10  	ldrb.w	r1, [sp]
+     3a6: c5 4b        	ldr	r3, [pc, #788]          @ 0x6bc <$d>
+     3a8: 9d f8 00 00  	ldrb.w	r0, [sp]
+     3ac: c3 4a        	ldr	r2, [pc, #780]          @ 0x6bc <$d>
+     3ae: c3 4d        	ldr	r5, [pc, #780]          @ 0x6bc <$d>
+     3b0: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     3b4: 53 f8 21 10  	ldr.w	r1, [r3, r1, lsl #2]
+     3b8: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     3bc: 9d f8 00 30  	ldrb.w	r3, [sp]
+     3c0: 09 68        	ldr	r1, [r1]
+     3c2: 02 68        	ldr	r2, [r0]
+     3c4: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     3c8: 01 20        	movs	r0, #1
+     3ca: a0 40        	lsls	r0, r4
+     3cc: 81 43        	bics	r1, r0
+     3ce: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     3d2: 1a 60        	str	r2, [r3]
+     3d4: 22 e0        	b	0x41c <$C$L15>          @ imm = #68
+
+000003d6 <$C$L13>:
+     3d6: 9d f8 00 00  	ldrb.w	r0, [sp]
+     3da: b8 4b        	ldr	r3, [pc, #736]          @ 0x6bc <$d>
+     3dc: 9d f8 00 10  	ldrb.w	r1, [sp]
+     3e0: b6 4a        	ldr	r2, [pc, #728]          @ 0x6bc <$d>
+     3e2: b6 4d        	ldr	r5, [pc, #728]          @ 0x6bc <$d>
+     3e4: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     3e8: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     3ec: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     3f0: 9d f8 00 30  	ldrb.w	r3, [sp]
+     3f4: 00 68        	ldr	r0, [r0]
+     3f6: 0a 68        	ldr	r2, [r1]
+     3f8: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     3fc: 00 f0 ff 00  	and	r0, r0, #255
+     400: 01 21        	movs	r1, #1
+     402: a1 40        	lsls	r1, r4
+     404: 01 43        	orrs	r1, r0
+     406: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     40a: 1a 60        	str	r2, [r3]
+     40c: 06 e0        	b	0x41c <$C$L15>          @ imm = #12
+
+0000040e <$C$L14>:
+     40e: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     412: 00 28        	cmp	r0, #0
+     414: c5 d0        	beq	0x3a2 <$C$L12>          @ imm = #-118
+     416: 40 1e        	subs	r0, r0, #1
+     418: dd d0        	beq	0x3d6 <$C$L13>          @ imm = #-70
+     41a: ff e7        	b	0x41c <$C$L15>          @ imm = #-2
+
+0000041c <$C$L15>:
+     41c: 38 bd        	pop	{r3, r4, r5, pc}
+
+0000041e <GPIO_TogglePinValue>:
+     41e: 38 b5        	push	{r3, r4, r5, lr}
+     420: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     424: 8d f8 00 00  	strb.w	r0, [sp]
+     428: a4 4b        	ldr	r3, [pc, #656]          @ 0x6bc <$d>
+     42a: a4 4a        	ldr	r2, [pc, #656]          @ 0x6bc <$d>
+     42c: a3 4d        	ldr	r5, [pc, #652]          @ 0x6bc <$d>
+     42e: 9d f8 00 00  	ldrb.w	r0, [sp]
+     432: 9d f8 00 10  	ldrb.w	r1, [sp]
+     436: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     43a: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     43e: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     442: 9d f8 00 30  	ldrb.w	r3, [sp]
+     446: 00 68        	ldr	r0, [r0]
+     448: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     44c: 0a 68        	ldr	r2, [r1]
+     44e: 00 f0 ff 00  	and	r0, r0, #255
+     452: 01 21        	movs	r1, #1
+     454: a1 40        	lsls	r1, r4
+     456: 41 40        	eors	r1, r0
+     458: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     45c: 1a 60        	str	r2, [r3]
+     45e: 38 bd        	pop	{r3, r4, r5, pc}
+
+00000460 <GPIO_ConfigureAlternateFunctionSelect>:
+     460: 38 b5        	push	{r3, r4, r5, lr}
+     462: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     466: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     46a: 8d f8 00 00  	strb.w	r0, [sp]
+     46e: 35 e0        	b	0x4dc <$C$L18>          @ imm = #106
+
+00000470 <$C$L16>:
+     470: 9d f8 00 10  	ldrb.w	r1, [sp]
+     474: c7 4b        	ldr	r3, [pc, #796]          @ 0x794 <$d>
+     476: 9d f8 00 00  	ldrb.w	r0, [sp]
+     47a: c6 4a        	ldr	r2, [pc, #792]          @ 0x794 <$d>
+     47c: c5 4d        	ldr	r5, [pc, #788]          @ 0x794 <$d>
+     47e: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     482: 53 f8 21 10  	ldr.w	r1, [r3, r1, lsl #2]
+     486: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     48a: 9d f8 00 30  	ldrb.w	r3, [sp]
+     48e: 09 68        	ldr	r1, [r1]
+     490: 02 68        	ldr	r2, [r0]
+     492: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     496: 01 20        	movs	r0, #1
+     498: a0 40        	lsls	r0, r4
+     49a: 81 43        	bics	r1, r0
+     49c: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     4a0: 1a 60        	str	r2, [r3]
+     4a2: 22 e0        	b	0x4ea <$C$L19>          @ imm = #68
+
+000004a4 <$C$L17>:
+     4a4: 9d f8 00 00  	ldrb.w	r0, [sp]
+     4a8: ba 4b        	ldr	r3, [pc, #744]          @ 0x794 <$d>
+     4aa: 9d f8 00 10  	ldrb.w	r1, [sp]
+     4ae: b9 4a        	ldr	r2, [pc, #740]          @ 0x794 <$d>
+     4b0: b8 4d        	ldr	r5, [pc, #736]          @ 0x794 <$d>
+     4b2: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     4b6: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     4ba: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     4be: 9d f8 00 30  	ldrb.w	r3, [sp]
+     4c2: 00 68        	ldr	r0, [r0]
+     4c4: 0a 68        	ldr	r2, [r1]
+     4c6: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     4ca: 00 f0 ff 00  	and	r0, r0, #255
+     4ce: 01 21        	movs	r1, #1
+     4d0: a1 40        	lsls	r1, r4
+     4d2: 01 43        	orrs	r1, r0
+     4d4: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     4d8: 1a 60        	str	r2, [r3]
+     4da: 06 e0        	b	0x4ea <$C$L19>          @ imm = #12
+
+000004dc <$C$L18>:
+     4dc: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     4e0: 00 28        	cmp	r0, #0
+     4e2: c5 d0        	beq	0x470 <$C$L16>          @ imm = #-118
+     4e4: 40 1e        	subs	r0, r0, #1
+     4e6: dd d0        	beq	0x4a4 <$C$L17>          @ imm = #-70
+     4e8: ff e7        	b	0x4ea <$C$L19>          @ imm = #-2
+
+000004ea <$C$L19>:
+     4ea: 38 bd        	pop	{r3, r4, r5, pc}
+
+000004ec <GPIO_ConfigureAnalogModeSelect>:
+     4ec: ad f1 08 0d  	sub.w	sp, sp, #8
+     4f0: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     4f4: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     4f8: 8d f8 00 00  	strb.w	r0, [sp]
+     4fc: ff e7        	b	0x4fe <$C$L20>          @ imm = #-2
+
+000004fe <$C$L20>:
+     4fe: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     502: 08 b1        	cbz	r0, 0x508 <$C$L21>      @ imm = #2
+     504: 40 1e        	subs	r0, r0, #1
+     506: ff d0        	beq	0x508 <$C$L21>          @ imm = #-2
+
+00000508 <$C$L21>:
+     508: 02 b0        	add	sp, #8
+     50a: 70 47        	bx	lr
+
+0000050c <GPIO_ConfigurePortControl>:
+     50c: ad f1 08 0d  	sub.w	sp, sp, #8
+     510: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     514: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     518: 8d f8 00 00  	strb.w	r0, [sp]
+     51c: d2 49        	ldr	r1, [pc, #840]          @ 0x868 <$d>
+     51e: 9d f8 00 00  	ldrb.w	r0, [sp]
+     522: 51 f8 20 20  	ldr.w	r2, [r1, r0, lsl #2]
+     526: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     52a: 11 68        	ldr	r1, [r2]
+     52c: 9b 00        	lsls	r3, r3, #2
+     52e: 0f 20        	movs	r0, #15
+     530: 98 40        	lsls	r0, r3
+     532: 81 43        	bics	r1, r0
+     534: 11 60        	str	r1, [r2]
+     536: cc 49        	ldr	r1, [pc, #816]          @ 0x868 <$d>
+     538: 9d f8 00 00  	ldrb.w	r0, [sp]
+     53c: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     540: 51 f8 20 10  	ldr.w	r1, [r1, r0, lsl #2]
+     544: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     548: 0a 68        	ldr	r2, [r1]
+     54a: 9b 00        	lsls	r3, r3, #2
+     54c: 98 40        	lsls	r0, r3
+     54e: 10 43        	orrs	r0, r2
+     550: 08 60        	str	r0, [r1]
+     552: 02 b0        	add	sp, #8
+     554: 70 47        	bx	lr
+     556: c0 46        	mov	r8, r8
+
+00000558 <$d>:
+     558:	08 e6 0f 40	.word	0x400fe608
+
+0000055c <$C$CON2>:
+     55c:	98 0f 00 20	.word	0x20000f98
+
+00000560 <$C$CON3>:
+     560:	9c 0f 00 20	.word	0x20000f9c
+
+00000564 <GPIO_ConfigureDigitalEnable>:
+     564: 38 b5        	push	{r3, r4, r5, lr}
+     566: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     56a: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     56e: 8d f8 00 00  	strb.w	r0, [sp]
+     572: 35 e0        	b	0x5e0 <$C$L24>          @ imm = #106
+
+00000574 <$C$L22>:
+     574: 9d f8 00 10  	ldrb.w	r1, [sp]
+     578: bc 4b        	ldr	r3, [pc, #752]          @ 0x86c <$C$CON12>
+     57a: 9d f8 00 00  	ldrb.w	r0, [sp]
+     57e: bb 4a        	ldr	r2, [pc, #748]          @ 0x86c <$C$CON12>
+     580: ba 4d        	ldr	r5, [pc, #744]          @ 0x86c <$C$CON12>
+     582: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     586: 53 f8 21 10  	ldr.w	r1, [r3, r1, lsl #2]
+     58a: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     58e: 9d f8 00 30  	ldrb.w	r3, [sp]
+     592: 09 68        	ldr	r1, [r1]
+     594: 02 68        	ldr	r2, [r0]
+     596: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     59a: 01 20        	movs	r0, #1
+     59c: a0 40        	lsls	r0, r4
+     59e: 81 43        	bics	r1, r0
+     5a0: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     5a4: 1a 60        	str	r2, [r3]
+     5a6: 22 e0        	b	0x5ee <$C$L25>          @ imm = #68
+
+000005a8 <$C$L23>:
+     5a8: 9d f8 00 00  	ldrb.w	r0, [sp]
+     5ac: af 4b        	ldr	r3, [pc, #700]          @ 0x86c <$C$CON12>
+     5ae: 9d f8 00 10  	ldrb.w	r1, [sp]
+     5b2: ae 4a        	ldr	r2, [pc, #696]          @ 0x86c <$C$CON12>
+     5b4: ad 4d        	ldr	r5, [pc, #692]          @ 0x86c <$C$CON12>
+     5b6: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     5ba: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     5be: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     5c2: 9d f8 00 30  	ldrb.w	r3, [sp]
+     5c6: 00 68        	ldr	r0, [r0]
+     5c8: 0a 68        	ldr	r2, [r1]
+     5ca: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     5ce: 00 f0 ff 00  	and	r0, r0, #255
+     5d2: 01 21        	movs	r1, #1
+     5d4: a1 40        	lsls	r1, r4
+     5d6: 01 43        	orrs	r1, r0
+     5d8: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     5dc: 1a 60        	str	r2, [r3]
+     5de: 06 e0        	b	0x5ee <$C$L25>          @ imm = #12
+
+000005e0 <$C$L24>:
+     5e0: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     5e4: 00 28        	cmp	r0, #0
+     5e6: c5 d0        	beq	0x574 <$C$L22>          @ imm = #-118
+     5e8: 40 1e        	subs	r0, r0, #1
+     5ea: dd d0        	beq	0x5a8 <$C$L23>          @ imm = #-70
+     5ec: ff e7        	b	0x5ee <$C$L25>          @ imm = #-2
+
+000005ee <$C$L25>:
+     5ee: 38 bd        	pop	{r3, r4, r5, pc}
+
+000005f0 <$d>:
+     5f0:	a0 0f 00 20	.word	0x20000fa0
+
+000005f4 <$C$CON5>:
+     5f4:	a4 0f 00 20	.word	0x20000fa4
+
+000005f8 <$C$CON6>:
+     5f8:	a8 0f 00 20	.word	0x20000fa8
+
+000005fc <$C$CON7>:
+     5fc:	ac 0f 00 20	.word	0x20000fac
+
+00000600 <$C$CON8>:
+     600:	44 1e 00 00	.word	0x00001e44
+
+00000604 <GPIO_ConfigureCommit>:
+     604: 38 b5        	push	{r3, r4, r5, lr}
+     606: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     60a: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     60e: 8d f8 00 00  	strb.w	r0, [sp]
+     612: 2a e0        	b	0x66a <$C$L28>          @ imm = #84
+
+00000614 <$C$L26>:
+     614: 9d f8 00 00  	ldrb.w	r0, [sp]
+     618: bf 49        	ldr	r1, [pc, #764]          @ 0x918 <$d>
+     61a: 51 f8 20 00  	ldr.w	r0, [r1, r0, lsl #2]
+     61e: 00 21        	movs	r1, #0
+     620: 01 60        	str	r1, [r0]
+     622: 29 e0        	b	0x678 <$C$L29>          @ imm = #82
+
+00000624 <$C$L27>:
+     624: 9d f8 00 00  	ldrb.w	r0, [sp]
+     628: bb 4a        	ldr	r2, [pc, #748]          @ 0x918 <$d>
+     62a: bc 49        	ldr	r1, [pc, #752]          @ 0x91c <$C$CON14>
+     62c: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     630: 01 60        	str	r1, [r0]
+     632: bb 4b        	ldr	r3, [pc, #748]          @ 0x920 <$C$CON15>
+     634: ba 4a        	ldr	r2, [pc, #744]          @ 0x920 <$C$CON15>
+     636: 9d f8 00 00  	ldrb.w	r0, [sp]
+     63a: b9 4d        	ldr	r5, [pc, #740]          @ 0x920 <$C$CON15>
+     63c: 9d f8 00 10  	ldrb.w	r1, [sp]
+     640: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     644: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     648: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     64c: 9d f8 00 30  	ldrb.w	r3, [sp]
+     650: 00 68        	ldr	r0, [r0]
+     652: 0a 68        	ldr	r2, [r1]
+     654: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     658: 00 f0 ff 00  	and	r0, r0, #255
+     65c: 01 21        	movs	r1, #1
+     65e: a1 40        	lsls	r1, r4
+     660: 01 43        	orrs	r1, r0
+     662: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     666: 1a 60        	str	r2, [r3]
+     668: 06 e0        	b	0x678 <$C$L29>          @ imm = #12
+
+0000066a <$C$L28>:
+     66a: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     66e: 00 28        	cmp	r0, #0
+     670: d0 d0        	beq	0x614 <$C$L26>          @ imm = #-96
+     672: 40 1e        	subs	r0, r0, #1
+     674: d6 d0        	beq	0x624 <$C$L27>          @ imm = #-84
+     676: ff e7        	b	0x678 <$C$L29>          @ imm = #-2
+
+00000678 <$C$L29>:
+     678: 38 bd        	pop	{r3, r4, r5, pc}
+
+0000067a <GPIO_EXTIClearInterrupt>:
+     67a: 38 b5        	push	{r3, r4, r5, lr}
+     67c: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     680: 8d f8 00 00  	strb.w	r0, [sp]
+     684: c1 4b        	ldr	r3, [pc, #772]          @ 0x98c <$d>
+     686: c1 4a        	ldr	r2, [pc, #772]          @ 0x98c <$d>
+     688: c0 4d        	ldr	r5, [pc, #768]          @ 0x98c <$d>
+     68a: 9d f8 00 00  	ldrb.w	r0, [sp]
+     68e: 9d f8 00 10  	ldrb.w	r1, [sp]
+     692: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     696: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     69a: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     69e: 9d f8 00 30  	ldrb.w	r3, [sp]
+     6a2: 00 68        	ldr	r0, [r0]
+     6a4: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     6a8: 0a 68        	ldr	r2, [r1]
+     6aa: 00 f0 ff 00  	and	r0, r0, #255
+     6ae: 01 21        	movs	r1, #1
+     6b0: a1 40        	lsls	r1, r4
+     6b2: 01 43        	orrs	r1, r0
+     6b4: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     6b8: 1a 60        	str	r2, [r3]
+     6ba: 38 bd        	pop	{r3, r4, r5, pc}
+
+000006bc <$d>:
+     6bc:	14 1e 00 00	.word	0x00001e14
+
+000006c0 <GPIO_ConfigureInterruptMask>:
+     6c0: 38 b5        	push	{r3, r4, r5, lr}
+     6c2: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     6c6: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     6ca: 8d f8 00 00  	strb.w	r0, [sp]
+     6ce: 35 e0        	b	0x73c <$C$L32>          @ imm = #106
+
+000006d0 <$C$L30>:
+     6d0: 9d f8 00 00  	ldrb.w	r0, [sp]
+     6d4: c0 4b        	ldr	r3, [pc, #768]          @ 0x9d8 <$d>
+     6d6: 9d f8 00 10  	ldrb.w	r1, [sp]
+     6da: bf 4a        	ldr	r2, [pc, #764]          @ 0x9d8 <$d>
+     6dc: be 4d        	ldr	r5, [pc, #760]          @ 0x9d8 <$d>
+     6de: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     6e2: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     6e6: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     6ea: 9d f8 00 30  	ldrb.w	r3, [sp]
+     6ee: 00 68        	ldr	r0, [r0]
+     6f0: 0a 68        	ldr	r2, [r1]
+     6f2: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     6f6: 00 f0 ff 00  	and	r0, r0, #255
+     6fa: 01 21        	movs	r1, #1
+     6fc: a1 40        	lsls	r1, r4
+     6fe: 01 43        	orrs	r1, r0
+     700: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     704: 1a 60        	str	r2, [r3]
+     706: 20 e0        	b	0x74a <$C$L33>          @ imm = #64
+
+00000708 <$C$L31>:
+     708: 9d f8 00 10  	ldrb.w	r1, [sp]
+     70c: b2 4b        	ldr	r3, [pc, #712]          @ 0x9d8 <$d>
+     70e: 9d f8 00 00  	ldrb.w	r0, [sp]
+     712: b1 4a        	ldr	r2, [pc, #708]          @ 0x9d8 <$d>
+     714: b0 4d        	ldr	r5, [pc, #704]          @ 0x9d8 <$d>
+     716: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     71a: 53 f8 21 10  	ldr.w	r1, [r3, r1, lsl #2]
+     71e: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     722: 9d f8 00 30  	ldrb.w	r3, [sp]
+     726: 09 68        	ldr	r1, [r1]
+     728: 02 68        	ldr	r2, [r0]
+     72a: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     72e: 01 20        	movs	r0, #1
+     730: a0 40        	lsls	r0, r4
+     732: 81 43        	bics	r1, r0
+     734: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     738: 1a 60        	str	r2, [r3]
+     73a: 06 e0        	b	0x74a <$C$L33>          @ imm = #12
+
+0000073c <$C$L32>:
+     73c: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     740: 00 28        	cmp	r0, #0
+     742: c5 d0        	beq	0x6d0 <$C$L30>          @ imm = #-118
+     744: 40 1e        	subs	r0, r0, #1
+     746: df d0        	beq	0x708 <$C$L31>          @ imm = #-66
+     748: ff e7        	b	0x74a <$C$L33>          @ imm = #-2
+
+0000074a <$C$L33>:
+     74a: 38 bd        	pop	{r3, r4, r5, pc}
+
+0000074c <GPIO_ConfigureOutputPin>:
+     74c: 08 b5        	push	{r3, lr}
+     74e: 00 90        	str	r0, [sp]
+     750: 00 98        	ldr	r0, [sp]
+     752: 00 78        	ldrb	r0, [r0]
+     754: ff f7 8a fd  	bl	0x26c <GPIO_EnableRunModeClockGateControl> @ imm = #-1260
+     758: 00 98        	ldr	r0, [sp]
+     75a: 00 99        	ldr	r1, [sp]
+     75c: 00 78        	ldrb	r0, [r0]
+     75e: 49 78        	ldrb	r1, [r1, #1]
+     760: 01 22        	movs	r2, #1
+     762: ff f7 d0 fd  	bl	0x306 <GPIO_SetPinStatus> @ imm = #-1120
+     766: 00 98        	ldr	r0, [sp]
+     768: 00 99        	ldr	r1, [sp]
+     76a: 00 78        	ldrb	r0, [r0]
+     76c: 49 78        	ldrb	r1, [r1, #1]
+     76e: 00 22        	movs	r2, #0
+     770: ff f7 0f fe  	bl	0x392 <GPIO_SetData>    @ imm = #-994
+     774: 00 98        	ldr	r0, [sp]
+     776: 00 99        	ldr	r1, [sp]
+     778: 00 78        	ldrb	r0, [r0]
+     77a: 49 78        	ldrb	r1, [r1, #1]
+     77c: 01 22        	movs	r2, #1
+     77e: ff f7 f1 fe  	bl	0x564 <GPIO_ConfigureDigitalEnable> @ imm = #-542
+     782: 00 98        	ldr	r0, [sp]
+     784: 00 99        	ldr	r1, [sp]
+     786: 00 78        	ldrb	r0, [r0]
+     788: 49 78        	ldrb	r1, [r1, #1]
+     78a: 01 22        	movs	r2, #1
+     78c: ff f7 3a ff  	bl	0x604 <GPIO_ConfigureCommit> @ imm = #-396
+     790: 08 bd        	pop	{r3, pc}
+     792: c0 46        	mov	r8, r8
+
+00000794 <$d>:
+     794:	fc 1d 00 00	.word	0x00001dfc
+
+00000798 <GPIO_SetPinDirection>:
+     798: 38 b5        	push	{r3, r4, r5, lr}
+     79a: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     79e: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     7a2: 8d f8 00 00  	strb.w	r0, [sp]
+     7a6: 35 e0        	b	0x814 <$C$L36>          @ imm = #106
+
+000007a8 <$C$L34>:
+     7a8: 9d f8 00 10  	ldrb.w	r1, [sp]
+     7ac: aa 4b        	ldr	r3, [pc, #680]          @ 0xa58 <$d>
+     7ae: 9d f8 00 00  	ldrb.w	r0, [sp]
+     7b2: a9 4a        	ldr	r2, [pc, #676]          @ 0xa58 <$d>
+     7b4: a8 4d        	ldr	r5, [pc, #672]          @ 0xa58 <$d>
+     7b6: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     7ba: 53 f8 21 10  	ldr.w	r1, [r3, r1, lsl #2]
+     7be: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     7c2: 9d f8 00 30  	ldrb.w	r3, [sp]
+     7c6: 09 68        	ldr	r1, [r1]
+     7c8: 02 68        	ldr	r2, [r0]
+     7ca: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     7ce: 01 20        	movs	r0, #1
+     7d0: a0 40        	lsls	r0, r4
+     7d2: 81 43        	bics	r1, r0
+     7d4: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     7d8: 1a 60        	str	r2, [r3]
+     7da: 22 e0        	b	0x822 <$C$L37>          @ imm = #68
+
+000007dc <$C$L35>:
+     7dc: 9d f8 00 00  	ldrb.w	r0, [sp]
+     7e0: 9d 4b        	ldr	r3, [pc, #628]          @ 0xa58 <$d>
+     7e2: 9d f8 00 10  	ldrb.w	r1, [sp]
+     7e6: 9c 4a        	ldr	r2, [pc, #624]          @ 0xa58 <$d>
+     7e8: 9b 4d        	ldr	r5, [pc, #620]          @ 0xa58 <$d>
+     7ea: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     7ee: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     7f2: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     7f6: 9d f8 00 30  	ldrb.w	r3, [sp]
+     7fa: 00 68        	ldr	r0, [r0]
+     7fc: 0a 68        	ldr	r2, [r1]
+     7fe: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     802: 00 f0 ff 00  	and	r0, r0, #255
+     806: 01 21        	movs	r1, #1
+     808: a1 40        	lsls	r1, r4
+     80a: 01 43        	orrs	r1, r0
+     80c: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     810: 1a 60        	str	r2, [r3]
+     812: 06 e0        	b	0x822 <$C$L37>          @ imm = #12
+
+00000814 <$C$L36>:
+     814: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     818: 00 28        	cmp	r0, #0
+     81a: c5 d0        	beq	0x7a8 <$C$L34>          @ imm = #-118
+     81c: 40 1e        	subs	r0, r0, #1
+     81e: dd d0        	beq	0x7dc <$C$L35>          @ imm = #-70
+     820: ff e7        	b	0x822 <$C$L37>          @ imm = #-2
+
+00000822 <$C$L37>:
+     822: 38 bd        	pop	{r3, r4, r5, pc}
+
+00000824 <GPIO_SetInputStatus>:
+     824: 38 b5        	push	{r3, r4, r5, lr}
+     826: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     82a: 8d f8 00 00  	strb.w	r0, [sp]
+     82e: 8b 4b        	ldr	r3, [pc, #556]          @ 0xa5c <$C$CON19>
+     830: 8a 4a        	ldr	r2, [pc, #552]          @ 0xa5c <$C$CON19>
+     832: 8a 4d        	ldr	r5, [pc, #552]          @ 0xa5c <$C$CON19>
+     834: 9d f8 00 00  	ldrb.w	r0, [sp]
+     838: 9d f8 00 10  	ldrb.w	r1, [sp]
+     83c: 9d f8 01 40  	ldrb.w	r4, [sp, #1]
+     840: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     844: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     848: 9d f8 00 30  	ldrb.w	r3, [sp]
+     84c: 00 68        	ldr	r0, [r0]
+     84e: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+     852: 0a 68        	ldr	r2, [r1]
+     854: 00 f0 ff 00  	and	r0, r0, #255
+     858: 01 21        	movs	r1, #1
+     85a: a1 40        	lsls	r1, r4
+     85c: 01 43        	orrs	r1, r0
+     85e: 61 f3 07 02  	bfi	r2, r1, #0, #8
+     862: 1a 60        	str	r2, [r3]
+     864: 38 bd        	pop	{r3, r4, r5, pc}
+     866: c0 46        	mov	r8, r8
+
+00000868 <$d>:
+     868:	a4 1e 00 00	.word	0x00001ea4
+
+0000086c <$C$CON12>:
+     86c:	2c 1e 00 00	.word	0x00001e2c
+
+00000870 <GPIO_ConfigureInputPin>:
+     870: 08 b5        	push	{r3, lr}
+     872: 00 90        	str	r0, [sp]
+     874: 00 98        	ldr	r0, [sp]
+     876: 00 78        	ldrb	r0, [r0]
+     878: ff f7 f8 fc  	bl	0x26c <GPIO_EnableRunModeClockGateControl> @ imm = #-1552
+     87c: 00 98        	ldr	r0, [sp]
+     87e: 00 78        	ldrb	r0, [r0]
+     880: 05 28        	cmp	r0, #5
+     882: 07 d1        	bne	0x894 <$C$L38>          @ imm = #14
+     884: 00 98        	ldr	r0, [sp]
+     886: 40 78        	ldrb	r0, [r0, #1]
+     888: 20 b9        	cbnz	r0, 0x894 <$C$L38>      @ imm = #8
+     88a: 05 20        	movs	r0, #5
+     88c: 00 21        	movs	r1, #0
+     88e: 01 22        	movs	r2, #1
+     890: ff f7 b8 fe  	bl	0x604 <GPIO_ConfigureCommit> @ imm = #-656
+
+00000894 <$C$L38>:
+     894: 00 98        	ldr	r0, [sp]
+     896: 00 99        	ldr	r1, [sp]
+     898: 00 78        	ldrb	r0, [r0]
+     89a: 49 78        	ldrb	r1, [r1, #1]
+     89c: 00 22        	movs	r2, #0
+     89e: ff f7 7b ff  	bl	0x798 <GPIO_SetPinDirection> @ imm = #-266
+     8a2: 00 98        	ldr	r0, [sp]
+     8a4: 00 99        	ldr	r1, [sp]
+     8a6: 00 78        	ldrb	r0, [r0]
+     8a8: 49 78        	ldrb	r1, [r1, #1]
+     8aa: ff f7 bb ff  	bl	0x824 <GPIO_SetInputStatus> @ imm = #-138
+     8ae: 00 98        	ldr	r0, [sp]
+     8b0: 00 99        	ldr	r1, [sp]
+     8b2: 00 78        	ldrb	r0, [r0]
+     8b4: 49 78        	ldrb	r1, [r1, #1]
+     8b6: 01 22        	movs	r2, #1
+     8b8: ff f7 54 fe  	bl	0x564 <GPIO_ConfigureDigitalEnable> @ imm = #-856
+     8bc: 08 bd        	pop	{r3, pc}
+
+000008be <GPIO_ToggleBitBandBits>:
+     8be: ad f1 08 0d  	sub.w	sp, sp, #8
+     8c2: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     8c6: 8d f8 00 00  	strb.w	r0, [sp]
+     8ca: 65 4a        	ldr	r2, [pc, #404]          @ 0xa60 <$C$CON20>
+     8cc: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+     8d0: 9d f8 00 00  	ldrb.w	r0, [sp]
+     8d4: 9d f8 00 30  	ldrb.w	r3, [sp]
+     8d8: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     8dc: 80 1c        	adds	r0, r0, #2
+     8de: 01 22        	movs	r2, #1
+     8e0: 82 40        	lsls	r2, r0
+     8e2: 89 18        	adds	r1, r1, r2
+     8e4: 0a 68        	ldr	r2, [r1]
+     8e6: 01 20        	movs	r0, #1
+     8e8: 98 40        	lsls	r0, r3
+     8ea: 50 40        	eors	r0, r2
+     8ec: 08 60        	str	r0, [r1]
+     8ee: 02 b0        	add	sp, #8
+     8f0: 70 47        	bx	lr
+
+000008f2 <GPIO_ReadBitBandBits>:
+     8f2: ad f1 08 0d  	sub.w	sp, sp, #8
+     8f6: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     8fa: 8d f8 00 00  	strb.w	r0, [sp]
+     8fe: 58 4a        	ldr	r2, [pc, #352]          @ 0xa60 <$C$CON20>
+     900: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+     904: 9d f8 00 00  	ldrb.w	r0, [sp]
+     908: 52 f8 21 20  	ldr.w	r2, [r2, r1, lsl #2]
+     90c: 80 1c        	adds	r0, r0, #2
+     90e: 01 21        	movs	r1, #1
+     910: 81 40        	lsls	r1, r0
+     912: 88 58        	ldr	r0, [r1, r2]
+     914: 02 b0        	add	sp, #8
+     916: 70 47        	bx	lr
+
+00000918 <$d>:
+     918:	8c 1e 00 00	.word	0x00001e8c
+
+0000091c <$C$CON14>:
+     91c:	4b 43 4f 4c	.word	0x4c4f434b
+
+00000920 <$C$CON15>:
+     920:	bc 1e 00 00	.word	0x00001ebc
+
+00000924 <GPIO_WriteBitBandBits>:
+     924: 1c b5        	push	{r2, r3, r4, lr}
+     926: 8d f8 02 20  	strb.w	r2, [sp, #2]
+     92a: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     92e: 8d f8 00 00  	strb.w	r0, [sp]
+     932: 22 e0        	b	0x97a <$C$L41>          @ imm = #68
+
+00000934 <$C$L39>:
+     934: 9d f8 01 00  	ldrb.w	r0, [sp, #1]
+     938: 49 4a        	ldr	r2, [pc, #292]          @ 0xa60 <$C$CON20>
+     93a: 9d f8 00 10  	ldrb.w	r1, [sp]
+     93e: 9d f8 00 40  	ldrb.w	r4, [sp]
+     942: 52 f8 20 30  	ldr.w	r3, [r2, r0, lsl #2]
+     946: 89 1c        	adds	r1, r1, #2
+     948: 01 22        	movs	r2, #1
+     94a: 01 20        	movs	r0, #1
+     94c: 8a 40        	lsls	r2, r1
+     94e: a0 40        	lsls	r0, r4
+     950: d0 50        	str	r0, [r2, r3]
+     952: 19 e0        	b	0x988 <$C$L42>          @ imm = #50
+
+00000954 <$C$L40>:
+     954: 9d f8 01 00  	ldrb.w	r0, [sp, #1]
+     958: 41 4a        	ldr	r2, [pc, #260]          @ 0xa60 <$C$CON20>
+     95a: 9d f8 00 10  	ldrb.w	r1, [sp]
+     95e: 9d f8 00 30  	ldrb.w	r3, [sp]
+     962: 52 f8 20 00  	ldr.w	r0, [r2, r0, lsl #2]
+     966: 89 1c        	adds	r1, r1, #2
+     968: 01 22        	movs	r2, #1
+     96a: 8a 40        	lsls	r2, r1
+     96c: 80 18        	adds	r0, r0, r2
+     96e: 02 68        	ldr	r2, [r0]
+     970: 01 21        	movs	r1, #1
+     972: 99 40        	lsls	r1, r3
+     974: 8a 43        	bics	r2, r1
+     976: 02 60        	str	r2, [r0]
+     978: 06 e0        	b	0x988 <$C$L42>          @ imm = #12
+
+0000097a <$C$L41>:
+     97a: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     97e: 00 28        	cmp	r0, #0
+     980: e8 d0        	beq	0x954 <$C$L40>          @ imm = #-48
+     982: 40 1e        	subs	r0, r0, #1
+     984: d6 d0        	beq	0x934 <$C$L39>          @ imm = #-84
+     986: ff e7        	b	0x988 <$C$L42>          @ imm = #-2
+
+00000988 <$C$L42>:
+     988: 1c bd        	pop	{r2, r3, r4, pc}
+     98a: c0 46        	mov	r8, r8
+
+0000098c <$d>:
+     98c:	5c 1e 00 00	.word	0x00001e5c
+
+00000990 <GPIO_EnableAFSEL_GPTM>:
+     990: 08 b5        	push	{r3, lr}
+     992: 00 90        	str	r0, [sp]
+     994: 00 98        	ldr	r0, [sp]
+     996: 00 78        	ldrb	r0, [r0]
+     998: ff f7 68 fc  	bl	0x26c <GPIO_EnableRunModeClockGateControl> @ imm = #-1840
+     99c: 00 98        	ldr	r0, [sp]
+     99e: 00 99        	ldr	r1, [sp]
+     9a0: 00 78        	ldrb	r0, [r0]
+     9a2: 49 78        	ldrb	r1, [r1, #1]
+     9a4: 01 22        	movs	r2, #1
+     9a6: ff f7 5b fd  	bl	0x460 <GPIO_ConfigureAlternateFunctionSelect> @ imm = #-1354
+     9aa: 00 98        	ldr	r0, [sp]
+     9ac: 00 99        	ldr	r1, [sp]
+     9ae: 00 78        	ldrb	r0, [r0]
+     9b0: 49 78        	ldrb	r1, [r1, #1]
+     9b2: 07 22        	movs	r2, #7
+     9b4: ff f7 aa fd  	bl	0x50c <GPIO_ConfigurePortControl> @ imm = #-1196
+     9b8: 00 98        	ldr	r0, [sp]
+     9ba: 00 99        	ldr	r1, [sp]
+     9bc: 00 78        	ldrb	r0, [r0]
+     9be: 49 78        	ldrb	r1, [r1, #1]
+     9c0: 01 22        	movs	r2, #1
+     9c2: ff f7 7d fe  	bl	0x6c0 <GPIO_ConfigureInterruptMask> @ imm = #-774
+     9c6: 00 98        	ldr	r0, [sp]
+     9c8: 00 99        	ldr	r1, [sp]
+     9ca: 00 78        	ldrb	r0, [r0]
+     9cc: 49 78        	ldrb	r1, [r1, #1]
+     9ce: 01 22        	movs	r2, #1
+     9d0: ff f7 c8 fd  	bl	0x564 <GPIO_ConfigureDigitalEnable> @ imm = #-1136
+     9d4: 08 bd        	pop	{r3, pc}
+     9d6: c0 46        	mov	r8, r8
+
+000009d8 <$d>:
+     9d8:	74 1e 00 00	.word	0x00001e74
+
+000009dc <GPIO_EnableAFSEL_UART>:
+     9dc: 08 b5        	push	{r3, lr}
+     9de: 00 90        	str	r0, [sp]
+     9e0: 00 98        	ldr	r0, [sp]
+     9e2: 00 78        	ldrb	r0, [r0]
+     9e4: ff f7 42 fc  	bl	0x26c <GPIO_EnableRunModeClockGateControl> @ imm = #-1916
+     9e8: 00 98        	ldr	r0, [sp]
+     9ea: 00 99        	ldr	r1, [sp]
+     9ec: 00 78        	ldrb	r0, [r0]
+     9ee: 49 78        	ldrb	r1, [r1, #1]
+     9f0: 01 22        	movs	r2, #1
+     9f2: ff f7 35 fd  	bl	0x460 <GPIO_ConfigureAlternateFunctionSelect> @ imm = #-1430
+     9f6: 00 98        	ldr	r0, [sp]
+     9f8: 00 99        	ldr	r1, [sp]
+     9fa: 00 78        	ldrb	r0, [r0]
+     9fc: 89 78        	ldrb	r1, [r1, #2]
+     9fe: 01 22        	movs	r2, #1
+     a00: ff f7 2e fd  	bl	0x460 <GPIO_ConfigureAlternateFunctionSelect> @ imm = #-1444
+     a04: 00 98        	ldr	r0, [sp]
+     a06: 00 99        	ldr	r1, [sp]
+     a08: 00 78        	ldrb	r0, [r0]
+     a0a: 49 78        	ldrb	r1, [r1, #1]
+     a0c: 01 22        	movs	r2, #1
+     a0e: ff f7 7d fd  	bl	0x50c <GPIO_ConfigurePortControl> @ imm = #-1286
+     a12: 00 98        	ldr	r0, [sp]
+     a14: 00 99        	ldr	r1, [sp]
+     a16: 00 78        	ldrb	r0, [r0]
+     a18: 89 78        	ldrb	r1, [r1, #2]
+     a1a: 01 22        	movs	r2, #1
+     a1c: ff f7 76 fd  	bl	0x50c <GPIO_ConfigurePortControl> @ imm = #-1300
+     a20: 00 98        	ldr	r0, [sp]
+     a22: 00 99        	ldr	r1, [sp]
+     a24: 00 78        	ldrb	r0, [r0]
+     a26: 49 78        	ldrb	r1, [r1, #1]
+     a28: 01 22        	movs	r2, #1
+     a2a: ff f7 9b fd  	bl	0x564 <GPIO_ConfigureDigitalEnable> @ imm = #-1226
+     a2e: 00 98        	ldr	r0, [sp]
+     a30: 00 99        	ldr	r1, [sp]
+     a32: 00 78        	ldrb	r0, [r0]
+     a34: 89 78        	ldrb	r1, [r1, #2]
+     a36: 01 22        	movs	r2, #1
+     a38: ff f7 94 fd  	bl	0x564 <GPIO_ConfigureDigitalEnable> @ imm = #-1240
+     a3c: 08 bd        	pop	{r3, pc}
+
+00000a3e <RegisterCallbackFunction>:
+     a3e: ad f1 08 0d  	sub.w	sp, sp, #8
+     a42: 00 91        	str	r1, [sp]
+     a44: 8d f8 04 00  	strb.w	r0, [sp, #4]
+     a48: 06 4a        	ldr	r2, [pc, #24]           @ 0xa64 <$C$CON21>
+     a4a: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+     a4e: 00 98        	ldr	r0, [sp]
+     a50: 42 f8 21 00  	str.w	r0, [r2, r1, lsl #2]
+     a54: 02 b0        	add	sp, #8
+     a56: 70 47        	bx	lr
+
+00000a58 <$d>:
+     a58:	44 1e 00 00	.word	0x00001e44
+
+00000a5c <$C$CON19>:
+     a5c:	d4 1e 00 00	.word	0x00001ed4
+
+00000a60 <$C$CON20>:
+     a60:	b0 0f 00 20	.word	0x20000fb0
+
+00000a64 <$C$CON21>:
+     a64:	98 0f 00 20	.word	0x20000f98
+
+00000a68 <DMA_ErrorHandler>:
+     a68: 8d 49        	ldr	r1, [pc, #564]          @ 0xca0 <$d>
+     a6a: 08 68        	ldr	r0, [r1]
+     a6c: 40 f0 01 00  	orr	r0, r0, #1
+     a70: 08 60        	str	r0, [r1]
+     a72: 70 47        	bx	lr
+
+00000a74 <DMA_SoftwareTransferHandler>:
+     a74: 08 b5        	push	{r3, lr}
+     a76: 8b 49        	ldr	r1, [pc, #556]          @ 0xca4 <$C$CON8>
+     a78: 08 68        	ldr	r0, [r1]
+     a7a: 40 f0 80 40  	orr	r0, r0, #1073741824
+     a7e: 08 60        	str	r0, [r1]
+     a80: 00 22        	movs	r2, #0
+     a82: 01 20        	movs	r0, #1
+     a84: 05 21        	movs	r1, #5
+     a86: ff f7 4d ff  	bl	0x924 <GPIO_WriteBitBandBits> @ imm = #-358
+     a8a: 08 bd        	pop	{r3, pc}
+
+00000a8c <DMA_PeripheralInitialization>:
+     a8c: 86 49        	ldr	r1, [pc, #536]          @ 0xca8 <$C$CON9>
+     a8e: 08 68        	ldr	r0, [r1]
+     a90: 40 f0 01 00  	orr	r0, r0, #1
+     a94: 08 60        	str	r0, [r1]
+     a96: 85 49        	ldr	r1, [pc, #532]          @ 0xcac <$C$CON10>
+     a98: 08 68        	ldr	r0, [r1]
+     a9a: 40 f0 01 00  	orr	r0, r0, #1
+     a9e: 08 60        	str	r0, [r1]
+     aa0: 84 48        	ldr	r0, [pc, #528]          @ 0xcb4 <$C$CON12>
+     aa2: 83 49        	ldr	r1, [pc, #524]          @ 0xcb0 <$C$CON11>
+     aa4: 08 60        	str	r0, [r1]
+     aa6: 70 47        	bx	lr
+
+00000aa8 <DMA_EnableChannelAttributes>:
+     aa8: 08 b5        	push	{r3, lr}
+     aaa: 00 90        	str	r0, [sp]
+     aac: 00 98        	ldr	r0, [sp]
+     aae: 00 9a        	ldr	r2, [sp]
+     ab0: 01 78        	ldrb	r1, [r0]
+     ab2: 90 79        	ldrb	r0, [r2, #6]
+     ab4: 00 f0 0d fa  	bl	0xed2 <DMA_ConfigurePriority> @ imm = #1050
+     ab8: 00 98        	ldr	r0, [sp]
+     aba: 7f 49        	ldr	r1, [pc, #508]          @ 0xcb8 <$C$CON13>
+     abc: 03 78        	ldrb	r3, [r0]
+     abe: 0a 68        	ldr	r2, [r1]
+     ac0: 01 20        	movs	r0, #1
+     ac2: 98 40        	lsls	r0, r3
+     ac4: 10 43        	orrs	r0, r2
+     ac6: 08 60        	str	r0, [r1]
+     ac8: 00 98        	ldr	r0, [sp]
+     aca: 7c 49        	ldr	r1, [pc, #496]          @ 0xcbc <$C$CON14>
+     acc: 03 78        	ldrb	r3, [r0]
+     ace: 0a 68        	ldr	r2, [r1]
+     ad0: 01 20        	movs	r0, #1
+     ad2: 98 40        	lsls	r0, r3
+     ad4: 10 43        	orrs	r0, r2
+     ad6: 08 60        	str	r0, [r1]
+     ad8: 00 98        	ldr	r0, [sp]
+     ada: 79 49        	ldr	r1, [pc, #484]          @ 0xcc0 <$C$CON15>
+     adc: 03 78        	ldrb	r3, [r0]
+     ade: 0a 68        	ldr	r2, [r1]
+     ae0: 01 20        	movs	r0, #1
+     ae2: 98 40        	lsls	r0, r3
+     ae4: 10 43        	orrs	r0, r2
+     ae6: 08 60        	str	r0, [r1]
+     ae8: 00 98        	ldr	r0, [sp]
+     aea: 00 99        	ldr	r1, [sp]
+     aec: 00 78        	ldrb	r0, [r0]
+     aee: c9 79        	ldrb	r1, [r1, #7]
+     af0: 00 f0 11 fa  	bl	0xf16 <DMA_AssignChannel> @ imm = #1058
+     af4: 00 98        	ldr	r0, [sp]
+     af6: 01 78        	ldrb	r1, [r0]
+     af8: 00 20        	movs	r0, #0
+     afa: 00 f0 c9 f9  	bl	0xe90 <DMA_ConfigureChannelInterrupt> @ imm = #914
+     afe: 08 bd        	pop	{r3, pc}
+
+00000b00 <DMA_DisableChannelAttributes>:
+     b00: ad f1 08 0d  	sub.w	sp, sp, #8
+     b04: 00 90        	str	r0, [sp]
+     b06: 00 98        	ldr	r0, [sp]
+     b08: 80 79        	ldrb	r0, [r0, #6]
+     b0a: 01 28        	cmp	r0, #1
+     b0c: 07 d1        	bne	0xb1e <$C$L60>          @ imm = #14
+     b0e: 00 98        	ldr	r0, [sp]
+     b10: b5 49        	ldr	r1, [pc, #724]          @ 0xde8 <$d>
+     b12: 03 78        	ldrb	r3, [r0]
+     b14: 0a 68        	ldr	r2, [r1]
+     b16: 01 20        	movs	r0, #1
+     b18: 98 40        	lsls	r0, r3
+     b1a: 10 43        	orrs	r0, r2
+     b1c: 08 60        	str	r0, [r1]
+
+00000b1e <$C$L60>:
+     b1e: 00 98        	ldr	r0, [sp]
+     b20: 40 7a        	ldrb	r0, [r0, #9]
+     b22: 01 28        	cmp	r0, #1
+     b24: 07 d1        	bne	0xb36 <$C$L61>          @ imm = #14
+     b26: 00 98        	ldr	r0, [sp]
+     b28: 64 49        	ldr	r1, [pc, #400]          @ 0xcbc <$C$CON14>
+     b2a: 03 78        	ldrb	r3, [r0]
+     b2c: 0a 68        	ldr	r2, [r1]
+     b2e: 01 20        	movs	r0, #1
+     b30: 98 40        	lsls	r0, r3
+     b32: 10 43        	orrs	r0, r2
+     b34: 08 60        	str	r0, [r1]
+
+00000b36 <$C$L61>:
+     b36: 00 98        	ldr	r0, [sp]
+     b38: 61 49        	ldr	r1, [pc, #388]          @ 0xcc0 <$C$CON15>
+     b3a: 03 78        	ldrb	r3, [r0]
+     b3c: 0a 68        	ldr	r2, [r1]
+     b3e: 01 20        	movs	r0, #1
+     b40: 98 40        	lsls	r0, r3
+     b42: 10 43        	orrs	r0, r2
+     b44: 08 60        	str	r0, [r1]
+     b46: 02 b0        	add	sp, #8
+     b48: 70 47        	bx	lr
+
+00000b4a <DMA_ConfigureControlTableBaseAddress>:
+     b4a: ad f1 08 0d  	sub.w	sp, sp, #8
+     b4e: 00 90        	str	r0, [sp]
+     b50: 57 48        	ldr	r0, [pc, #348]          @ 0xcb0 <$C$CON11>
+     b52: 57 49        	ldr	r1, [pc, #348]          @ 0xcb0 <$C$CON11>
+     b54: 00 9a        	ldr	r2, [sp]
+     b56: 00 68        	ldr	r0, [r0]
+     b58: 62 f3 9f 20  	bfi	r0, r2, #10, #22
+     b5c: 08 60        	str	r0, [r1]
+     b5e: 02 b0        	add	sp, #8
+     b60: 70 47        	bx	lr
+
+00000b62 <DMA_EnableChannel>:
+     b62: ad f1 08 0d  	sub.w	sp, sp, #8
+     b66: 8d f8 00 00  	strb.w	r0, [sp]
+     b6a: b6 49        	ldr	r1, [pc, #728]          @ 0xe44 <$d>
+     b6c: 9d f8 00 30  	ldrb.w	r3, [sp]
+     b70: 0a 68        	ldr	r2, [r1]
+     b72: 01 20        	movs	r0, #1
+     b74: 98 40        	lsls	r0, r3
+     b76: 10 43        	orrs	r0, r2
+     b78: 08 60        	str	r0, [r1]
+     b7a: 02 b0        	add	sp, #8
+     b7c: 70 47        	bx	lr
+
+00000b7e <DMA_ChannelControlStructureSet>:
+     b7e: ad f1 10 0d  	sub.w	sp, sp, #16
+     b82: 02 92        	str	r2, [sp, #8]
+     b84: 01 91        	str	r1, [sp, #4]
+     b86: 00 90        	str	r0, [sp]
+     b88: af 48        	ldr	r0, [pc, #700]          @ 0xe48 <$C$CON18>
+     b8a: 00 78        	ldrb	r0, [r0]
+     b8c: 10 b1        	cbz	r0, 0xb94 <$C$L62>      @ imm = #4
+     b8e: af 48        	ldr	r0, [pc, #700]          @ 0xe4c <$C$CON19>
+     b90: 00 78        	ldrb	r0, [r0]
+     b92: 30 b9        	cbnz	r0, 0xba2 <$C$L63>      @ imm = #12
+
+00000b94 <$C$L62>:
+     b94: 00 98        	ldr	r0, [sp]
+     b96: ba 4a        	ldr	r2, [pc, #744]          @ 0xe80 <$d>
+     b98: 01 78        	ldrb	r1, [r0]
+     b9a: 01 98        	ldr	r0, [sp, #4]
+     b9c: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     ba0: 08 60        	str	r0, [r1]
+
+00000ba2 <$C$L63>:
+     ba2: b8 48        	ldr	r0, [pc, #736]          @ 0xe84 <$C$CON21>
+     ba4: 00 78        	ldrb	r0, [r0]
+     ba6: 10 b1        	cbz	r0, 0xbae <$C$L64>      @ imm = #4
+     ba8: a8 48        	ldr	r0, [pc, #672]          @ 0xe4c <$C$CON19>
+     baa: 00 78        	ldrb	r0, [r0]
+     bac: 30 b9        	cbnz	r0, 0xbbc <$C$L65>      @ imm = #12
+
+00000bae <$C$L64>:
+     bae: 00 98        	ldr	r0, [sp]
+     bb0: b5 4a        	ldr	r2, [pc, #724]          @ 0xe88 <$C$CON22>
+     bb2: 01 78        	ldrb	r1, [r0]
+     bb4: 02 98        	ldr	r0, [sp, #8]
+     bb6: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     bba: 08 60        	str	r0, [r1]
+
+00000bbc <$C$L65>:
+     bbc: 00 98        	ldr	r0, [sp]
+     bbe: 00 9a        	ldr	r2, [sp]
+     bc0: 00 99        	ldr	r1, [sp]
+     bc2: b2 4b        	ldr	r3, [pc, #712]          @ 0xe8c <$C$CON23>
+     bc4: 00 78        	ldrb	r0, [r0]
+     bc6: 12 78        	ldrb	r2, [r2]
+     bc8: 49 78        	ldrb	r1, [r1, #1]
+     bca: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     bce: af 4b        	ldr	r3, [pc, #700]          @ 0xe8c <$C$CON23>
+     bd0: 00 68        	ldr	r0, [r0]
+     bd2: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     bd6: 61 f3 9f 70  	bfi	r0, r1, #30, #2
+     bda: 10 60        	str	r0, [r2]
+     bdc: 00 98        	ldr	r0, [sp]
+     bde: ab 4b        	ldr	r3, [pc, #684]          @ 0xe8c <$C$CON23>
+     be0: 00 9a        	ldr	r2, [sp]
+     be2: 00 99        	ldr	r1, [sp]
+     be4: 00 78        	ldrb	r0, [r0]
+     be6: 12 78        	ldrb	r2, [r2]
+     be8: c9 78        	ldrb	r1, [r1, #3]
+     bea: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     bee: a7 4b        	ldr	r3, [pc, #668]          @ 0xe8c <$C$CON23>
+     bf0: 00 68        	ldr	r0, [r0]
+     bf2: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     bf6: 61 f3 1d 70  	bfi	r0, r1, #28, #2
+     bfa: 10 60        	str	r0, [r2]
+     bfc: 00 98        	ldr	r0, [sp]
+     bfe: a3 4b        	ldr	r3, [pc, #652]          @ 0xe8c <$C$CON23>
+     c00: 00 9a        	ldr	r2, [sp]
+     c02: 00 99        	ldr	r1, [sp]
+     c04: 00 78        	ldrb	r0, [r0]
+     c06: 12 78        	ldrb	r2, [r2]
+     c08: 89 78        	ldrb	r1, [r1, #2]
+     c0a: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     c0e: 9f 4b        	ldr	r3, [pc, #636]          @ 0xe8c <$C$CON23>
+     c10: 00 68        	ldr	r0, [r0]
+     c12: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     c16: 61 f3 9b 60  	bfi	r0, r1, #26, #2
+     c1a: 10 60        	str	r0, [r2]
+     c1c: 9b 4b        	ldr	r3, [pc, #620]          @ 0xe8c <$C$CON23>
+     c1e: 00 98        	ldr	r0, [sp]
+     c20: 00 9a        	ldr	r2, [sp]
+     c22: 00 99        	ldr	r1, [sp]
+     c24: 00 78        	ldrb	r0, [r0]
+     c26: 12 78        	ldrb	r2, [r2]
+     c28: 09 79        	ldrb	r1, [r1, #4]
+     c2a: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     c2e: 97 4b        	ldr	r3, [pc, #604]          @ 0xe8c <$C$CON23>
+     c30: 00 68        	ldr	r0, [r0]
+     c32: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     c36: 61 f3 19 60  	bfi	r0, r1, #24, #2
+     c3a: 10 60        	str	r0, [r2]
+     c3c: 93 4b        	ldr	r3, [pc, #588]          @ 0xe8c <$C$CON23>
+     c3e: 00 98        	ldr	r0, [sp]
+     c40: 00 9a        	ldr	r2, [sp]
+     c42: 00 99        	ldr	r1, [sp]
+     c44: 00 78        	ldrb	r0, [r0]
+     c46: 12 78        	ldrb	r2, [r2]
+     c48: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     c4c: 8f 4b        	ldr	r3, [pc, #572]          @ 0xe8c <$C$CON23>
+     c4e: 49 79        	ldrb	r1, [r1, #5]
+     c50: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     c54: 00 68        	ldr	r0, [r0]
+     c56: 61 f3 02 00  	bfi	r0, r1, #0, #3
+     c5a: 10 60        	str	r0, [r2]
+     c5c: 8b 4b        	ldr	r3, [pc, #556]          @ 0xe8c <$C$CON23>
+     c5e: 00 98        	ldr	r0, [sp]
+     c60: 00 9a        	ldr	r2, [sp]
+     c62: 00 99        	ldr	r1, [sp]
+     c64: 00 78        	ldrb	r0, [r0]
+     c66: 12 78        	ldrb	r2, [r2]
+     c68: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     c6c: 87 4b        	ldr	r3, [pc, #540]          @ 0xe8c <$C$CON23>
+     c6e: c9 68        	ldr	r1, [r1, #12]
+     c70: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     c74: 00 68        	ldr	r0, [r0]
+     c76: 61 f3 0d 10  	bfi	r0, r1, #4, #10
+     c7a: 10 60        	str	r0, [r2]
+     c7c: 83 4b        	ldr	r3, [pc, #524]          @ 0xe8c <$C$CON23>
+     c7e: 00 98        	ldr	r0, [sp]
+     c80: 00 9a        	ldr	r2, [sp]
+     c82: 00 99        	ldr	r1, [sp]
+     c84: 00 78        	ldrb	r0, [r0]
+     c86: 12 78        	ldrb	r2, [r2]
+     c88: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     c8c: 7f 4b        	ldr	r3, [pc, #508]          @ 0xe8c <$C$CON23>
+     c8e: 09 7a        	ldrb	r1, [r1, #8]
+     c90: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     c94: 00 68        	ldr	r0, [r0]
+     c96: 61 f3 91 30  	bfi	r0, r1, #14, #4
+     c9a: 10 60        	str	r0, [r2]
+     c9c: 04 b0        	add	sp, #16
+     c9e: 70 47        	bx	lr
+
+00000ca0 <$d>:
+     ca0:	4c f0 0f 40	.word	0x400ff04c
+
+00000ca4 <$C$CON8>:
+     ca4:	04 f5 0f 40	.word	0x400ff504
+
+00000ca8 <$C$CON9>:
+     ca8:	0c e6 0f 40	.word	0x400fe60c
+
+00000cac <$C$CON10>:
+     cac:	04 f0 0f 40	.word	0x400ff004
+
+00000cb0 <$C$CON11>:
+     cb0:	08 f0 0f 40	.word	0x400ff008
+
+00000cb4 <$C$CON12>:
+     cb4:	00 08 00 20	.word	0x20000800
+
+00000cb8 <$C$CON13>:
+     cb8:	34 f0 0f 40	.word	0x400ff034
+
+00000cbc <$C$CON14>:
+     cbc:	1c f0 0f 40	.word	0x400ff01c
+
+00000cc0 <$C$CON15>:
+     cc0:	24 f0 0f 40	.word	0x400ff024
+
+00000cc4 <DMA_ChannelAlternateControlStructureSet>:
+     cc4: ad f1 10 0d  	sub.w	sp, sp, #16
+     cc8: 02 92        	str	r2, [sp, #8]
+     cca: 01 91        	str	r1, [sp, #4]
+     ccc: 00 90        	str	r0, [sp]
+     cce: 5e 48        	ldr	r0, [pc, #376]          @ 0xe48 <$C$CON18>
+     cd0: 00 78        	ldrb	r0, [r0]
+     cd2: 10 b1        	cbz	r0, 0xcda <$C$L66>      @ imm = #4
+     cd4: 5d 48        	ldr	r0, [pc, #372]          @ 0xe4c <$C$CON19>
+     cd6: 00 78        	ldrb	r0, [r0]
+     cd8: 30 b9        	cbnz	r0, 0xce8 <$C$L67>      @ imm = #12
+
+00000cda <$C$L66>:
+     cda: 00 98        	ldr	r0, [sp]
+     cdc: be 4a        	ldr	r2, [pc, #760]          @ 0xfd8 <$d>
+     cde: 01 78        	ldrb	r1, [r0]
+     ce0: 01 98        	ldr	r0, [sp, #4]
+     ce2: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     ce6: 08 60        	str	r0, [r1]
+
+00000ce8 <$C$L67>:
+     ce8: 66 48        	ldr	r0, [pc, #408]          @ 0xe84 <$C$CON21>
+     cea: 00 78        	ldrb	r0, [r0]
+     cec: 10 b1        	cbz	r0, 0xcf4 <$C$L68>      @ imm = #4
+     cee: 57 48        	ldr	r0, [pc, #348]          @ 0xe4c <$C$CON19>
+     cf0: 00 78        	ldrb	r0, [r0]
+     cf2: 30 b9        	cbnz	r0, 0xd02 <$C$L69>      @ imm = #12
+
+00000cf4 <$C$L68>:
+     cf4: 00 98        	ldr	r0, [sp]
+     cf6: c7 4a        	ldr	r2, [pc, #796]          @ 0x1014 <$d>
+     cf8: 01 78        	ldrb	r1, [r0]
+     cfa: 02 98        	ldr	r0, [sp, #8]
+     cfc: 52 f8 21 10  	ldr.w	r1, [r2, r1, lsl #2]
+     d00: 08 60        	str	r0, [r1]
+
+00000d02 <$C$L69>:
+     d02: 00 98        	ldr	r0, [sp]
+     d04: 00 9a        	ldr	r2, [sp]
+     d06: 00 99        	ldr	r1, [sp]
+     d08: c3 4b        	ldr	r3, [pc, #780]          @ 0x1018 <$C$CON26>
+     d0a: 00 78        	ldrb	r0, [r0]
+     d0c: 12 78        	ldrb	r2, [r2]
+     d0e: 49 78        	ldrb	r1, [r1, #1]
+     d10: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     d14: c0 4b        	ldr	r3, [pc, #768]          @ 0x1018 <$C$CON26>
+     d16: 00 68        	ldr	r0, [r0]
+     d18: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     d1c: 61 f3 9f 70  	bfi	r0, r1, #30, #2
+     d20: 10 60        	str	r0, [r2]
+     d22: 00 98        	ldr	r0, [sp]
+     d24: bc 4b        	ldr	r3, [pc, #752]          @ 0x1018 <$C$CON26>
+     d26: 00 9a        	ldr	r2, [sp]
+     d28: 00 99        	ldr	r1, [sp]
+     d2a: 00 78        	ldrb	r0, [r0]
+     d2c: 12 78        	ldrb	r2, [r2]
+     d2e: c9 78        	ldrb	r1, [r1, #3]
+     d30: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     d34: b8 4b        	ldr	r3, [pc, #736]          @ 0x1018 <$C$CON26>
+     d36: 00 68        	ldr	r0, [r0]
+     d38: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     d3c: 61 f3 1d 70  	bfi	r0, r1, #28, #2
+     d40: 10 60        	str	r0, [r2]
+     d42: 00 98        	ldr	r0, [sp]
+     d44: b4 4b        	ldr	r3, [pc, #720]          @ 0x1018 <$C$CON26>
+     d46: 00 9a        	ldr	r2, [sp]
+     d48: 00 99        	ldr	r1, [sp]
+     d4a: 00 78        	ldrb	r0, [r0]
+     d4c: 12 78        	ldrb	r2, [r2]
+     d4e: 89 78        	ldrb	r1, [r1, #2]
+     d50: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     d54: b0 4b        	ldr	r3, [pc, #704]          @ 0x1018 <$C$CON26>
+     d56: 00 68        	ldr	r0, [r0]
+     d58: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     d5c: 61 f3 9b 60  	bfi	r0, r1, #26, #2
+     d60: 10 60        	str	r0, [r2]
+     d62: ad 4b        	ldr	r3, [pc, #692]          @ 0x1018 <$C$CON26>
+     d64: 00 98        	ldr	r0, [sp]
+     d66: 00 9a        	ldr	r2, [sp]
+     d68: 00 99        	ldr	r1, [sp]
+     d6a: 00 78        	ldrb	r0, [r0]
+     d6c: 12 78        	ldrb	r2, [r2]
+     d6e: 09 79        	ldrb	r1, [r1, #4]
+     d70: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     d74: a8 4b        	ldr	r3, [pc, #672]          @ 0x1018 <$C$CON26>
+     d76: 00 68        	ldr	r0, [r0]
+     d78: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     d7c: 61 f3 19 60  	bfi	r0, r1, #24, #2
+     d80: 10 60        	str	r0, [r2]
+     d82: a5 4b        	ldr	r3, [pc, #660]          @ 0x1018 <$C$CON26>
+     d84: 00 98        	ldr	r0, [sp]
+     d86: 00 9a        	ldr	r2, [sp]
+     d88: 00 99        	ldr	r1, [sp]
+     d8a: 00 78        	ldrb	r0, [r0]
+     d8c: 12 78        	ldrb	r2, [r2]
+     d8e: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     d92: a1 4b        	ldr	r3, [pc, #644]          @ 0x1018 <$C$CON26>
+     d94: 49 79        	ldrb	r1, [r1, #5]
+     d96: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     d9a: 00 68        	ldr	r0, [r0]
+     d9c: 61 f3 02 00  	bfi	r0, r1, #0, #3
+     da0: 10 60        	str	r0, [r2]
+     da2: 9d 4b        	ldr	r3, [pc, #628]          @ 0x1018 <$C$CON26>
+     da4: 00 98        	ldr	r0, [sp]
+     da6: 00 9a        	ldr	r2, [sp]
+     da8: 00 99        	ldr	r1, [sp]
+     daa: 00 78        	ldrb	r0, [r0]
+     dac: 12 78        	ldrb	r2, [r2]
+     dae: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     db2: 99 4b        	ldr	r3, [pc, #612]          @ 0x1018 <$C$CON26>
+     db4: c9 68        	ldr	r1, [r1, #12]
+     db6: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     dba: 00 68        	ldr	r0, [r0]
+     dbc: 61 f3 0d 10  	bfi	r0, r1, #4, #10
+     dc0: 10 60        	str	r0, [r2]
+     dc2: 95 4b        	ldr	r3, [pc, #596]          @ 0x1018 <$C$CON26>
+     dc4: 00 98        	ldr	r0, [sp]
+     dc6: 00 9a        	ldr	r2, [sp]
+     dc8: 00 99        	ldr	r1, [sp]
+     dca: 00 78        	ldrb	r0, [r0]
+     dcc: 12 78        	ldrb	r2, [r2]
+     dce: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+     dd2: 91 4b        	ldr	r3, [pc, #580]          @ 0x1018 <$C$CON26>
+     dd4: 09 7a        	ldrb	r1, [r1, #8]
+     dd6: 53 f8 22 20  	ldr.w	r2, [r3, r2, lsl #2]
+     dda: 00 68        	ldr	r0, [r0]
+     ddc: 61 f3 91 30  	bfi	r0, r1, #14, #4
+     de0: 10 60        	str	r0, [r2]
+     de2: 04 b0        	add	sp, #16
+     de4: 70 47        	bx	lr
+     de6: c0 46        	mov	r8, r8
+
+00000de8 <$d>:
+     de8:	3c f0 0f 40	.word	0x400ff03c
+
+00000dec <DMA_ConfigureChannelSoftwareRequest>:
+     dec: ad f1 08 0d  	sub.w	sp, sp, #8
+     df0: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     df4: 8d f8 00 00  	strb.w	r0, [sp]
+     df8: 11 e0        	b	0xe1e <$C$L72>          @ imm = #34
+
+00000dfa <$C$L70>:
+     dfa: a3 4a        	ldr	r2, [pc, #652]          @ 0x1088 <$d>
+     dfc: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     e00: 11 68        	ldr	r1, [r2]
+     e02: 01 20        	movs	r0, #1
+     e04: 98 40        	lsls	r0, r3
+     e06: 81 43        	bics	r1, r0
+     e08: 11 60        	str	r1, [r2]
+     e0a: 0f e0        	b	0xe2c <$C$L73>          @ imm = #30
+
+00000e0c <$C$L71>:
+     e0c: 9e 49        	ldr	r1, [pc, #632]          @ 0x1088 <$d>
+     e0e: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     e12: 0a 68        	ldr	r2, [r1]
+     e14: 01 20        	movs	r0, #1
+     e16: 98 40        	lsls	r0, r3
+     e18: 10 43        	orrs	r0, r2
+     e1a: 08 60        	str	r0, [r1]
+     e1c: 06 e0        	b	0xe2c <$C$L73>          @ imm = #12
+
+00000e1e <$C$L72>:
+     e1e: 9d f8 00 00  	ldrb.w	r0, [sp]
+     e22: 00 28        	cmp	r0, #0
+     e24: e9 d0        	beq	0xdfa <$C$L70>          @ imm = #-46
+     e26: 40 1e        	subs	r0, r0, #1
+     e28: f0 d0        	beq	0xe0c <$C$L71>          @ imm = #-32
+     e2a: ff e7        	b	0xe2c <$C$L73>          @ imm = #-2
+
+00000e2c <$C$L73>:
+     e2c: 02 b0        	add	sp, #8
+     e2e: 70 47        	bx	lr
+
+00000e30 <DMA_ConfigureChannelsRequests>:
+     e30: ad f1 08 0d  	sub.w	sp, sp, #8
+     e34: 00 90        	str	r0, [sp]
+     e36: 94 49        	ldr	r1, [pc, #592]          @ 0x1088 <$d>
+     e38: 00 98        	ldr	r0, [sp]
+     e3a: 0a 68        	ldr	r2, [r1]
+     e3c: 10 43        	orrs	r0, r2
+     e3e: 08 60        	str	r0, [r1]
+     e40: 02 b0        	add	sp, #8
+     e42: 70 47        	bx	lr
+
+00000e44 <$d>:
+     e44:	28 f0 0f 40	.word	0x400ff028
+
+00000e48 <$C$CON18>:
+     e48:	7f 10 00 20	.word	0x2000107f
+
+00000e4c <$C$CON19>:
+     e4c:	44 10 00 20	.word	0x20001044
+
+00000e50 <DMA_ConfigurePeripheralInterrupt>:
+     e50: 08 b5        	push	{r3, lr}
+     e52: 8d f8 00 00  	strb.w	r0, [sp]
+     e56: 9d f8 00 00  	ldrb.w	r0, [sp]
+     e5a: 30 b9        	cbnz	r0, 0xe6a <$C$L74>      @ imm = #12
+     e5c: 2e 20        	movs	r0, #46
+     e5e: 00 f0 35 f9  	bl	0x10cc <NVIC_Enable_Interrupt> @ imm = #618
+     e62: 2f 20        	movs	r0, #47
+     e64: 00 f0 32 f9  	bl	0x10cc <NVIC_Enable_Interrupt> @ imm = #612
+     e68: 09 e0        	b	0xe7e <$C$L75>          @ imm = #18
+
+00000e6a <$C$L74>:
+     e6a: 9d f8 00 00  	ldrb.w	r0, [sp]
+     e6e: 01 28        	cmp	r0, #1
+     e70: 05 d1        	bne	0xe7e <$C$L75>          @ imm = #10
+     e72: 2e 20        	movs	r0, #46
+     e74: 00 f0 46 f9  	bl	0x1104 <NVIC_Clear_Interrupt> @ imm = #652
+     e78: 2f 20        	movs	r0, #47
+     e7a: 00 f0 43 f9  	bl	0x1104 <NVIC_Clear_Interrupt> @ imm = #646
+
+00000e7e <$C$L75>:
+     e7e: 08 bd        	pop	{r3, pc}
+
+00000e80 <$d>:
+     e80:	5c 1d 00 00	.word	0x00001d5c
+
+00000e84 <$C$CON21>:
+     e84:	7e 10 00 20	.word	0x2000107e
+
+00000e88 <$C$CON22>:
+     e88:	dc 1c 00 00	.word	0x00001cdc
+
+00000e8c <$C$CON23>:
+     e8c:	5c 1c 00 00	.word	0x00001c5c
+
+00000e90 <DMA_ConfigureChannelInterrupt>:
+     e90: ad f1 08 0d  	sub.w	sp, sp, #8
+     e94: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     e98: 8d f8 00 00  	strb.w	r0, [sp]
+     e9c: 10 e0        	b	0xec0 <$C$L78>          @ imm = #32
+
+00000e9e <$C$L76>:
+     e9e: 7b 49        	ldr	r1, [pc, #492]          @ 0x108c <$C$CON28>
+     ea0: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     ea4: 0a 68        	ldr	r2, [r1]
+     ea6: 01 20        	movs	r0, #1
+     ea8: 98 40        	lsls	r0, r3
+     eaa: 10 43        	orrs	r0, r2
+     eac: 08 60        	str	r0, [r1]
+
+00000eae <$C$L77>:
+     eae: 77 4a        	ldr	r2, [pc, #476]          @ 0x108c <$C$CON28>
+     eb0: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     eb4: 11 68        	ldr	r1, [r2]
+     eb6: 01 20        	movs	r0, #1
+     eb8: 98 40        	lsls	r0, r3
+     eba: 81 43        	bics	r1, r0
+     ebc: 11 60        	str	r1, [r2]
+     ebe: 06 e0        	b	0xece <$C$L79>          @ imm = #12
+
+00000ec0 <$C$L78>:
+     ec0: 9d f8 00 00  	ldrb.w	r0, [sp]
+     ec4: 00 28        	cmp	r0, #0
+     ec6: ea d0        	beq	0xe9e <$C$L76>          @ imm = #-44
+     ec8: 40 1e        	subs	r0, r0, #1
+     eca: f0 d0        	beq	0xeae <$C$L77>          @ imm = #-32
+     ecc: ff e7        	b	0xece <$C$L79>          @ imm = #-2
+
+00000ece <$C$L79>:
+     ece: 02 b0        	add	sp, #8
+     ed0: 70 47        	bx	lr
+
+00000ed2 <DMA_ConfigurePriority>:
+     ed2: ad f1 08 0d  	sub.w	sp, sp, #8
+     ed6: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     eda: 8d f8 00 00  	strb.w	r0, [sp]
+     ede: 11 e0        	b	0xf04 <$C$L82>          @ imm = #34
+
+00000ee0 <$C$L80>:
+     ee0: 6b 4a        	ldr	r2, [pc, #428]          @ 0x1090 <$C$CON29>
+     ee2: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     ee6: 11 68        	ldr	r1, [r2]
+     ee8: 01 20        	movs	r0, #1
+     eea: 98 40        	lsls	r0, r3
+     eec: 81 43        	bics	r1, r0
+     eee: 11 60        	str	r1, [r2]
+     ef0: 0f e0        	b	0xf12 <$C$L83>          @ imm = #30
+
+00000ef2 <$C$L81>:
+     ef2: 67 49        	ldr	r1, [pc, #412]          @ 0x1090 <$C$CON29>
+     ef4: 9d f8 01 30  	ldrb.w	r3, [sp, #1]
+     ef8: 0a 68        	ldr	r2, [r1]
+     efa: 01 20        	movs	r0, #1
+     efc: 98 40        	lsls	r0, r3
+     efe: 10 43        	orrs	r0, r2
+     f00: 08 60        	str	r0, [r1]
+     f02: 06 e0        	b	0xf12 <$C$L83>          @ imm = #12
+
+00000f04 <$C$L82>:
+     f04: 9d f8 00 00  	ldrb.w	r0, [sp]
+     f08: 00 28        	cmp	r0, #0
+     f0a: e9 d0        	beq	0xee0 <$C$L80>          @ imm = #-46
+     f0c: 40 1e        	subs	r0, r0, #1
+     f0e: f0 d0        	beq	0xef2 <$C$L81>          @ imm = #-32
+     f10: ff e7        	b	0xf12 <$C$L83>          @ imm = #-2
+
+00000f12 <$C$L83>:
+     f12: 02 b0        	add	sp, #8
+     f14: 70 47        	bx	lr
+
+00000f16 <DMA_AssignChannel>:
+     f16: ad f1 08 0d  	sub.w	sp, sp, #8
+     f1a: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     f1e: 8d f8 00 00  	strb.w	r0, [sp]
+     f22: 9d f8 00 00  	ldrb.w	r0, [sp]
+     f26: 81 10        	asrs	r1, r0, #2
+     f28: 00 eb 51 70  	add.w	r0, r0, r1, lsr #29
+     f2c: c0 10        	asrs	r0, r0, #3
+     f2e: 8d f8 02 00  	strb.w	r0, [sp, #2]
+     f32: 9d f8 02 20  	ldrb.w	r2, [sp, #2]
+     f36: 9d f8 00 00  	ldrb.w	r0, [sp]
+     f3a: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+     f3e: a0 eb c2 00  	sub.w	r0, r0, r2, lsl #3
+     f42: 01 eb 80 01  	add.w	r1, r1, r0, lsl #2
+     f46: 8d f8 03 10  	strb.w	r1, [sp, #3]
+     f4a: 52 49        	ldr	r1, [pc, #328]          @ 0x1094 <$C$CON30>
+     f4c: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     f50: 51 f8 20 10  	ldr.w	r1, [r1, r0, lsl #2]
+     f54: 9d f8 03 30  	ldrb.w	r3, [sp, #3]
+     f58: 0a 68        	ldr	r2, [r1]
+     f5a: 01 20        	movs	r0, #1
+     f5c: 98 40        	lsls	r0, r3
+     f5e: 10 43        	orrs	r0, r2
+     f60: 08 60        	str	r0, [r1]
+     f62: 02 b0        	add	sp, #8
+     f64: 70 47        	bx	lr
+
+00000f66 <DMA_DeAssignChannel>:
+     f66: ad f1 08 0d  	sub.w	sp, sp, #8
+     f6a: 8d f8 01 10  	strb.w	r1, [sp, #1]
+     f6e: 8d f8 00 00  	strb.w	r0, [sp]
+     f72: 9d f8 00 00  	ldrb.w	r0, [sp]
+     f76: 81 10        	asrs	r1, r0, #2
+     f78: 00 eb 51 70  	add.w	r0, r0, r1, lsr #29
+     f7c: c0 10        	asrs	r0, r0, #3
+     f7e: 8d f8 02 00  	strb.w	r0, [sp, #2]
+     f82: 9d f8 02 20  	ldrb.w	r2, [sp, #2]
+     f86: 9d f8 00 00  	ldrb.w	r0, [sp]
+     f8a: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+     f8e: a0 eb c2 00  	sub.w	r0, r0, r2, lsl #3
+     f92: 01 eb 80 01  	add.w	r1, r1, r0, lsl #2
+     f96: 8d f8 03 10  	strb.w	r1, [sp, #3]
+     f9a: 3e 49        	ldr	r1, [pc, #248]          @ 0x1094 <$C$CON30>
+     f9c: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+     fa0: 51 f8 20 20  	ldr.w	r2, [r1, r0, lsl #2]
+     fa4: 9d f8 03 30  	ldrb.w	r3, [sp, #3]
+     fa8: 11 68        	ldr	r1, [r2]
+     faa: 01 20        	movs	r0, #1
+     fac: 98 40        	lsls	r0, r3
+     fae: 81 43        	bics	r1, r0
+     fb0: 11 60        	str	r1, [r2]
+     fb2: 02 b0        	add	sp, #8
+     fb4: 70 47        	bx	lr
+
+00000fb6 <DMA_MemoryToMemory_Transfer>:
+     fb6: 0e b5        	push	{r1, r2, r3, lr}
+     fb8: 01 91        	str	r1, [sp, #4]
+     fba: 00 90        	str	r0, [sp]
+     fbc: 36 48        	ldr	r0, [pc, #216]          @ 0x1098 <$C$CON31>
+     fbe: 01 9a        	ldr	r2, [sp, #4]
+     fc0: 00 99        	ldr	r1, [sp]
+     fc2: 00 68        	ldr	r0, [r0]
+     fc4: ff f7 db fd  	bl	0xb7e <DMA_ChannelControlStructureSet> @ imm = #-1098
+     fc8: 01 20        	movs	r0, #1
+     fca: 1e 21        	movs	r1, #30
+     fcc: ff f7 0e ff  	bl	0xdec <DMA_ConfigureChannelSoftwareRequest> @ imm = #-484
+     fd0: 1e 20        	movs	r0, #30
+     fd2: ff f7 c6 fd  	bl	0xb62 <DMA_EnableChannel> @ imm = #-1140
+     fd6: 0e bd        	pop	{r1, r2, r3, pc}
+
+00000fd8 <$d>:
+     fd8:	dc 1b 00 00	.word	0x00001bdc
+
+00000fdc <DMA_ChannelScatterGatherSet>:
+     fdc: 08 b5        	push	{r3, lr}
+     fde: 00 90        	str	r0, [sp]
+     fe0: 2e 49        	ldr	r1, [pc, #184]          @ 0x109c <$C$CON32>
+     fe2: 2f 48        	ldr	r0, [pc, #188]          @ 0x10a0 <$C$CON33>
+     fe4: 08 60        	str	r0, [r1]
+     fe6: 30 48        	ldr	r0, [pc, #192]          @ 0x10a8 <$C$CON35>
+     fe8: 2e 49        	ldr	r1, [pc, #184]          @ 0x10a4 <$C$CON34>
+     fea: 08 60        	str	r0, [r1]
+     fec: 2f 49        	ldr	r1, [pc, #188]          @ 0x10ac <$C$CON36>
+     fee: 01 20        	movs	r0, #1
+     ff0: 08 70        	strb	r0, [r1]
+     ff2: 00 98        	ldr	r0, [sp]
+     ff4: 00 22        	movs	r2, #0
+     ff6: 00 21        	movs	r1, #0
+     ff8: ff f7 c1 fd  	bl	0xb7e <DMA_ChannelControlStructureSet> @ imm = #-1150
+     ffc: 2b 49        	ldr	r1, [pc, #172]          @ 0x10ac <$C$CON36>
+     ffe: 00 20        	movs	r0, #0
+    1000: 08 70        	strb	r0, [r1]
+    1002: 00 98        	ldr	r0, [sp]
+    1004: 2a 49        	ldr	r1, [pc, #168]          @ 0x10b0 <$C$CON37>
+    1006: 03 78        	ldrb	r3, [r0]
+    1008: 0a 68        	ldr	r2, [r1]
+    100a: 01 20        	movs	r0, #1
+    100c: 98 40        	lsls	r0, r3
+    100e: 10 43        	orrs	r0, r2
+    1010: 08 60        	str	r0, [r1]
+    1012: 08 bd        	pop	{r3, pc}
+
+00001014 <$d>:
+    1014:	5c 1b 00 00	.word	0x00001b5c
+
+00001018 <$C$CON26>:
+    1018:	dc 1a 00 00	.word	0x00001adc
+
+0000101c <DMA_ChannelPeripheralScatterGatherSet>:
+    101c: 08 b5        	push	{r3, lr}
+    101e: 00 90        	str	r0, [sp]
+    1020: 24 49        	ldr	r1, [pc, #144]          @ 0x10b4 <$C$CON38>
+    1022: 25 48        	ldr	r0, [pc, #148]          @ 0x10b8 <$C$CON39>
+    1024: 08 60        	str	r0, [r1]
+    1026: 26 48        	ldr	r0, [pc, #152]          @ 0x10c0 <$C$CON41>
+    1028: 24 49        	ldr	r1, [pc, #144]          @ 0x10bc <$C$CON40>
+    102a: 08 60        	str	r0, [r1]
+    102c: 1f 49        	ldr	r1, [pc, #124]          @ 0x10ac <$C$CON36>
+    102e: 01 20        	movs	r0, #1
+    1030: 08 70        	strb	r0, [r1]
+    1032: 00 98        	ldr	r0, [sp]
+    1034: 00 22        	movs	r2, #0
+    1036: 00 21        	movs	r1, #0
+    1038: ff f7 a1 fd  	bl	0xb7e <DMA_ChannelControlStructureSet> @ imm = #-1214
+    103c: 1b 49        	ldr	r1, [pc, #108]          @ 0x10ac <$C$CON36>
+    103e: 00 20        	movs	r0, #0
+    1040: 08 70        	strb	r0, [r1]
+    1042: 00 98        	ldr	r0, [sp]
+    1044: 1a 49        	ldr	r1, [pc, #104]          @ 0x10b0 <$C$CON37>
+    1046: 03 78        	ldrb	r3, [r0]
+    1048: 0a 68        	ldr	r2, [r1]
+    104a: 01 20        	movs	r0, #1
+    104c: 98 40        	lsls	r0, r3
+    104e: 10 43        	orrs	r0, r2
+    1050: 08 60        	str	r0, [r1]
+    1052: 08 bd        	pop	{r3, pc}
+
+00001054 <DMA_RegisterCallbackFunction_SoftwareTransfer>:
+    1054: ad f1 08 0d  	sub.w	sp, sp, #8
+    1058: 00 91        	str	r1, [sp]
+    105a: 8d f8 04 00  	strb.w	r0, [sp, #4]
+    105e: 19 4a        	ldr	r2, [pc, #100]          @ 0x10c4 <$C$CON42>
+    1060: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+    1064: 00 98        	ldr	r0, [sp]
+    1066: 42 f8 21 00  	str.w	r0, [r2, r1, lsl #2]
+    106a: 02 b0        	add	sp, #8
+    106c: 70 47        	bx	lr
+
+0000106e <DMA_RegisterCallbackFunction_ErrorHandler>:
+    106e: ad f1 08 0d  	sub.w	sp, sp, #8
+    1072: 00 91        	str	r1, [sp]
+    1074: 8d f8 04 00  	strb.w	r0, [sp, #4]
+    1078: 13 4a        	ldr	r2, [pc, #76]           @ 0x10c8 <$C$CON43>
+    107a: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+    107e: 00 98        	ldr	r0, [sp]
+    1080: 42 f8 21 00  	str.w	r0, [r2, r1, lsl #2]
+    1084: 02 b0        	add	sp, #8
+    1086: 70 47        	bx	lr
+
+00001088 <$d>:
+    1088:	14 f0 0f 40	.word	0x400ff014
+
+0000108c <$C$CON28>:
+    108c:	04 f5 0f 40	.word	0x400ff504
+
+00001090 <$C$CON29>:
+    1090:	38 f0 0f 40	.word	0x400ff038
+
+00001094 <$C$CON30>:
+    1094:	2c 10 00 20	.word	0x2000102c
+
+00001098 <$C$CON31>:
+    1098:	c8 0f 00 20	.word	0x20000fc8
+
+0000109c <$C$CON32>:
+    109c:	c0 09 00 20	.word	0x200009c0
+
+000010a0 <$C$CON33>:
+    10a0:	48 0f 00 20	.word	0x20000f48
+
+000010a4 <$C$CON34>:
+    10a4:	c4 09 00 20	.word	0x200009c4
+
+000010a8 <$C$CON35>:
+    10a8:	cc 0b 00 20	.word	0x20000bcc
+
+000010ac <$C$CON36>:
+    10ac:	44 10 00 20	.word	0x20001044
+
+000010b0 <$C$CON37>:
+    10b0:	34 f0 0f 40	.word	0x400ff034
+
+000010b4 <$C$CON38>:
+    10b4:	d0 09 00 20	.word	0x200009d0
+
+000010b8 <$C$CON39>:
+    10b8:	78 0f 00 20	.word	0x20000f78
+
+000010bc <$C$CON40>:
+    10bc:	d4 09 00 20	.word	0x200009d4
+
+000010c0 <$C$CON41>:
+    10c0:	dc 0b 00 20	.word	0x20000bdc
+
+000010c4 <$C$CON42>:
+    10c4:	9c 0e 00 20	.word	0x20000e9c
+
+000010c8 <$C$CON43>:
+    10c8:	1c 0e 00 20	.word	0x20000e1c
+
+000010cc <NVIC_Enable_Interrupt>:
+    10cc: ad f1 08 0d  	sub.w	sp, sp, #8
+    10d0: 00 90        	str	r0, [sp]
+    10d2: 00 98        	ldr	r0, [sp]
+    10d4: 40 09        	lsrs	r0, r0, #5
+    10d6: 8d f8 04 00  	strb.w	r0, [sp, #4]
+    10da: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+    10de: 00 98        	ldr	r0, [sp]
+    10e0: a0 eb 41 10  	sub.w	r0, r0, r1, lsl #5
+    10e4: 8d f8 05 00  	strb.w	r0, [sp, #5]
+    10e8: 8e 49        	ldr	r1, [pc, #568]          @ 0x1324 <$d>
+    10ea: 9d f8 04 00  	ldrb.w	r0, [sp, #4]
+    10ee: 51 f8 20 10  	ldr.w	r1, [r1, r0, lsl #2]
+    10f2: 9d f8 05 30  	ldrb.w	r3, [sp, #5]
+    10f6: 0a 68        	ldr	r2, [r1]
+    10f8: 01 20        	movs	r0, #1
+    10fa: 98 40        	lsls	r0, r3
+    10fc: 10 43        	orrs	r0, r2
+    10fe: 08 60        	str	r0, [r1]
+    1100: 02 b0        	add	sp, #8
+    1102: 70 47        	bx	lr
+
+00001104 <NVIC_Clear_Interrupt>:
+    1104: ad f1 08 0d  	sub.w	sp, sp, #8
+    1108: 00 90        	str	r0, [sp]
+    110a: 00 98        	ldr	r0, [sp]
+    110c: 40 09        	lsrs	r0, r0, #5
+    110e: 8d f8 04 00  	strb.w	r0, [sp, #4]
+    1112: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+    1116: 00 98        	ldr	r0, [sp]
+    1118: a0 eb 41 10  	sub.w	r0, r0, r1, lsl #5
+    111c: 8d f8 05 00  	strb.w	r0, [sp, #5]
+    1120: 81 49        	ldr	r1, [pc, #516]          @ 0x1328 <$C$CON2>
+    1122: 9d f8 04 00  	ldrb.w	r0, [sp, #4]
+    1126: 51 f8 20 20  	ldr.w	r2, [r1, r0, lsl #2]
+    112a: 9d f8 05 30  	ldrb.w	r3, [sp, #5]
+    112e: 11 68        	ldr	r1, [r2]
+    1130: 01 20        	movs	r0, #1
+    1132: 98 40        	lsls	r0, r3
+    1134: 81 43        	bics	r1, r0
+    1136: 11 60        	str	r1, [r2]
+    1138: 02 b0        	add	sp, #8
+    113a: 70 47        	bx	lr
+
+0000113c <NVIC_Set_Pending>:
+    113c: ad f1 08 0d  	sub.w	sp, sp, #8
+    1140: 00 90        	str	r0, [sp]
+    1142: 00 98        	ldr	r0, [sp]
+    1144: 40 09        	lsrs	r0, r0, #5
+    1146: 8d f8 04 00  	strb.w	r0, [sp, #4]
+    114a: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+    114e: 00 98        	ldr	r0, [sp]
+    1150: a0 eb 41 10  	sub.w	r0, r0, r1, lsl #5
+    1154: 8d f8 05 00  	strb.w	r0, [sp, #5]
+    1158: 74 49        	ldr	r1, [pc, #464]          @ 0x132c <$C$CON3>
+    115a: 9d f8 04 00  	ldrb.w	r0, [sp, #4]
+    115e: 51 f8 20 10  	ldr.w	r1, [r1, r0, lsl #2]
+    1162: 9d f8 05 30  	ldrb.w	r3, [sp, #5]
+    1166: 0a 68        	ldr	r2, [r1]
+    1168: 01 20        	movs	r0, #1
+    116a: 98 40        	lsls	r0, r3
+    116c: 10 43        	orrs	r0, r2
+    116e: 08 60        	str	r0, [r1]
+    1170: 02 b0        	add	sp, #8
+    1172: 70 47        	bx	lr
+
+00001174 <NVIC_Clear_Pending>:
+    1174: ad f1 08 0d  	sub.w	sp, sp, #8
+    1178: 00 90        	str	r0, [sp]
+    117a: 00 98        	ldr	r0, [sp]
+    117c: 40 09        	lsrs	r0, r0, #5
+    117e: 8d f8 04 00  	strb.w	r0, [sp, #4]
+    1182: 9d f8 04 10  	ldrb.w	r1, [sp, #4]
+    1186: 00 98        	ldr	r0, [sp]
+    1188: a0 eb 41 10  	sub.w	r0, r0, r1, lsl #5
+    118c: 8d f8 05 00  	strb.w	r0, [sp, #5]
+    1190: 67 49        	ldr	r1, [pc, #412]          @ 0x1330 <$C$CON4>
+    1192: 9d f8 04 00  	ldrb.w	r0, [sp, #4]
+    1196: 51 f8 20 20  	ldr.w	r2, [r1, r0, lsl #2]
+    119a: 9d f8 05 30  	ldrb.w	r3, [sp, #5]
+    119e: 11 68        	ldr	r1, [r2]
+    11a0: 01 20        	movs	r0, #1
+    11a2: 98 40        	lsls	r0, r3
+    11a4: 81 43        	bics	r1, r0
+    11a6: 11 60        	str	r1, [r2]
+    11a8: 02 b0        	add	sp, #8
+    11aa: 70 47        	bx	lr
+
+000011ac <NVIC_SetPriorityGrouping>:
+    11ac: ad f1 08 0d  	sub.w	sp, sp, #8
+    11b0: 8d f8 00 00  	strb.w	r0, [sp]
+    11b4: 5f 48        	ldr	r0, [pc, #380]          @ 0x1334 <$C$CON5>
+    11b6: 5f 49        	ldr	r1, [pc, #380]          @ 0x1334 <$C$CON5>
+    11b8: 02 68        	ldr	r2, [r0]
+    11ba: 5f 48        	ldr	r0, [pc, #380]          @ 0x1338 <$C$CON6>
+    11bc: 6f f3 1f 42  	bfc	r2, #16, #16
+    11c0: 10 43        	orrs	r0, r2
+    11c2: 08 60        	str	r0, [r1]
+    11c4: 5b 48        	ldr	r0, [pc, #364]          @ 0x1334 <$C$CON5>
+    11c6: 5b 49        	ldr	r1, [pc, #364]          @ 0x1334 <$C$CON5>
+    11c8: 9d f8 00 20  	ldrb.w	r2, [sp]
+    11cc: 00 68        	ldr	r0, [r0]
+    11ce: 62 f3 0a 20  	bfi	r0, r2, #8, #3
+    11d2: 08 60        	str	r0, [r1]
+    11d4: 02 b0        	add	sp, #8
+    11d6: 70 47        	bx	lr
+
+000011d8 <NVIC_AssignPriority>:
+    11d8: 38 b5        	push	{r3, r4, r5, lr}
+    11da: 8d f8 02 20  	strb.w	r2, [sp, #2]
+    11de: 8d f8 01 10  	strb.w	r1, [sp, #1]
+    11e2: 8d f8 00 00  	strb.w	r0, [sp]
+    11e6: 9d f8 02 00  	ldrb.w	r0, [sp, #2]
+    11ea: 41 10        	asrs	r1, r0, #1
+    11ec: 00 eb 91 70  	add.w	r0, r0, r1, lsr #30
+    11f0: 80 10        	asrs	r0, r0, #2
+    11f2: 8d f8 03 00  	strb.w	r0, [sp, #3]
+    11f6: 9d f8 03 00  	ldrb.w	r0, [sp, #3]
+    11fa: 9d f8 02 10  	ldrb.w	r1, [sp, #2]
+    11fe: b1 eb 80 0f  	cmp.w	r1, r0, lsl #2
+    1202: 1c d1        	bne	0x123e <$C$L1>          @ imm = #56
+    1204: 9d f8 03 00  	ldrb.w	r0, [sp, #3]
+    1208: 4c 4b        	ldr	r3, [pc, #304]          @ 0x133c <$C$CON7>
+    120a: 9d f8 03 10  	ldrb.w	r1, [sp, #3]
+    120e: 4b 4a        	ldr	r2, [pc, #300]          @ 0x133c <$C$CON7>
+    1210: 4a 4d        	ldr	r5, [pc, #296]          @ 0x133c <$C$CON7>
+    1212: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+    1216: 52 f8 21 20  	ldr.w	r2, [r2, r1, lsl #2]
+    121a: 04 68        	ldr	r4, [r0]
+    121c: 9d f8 03 30  	ldrb.w	r3, [sp, #3]
+    1220: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+    1224: 9d f8 00 00  	ldrb.w	r0, [sp]
+    1228: 12 68        	ldr	r2, [r2]
+    122a: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+    122e: c4 f3 42 14  	ubfx	r4, r4, #5, #3
+    1232: 20 43        	orrs	r0, r4
+    1234: 01 43        	orrs	r1, r0
+    1236: 61 f3 47 12  	bfi	r2, r1, #5, #3
+    123a: 1a 60        	str	r2, [r3]
+    123c: 70 e0        	b	0x1320 <$C$L4>          @ imm = #224
+
+0000123e <$C$L1>:
+    123e: 9d f8 03 20  	ldrb.w	r2, [sp, #3]
+    1242: 9d f8 02 10  	ldrb.w	r1, [sp, #2]
+    1246: 01 20        	movs	r0, #1
+    1248: 00 eb 82 00  	add.w	r0, r0, r2, lsl #2
+    124c: 88 42        	cmp	r0, r1
+    124e: 1c d1        	bne	0x128a <$C$L2>          @ imm = #56
+    1250: 9d f8 03 00  	ldrb.w	r0, [sp, #3]
+    1254: 39 4b        	ldr	r3, [pc, #228]          @ 0x133c <$C$CON7>
+    1256: 9d f8 03 10  	ldrb.w	r1, [sp, #3]
+    125a: 38 4a        	ldr	r2, [pc, #224]          @ 0x133c <$C$CON7>
+    125c: 37 4d        	ldr	r5, [pc, #220]          @ 0x133c <$C$CON7>
+    125e: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+    1262: 52 f8 21 20  	ldr.w	r2, [r2, r1, lsl #2]
+    1266: 04 68        	ldr	r4, [r0]
+    1268: 9d f8 03 30  	ldrb.w	r3, [sp, #3]
+    126c: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+    1270: 9d f8 00 00  	ldrb.w	r0, [sp]
+    1274: 12 68        	ldr	r2, [r2]
+    1276: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+    127a: c4 f3 42 34  	ubfx	r4, r4, #13, #3
+    127e: 20 43        	orrs	r0, r4
+    1280: 01 43        	orrs	r1, r0
+    1282: 61 f3 4f 32  	bfi	r2, r1, #13, #3
+    1286: 1a 60        	str	r2, [r3]
+    1288: 4a e0        	b	0x1320 <$C$L4>          @ imm = #148
+
+0000128a <$C$L2>:
+    128a: 9d f8 03 20  	ldrb.w	r2, [sp, #3]
+    128e: 9d f8 02 10  	ldrb.w	r1, [sp, #2]
+    1292: 02 20        	movs	r0, #2
+    1294: 00 eb 82 00  	add.w	r0, r0, r2, lsl #2
+    1298: 88 42        	cmp	r0, r1
+    129a: 1c d1        	bne	0x12d6 <$C$L3>          @ imm = #56
+    129c: 9d f8 03 00  	ldrb.w	r0, [sp, #3]
+    12a0: 26 4b        	ldr	r3, [pc, #152]          @ 0x133c <$C$CON7>
+    12a2: 9d f8 03 10  	ldrb.w	r1, [sp, #3]
+    12a6: 25 4a        	ldr	r2, [pc, #148]          @ 0x133c <$C$CON7>
+    12a8: 24 4d        	ldr	r5, [pc, #144]          @ 0x133c <$C$CON7>
+    12aa: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+    12ae: 52 f8 21 20  	ldr.w	r2, [r2, r1, lsl #2]
+    12b2: 04 68        	ldr	r4, [r0]
+    12b4: 9d f8 03 30  	ldrb.w	r3, [sp, #3]
+    12b8: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+    12bc: 9d f8 00 00  	ldrb.w	r0, [sp]
+    12c0: 12 68        	ldr	r2, [r2]
+    12c2: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+    12c6: c4 f3 42 54  	ubfx	r4, r4, #21, #3
+    12ca: 20 43        	orrs	r0, r4
+    12cc: 01 43        	orrs	r1, r0
+    12ce: 61 f3 57 52  	bfi	r2, r1, #21, #3
+    12d2: 1a 60        	str	r2, [r3]
+    12d4: 24 e0        	b	0x1320 <$C$L4>          @ imm = #72
+
+000012d6 <$C$L3>:
+    12d6: 9d f8 03 20  	ldrb.w	r2, [sp, #3]
+    12da: 9d f8 02 10  	ldrb.w	r1, [sp, #2]
+    12de: 03 20        	movs	r0, #3
+    12e0: 00 eb 82 00  	add.w	r0, r0, r2, lsl #2
+    12e4: 88 42        	cmp	r0, r1
+    12e6: 1b d1        	bne	0x1320 <$C$L4>          @ imm = #54
+    12e8: 9d f8 03 00  	ldrb.w	r0, [sp, #3]
+    12ec: 13 4b        	ldr	r3, [pc, #76]           @ 0x133c <$C$CON7>
+    12ee: 9d f8 03 10  	ldrb.w	r1, [sp, #3]
+    12f2: 12 4a        	ldr	r2, [pc, #72]           @ 0x133c <$C$CON7>
+    12f4: 11 4d        	ldr	r5, [pc, #68]           @ 0x133c <$C$CON7>
+    12f6: 53 f8 20 00  	ldr.w	r0, [r3, r0, lsl #2]
+    12fa: 52 f8 21 20  	ldr.w	r2, [r2, r1, lsl #2]
+    12fe: 04 68        	ldr	r4, [r0]
+    1300: 9d f8 03 30  	ldrb.w	r3, [sp, #3]
+    1304: 9d f8 01 10  	ldrb.w	r1, [sp, #1]
+    1308: 9d f8 00 00  	ldrb.w	r0, [sp]
+    130c: 12 68        	ldr	r2, [r2]
+    130e: 55 f8 23 30  	ldr.w	r3, [r5, r3, lsl #2]
+    1312: c4 f3 42 74  	ubfx	r4, r4, #29, #3
+    1316: 20 43        	orrs	r0, r4
+    1318: 01 43        	orrs	r1, r0
+    131a: 61 f3 5f 72  	bfi	r2, r1, #29, #3
+    131e: 1a 60        	str	r2, [r3]
+
+00001320 <$C$L4>:
+    1320: 38 bd        	pop	{r3, r4, r5, pc}
+    1322: c0 46        	mov	r8, r8
+
+00001324 <$d>:
+    1324:	1c 1f 00 00	.word	0x00001f1c
+
+00001328 <$C$CON2>:
+    1328:	0c 1f 00 00	.word	0x00001f0c
+
+0000132c <$C$CON3>:
+    132c:	2c 1f 00 00	.word	0x00001f2c
+
+00001330 <$C$CON4>:
+    1330:	fc 1e 00 00	.word	0x00001efc
+
+00001334 <$C$CON5>:
+    1334:	0c ed 00 e0	.word	0xe000ed0c
+
+00001338 <$C$CON6>:
+    1338:	00 00 fa 05	.word	0x05fa0000
+
+0000133c <$C$CON7>:
+    133c:	dc 1d 00 00	.word	0x00001ddc
+
+00001340 <SC_EnableRunModeClockPWM>:
+    1340: ad f1 08 0d  	sub.w	sp, sp, #8
+    1344: 00 90        	str	r0, [sp]
+    1346: 86 49        	ldr	r1, [pc, #536]          @ 0x1560 <$d>
+    1348: 00 98        	ldr	r0, [sp]
+    134a: 0a 68        	ldr	r2, [r1]
+    134c: 83 78        	ldrb	r3, [r0, #2]
+    134e: 01 20        	movs	r0, #1
+    1350: 98 40        	lsls	r0, r3
+    1352: 10 43        	orrs	r0, r2
+    1354: 08 60        	str	r0, [r1]
+    1356: 02 b0        	add	sp, #8
+    1358: 70 47        	bx	lr
+
+0000135a <SC_Initialization>:
+    135a: ad f1 08 0d  	sub.w	sp, sp, #8
+    135e: 00 90        	str	r0, [sp]
+    1360: 80 49        	ldr	r1, [pc, #512]          @ 0x1564 <$C$CON2>
+    1362: 08 68        	ldr	r0, [r1]
+    1364: 20 f0 00 40  	bic	r0, r0, #2147483648
+    1368: 08 60        	str	r0, [r1]
+    136a: 00 98        	ldr	r0, [sp]
+    136c: 40 78        	ldrb	r0, [r0, #1]
+    136e: 00 28        	cmp	r0, #0
+    1370: 3c d1        	bne	0x13ec <$C$L3>          @ imm = #120
+    1372: 7d 49        	ldr	r1, [pc, #500]          @ 0x1568 <$C$CON3>
+    1374: 08 68        	ldr	r0, [r1]
+    1376: 40 f4 00 60  	orr	r0, r0, #2048
+    137a: 08 60        	str	r0, [r1]
+    137c: 7a 49        	ldr	r1, [pc, #488]          @ 0x1568 <$C$CON3>
+    137e: 08 68        	ldr	r0, [r1]
+    1380: 20 f4 80 00  	bic	r0, r0, #4194304
+    1384: 08 60        	str	r0, [r1]
+    1386: 78 48        	ldr	r0, [pc, #480]          @ 0x1568 <$C$CON3>
+    1388: 77 4a        	ldr	r2, [pc, #476]          @ 0x1568 <$C$CON3>
+    138a: 00 99        	ldr	r1, [sp]
+    138c: 00 68        	ldr	r0, [r0]
+    138e: 09 78        	ldrb	r1, [r1]
+    1390: 61 f3 05 10  	bfi	r0, r1, #4, #2
+    1394: 10 60        	str	r0, [r2]
+    1396: 74 49        	ldr	r1, [pc, #464]          @ 0x1568 <$C$CON3>
+    1398: 08 68        	ldr	r0, [r1]
+    139a: 20 f4 00 50  	bic	r0, r0, #8192
+    139e: 08 60        	str	r0, [r1]
+    13a0: 00 98        	ldr	r0, [sp]
+    13a2: 00 78        	ldrb	r0, [r0]
+    13a4: 38 b9        	cbnz	r0, 0x13b6 <$C$L1>      @ imm = #14
+    13a6: 00 99        	ldr	r1, [sp]
+    13a8: 6f 48        	ldr	r0, [pc, #444]          @ 0x1568 <$C$CON3>
+    13aa: 6f 4a        	ldr	r2, [pc, #444]          @ 0x1568 <$C$CON3>
+    13ac: 09 79        	ldrb	r1, [r1, #4]
+    13ae: 00 68        	ldr	r0, [r0]
+    13b0: 61 f3 8a 10  	bfi	r0, r1, #6, #5
+    13b4: 10 60        	str	r0, [r2]
+
+000013b6 <$C$L1>:
+    13b6: 00 99        	ldr	r1, [sp]
+    13b8: 6b 48        	ldr	r0, [pc, #428]          @ 0x1568 <$C$CON3>
+    13ba: 6b 4a        	ldr	r2, [pc, #428]          @ 0x1568 <$C$CON3>
+    13bc: 89 78        	ldrb	r1, [r1, #2]
+    13be: 00 68        	ldr	r0, [r0]
+    13c0: 61 f3 da 50  	bfi	r0, r1, #23, #4
+    13c4: 10 60        	str	r0, [r2]
+    13c6: 68 48        	ldr	r0, [pc, #416]          @ 0x1568 <$C$CON3>
+    13c8: 00 99        	ldr	r1, [sp]
+    13ca: 67 4a        	ldr	r2, [pc, #412]          @ 0x1568 <$C$CON3>
+    13cc: 00 68        	ldr	r0, [r0]
+    13ce: c9 78        	ldrb	r1, [r1, #3]
+    13d0: 61 f3 96 50  	bfi	r0, r1, #22, #1
+    13d4: 10 60        	str	r0, [r2]
+
+000013d6 <$C$L2>:
+    13d6: 65 48        	ldr	r0, [pc, #404]          @ 0x156c <$C$CON4>
+    13d8: 00 68        	ldr	r0, [r0]
+    13da: 80 09        	lsrs	r0, r0, #6
+    13dc: 40 08        	lsrs	r0, r0, #1
+    13de: fa d3        	blo	0x13d6 <$C$L2>          @ imm = #-12
+    13e0: 61 49        	ldr	r1, [pc, #388]          @ 0x1568 <$C$CON3>
+    13e2: 08 68        	ldr	r0, [r1]
+    13e4: 20 f4 00 60  	bic	r0, r0, #2048
+    13e8: 08 60        	str	r0, [r1]
+    13ea: 2c e0        	b	0x1446 <$C$L5>          @ imm = #88
+
+000013ec <$C$L3>:
+    13ec: 00 98        	ldr	r0, [sp]
+    13ee: 40 78        	ldrb	r0, [r0, #1]
+    13f0: 01 28        	cmp	r0, #1
+    13f2: 28 d1        	bne	0x1446 <$C$L5>          @ imm = #80
+    13f4: 5c 49        	ldr	r1, [pc, #368]          @ 0x1568 <$C$CON3>
+    13f6: 08 68        	ldr	r0, [r1]
+    13f8: 40 f4 00 60  	orr	r0, r0, #2048
+    13fc: 08 60        	str	r0, [r1]
+    13fe: 5a 48        	ldr	r0, [pc, #360]          @ 0x1568 <$C$CON3>
+    1400: 59 4a        	ldr	r2, [pc, #356]          @ 0x1568 <$C$CON3>
+    1402: 00 99        	ldr	r1, [sp]
+    1404: 00 68        	ldr	r0, [r0]
+    1406: 09 78        	ldrb	r1, [r1]
+    1408: 61 f3 05 10  	bfi	r0, r1, #4, #2
+    140c: 10 60        	str	r0, [r2]
+    140e: 00 98        	ldr	r0, [sp]
+    1410: 00 78        	ldrb	r0, [r0]
+    1412: 38 b9        	cbnz	r0, 0x1424 <$C$L4>      @ imm = #14
+    1414: 00 99        	ldr	r1, [sp]
+    1416: 54 48        	ldr	r0, [pc, #336]          @ 0x1568 <$C$CON3>
+    1418: 53 4a        	ldr	r2, [pc, #332]          @ 0x1568 <$C$CON3>
+    141a: 09 79        	ldrb	r1, [r1, #4]
+    141c: 00 68        	ldr	r0, [r0]
+    141e: 61 f3 8a 10  	bfi	r0, r1, #6, #5
+    1422: 10 60        	str	r0, [r2]
+
+00001424 <$C$L4>:
+    1424: 00 98        	ldr	r0, [sp]
+    1426: c0 78        	ldrb	r0, [r0, #3]
+    1428: 01 28        	cmp	r0, #1
+    142a: 0c d1        	bne	0x1446 <$C$L5>          @ imm = #24
+    142c: 00 99        	ldr	r1, [sp]
+    142e: 4e 48        	ldr	r0, [pc, #312]          @ 0x1568 <$C$CON3>
+    1430: 4d 4a        	ldr	r2, [pc, #308]          @ 0x1568 <$C$CON3>
+    1432: 89 78        	ldrb	r1, [r1, #2]
+    1434: 00 68        	ldr	r0, [r0]
+    1436: 61 f3 da 50  	bfi	r0, r1, #23, #4
+    143a: 10 60        	str	r0, [r2]
+    143c: 4a 49        	ldr	r1, [pc, #296]          @ 0x1568 <$C$CON3>
+    143e: 08 68        	ldr	r0, [r1]
+    1440: 40 f4 80 00  	orr	r0, r0, #4194304
+    1444: 08 60        	str	r0, [r1]
+
+00001446 <$C$L5>:
+    1446: 02 b0        	add	sp, #8
+    1448: 70 47        	bx	lr
+
+0000144a <SC_GetOscillatorValue>:
+    144a: 08 e0        	b	0x145e <$C$L10>         @ imm = #16
+
+0000144c <$C$L6>:
+    144c: 48 48        	ldr	r0, [pc, #288]          @ 0x1570 <$C$CON5>
+    144e: 13 e0        	b	0x1478 <$C$L11>         @ imm = #38
+
+00001450 <$C$L7>:
+    1450: 48 48        	ldr	r0, [pc, #288]          @ 0x1574 <$C$CON6>
+    1452: 11 e0        	b	0x1478 <$C$L11>         @ imm = #34
+
+00001454 <$C$L8>:
+    1454: 48 48        	ldr	r0, [pc, #288]          @ 0x1578 <$C$CON7>
+    1456: 0f e0        	b	0x1478 <$C$L11>         @ imm = #30
+
+00001458 <$C$L9>:
+    1458: 47 f2 30 50  	movw	r0, #30000
+    145c: 0c e0        	b	0x1478 <$C$L11>         @ imm = #24
+
+0000145e <$C$L10>:
+    145e: 42 48        	ldr	r0, [pc, #264]          @ 0x1568 <$C$CON3>
+    1460: 00 68        	ldr	r0, [r0]
+    1462: c0 f3 01 10  	ubfx	r0, r0, #4, #2
+    1466: 00 28        	cmp	r0, #0
+    1468: f0 d0        	beq	0x144c <$C$L6>          @ imm = #-32
+    146a: 40 1e        	subs	r0, r0, #1
+    146c: f0 d0        	beq	0x1450 <$C$L7>          @ imm = #-32
+    146e: 40 1e        	subs	r0, r0, #1
+    1470: f0 d0        	beq	0x1454 <$C$L8>          @ imm = #-32
+    1472: 40 1e        	subs	r0, r0, #1
+    1474: f0 d0        	beq	0x1458 <$C$L9>          @ imm = #-32
+    1476: 00 20        	movs	r0, #0
+
+00001478 <$C$L11>:
+    1478: 70 47        	bx	lr
+
+0000147a <SC_GetSystemClock>:
+    147a: 08 b5        	push	{r3, lr}
+    147c: 3a 48        	ldr	r0, [pc, #232]          @ 0x1568 <$C$CON3>
+    147e: 00 68        	ldr	r0, [r0]
+    1480: c0 0a        	lsrs	r0, r0, #11
+    1482: 40 08        	lsrs	r0, r0, #1
+    1484: 12 d2        	bhs	0x14ac <$C$L13>         @ imm = #36
+    1486: 38 48        	ldr	r0, [pc, #224]          @ 0x1568 <$C$CON3>
+    1488: 00 68        	ldr	r0, [r0]
+    148a: 80 0d        	lsrs	r0, r0, #22
+    148c: 40 08        	lsrs	r0, r0, #1
+    148e: 0b d3        	blo	0x14a8 <$C$L12>         @ imm = #22
+    1490: 3a 48        	ldr	r0, [pc, #232]          @ 0x157c <$C$CON8>
+    1492: 00 90        	str	r0, [sp]
+    1494: 34 48        	ldr	r0, [pc, #208]          @ 0x1568 <$C$CON3>
+    1496: 3a 49        	ldr	r1, [pc, #232]          @ 0x1580 <$C$CON9>
+    1498: 00 9a        	ldr	r2, [sp]
+    149a: 00 68        	ldr	r0, [r0]
+    149c: c0 f3 c3 50  	ubfx	r0, r0, #23, #4
+    14a0: 08 5c        	ldrb	r0, [r1, r0]
+    14a2: b2 fb f0 f0  	udiv	r0, r2, r0
+    14a6: 00 90        	str	r0, [sp]
+
+000014a8 <$C$L12>:
+    14a8: 00 98        	ldr	r0, [sp]
+    14aa: 19 e0        	b	0x14e0 <$C$L16>         @ imm = #50
+
+000014ac <$C$L13>:
+    14ac: 2e 48        	ldr	r0, [pc, #184]          @ 0x1568 <$C$CON3>
+    14ae: 00 68        	ldr	r0, [r0]
+    14b0: c0 0a        	lsrs	r0, r0, #11
+    14b2: 40 08        	lsrs	r0, r0, #1
+    14b4: 13 d3        	blo	0x14de <$C$L15>         @ imm = #38
+    14b6: ff f7 c8 ff  	bl	0x144a <SC_GetOscillatorValue> @ imm = #-112
+    14ba: 00 90        	str	r0, [sp]
+    14bc: 2a 48        	ldr	r0, [pc, #168]          @ 0x1568 <$C$CON3>
+    14be: 00 68        	ldr	r0, [r0]
+    14c0: 80 0d        	lsrs	r0, r0, #22
+    14c2: 40 08        	lsrs	r0, r0, #1
+    14c4: 09 d3        	blo	0x14da <$C$L14>         @ imm = #18
+    14c6: 28 48        	ldr	r0, [pc, #160]          @ 0x1568 <$C$CON3>
+    14c8: 2d 49        	ldr	r1, [pc, #180]          @ 0x1580 <$C$CON9>
+    14ca: 00 9a        	ldr	r2, [sp]
+    14cc: 00 68        	ldr	r0, [r0]
+    14ce: c0 f3 c3 50  	ubfx	r0, r0, #23, #4
+    14d2: 08 5c        	ldrb	r0, [r1, r0]
+    14d4: b2 fb f0 f0  	udiv	r0, r2, r0
+    14d8: 00 90        	str	r0, [sp]
+
+000014da <$C$L14>:
+    14da: 00 98        	ldr	r0, [sp]
+    14dc: 00 e0        	b	0x14e0 <$C$L16>         @ imm = #0
+
+000014de <$C$L15>:
+    14de: 00 20        	movs	r0, #0
+
+000014e0 <$C$L16>:
+    14e0: 08 bd        	pop	{r3, pc}
+
+000014e2 <SC_PWMClkIntialization>:
+    14e2: 08 b5        	push	{r3, lr}
+    14e4: 00 90        	str	r0, [sp]
+    14e6: 00 98        	ldr	r0, [sp]
+    14e8: ff f7 2a ff  	bl	0x1340 <SC_EnableRunModeClockPWM> @ imm = #-428
+    14ec: 1e 48        	ldr	r0, [pc, #120]          @ 0x1568 <$C$CON3>
+    14ee: 00 99        	ldr	r1, [sp]
+    14f0: 1d 4a        	ldr	r2, [pc, #116]          @ 0x1568 <$C$CON3>
+    14f2: 00 68        	ldr	r0, [r0]
+    14f4: 49 78        	ldrb	r1, [r1, #1]
+    14f6: 61 f3 14 50  	bfi	r0, r1, #20, #1
+    14fa: 10 60        	str	r0, [r2]
+    14fc: 00 98        	ldr	r0, [sp]
+    14fe: 40 78        	ldrb	r0, [r0, #1]
+    1500: 01 28        	cmp	r0, #1
+    1502: 07 d1        	bne	0x1514 <$C$L17>         @ imm = #14
+    1504: 00 99        	ldr	r1, [sp]
+    1506: 18 48        	ldr	r0, [pc, #96]           @ 0x1568 <$C$CON3>
+    1508: 17 4a        	ldr	r2, [pc, #92]           @ 0x1568 <$C$CON3>
+    150a: 09 78        	ldrb	r1, [r1]
+    150c: 00 68        	ldr	r0, [r0]
+    150e: 61 f3 53 40  	bfi	r0, r1, #17, #3
+    1512: 10 60        	str	r0, [r2]
+
+00001514 <$C$L17>:
+    1514: 08 bd        	pop	{r3, pc}
+
+00001516 <SC_GetPWMFrequency>:
+    1516: 0e b5        	push	{r1, r2, r3, lr}
+    1518: 00 90        	str	r0, [sp]
+    151a: ff f7 ae ff  	bl	0x147a <SC_GetSystemClock> @ imm = #-164
+    151e: 02 90        	str	r0, [sp, #8]
+    1520: 00 98        	ldr	r0, [sp]
+    1522: 40 78        	ldrb	r0, [r0, #1]
+    1524: 01 28        	cmp	r0, #1
+    1526: 0b d1        	bne	0x1540 <$C$L18>         @ imm = #22
+    1528: 0f 48        	ldr	r0, [pc, #60]           @ 0x1568 <$C$CON3>
+    152a: 16 49        	ldr	r1, [pc, #88]           @ 0x1584 <$C$CON10>
+    152c: 02 9a        	ldr	r2, [sp, #8]
+    152e: 00 68        	ldr	r0, [r0]
+    1530: c0 f3 42 40  	ubfx	r0, r0, #17, #3
+    1534: 08 5c        	ldrb	r0, [r1, r0]
+    1536: b2 fb f0 f0  	udiv	r0, r2, r0
+    153a: 01 90        	str	r0, [sp, #4]
+    153c: 01 98        	ldr	r0, [sp, #4]
+    153e: 00 e0        	b	0x1542 <$C$L19>         @ imm = #0
+
+00001540 <$C$L18>:
+    1540: 02 98        	ldr	r0, [sp, #8]
+
+00001542 <$C$L19>:
+    1542: 0e bd        	pop	{r1, r2, r3, pc}
+
+00001544 <SC_ADC_ClkIntialization>:
+    1544: ad f1 08 0d  	sub.w	sp, sp, #8
+    1548: 8d f8 00 00  	strb.w	r0, [sp]
+    154c: 0e 49        	ldr	r1, [pc, #56]           @ 0x1588 <$C$CON11>
+    154e: 9d f8 00 30  	ldrb.w	r3, [sp]
+    1552: 0a 68        	ldr	r2, [r1]
+    1554: 01 20        	movs	r0, #1
+    1556: 98 40        	lsls	r0, r3
+    1558: 10 43        	orrs	r0, r2
+    155a: 08 60        	str	r0, [r1]
+    155c: 02 b0        	add	sp, #8
+    155e: 70 47        	bx	lr
+
+00001560 <$d>:
+    1560:	40 e6 0f 40	.word	0x400fe640
+
+00001564 <$C$CON2>:
+    1564:	70 e0 0f 40	.word	0x400fe070
+
+00001568 <$C$CON3>:
+    1568:	60 e0 0f 40	.word	0x400fe060
+
+0000156c <$C$CON4>:
+    156c:	50 e0 0f 40	.word	0x400fe050
+
+00001570 <$C$CON5>:
+    1570:	40 4b 4c 00	.word	0x004c4b40
+
+00001574 <$C$CON6>:
+    1574:	00 24 f4 00	.word	0x00f42400
+
+00001578 <$C$CON7>:
+    1578:	00 09 3d 00	.word	0x003d0900
+
+0000157c <$C$CON8>:
+    157c:	00 c2 eb 0b	.word	0x0bebc200
+
+00001580 <$C$CON9>:
+    1580:	ec 1e 00 00	.word	0x00001eec
+
+00001584 <$C$CON10>:
+    1584:	3c 1f 00 00	.word	0x00001f3c
+
+00001588 <$C$CON11>:
+    1588:	38 e6 0f 40	.word	0x400fe638
+
+0000158c <SysTickEnable>:
+    158c: 4f 49        	ldr	r1, [pc, #316]          @ 0x16cc <$d>
+    158e: 08 68        	ldr	r0, [r1]
+    1590: 40 f0 01 00  	orr	r0, r0, #1
+    1594: 08 60        	str	r0, [r1]
+    1596: 70 47        	bx	lr
+
+00001598 <SysTickDisable>:
+    1598: 4c 49        	ldr	r1, [pc, #304]          @ 0x16cc <$d>
+    159a: 08 68        	ldr	r0, [r1]
+    159c: 20 f0 01 00  	bic	r0, r0, #1
+    15a0: 08 60        	str	r0, [r1]
+    15a2: 70 47        	bx	lr
+
+000015a4 <SysTickFrequencyGet>:
+    15a4: 00 b5        	push	{lr}
+    15a6: ad f1 0c 0d  	sub.w	sp, sp, #12
+    15aa: 48 48        	ldr	r0, [pc, #288]          @ 0x16cc <$d>
+    15ac: 00 68        	ldr	r0, [r0]
+    15ae: 80 08        	lsrs	r0, r0, #2
+    15b0: 40 08        	lsrs	r0, r0, #1
+    15b2: 02 d2        	bhs	0x15ba <$C$L1>          @ imm = #4
+    15b4: 46 48        	ldr	r0, [pc, #280]          @ 0x16d0 <$C$CON2>
+    15b6: 00 21        	movs	r1, #0
+    15b8: 06 e0        	b	0x15c8 <$C$L2>          @ imm = #12
+
+000015ba <$C$L1>:
+    15ba: ff f7 5e ff  	bl	0x147a <SC_GetSystemClock> @ imm = #-324
+    15be: 00 21        	movs	r1, #0
+    15c0: 8d e8 03 00  	stm.w	sp, {r0, r1}
+    15c4: 9d e8 03 00  	ldm.w	sp, {r0, r1}
+
+000015c8 <$C$L2>:
+    15c8: 03 b0        	add	sp, #12
+    15ca: 00 bd        	pop	{pc}
+
+000015cc <SystickHandler>:
+    15cc: 08 b5        	push	{r3, lr}
+    15ce: 41 48        	ldr	r0, [pc, #260]          @ 0x16d4 <$C$CON3>
+    15d0: 00 68        	ldr	r0, [r0]
+    15d2: 10 b1        	cbz	r0, 0x15da <$C$L3>      @ imm = #4
+    15d4: 3f 48        	ldr	r0, [pc, #252]          @ 0x16d4 <$C$CON3>
+    15d6: 00 68        	ldr	r0, [r0]
+    15d8: 80 47        	blx	r0
+
+000015da <$C$L3>:
+    15da: 08 bd        	pop	{r3, pc}
+
+000015dc <SysTickConfigureClockSource>:
+    15dc: ad f1 08 0d  	sub.w	sp, sp, #8
+    15e0: 8d f8 00 00  	strb.w	r0, [sp]
+    15e4: 39 48        	ldr	r0, [pc, #228]          @ 0x16cc <$d>
+    15e6: 39 49        	ldr	r1, [pc, #228]          @ 0x16cc <$d>
+    15e8: 9d f8 00 20  	ldrb.w	r2, [sp]
+    15ec: 00 68        	ldr	r0, [r0]
+    15ee: 62 f3 82 00  	bfi	r0, r2, #2, #1
+    15f2: 08 60        	str	r0, [r1]
+    15f4: 02 b0        	add	sp, #8
+    15f6: 70 47        	bx	lr
+
+000015f8 <SysTickGenerateDelay_Polling>:
+    15f8: 00 b5        	push	{lr}
+    15fa: ad f1 1c 0d  	sub.w	sp, sp, #28
+    15fe: 05 91        	str	r1, [sp, #20]
+    1600: 04 90        	str	r0, [sp, #16]
+    1602: ff f7 c9 ff  	bl	0x1598 <SysTickDisable> @ imm = #-110
+    1606: ff f7 cd ff  	bl	0x15a4 <SysTickFrequencyGet> @ imm = #-102
+    160a: 8d e8 03 00  	stm.w	sp, {r0, r1}
+    160e: 05 9a        	ldr	r2, [sp, #20]
+    1610: 9d e8 03 00  	ldm.w	sp, {r0, r1}
+    1614: 00 23        	movs	r3, #0
+    1616: 00 f0 35 f9  	bl	0x1884 <__aeabi_uldivmod> @ imm = #618
+    161a: 02 aa        	add	r2, sp, #8
+    161c: 82 e8 03 00  	stm.w	r2, {r0, r1}
+    1620: 2d 48        	ldr	r0, [pc, #180]          @ 0x16d8 <$C$CON4>
+    1622: 02 99        	ldr	r1, [sp, #8]
+    1624: 00 68        	ldr	r0, [r0]
+    1626: 61 f3 17 00  	bfi	r0, r1, #0, #24
+    162a: 2b 49        	ldr	r1, [pc, #172]          @ 0x16d8 <$C$CON4>
+    162c: 08 60        	str	r0, [r1]
+    162e: ff f7 ad ff  	bl	0x158c <SysTickEnable>  @ imm = #-166
+    1632: 00 20        	movs	r0, #0
+    1634: 06 90        	str	r0, [sp, #24]
+    1636: 04 98        	ldr	r0, [sp, #16]
+    1638: 06 99        	ldr	r1, [sp, #24]
+    163a: 88 42        	cmp	r0, r1
+    163c: 0b d3        	blo	0x1656 <$C$L5>          @ imm = #22
+
+0000163e <$C$L4>:
+    163e: 23 48        	ldr	r0, [pc, #140]          @ 0x16cc <$d>
+    1640: 00 68        	ldr	r0, [r0]
+    1642: 00 0c        	lsrs	r0, r0, #16
+    1644: 40 08        	lsrs	r0, r0, #1
+    1646: fa d3        	blo	0x163e <$C$L4>          @ imm = #-12
+    1648: 06 98        	ldr	r0, [sp, #24]
+    164a: 40 1c        	adds	r0, r0, #1
+    164c: 06 90        	str	r0, [sp, #24]
+    164e: 04 98        	ldr	r0, [sp, #16]
+    1650: 06 99        	ldr	r1, [sp, #24]
+    1652: 88 42        	cmp	r0, r1
+    1654: f3 d2        	bhs	0x163e <$C$L4>          @ imm = #-26
+
+00001656 <$C$L5>:
+    1656: ff f7 9f ff  	bl	0x1598 <SysTickDisable> @ imm = #-194
+    165a: 07 b0        	add	sp, #28
+    165c: 00 bd        	pop	{pc}
+
+0000165e <Systick_RegisterCallbackFunction>:
+    165e: ad f1 08 0d  	sub.w	sp, sp, #8
+    1662: 00 90        	str	r0, [sp]
+    1664: 1b 49        	ldr	r1, [pc, #108]          @ 0x16d4 <$C$CON3>
+    1666: 00 98        	ldr	r0, [sp]
+    1668: 08 60        	str	r0, [r1]
+    166a: 02 b0        	add	sp, #8
+    166c: 70 47        	bx	lr
+
+0000166e <SysTickGenerateDelay_Interrupt>:
+    166e: 00 b5        	push	{lr}
+    1670: ad f1 1c 0d  	sub.w	sp, sp, #28
+    1674: 05 91        	str	r1, [sp, #20]
+    1676: 04 90        	str	r0, [sp, #16]
+    1678: ff f7 8e ff  	bl	0x1598 <SysTickDisable> @ imm = #-228
+    167c: ff f7 92 ff  	bl	0x15a4 <SysTickFrequencyGet> @ imm = #-220
+    1680: 8d e8 03 00  	stm.w	sp, {r0, r1}
+    1684: 05 9a        	ldr	r2, [sp, #20]
+    1686: 9d e8 03 00  	ldm.w	sp, {r0, r1}
+    168a: 00 23        	movs	r3, #0
+    168c: 00 f0 fa f8  	bl	0x1884 <__aeabi_uldivmod> @ imm = #500
+    1690: 02 aa        	add	r2, sp, #8
+    1692: 82 e8 03 00  	stm.w	r2, {r0, r1}
+    1696: 10 48        	ldr	r0, [pc, #64]           @ 0x16d8 <$C$CON4>
+    1698: 02 99        	ldr	r1, [sp, #8]
+    169a: 00 68        	ldr	r0, [r0]
+    169c: 61 f3 17 00  	bfi	r0, r1, #0, #24
+    16a0: 0d 49        	ldr	r1, [pc, #52]           @ 0x16d8 <$C$CON4>
+    16a2: 08 60        	str	r0, [r1]
+    16a4: 09 49        	ldr	r1, [pc, #36]           @ 0x16cc <$d>
+    16a6: 08 68        	ldr	r0, [r1]
+    16a8: 40 f0 02 00  	orr	r0, r0, #2
+    16ac: 08 60        	str	r0, [r1]
+    16ae: 0f 20        	movs	r0, #15
+    16b0: ff f7 0c fd  	bl	0x10cc <NVIC_Enable_Interrupt> @ imm = #-1512
+    16b4: ff f7 6a ff  	bl	0x158c <SysTickEnable>  @ imm = #-300
+    16b8: 07 b0        	add	sp, #28
+    16ba: 00 bd        	pop	{pc}
+
+000016bc <Systick_ClearFlag>:
+    16bc: ad f1 08 0d  	sub.w	sp, sp, #8
+    16c0: 02 48        	ldr	r0, [pc, #8]            @ 0x16cc <$d>
+    16c2: 00 68        	ldr	r0, [r0]
+    16c4: 00 90        	str	r0, [sp]
+    16c6: 02 b0        	add	sp, #8
+    16c8: 70 47        	bx	lr
+    16ca: c0 46        	mov	r8, r8
+
+000016cc <$d>:
+    16cc:	10 e0 00 e0	.word	0xe000e010
+
+000016d0 <$C$CON2>:
+    16d0:	00 09 3d 00	.word	0x003d0900
+
+000016d4 <$C$CON3>:
+    16d4:	70 10 00 20	.word	0x20001070
+
+000016d8 <$C$CON4>:
+    16d8:	14 e0 00 e0	.word	0xe000e014
+
+000016dc <UnusedFunc1>:
+    16dc: ad f1 08 0d  	sub.w	sp, sp, #8
+    16e0: 00 20        	movs	r0, #0
+    16e2: 00 90        	str	r0, [sp]
+    16e4: 00 98        	ldr	r0, [sp]
+    16e6: 64 28        	cmp	r0, #100
+    16e8: 08 d2        	bhs	0x16fc <$C$L2>          @ imm = #16
+
+000016ea <$C$L1>:
+    16ea: 01 98        	ldr	r0, [sp, #4]
+    16ec: 40 1c        	adds	r0, r0, #1
+    16ee: 01 90        	str	r0, [sp, #4]
+    16f0: 00 98        	ldr	r0, [sp]
+    16f2: 40 1c        	adds	r0, r0, #1
+    16f4: 00 90        	str	r0, [sp]
+    16f6: 00 98        	ldr	r0, [sp]
+    16f8: 64 28        	cmp	r0, #100
+    16fa: f6 d3        	blo	0x16ea <$C$L1>          @ imm = #-20
+
+000016fc <$C$L2>:
+    16fc: 02 b0        	add	sp, #8
+    16fe: 70 47        	bx	lr
+
+00001700 <main>:
+    1700: 08 b5        	push	{r3, lr}
+    1702: 62 b6        	cpsie i
+    1704: 01 20        	movs	r0, #1
+    1706: ff f7 69 ff  	bl	0x15dc <SysTickConfigureClockSource> @ imm = #-302
+    170a: ff f7 b6 fe  	bl	0x147a <SC_GetSystemClock> @ imm = #-660
+    170e: 2c 49        	ldr	r1, [pc, #176]          @ 0x17c0 <$d>
+    1710: 08 60        	str	r0, [r1]
+    1712: 2c 48        	ldr	r0, [pc, #176]          @ 0x17c4 <$C$CON2>
+    1714: ff f7 1a f8  	bl	0x74c <GPIO_ConfigureOutputPin> @ imm = #-4044
+    1718: 2b 48        	ldr	r0, [pc, #172]          @ 0x17c8 <$C$CON3>
+    171a: ff f7 a9 f8  	bl	0x870 <GPIO_ConfigureInputPin> @ imm = #-3758
+    171e: 2b 48        	ldr	r0, [pc, #172]          @ 0x17cc <$C$CON4>
+    1720: ff f7 a6 f8  	bl	0x870 <GPIO_ConfigureInputPin> @ imm = #-3764
+    1724: 2a 49        	ldr	r1, [pc, #168]          @ 0x17d0 <$C$CON5>
+    1726: 00 20        	movs	r0, #0
+    1728: 08 60        	str	r0, [r1]
+    172a: 29 48        	ldr	r0, [pc, #164]          @ 0x17d0 <$C$CON5>
+    172c: 00 68        	ldr	r0, [r0]
+    172e: 80 0a        	lsrs	r0, r0, #10
+    1730: 0d d1        	bne	0x174e <$C$L4>          @ imm = #26
+
+00001732 <$C$L3>:
+    1732: 00 f0 9f f9  	bl	0x1a74 <rand>           @ imm = #830
+    1736: 26 49        	ldr	r1, [pc, #152]          @ 0x17d0 <$C$CON5>
+    1738: 26 4a        	ldr	r2, [pc, #152]          @ 0x17d4 <$C$CON6>
+    173a: 09 68        	ldr	r1, [r1]
+    173c: 50 54        	strb	r0, [r2, r1]
+    173e: 24 49        	ldr	r1, [pc, #144]          @ 0x17d0 <$C$CON5>
+    1740: 08 68        	ldr	r0, [r1]
+    1742: 40 1c        	adds	r0, r0, #1
+    1744: 08 60        	str	r0, [r1]
+    1746: 22 48        	ldr	r0, [pc, #136]          @ 0x17d0 <$C$CON5>
+    1748: 00 68        	ldr	r0, [r0]
+    174a: 80 0a        	lsrs	r0, r0, #10
+    174c: f1 d0        	beq	0x1732 <$C$L3>          @ imm = #-30
+
+0000174e <$C$L4>:
+    174e: 20 49        	ldr	r1, [pc, #128]          @ 0x17d0 <$C$CON5>
+    1750: 00 20        	movs	r0, #0
+    1752: 08 60        	str	r0, [r1]
+    1754: 1e 48        	ldr	r0, [pc, #120]          @ 0x17d0 <$C$CON5>
+    1756: 00 68        	ldr	r0, [r0]
+    1758: 40 0a        	lsrs	r0, r0, #9
+    175a: 0d d1        	bne	0x1778 <$C$L6>          @ imm = #26
+
+0000175c <$C$L5>:
+    175c: 00 f0 8a f9  	bl	0x1a74 <rand>           @ imm = #788
+    1760: 1b 49        	ldr	r1, [pc, #108]          @ 0x17d0 <$C$CON5>
+    1762: 1d 4a        	ldr	r2, [pc, #116]          @ 0x17d8 <$C$CON7>
+    1764: 09 68        	ldr	r1, [r1]
+    1766: 50 54        	strb	r0, [r2, r1]
+    1768: 19 49        	ldr	r1, [pc, #100]          @ 0x17d0 <$C$CON5>
+    176a: 08 68        	ldr	r0, [r1]
+    176c: 40 1c        	adds	r0, r0, #1
+    176e: 08 60        	str	r0, [r1]
+    1770: 17 48        	ldr	r0, [pc, #92]           @ 0x17d0 <$C$CON5>
+    1772: 00 68        	ldr	r0, [r0]
+    1774: 40 0a        	lsrs	r0, r0, #9
+    1776: f1 d0        	beq	0x175c <$C$L5>          @ imm = #-30
+
+00001778 <$C$L6>:
+    1778: ff f7 88 f9  	bl	0xa8c <DMA_PeripheralInitialization> @ imm = #-3312
+    177c: 17 48        	ldr	r0, [pc, #92]           @ 0x17dc <$C$CON8>
+    177e: 18 49        	ldr	r1, [pc, #96]           @ 0x17e0 <$C$CON9>
+    1780: 18 4a        	ldr	r2, [pc, #96]           @ 0x17e4 <$C$CON10>
+    1782: 00 68        	ldr	r0, [r0]
+    1784: ff f7 fb f9  	bl	0xb7e <DMA_ChannelControlStructureSet> @ imm = #-3082
+    1788: 14 48        	ldr	r0, [pc, #80]           @ 0x17dc <$C$CON8>
+    178a: 00 68        	ldr	r0, [r0]
+    178c: ff f7 8c f9  	bl	0xaa8 <DMA_EnableChannelAttributes> @ imm = #-3304
+    1790: 1e 20        	movs	r0, #30
+    1792: 00 21        	movs	r1, #0
+    1794: ff f7 bf fb  	bl	0xf16 <DMA_AssignChannel> @ imm = #-2178
+    1798: 1e 20        	movs	r0, #30
+    179a: ff f7 e2 f9  	bl	0xb62 <DMA_EnableChannel> @ imm = #-3132
+    179e: 00 20        	movs	r0, #0
+    17a0: ff f7 56 fb  	bl	0xe50 <DMA_ConfigurePeripheralInterrupt> @ imm = #-2388
+    17a4: 00 20        	movs	r0, #0
+    17a6: 1e 21        	movs	r1, #30
+    17a8: ff f7 72 fb  	bl	0xe90 <DMA_ConfigureChannelInterrupt> @ imm = #-2332
+    17ac: 01 20        	movs	r0, #1
+    17ae: 01 21        	movs	r1, #1
+    17b0: ff f7 5d ff  	bl	0x166e <SysTickGenerateDelay_Interrupt> @ imm = #-326
+    17b4: 01 20        	movs	r0, #1
+    17b6: 1e 21        	movs	r1, #30
+    17b8: ff f7 18 fb  	bl	0xdec <DMA_ConfigureChannelSoftwareRequest> @ imm = #-2512
+
+000017bc <$C$L7>:
+    17bc: 00 bf        	nop
+    17be: fd e7        	b	0x17bc <$C$L7>          @ imm = #-6
+
+000017c0 <$d>:
+    17c0:	18 0e 00 20	.word	0x20000e18
+
+000017c4 <$C$CON2>:
+    17c4:	7a 10 00 20	.word	0x2000107a
+
+000017c8 <$C$CON3>:
+    17c8:	78 10 00 20	.word	0x20001078
+
+000017cc <$C$CON4>:
+    17cc:	7c 10 00 20	.word	0x2000107c
+
+000017d0 <$C$CON5>:
+    17d0:	84 0f 00 20	.word	0x20000f84
+
+000017d4 <$C$CON6>:
+    17d4:	00 04 00 20	.word	0x20000400
+
+000017d8 <$C$CON7>:
+    17d8:	00 0c 00 20	.word	0x20000c00
+
+000017dc <$C$CON8>:
+    17dc:	c8 0f 00 20	.word	0x20000fc8
+
+000017e0 <$C$CON9>:
+    17e0:	ff 07 00 20	.word	0x200007ff
+
+000017e4 <$C$CON10>:
+    17e4:	ff 03 00 20	.word	0x200003ff
+
+000017e8 <memcpy>:
+    17e8: 00 2a        	cmp	r2, #0
+    17ea: 4a d0        	beq	0x1882 <_ret2_>         @ imm = #148
+    17ec: 5f ea 00 0c  	movs.w	r12, r0
+    17f0: 8b 07        	lsls	r3, r1, #30
+    17f2: 1c d1        	bne	0x182e <_unaln>         @ imm = #56
+    17f4: 83 07        	lsls	r3, r0, #30
+    17f6: 22 d1        	bne	0x183e <_saln>          @ imm = #68
+
+000017f8 <_aln>:
+    17f8: 10 2a        	cmp	r2, #16
+    17fa: 08 d3        	blo	0x180e <_udr16>         @ imm = #16
+
+000017fc <_ovr16>:
+    17fc: 70 b4        	push	{r4, r5, r6}
+    17fe: 10 3a        	subs	r2, #16
+
+00001800 <_lp16>:
+    1800: 78 c9        	ldm	r1!, {r3, r4, r5, r6}
+    1802: 78 c0        	stm	r0!, {r3, r4, r5, r6}
+    1804: 10 3a        	subs	r2, #16
+    1806: fb d2        	bhs	0x1800 <_lp16>          @ imm = #-10
+    1808: 70 bc        	pop	{r4, r5, r6}
+    180a: 10 32        	adds	r2, #16
+    180c: 38 d0        	beq	0x1880 <_ret_>          @ imm = #112
+
+0000180e <_udr16>:
+    180e: 04 2a        	cmp	r2, #4
+    1810: 2c d3        	blo	0x186c <_off1>          @ imm = #88
+    1812: 08 2a        	cmp	r2, #8
+    1814: 05 d3        	blo	0x1822 <_c4>            @ imm = #10
+    1816: 0c 2a        	cmp	r2, #12
+    1818: 24 bf        	itt	hs
+
+0000181a <_c12>:
+    181a: 08 c9        	ldmhs	r1!, {r3}
+    181c: 08 c0        	stmhs	r0!, {r3}
+
+0000181e <_c8>:
+    181e: 08 c9        	ldm	r1!, {r3}
+    1820: 08 c0        	stm	r0!, {r3}
+
+00001822 <_c4>:
+    1822: 08 c9        	ldm	r1!, {r3}
+    1824: 08 c0        	stm	r0!, {r3}
+
+00001826 <_oddsz>:
+    1826: 92 07        	lsls	r2, r2, #30
+    1828: 2a d0        	beq	0x1880 <_ret_>          @ imm = #84
+    182a: 92 0f        	lsrs	r2, r2, #30
+    182c: 22 e0        	b	0x1874 <_lp1>           @ imm = #68
+
+0000182e <_unaln>:
+    182e: 0b 78        	ldrb	r3, [r1]
+    1830: 03 70        	strb	r3, [r0]
+    1832: 49 1c        	adds	r1, r1, #1
+    1834: 40 1c        	adds	r0, r0, #1
+    1836: 52 1e        	subs	r2, r2, #1
+    1838: 22 d0        	beq	0x1880 <_ret_>          @ imm = #68
+    183a: 8b 07        	lsls	r3, r1, #30
+    183c: f7 d1        	bne	0x182e <_unaln>         @ imm = #-18
+
+0000183e <_saln>:
+    183e: c3 07        	lsls	r3, r0, #31
+    1840: 14 d1        	bne	0x186c <_off1>          @ imm = #40
+    1842: 83 07        	lsls	r3, r0, #30
+    1844: d8 d0        	beq	0x17f8 <_aln>           @ imm = #-80
+
+00001846 <_off2>:
+    1846: 12 1f        	subs	r2, r2, #4
+    1848: 12 d3        	blo	0x1870 <_oddb>          @ imm = #36
+
+0000184a <_cp4s>:
+    184a: 08 c9        	ldm	r1!, {r3}
+    184c: 03 80        	strh	r3, [r0]
+    184e: 1b 0c        	lsrs	r3, r3, #16
+    1850: 43 80        	strh	r3, [r0, #2]
+    1852: 00 1d        	adds	r0, r0, #4
+    1854: 12 1f        	subs	r2, r2, #4
+    1856: f8 d2        	bhs	0x184a <_cp4s>          @ imm = #-16
+    1858: 0a e0        	b	0x1870 <_oddb>          @ imm = #20
+
+0000185a <_cp4>:
+    185a: 08 c9        	ldm	r1!, {r3}
+    185c: 03 70        	strb	r3, [r0]
+    185e: 1b 0a        	lsrs	r3, r3, #8
+    1860: 43 70        	strb	r3, [r0, #1]
+    1862: 1b 0a        	lsrs	r3, r3, #8
+    1864: 83 70        	strb	r3, [r0, #2]
+    1866: 1b 0a        	lsrs	r3, r3, #8
+    1868: c3 70        	strb	r3, [r0, #3]
+    186a: 00 1d        	adds	r0, r0, #4
+
+0000186c <_off1>:
+    186c: 12 1f        	subs	r2, r2, #4
+    186e: f4 d2        	bhs	0x185a <_cp4>           @ imm = #-24
+
+00001870 <_oddb>:
+    1870: 12 1d        	adds	r2, r2, #4
+    1872: 05 d0        	beq	0x1880 <_ret_>          @ imm = #10
+
+00001874 <_lp1>:
+    1874: 0b 78        	ldrb	r3, [r1]
+    1876: 03 70        	strb	r3, [r0]
+    1878: 49 1c        	adds	r1, r1, #1
+    187a: 40 1c        	adds	r0, r0, #1
+    187c: 52 1e        	subs	r2, r2, #1
+    187e: f9 d1        	bne	0x1874 <_lp1>           @ imm = #-14
+
+00001880 <_ret_>:
+    1880: 60 46        	mov	r0, r12
+
+00001882 <_ret2_>:
+    1882: 70 47        	bx	lr
+
+00001884 <__aeabi_uldivmod>:
+    1884: 8b 42        	cmp	r3, r1
+    1886: 08 bf        	it	eq
+    1888: 82 42        	cmpeq	r2, r0
+    188a: 04 d9        	bls	0x1896 <greater_or_equal> @ imm = #8
+    188c: 0b 1c        	adds	r3, r1, #0
+    188e: 02 1c        	adds	r2, r0, #0
+    1890: 00 21        	movs	r1, #0
+    1892: 00 20        	movs	r0, #0
+    1894: 70 47        	bx	lr
+
+00001896 <greater_or_equal>:
+    1896: 00 2b        	cmp	r3, #0
+    1898: 08 bf        	it	eq
+    189a: 00 2a        	cmpeq	r2, #0
+    189c: 0b d1        	bne	0x18b6 <not_zero>       @ imm = #22
+    189e: 0b 1c        	adds	r3, r1, #0
+    18a0: 02 1c        	adds	r2, r0, #0
+    18a2: 00 21        	movs	r1, #0
+    18a4: 00 20        	movs	r0, #0
+    18a6: 00 2b        	cmp	r3, #0
+    18a8: 08 bf        	it	eq
+    18aa: 00 2a        	cmpeq	r2, #0
+    18ac: 1c bf        	itt	ne
+    18ae: c9 43        	mvnne	r1, r1
+    18b0: c0 43        	mvnne	r0, r0
+    18b2: 00 f0 11 b9  	b.w	0x1ad8 <internal_div0>  @ imm = #546
+
+000018b6 <not_zero>:
+    18b6: f0 b5        	push	{r4, r5, r6, r7, lr}
+    18b8: 1c 46        	mov	r4, r3
+    18ba: 15 46        	mov	r5, r2
+    18bc: 0b 46        	mov	r3, r1
+    18be: 02 46        	mov	r2, r0
+    18c0: 00 20        	movs	r0, #0
+    18c2: 00 21        	movs	r1, #0
+    18c4: b4 fa 84 f6  	clz	r6, r4
+    18c8: 20 2e        	cmp	r6, #32
+    18ca: 04 bf        	itt	eq
+    18cc: b5 fa 85 f6  	clzeq	r6, r5
+    18d0: 20 36        	addeq	r6, #32
+    18d2: b3 fa 83 f7  	clz	r7, r3
+    18d6: 20 2f        	cmp	r7, #32
+    18d8: 04 bf        	itt	eq
+    18da: b2 fa 82 f7  	clzeq	r7, r2
+    18de: 20 37        	addeq	r7, #32
+    18e0: f6 1b        	subs	r6, r6, r7
+    18e2: b6 f1 20 07  	subs.w	r7, r6, #32
+    18e6: 27 bf        	ittee	hs
+    18e8: 05 fa 07 f4  	lslhs.w	r4, r5, r7
+    18ec: 00 25        	movhs	r5, #0
+    18ee: 7f 42        	rsblo	r7, r7, #0
+    18f0: b4 40        	lsllo	r4, r6
+    18f2: 3e bf        	ittt	lo
+    18f4: 25 fa 07 f7  	lsrlo.w	r7, r5, r7
+    18f8: 3c 43        	orrlo	r4, r7
+    18fa: b5 40        	lsllo	r5, r6
+
+000018fc <divll>:
+    18fc: a3 42        	cmp	r3, r4
+    18fe: 08 bf        	it	eq
+    1900: aa 42        	cmpeq	r2, r5
+    1902: 01 d3        	blo	0x1908 <$4_$1>          @ imm = #2
+    1904: 52 1b        	subs	r2, r2, r5
+    1906: a3 41        	sbcs	r3, r4
+
+00001908 <$4_$1>:
+    1908: 40 41        	adcs	r0, r0
+    190a: 49 41        	adcs	r1, r1
+    190c: 6d 08        	lsrs	r5, r5, #1
+    190e: 45 ea c4 75  	orr.w	r5, r5, r4, lsl #31
+    1912: 64 08        	lsrs	r4, r4, #1
+    1914: 76 1e        	subs	r6, r6, #1
+    1916: f1 d5        	bpl	0x18fc <divll>          @ imm = #-30
+    1918: f0 bd        	pop	{r4, r5, r6, r7, pc}
+
+0000191a <__aeabi_memclr8>:
+    191a: 00 22        	movs	r2, #0
+
+0000191c <__aeabi_memset8>:
+    191c: 13 46        	mov	r3, r2
+    191e: 0a 46        	mov	r2, r1
+    1920: 19 46        	mov	r1, r3
+
+00001922 <memset>:
+    1922: 71 b5        	push	{r0, r4, r5, r6, lr}
+    1924: 10 f0 03 0f  	tst.w	r0, #3
+    1928: 0b d0        	beq	0x1942 <_word_aligned>  @ imm = #22
+
+0000192a <_unaligned_loop>:
+    192a: 00 2a        	cmp	r2, #0
+    192c: 82 bf        	ittt	hi
+    192e: 00 f8 01 1b  	strbhi	r1, [r0], #1
+    1932: b2 f1 01 02  	subshi.w	r2, r2, #1
+    1936: 10 f0 03 0f  	tsthi.w	r0, #3
+    193a: f6 d1        	bne	0x192a <_unaligned_loop> @ imm = #-20
+    193c: 00 2a        	cmp	r2, #0
+    193e: 08 bf        	it	eq
+    1940: 71 bd        	popeq	{r0, r4, r5, r6, pc}
+
+00001942 <_word_aligned>:
+    1942: 11 f0 ff 01  	ands	r1, r1, #255
+    1946: 41 ea 01 21  	orr.w	r1, r1, r1, lsl #8
+    194a: 04 2a        	cmp	r2, #4
+    194c: 18 d3        	blo	0x1980 <_memset3>       @ imm = #48
+    194e: 41 ea 01 41  	orr.w	r1, r1, r1, lsl #16
+    1952: 08 2a        	cmp	r2, #8
+    1954: 0f d3        	blo	0x1976 <_memset7>       @ imm = #30
+    1956: 0e 46        	mov	r6, r1
+    1958: 10 2a        	cmp	r2, #16
+    195a: 08 d3        	blo	0x196e <_memset15>      @ imm = #16
+    195c: 0c 46        	mov	r4, r1
+    195e: 0d 46        	mov	r5, r1
+    1960: b2 f1 0f 03  	subs.w	r3, r2, #15
+    1964: 12 f0 0f 02  	ands	r2, r2, #15
+
+00001968 <_memset16_loop>:
+    1968: 72 c0        	stm	r0!, {r1, r4, r5, r6}
+    196a: 10 3b        	subs	r3, #16
+    196c: fc d8        	bhi	0x1968 <_memset16_loop> @ imm = #-8
+
+0000196e <_memset15>:
+    196e: 12 f0 08 0f  	tst.w	r2, #8
+    1972: 18 bf        	it	ne
+    1974: 42 c0        	stmne	r0!, {r1, r6}
+
+00001976 <_memset7>:
+    1976: 12 f0 04 0f  	tst.w	r2, #4
+    197a: 18 bf        	it	ne
+    197c: 40 f8 04 1b  	strne	r1, [r0], #4
+
+00001980 <_memset3>:
+    1980: 12 f0 02 0f  	tst.w	r2, #2
+    1984: 18 bf        	it	ne
+    1986: 20 f8 02 1b  	strhne	r1, [r0], #2
+    198a: 12 f0 01 0f  	tst.w	r2, #1
+    198e: 18 bf        	it	ne
+    1990: 01 70        	strbne	r1, [r0]
+    1992: 71 bd        	pop	{r0, r4, r5, r6, pc}
+
+00001994 <__TI_decompress_lzss>:
+    1994: f8 b5        	push	{r3, r4, r5, r6, r7, lr}
+    1996: 84 46        	mov	r12, r0
+    1998: 40 f6 ff 74  	movw	r4, #4095
+
+0000199c <$C$L1>:
+    199c: 1c f8 01 3b  	ldrb	r3, [r12], #1
+    19a0: 00 22        	movs	r2, #0
+    19a2: 10 e0        	b	0x19c6 <$C$L6>          @ imm = #32
+
+000019a4 <$C$L2>:
+    19a4: 48 1b        	subs	r0, r1, r5
+    19a6: 40 1e        	subs	r0, r0, #1
+
+000019a8 <$C$L3>:
+    19a8: 10 f8 01 5b  	ldrb	r5, [r0], #1
+    19ac: 7f 1e        	subs	r7, r7, #1
+    19ae: 01 f8 01 5b  	strb	r5, [r1], #1
+    19b2: f9 d1        	bne	0x19a8 <$C$L3>          @ imm = #-14
+    19b4: 03 e0        	b	0x19be <$C$L5>          @ imm = #6
+
+000019b6 <$C$L4>:
+    19b6: 1c f8 01 0b  	ldrb	r0, [r12], #1
+    19ba: 01 f8 01 0b  	strb	r0, [r1], #1
+
+000019be <$C$L5>:
+    19be: 52 1c        	adds	r2, r2, #1
+    19c0: 5b 08        	lsrs	r3, r3, #1
+    19c2: 08 2a        	cmp	r2, #8
+    19c4: ea da        	bge	0x199c <$C$L1>          @ imm = #-44
+
+000019c6 <$C$L6>:
+    19c6: 58 08        	lsrs	r0, r3, #1
+    19c8: f5 d2        	bhs	0x19b6 <$C$L4>          @ imm = #-22
+    19ca: 1c f8 01 0b  	ldrb	r0, [r12], #1
+    19ce: 1c f8 01 5b  	ldrb	r5, [r12], #1
+    19d2: 05 f0 0f 07  	and	r7, r5, #15
+    19d6: ff 1c        	adds	r7, r7, #3
+    19d8: c5 f3 03 15  	ubfx	r5, r5, #4, #4
+    19dc: 12 2f        	cmp	r7, #18
+    19de: 45 ea 00 15  	orr.w	r5, r5, r0, lsl #4
+    19e2: 08 d1        	bne	0x19f6 <$C$L7>          @ imm = #16
+    19e4: 1c f8 01 6b  	ldrb	r6, [r12], #1
+    19e8: 30 0a        	lsrs	r0, r6, #8
+    19ea: 24 bf        	itt	hs
+    19ec: 1c f8 01 0b  	ldrbhs	r0, [r12], #1
+    19f0: 60 f3 df 16  	bfihs	r6, r0, #7, #25
+    19f4: bf 19        	adds	r7, r7, r6
+
+000019f6 <$C$L7>:
+    19f6: ac 42        	cmp	r4, r5
+    19f8: d4 d1        	bne	0x19a4 <$C$L2>          @ imm = #-88
+    19fa: f8 bd        	pop	{r3, r4, r5, r6, r7, pc}
+
+000019fc <__TI_auto_init_nobinit_nopinit>:
+    19fc: b0 b5        	push	{r4, r5, r7, lr}
+    19fe: 0c 48        	ldr	r0, [pc, #48]           @ 0x1a30 <$d>
+    1a00: 0c 4d        	ldr	r5, [pc, #48]           @ 0x1a34 <$C$CON36>
+    1a02: a8 42        	cmp	r0, r5
+    1a04: 10 d0        	beq	0x1a28 <$C$L10>         @ imm = #32
+    1a06: 0c 48        	ldr	r0, [pc, #48]           @ 0x1a38 <$C$CON37>
+    1a08: 0c 4c        	ldr	r4, [pc, #48]           @ 0x1a3c <$C$CON38>
+    1a0a: a0 42        	cmp	r0, r4
+    1a0c: 0c d0        	beq	0x1a28 <$C$L10>         @ imm = #24
+    1a0e: 00 1b        	subs	r0, r0, r4
+    1a10: 08 3c        	subs	r4, #8
+    1a12: c7 10        	asrs	r7, r0, #3
+
+00001a14 <$C$L9>:
+    1a14: 54 f8 08 0f  	ldr	r0, [r4, #8]!
+    1a18: 01 78        	ldrb	r1, [r0]
+    1a1a: 55 f8 21 20  	ldr.w	r2, [r5, r1, lsl #2]
+    1a1e: 61 68        	ldr	r1, [r4, #4]
+    1a20: 40 1c        	adds	r0, r0, #1
+    1a22: 90 47        	blx	r2
+    1a24: 7f 1e        	subs	r7, r7, #1
+    1a26: f5 d1        	bne	0x1a14 <$C$L9>          @ imm = #-22
+
+00001a28 <$C$L10>:
+    1a28: 00 bf        	nop
+    1a2a: 00 bf        	nop
+    1a2c: b0 bd        	pop	{r4, r5, r7, pc}
+    1a2e: c0 46        	mov	r8, r8
+
+00001a30 <$d>:
+    1a30:	40 20 00 00	.word	0x00002040
+
+00001a34 <$C$CON36>:
+    1a34:	34 20 00 00	.word	0x00002034
+
+00001a38 <$C$CON37>:
+    1a38:	58 20 00 00	.word	0x00002058
+
+00001a3c <$C$CON38>:
+    1a3c:	48 20 00 00	.word	0x00002048
+
+00001a40 <_c_int00_noargs>:
+    1a40: 0b 48        	ldr	r0, [pc, #44]           @ 0x1a70 <$C$CON8>
+    1a42: 80 f3 08 88  	msr	msp, r0
+    1a46: 09 49        	ldr	r1, [pc, #36]           @ 0x1a6c <$d>
+    1a48: 08 68        	ldr	r0, [r1]
+    1a4a: 40 f4 70 00  	orr	r0, r0, #15728640
+    1a4e: 08 60        	str	r0, [r1]
+    1a50: 00 bf        	nop
+    1a52: 00 bf        	nop
+    1a54: 00 f0 3b f8  	bl	0x1ace <_system_pre_init> @ imm = #118
+    1a58: 08 b1        	cbz	r0, 0x1a5e <$C$L1>      @ imm = #2
+    1a5a: ff f7 cf ff  	bl	0x19fc <__TI_auto_init_nobinit_nopinit> @ imm = #-98
+
+00001a5e <$C$L1>:
+    1a5e: 00 20        	movs	r0, #0
+    1a60: ff f7 4e fe  	bl	0x1700 <main>           @ imm = #-868
+    1a64: 01 20        	movs	r0, #1
+    1a66: 00 f0 34 f8  	bl	0x1ad2 <abort>          @ imm = #104
+    1a6a: c0 46        	mov	r8, r8
+
+00001a6c <$d>:
+    1a6c:	88 ed 00 e0	.word	0xe000ed88
+
+00001a70 <$C$CON8>:
+    1a70:	80 12 00 20	.word	0x20001280
+
+00001a74 <rand>:
+    1a74: 09 48        	ldr	r0, [pc, #36]           @ 0x1a9c <$C$CON8>
+    1a76: 10 b5        	push	{r4, lr}
+    1a78: 00 68        	ldr	r0, [r0]
+    1a7a: 80 47        	blx	r0
+    1a7c: 08 49        	ldr	r1, [pc, #32]           @ 0x1aa0 <$C$CON9>
+    1a7e: 09 48        	ldr	r0, [pc, #36]           @ 0x1aa4 <$C$CON10>
+    1a80: 05 4b        	ldr	r3, [pc, #20]           @ 0x1a98 <$d>
+    1a82: 0a 68        	ldr	r2, [r1]
+    1a84: 00 68        	ldr	r0, [r0]
+    1a86: 43 f2 39 04  	movw	r4, #12345
+    1a8a: 03 fb 02 44  	mla	r4, r3, r2, r4
+    1a8e: 0c 60        	str	r4, [r1]
+    1a90: 80 47        	blx	r0
+    1a92: c4 f3 0e 40  	ubfx	r0, r4, #16, #15
+    1a96: 10 bd        	pop	{r4, pc}
+
+00001a98 <$d>:
+    1a98:	6d 4e c6 41	.word	0x41c64e6d
+
+00001a9c <$C$CON8>:
+    1a9c:	3c 10 00 20	.word	0x2000103c
+
+00001aa0 <$C$CON9>:
+    1aa0:	74 10 00 20	.word	0x20001074
+
+00001aa4 <$C$CON10>:
+    1aa4:	40 10 00 20	.word	0x20001040
+
+00001aa8 <__TI_decompress_none>:
+    1aa8: d0 f8 03 20  	ldr.w	r2, [r0, #3]
+    1aac: c3 1d        	adds	r3, r0, #7
+    1aae: 08 46        	mov	r0, r1
+    1ab0: 19 46        	mov	r1, r3
+    1ab2: ff f7 99 be  	b.w	0x17e8 <memcpy>         @ imm = #-718
+
+00001ab6 <__TI_zero_init>:
+    1ab6: d0 f8 03 20  	ldr.w	r2, [r0, #3]
+    1aba: 08 46        	mov	r0, r1
+    1abc: 00 21        	movs	r1, #0
+    1abe: ff f7 30 bf  	b.w	0x1922 <memset>         @ imm = #-416
+
+00001ac2 <ResetISR>:
+    1ac2: ff f7 bd bf  	b.w	0x1a40 <_c_int00_noargs> @ imm = #-134
+    1ac6: 70 47        	bx	lr
+
+00001ac8 <NmiSR>:
+    1ac8: fe e7        	b	0x1ac8 <NmiSR>          @ imm = #-4
+
+00001aca <FaultISR>:
+    1aca: fe e7        	b	0x1aca <FaultISR>       @ imm = #-4
+
+00001acc <IntDefaultHandler>:
+    1acc: fe e7        	b	0x1acc <IntDefaultHandler> @ imm = #-4
+
+00001ace <_system_pre_init>:
+    1ace: 01 20        	movs	r0, #1
+    1ad0: 70 47        	bx	lr
+
+00001ad2 <abort>:
+    1ad2: 00 bf        	nop
+
+00001ad4 <$C$L1>:
+    1ad4: fe e7        	b	0x1ad4 <$C$L1>          @ imm = #-4
+
+00001ad6 <_nop>:
+    1ad6: 70 47        	bx	lr
+
+00001ad8 <internal_div0>:
+    1ad8: 70 47        	bx	lr

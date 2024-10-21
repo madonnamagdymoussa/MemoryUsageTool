@@ -3,19 +3,10 @@ import re
 import csv
 import subprocess
 import os
+import json_handler
 
 
-def load_config(file_path):
-    """Load configuration from a JSON file."""
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Configuration file not found: {file_path}")
-
-    with open(file_path, 'r') as file:
-        return json.load(file)
-
-
-config = load_config('ToolChain_Config.json')
-
+config = json_handler.load_config('ToolChain_Config.json')
 
 ###########################################################################################################
 #                                    Supported Commands Commands                                          #
@@ -285,9 +276,9 @@ if __name__ == "__main__":
 
         # To use the "tricore" toolchain
         run_objdump_command(toolchain_name="tricore")
+        run_objdump_command(toolchain_name="ti_cgt_tms470")
+        run_objdump_command(toolchain_name="ti_cgt_armllvm")
 
-        run_size_command(toolchain_name="arm_none_eabi", specific_flag_key='format,SizeHexaDecimal')
-        run_size_command(toolchain_name="tricore", specific_flag_key='format,SizeHexaDecimal')
 
         run_nm_command(toolchain_name="arm_none_eabi", specific_flag_key='defined_only, print_size')
         run_nm_command(toolchain_name="tricore", specific_flag_key='defined_only, print_size')
@@ -297,6 +288,13 @@ if __name__ == "__main__":
 
         run_strip_command(toolchain_name="arm_none_eabi", specific_flag_key='RemoveDebugging')
         run_strip_command(toolchain_name="tricore", specific_flag_key='RemoveDebugging')
+
+
+        run_size_command(toolchain_name="arm_none_eabi", specific_flag_key='format,SizeHexaDecimal')
+        run_size_command(toolchain_name="tricore", specific_flag_key='format,SizeHexaDecimal')
+        run_size_command(toolchain_name="ti_cgt_tms470", specific_flag_key='format,SizeHexaDecimal')
+        run_size_command(toolchain_name="ti_cgt_armllvm", specific_flag_key='format,SizeHexaDecimal')
+
 
     except Exception as e:
         print("Error loading configurations:", e)

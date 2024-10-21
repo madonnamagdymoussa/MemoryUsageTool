@@ -26,7 +26,31 @@
          "size_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-size.exe",
          "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe",
          "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
-        }
+        },
+        "ti_cgt_tms470": {
+         "map_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.map",
+         "elf_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.out",
+         "linkerScript_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\tm4c123gh6pm.cmd",
+         "binary_file_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.out",
+         "nm_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armnm.exe",
+         "objdump_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\armobjdump.exe",
+         "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armreadelf.exe",
+         "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\armsize.exe",
+         "strip_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armstrip.exe",
+         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+        },
+      "ti_cgt_armllvm": {
+         "map_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.map",
+         "elf_path": "D:\\Interrupt_driver_tivac\\System Control\\Debug__TICLANG\\SystemControl.out",
+         "linkerScript_path": "D:\\Interrupt_driver_tivac\\System Control\\tm4c123gh6pm.cmd",
+         "binary_file_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.out",
+         "nm_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armnm.exe",
+         "objdump_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmobjdump.exe",
+         "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armreadelf.exe",
+         "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmsize.exe",
+         "strip_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmstrip.exe",
+         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+      }
     },
     "toolchains_output_files": {
         "arm_none_eabi": {
@@ -52,7 +76,31 @@
             "size_sections_file_txt": "HighTech_SizeOutput.txt",
             "addr2line_file_txt": "HighTech_addr2line.txt",
             "stripped_file_elf": "HighTech_StrippedElf.elf"
-        }
+        },
+      "ti_cgt_tms470": {
+            "map_file_parsing_csv": "Mapfile_Parsing_ti_cgt_tms470.csv",
+            "nm_objects_file_txt": "nm_Objects_ti_cgt_tms470.txt",
+            "elf_objects_file_csv": "elf_Objects_ti_cgt_tms470.csv",
+            "linked_memory_file_csv": "Linked_Memory_ti_cgt_tms470.csv",
+            "mismatch_memory_file_csv": "Linked_Mismatch_ti_cgt_tms470.csv",
+            "memory_usage_file_csv": "Memory_consumption_ti_cgt_tms470.csv",
+            "assembly_file_txt": "ti_cgt_tms470_Assembly_Output.txt",
+            "size_sections_file_txt": "ti_cgt_tms470_SizeOutput.txt",
+            "addr2line_file_txt": "ti_cgt_tms470_addr2line.txt",
+            "stripped_file_elf": "ti_cgt_tms470_StrippedElf.out"
+      },
+      "ti_cgt_armllvm": {
+            "map_file_parsing_csv": "Mapfile_Parsing_ti_cgt_armllvm.csv",
+            "nm_objects_file_txt": "nm_Objects_ti_cgt_armllvm.txt",
+            "elf_objects_file_csv": "elf_Objects_ti_cgt_armllvm.csv",
+            "linked_memory_file_csv": "Linked_Memory_ti_cgt_armllvm.csv",
+            "mismatch_memory_file_csv": "Linked_Mismatch_ti_cgt_armllvm.csv",
+            "memory_usage_file_csv": "Memory_consumption_ti_cgt_armllvm.csv",
+            "assembly_file_txt": "ti_cgt_armllvm_Assembly_Output.txt",
+            "size_sections_file_txt": "ti_cgt_armllvm_SizeOutput.txt",
+            "addr2line_file_txt": "ti_cgt_armllvm_addr2line.txt",
+            "stripped_file_elf": "ti_cgt_armllvm_StrippedElf.out"
+      }
     },
 
     "gnu_commands": {

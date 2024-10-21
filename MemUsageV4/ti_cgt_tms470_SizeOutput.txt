@@ -1,0 +1,30 @@
+D:\Interrupt_driver_tivac\HC-05_UART\Debug\HC-05_UART.out  :
+section                  size         addr
+.intvecs                0x26c            0
+.text                  0x186e        0x26c
+.const                  0x468       0x1adc
+.cinit                  0x110       0x1f48
+.pinit                      0            0
+.init_array                 0            0
+.vtable                     0            0
+.data                   0x264   0x20000e1c
+.bss                    0xe1c   0x20000000
+.sysmem                     0            0
+.stack                  0x200   0x20001080
+.TI.noinit                  0            0
+.TI.persistent              0            0
+__llvm_prf_cnts             0   0x20000000
+.debug_info           0x10ac9            0
+.debug_line            0x2849            0
+.debug_frame            0xc2c            0
+.debug_abbrev          0x241d            0
+.debug_str             0x4797            0
+.debug_aranges          0x4b0            0
+.debug_pubnames        0x156b            0
+.debug_pubtypes        0x1639            0
+Veneer$$CMSE                0            0
+.ARM.attributes          0x58            0
+.TI.section.flags        0x1a            0
+Total                 0x20e8a
+
+
