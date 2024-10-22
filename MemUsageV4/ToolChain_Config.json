@@ -50,6 +50,18 @@
          "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmsize.exe",
          "strip_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmstrip.exe",
          "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+      },
+      "ti-cgt-msp430": {
+         "map_path": "C:\\Users\\DELL\\workspace_ccstheia\\msp430afe_ta_01.c\\Debug\\msp430afe_ta_01.c.map",
+         "elf_path": "C:\\Users\\DELL\\workspace_ccstheia\\msp430afe_ta_01.c\\Debug\\msp430afe_ta_01.c.out",
+         "linkerScript_path": "D:\\Interrupt_driver_tivac\\System Control\\tm4c123gh6pm.cmd",
+         "binary_file_path": "C:\\Users\\DELL\\workspace_ccstheia\\msp430afe_ta_01.c\\Debug\\msp430afe_ta_01.c.out",
+         "nm_path": "D:\\CCSTUDIO-THEIA\\CCSTheia1.5.1.00003_win64\\CCSTheia1.5.1.00003_win64\\ti\\ccstheia151\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.1.LTS\\bin\\nm430.exe",
+         "objdump_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmobjdump.exe",
+         "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armreadelf.exe",
+         "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmsize.exe",
+         "strip_utility_path": "D:\\CCSTUDIO-THEIA\\CCSTheia1.5.1.00003_win64\\CCSTheia1.5.1.00003_win64\\ti\\ccstheia151\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.1.LTS\\bin\\strip430.exe",
+         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
       }
     },
     "toolchains_output_files": {
@@ -100,7 +112,20 @@
             "size_sections_file_txt": "ti_cgt_armllvm_SizeOutput.txt",
             "addr2line_file_txt": "ti_cgt_armllvm_addr2line.txt",
             "stripped_file_elf": "ti_cgt_armllvm_StrippedElf.out"
+      },
+      "ti-cgt-msp430":{
+            "map_file_parsing_csv": "Mapfile_Parsing_ti-cgt-msp430.csv",
+            "nm_objects_file_txt": "nm_Objects_ti-cgt-msp430.txt",
+            "elf_objects_file_csv": "elf_Objects_ti-cgt-msp430.csv",
+            "linked_memory_file_csv": "Linked_Memory_ti-cgt-msp430.csv",
+            "mismatch_memory_file_csv": "Linked_Mismatch_ti-cgt-msp430.csv",
+            "memory_usage_file_csv": "Memory_consumption_ti-cgt-msp430.csv",
+            "assembly_file_txt": "ti-cgt-msp430_Assembly_Output.txt",
+            "size_sections_file_txt": "ti-cgt-msp430_SizeOutput.txt",
+            "addr2line_file_txt": "ti-cgt-msp430_addr2line.txt",
+            "stripped_file_elf": "ti-cgt-msp430_StrippedElf.out"
       }
+
     },
 
     "gnu_commands": {

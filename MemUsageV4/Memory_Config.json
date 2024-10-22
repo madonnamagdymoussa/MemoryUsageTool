@@ -130,5 +130,41 @@
             "length_decimal_bytes": 32,
             "end_address": "0xa0020000"
         }
+    ],
+    "ti_cgt_tms470_MemoryRegions": [
+        {
+            "name": "FLASH",
+            "attributes": "RX",
+            "origin": "0x00000000",
+            "length_hexa_bytes": "0x40000",
+            "length_decimal_bytes": 262144,
+            "end_address": "0x40000"
+        },
+        {
+            "name": "SRAM",
+            "attributes": "RWX",
+            "origin": "0x20000000",
+            "length_hexa_bytes": "0x8000",
+            "length_decimal_bytes": 32768,
+            "end_address": "0x20008000"
+        }
+    ],
+    "ti_cgt_armllvm_MemoryRegions": [
+        {
+            "name": "FLASH",
+            "attributes": "RX",
+            "origin": "0x00000000",
+            "length_hexa_bytes": "0x40000",
+            "length_decimal_bytes": 262144,
+            "end_address": "0x40000"
+        },
+        {
+            "name": "SRAM",
+            "attributes": "RWX",
+            "origin": "0x20000000",
+            "length_hexa_bytes": "0x8000",
+            "length_decimal_bytes": 32768,
+            "end_address": "0x20008000"
+        }
     ]
 }

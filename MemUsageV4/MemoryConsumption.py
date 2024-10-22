@@ -33,29 +33,47 @@ def extract_memory_block(file_path):
 
 def parse_memory_regions(memory_block):
     # Define the regex to match individual memory regions within the MEMORY block
-
     memory_pattern = re.compile(
-        r'(\w+)\s*\(([^)]+)\)\s*:\s*(?:ORIGIN|org|ORG|source)\s*=\s*([0xA-Fa-f0-9]+)\s*,\s*(?:LENGTH|len|LEN|size)\s*=\s*([\dKMG]+)',
+        r'(\w+)\s*\(([^)]+)\)\s*:\s*(?:org|ORG|origin|ORIGIN)\s*=\s*([0xA-Fa-f0-9]+)\s*,\s*(?:len|LEN|length|LENGTH)\s*=\s*(0x[A-Fa-f0-9]+|[\dKMGkmg]+)',
         re.MULTILINE | re.IGNORECASE
     )
+
     # Extract memory regions
     memory_regions = []
     for match in memory_pattern.finditer(memory_block):
-        name = match.group(1)
+        name = match.group(1).strip()
         attributes = match.group(2).strip()
-        origin = match.group(3)
-        length = match.group(4)
+        origin = match.group(3).strip()
+        length = match.group(4).strip()
+
+        # Convert length to a consistent format
+        length_value = convert_length_to_decimal(length)
 
         # Store each memory region as a dictionary
         memory_region = {
             "name": name,
             "attributes": attributes,
             "origin": origin,
-            "length": length
+            "length": length,
+            "length_value": length_value
         }
         memory_regions.append(memory_region)
 
     return memory_regions
+
+
+def convert_length_to_decimal(length):
+    """ Convert lengths with K, M, G suffixes to decimal bytes. """
+    if length.endswith('K'):
+        return int(length[:-1]) * 1024  # Kilobytes to bytes
+    elif length.endswith('M'):
+        return int(length[:-1]) * 1024 * 1024  # Megabytes to bytes
+    elif length.endswith('G'):
+        return int(length[:-1]) * 1024 * 1024 * 1024  # Gigabytes to bytes
+    elif length.startswith('0x'):
+        return int(length, 16)  # Hexadecimal to decimal
+    else:
+        return int(length)  # Decimal
 
 
 def convert_length_to_bytes(length):
@@ -76,7 +94,18 @@ def print_memory_regions_as_json(toolchain_name, memory_regions, file_path):
 
     for region in memory_regions:
         origin = int(region['origin'], 16)  # Convert origin from hex to int
-        length_bytes = convert_length_to_bytes(region['length'])  # Convert length to bytes
+        # Determine if the length is in hex or decimal
+        length = region['length'].strip()  # Remove any surrounding whitespace
+        print(f"Processing length: {length}")  # Verify the raw length value
+        if length.lower().startswith('0x'):
+            # Convert hex length directly to an integer
+            length_bytes = int(length, 16)
+
+        else:
+            # Assume it's a decimal and use the convert function
+            length_bytes = convert_length_to_bytes(length)
+
+        #length_bytes = convert_length_to_bytes(region['length'])  # Convert length to bytes
 
         end_address = origin + length_bytes  # Calculate end address
 
@@ -200,6 +229,27 @@ if __name__ == "__main__":
         memory_regions = parse_memory_regions(memory_block_content)
         MemoryConfigPath = "Memory_Config.json"
         print_memory_regions_as_json('tricore',memory_regions, MemoryConfigPath)
+
+        # ================================ for ti_cgt_tms470 =================================
+        linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_tms470'][
+            'linkerScript_path']
+        memory_block_content = extract_memory_block(linker_file_path)
+        print(memory_block_content)
+        memory_regions = parse_memory_regions(memory_block_content)
+        print("************ti_cgt_tms470*************")
+        print(memory_regions)
+        MemoryConfigPath = "Memory_Config.json"
+        print_memory_regions_as_json('ti_cgt_tms470',memory_regions, MemoryConfigPath)
+
+        # ================================ for ti_cgt_armllvm =================================
+        linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_armllvm'][
+            'linkerScript_path']
+        memory_block_content = extract_memory_block(linker_file_path)
+        print(memory_block_content)
+        memory_regions = parse_memory_regions(memory_block_content)
+        MemoryConfigPath = "Memory_Config.json"
+        print_memory_regions_as_json('ti_cgt_armllvm',memory_regions, MemoryConfigPath)
+      
 
     except Exception as e:
         print("Error loading configurations:", e)

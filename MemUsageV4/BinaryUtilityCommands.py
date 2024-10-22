@@ -282,6 +282,7 @@ if __name__ == "__main__":
 
         run_nm_command(toolchain_name="arm_none_eabi", specific_flag_key='defined_only, print_size')
         run_nm_command(toolchain_name="tricore", specific_flag_key='defined_only, print_size')
+        run_nm_command(toolchain_name="ti-cgt-msp430", specific_flag_key='defined_only, print_size')
 
         run_addr2line_command(toolchain_name="arm_none_eabi", specific_flag_key='DisplayFunctionName', Address='e3e')
         run_addr2line_command(toolchain_name="tricore", specific_flag_key='DisplayFunctionName', Address='800020fa')
