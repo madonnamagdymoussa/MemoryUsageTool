@@ -12,7 +12,7 @@ config = json_handler.load_config('ToolChain_Config.json')
 #                                    Supported Commands Commands                                          #
 ###########################################################################################################
 
-def run_objdump_command(toolchain_name, specific_flag_key=None):
+def run_objdump_command(toolchain_name, specific_flag_key=None,tool_flag_name='gnu_command_flags'):
     # Retrieve toolchain-specific paths and settings
     toolchain_config = config['toolchains_binary-utilities_filePaths'].get(toolchain_name)
     if not toolchain_config:
@@ -33,7 +33,7 @@ def run_objdump_command(toolchain_name, specific_flag_key=None):
     objdump_command_template = config['gnu_commands']['objdump_command']
 
     # Handle specific flags if provided
-    objdump_flags_dict = config['toolchains_command_flags']['gnu_command_flags']['ObjDump_flags']
+    objdump_flags_dict = config['toolchains_command_flags'][tool_flag_name]['ObjDump_flags']
     if specific_flag_key:
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
         objdump_flags = " ".join(objdump_flags_dict.get(key, '') for key in flag_keys if key in objdump_flags_dict)
@@ -62,7 +62,7 @@ def run_objdump_command(toolchain_name, specific_flag_key=None):
         return None
 
 
-def run_size_command(toolchain_name, specific_flag_key=None):
+def run_size_command(toolchain_name, specific_flag_key=None,tool_flag_name='gnu_command_flags'):
     # Retrieve toolchain-specific paths and settings
     toolchain_config = config['toolchains_binary-utilities_filePaths'].get(toolchain_name)
     if not toolchain_config:
@@ -83,7 +83,7 @@ def run_size_command(toolchain_name, specific_flag_key=None):
     size_command_template = config['gnu_commands']['size_command']
 
     # Handle specific flags if provided
-    size_flags_dict = config['toolchains_command_flags']['gnu_command_flags']['Size_flags']
+    size_flags_dict = config['toolchains_command_flags'][tool_flag_name]['Size_flags']
     if specific_flag_key:
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
         size_flags = " ".join(size_flags_dict.get(key, '') for key in flag_keys if key in size_flags_dict)
@@ -112,7 +112,7 @@ def run_size_command(toolchain_name, specific_flag_key=None):
         return None
 
 
-def run_nm_command(toolchain_name, specific_flag_key=None):
+def run_nm_command(toolchain_name, specific_flag_key=None,tool_flag_name='gnu_command_flags'):
     # Retrieve toolchain-specific paths and settings
     toolchain_config = config['toolchains_binary-utilities_filePaths'].get(toolchain_name)
     if not toolchain_config:
@@ -133,7 +133,7 @@ def run_nm_command(toolchain_name, specific_flag_key=None):
     nm_command_template = config['gnu_commands']['nm_command']
 
     # Handle specific flags if provided
-    nm_flags_dict = config['toolchains_command_flags']['gnu_command_flags']['NM_flags']
+    nm_flags_dict = config['toolchains_command_flags'][tool_flag_name]['NM_flags']
     if specific_flag_key:
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
         nm_flags = " ".join(nm_flags_dict.get(key, '') for key in flag_keys if key in nm_flags_dict)
@@ -162,7 +162,7 @@ def run_nm_command(toolchain_name, specific_flag_key=None):
         return None
 
 
-def run_addr2line_command(toolchain_name, specific_flag_key=None, Address=None):
+def run_addr2line_command(toolchain_name, specific_flag_key=None, Address=None,tool_flag_name='gnu_command_flags'):
     # Retrieve toolchain-specific paths and settings
     toolchain_config = config['toolchains_binary-utilities_filePaths'].get(toolchain_name)
     if not toolchain_config:
@@ -183,8 +183,8 @@ def run_addr2line_command(toolchain_name, specific_flag_key=None, Address=None):
     addr2line_command_template = config['gnu_commands']['addr2line_command']
 
     # Handle specific flags if provided
-    addr2line_flags_dict = config['toolchains_command_flags']['gnu_command_flags']['Addr2line_flags']
-    ExecutableName_flag = config['toolchains_command_flags']['gnu_command_flags']['Addr2line_flags']['ExecutableName']
+    addr2line_flags_dict = config['toolchains_command_flags'][tool_flag_name]['Addr2line_flags']
+    ExecutableName_flag = config['toolchains_command_flags'][tool_flag_name]['Addr2line_flags']['ExecutableName']
 
     if specific_flag_key:
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
@@ -216,7 +216,7 @@ def run_addr2line_command(toolchain_name, specific_flag_key=None, Address=None):
         print(f"Error output: {e.stderr}")
         return None
 
-def run_strip_command(toolchain_name, specific_flag_key=None):
+def run_strip_command(toolchain_name, specific_flag_key=None,tool_flag_name='gnu_command_flags'):
     # Retrieve toolchain-specific paths and settings
     toolchain_config = config['toolchains_binary-utilities_filePaths'].get(toolchain_name)
     if not toolchain_config:
@@ -237,7 +237,7 @@ def run_strip_command(toolchain_name, specific_flag_key=None):
     strip_command_template = config['gnu_commands']['strip_command']
 
     # Handle specific flags if provided
-    strip_flags_dict = config['toolchains_command_flags']['gnu_command_flags']['Strip_flags']
+    strip_flags_dict = config['toolchains_command_flags'][tool_flag_name]['Strip_flags']
     if specific_flag_key:
         flag_keys = [key.strip() for key in specific_flag_key.split(',')]
         strip_flags = " ".join(strip_flags_dict.get(key, '') for key in flag_keys if key in strip_flags_dict)

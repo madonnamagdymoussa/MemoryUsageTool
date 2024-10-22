@@ -146,7 +146,7 @@ def Parse_and_Save_Size_Output(toolchain_name, size_output_file, output_json_fil
 
     sections = []
     total_size_decimal = None
-    total_size_hexa = None
+    total_size_hexadec = None
 
     try:
         with open(size_output_file, 'r') as file:
@@ -173,7 +173,7 @@ def Parse_and_Save_Size_Output(toolchain_name, size_output_file, output_json_fil
                 total_match = total_pattern.match(line.strip())
                 if total_match:
                     total_size_decimal = int(total_match.group(1), 16)  # Convert hex total to integer
-                    total_size_hexa = total_match.group(1)
+                    total_size_hexadec = total_match.group(1)
 
         SectionName = toolchain_name+"_Sections"
         total_size_dec = toolchain_name+"_total_size_decimal_Bytes"
@@ -182,7 +182,7 @@ def Parse_and_Save_Size_Output(toolchain_name, size_output_file, output_json_fil
         parsed_output = {
             SectionName: sections,
             total_size_dec: total_size_decimal,
-            total_size_hexa: total_size_hexa
+            total_size_hexa: total_size_hexadec
         }
 
         # Load existing data from the output JSON file if it exists
@@ -210,6 +210,39 @@ def Parse_and_Save_Size_Output(toolchain_name, size_output_file, output_json_fil
         return None
 
 
+
+def add_memory_type_to_sections(sections, memory_regions):
+    # Iterate over each section in the high_tech_sections list
+    for section in sections:
+        try:
+            # Convert SectionAddress from hex string to integer for comparison
+            section_address = int(section.get("SectionAddress", "0"), 16)
+
+            # Flag to indicate if a matching memory region is found
+            memory_type_found = False
+
+            # Loop through memory regions to find the matching range
+            for region in memory_regions:
+                origin = int(region.get("origin", "0"), 16)
+                end_address = int(region.get("end_address", "0"), 16)
+
+                # Check if the section address is within the range of the memory region
+                if origin <= section_address < end_address:
+                    # Add the memory type to the section dictionary
+                    section["MemoryType"] = region.get("name", "Unknown")
+                    memory_type_found = True
+                    break  # Stop searching once a match is found
+
+            # If no matching region is found, set MemoryType to None
+            if not memory_type_found:
+                section["MemoryType"] = "None"
+
+        except ValueError as e:
+            print(f"Error processing section {section.get('SectionName', 'Unknown')}: {e}")
+            section["MemoryType"] = "Error"
+
+    return sections
+
 if __name__ == "__main__":
     try:
         # ==============================for arm-none-eabi==============================
@@ -220,7 +253,14 @@ if __name__ == "__main__":
         memory_regions = parse_memory_regions(memory_block_content)
         MemoryConfigPath = "Memory_Config.json"
         print_memory_regions_as_json('arm_none_eabi',memory_regions, MemoryConfigPath)
-
+        #toolchains_output_files
+        size_output_file=ToolChain_Config['toolchains_output_files']['arm_none_eabi']['size_sections_file_txt']
+        Parse_and_Save_Size_Output('arm_none_eabi', size_output_file, MemoryConfigPath)
+        Memory_Config=json_handler.load_config('Memory_Config.json')
+        mem_regions_dict=Memory_Config['arm_none_eabi_MemoryRegions']
+        sections_dict = Memory_Config['arm_none_eabi_Sections']
+        #if(mem_regions_dict and sections_dict):
+        add_memory_type_to_sections(sections_dict, mem_regions_dict)
         # ================================ for tricore =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['tricore'][
             'linkerScript_path']
@@ -229,6 +269,8 @@ if __name__ == "__main__":
         memory_regions = parse_memory_regions(memory_block_content)
         MemoryConfigPath = "Memory_Config.json"
         print_memory_regions_as_json('tricore',memory_regions, MemoryConfigPath)
+        size_output_file=ToolChain_Config['toolchains_output_files']['tricore']['size_sections_file_txt']
+        Parse_and_Save_Size_Output('tricore', size_output_file, MemoryConfigPath)
 
         # ================================ for ti_cgt_tms470 =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_tms470'][
@@ -240,6 +282,8 @@ if __name__ == "__main__":
         print(memory_regions)
         MemoryConfigPath = "Memory_Config.json"
         print_memory_regions_as_json('ti_cgt_tms470',memory_regions, MemoryConfigPath)
+        size_output_file=ToolChain_Config['toolchains_output_files']['ti_cgt_tms470']['size_sections_file_txt']
+        Parse_and_Save_Size_Output('ti_cgt_tms470', size_output_file, MemoryConfigPath)
 
         # ================================ for ti_cgt_armllvm =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_armllvm'][
@@ -249,7 +293,9 @@ if __name__ == "__main__":
         memory_regions = parse_memory_regions(memory_block_content)
         MemoryConfigPath = "Memory_Config.json"
         print_memory_regions_as_json('ti_cgt_armllvm',memory_regions, MemoryConfigPath)
-      
+        size_output_file=ToolChain_Config['toolchains_output_files']['ti_cgt_armllvm']['size_sections_file_txt']
+        Parse_and_Save_Size_Output('ti_cgt_armllvm', size_output_file, MemoryConfigPath)
+
 
     except Exception as e:
         print("Error loading configurations:", e)
