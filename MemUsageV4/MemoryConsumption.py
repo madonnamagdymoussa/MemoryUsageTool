@@ -229,8 +229,6 @@ def add_memory_type_to_sections(sections, memory_regions):
                 if origin <= section_address < end_address:
                     # Add the memory type to the section dictionary
                     section["MemoryType"] = region.get("name", "Unknown")
-                    secname= region.get("name", "Unknown")
-                    print(f"section nameee is {section["MemoryType"]} ")
                     memory_type_found = True
                     break  # Stop searching once a match is found
 
@@ -246,29 +244,27 @@ def add_memory_type_to_sections(sections, memory_regions):
 
 if __name__ == "__main__":
     try:
+        MemoryConfigPath = "Memory_Config.json"
+
         # ==============================for arm-none-eabi==============================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['arm_none_eabi'][
             'linkerScript_path']
         memory_block_content = extract_memory_block(linker_file_path)
         print(memory_block_content)
         memory_regions = parse_memory_regions(memory_block_content)
-        MemoryConfigPath = "Memory_Config.json"
-        print_memory_regions_as_json('arm_none_eabi',memory_regions, MemoryConfigPath)
+        print_memory_regions_as_json('arm_none_eabi', memory_regions, MemoryConfigPath)
 
-        size_output_file=ToolChain_Config['toolchains_output_files']['arm_none_eabi']['size_sections_file_txt']
+        size_output_file = ToolChain_Config['toolchains_output_files']['arm_none_eabi']['size_sections_file_txt']
         Parse_and_Save_Size_Output('arm_none_eabi', size_output_file, MemoryConfigPath)
 
-        Memory_Config = json_handler.load_config('Memory_Config.json')
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
         mem_regions_dict = Memory_Config['arm_none_eabi_MemoryRegions']
         sections_dict = Memory_Config['arm_none_eabi_Sections']
-        #if(mem_regions_dict and sections_dict):
-        print("******************* Section dict *******************")
-        print(sections_dict)
-        print("******************* mem dict *******************")
-        print(mem_regions_dict)
-
         add_memory_type_to_sections(sections_dict, mem_regions_dict)
-        json_handler.save_config('Memory_Config.json', Memory_Config)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+
         # ================================ for tricore =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['tricore'][
             'linkerScript_path']
@@ -279,6 +275,13 @@ if __name__ == "__main__":
         print_memory_regions_as_json('tricore',memory_regions, MemoryConfigPath)
         size_output_file=ToolChain_Config['toolchains_output_files']['tricore']['size_sections_file_txt']
         Parse_and_Save_Size_Output('tricore', size_output_file, MemoryConfigPath)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict_tricore = Memory_Config['tricore_MemoryRegions']
+        sections_dict_tricore = Memory_Config['tricore_Sections']
+        add_memory_type_to_sections(sections_dict_tricore, mem_regions_dict_tricore)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
 
         # ================================ for ti_cgt_tms470 =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_tms470'][
@@ -293,6 +296,13 @@ if __name__ == "__main__":
         size_output_file=ToolChain_Config['toolchains_output_files']['ti_cgt_tms470']['size_sections_file_txt']
         Parse_and_Save_Size_Output('ti_cgt_tms470', size_output_file, MemoryConfigPath)
 
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
+        add_memory_type_to_sections(sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
         # ================================ for ti_cgt_armllvm =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_armllvm'][
             'linkerScript_path']
@@ -303,6 +313,12 @@ if __name__ == "__main__":
         print_memory_regions_as_json('ti_cgt_armllvm',memory_regions, MemoryConfigPath)
         size_output_file=ToolChain_Config['toolchains_output_files']['ti_cgt_armllvm']['size_sections_file_txt']
         Parse_and_Save_Size_Output('ti_cgt_armllvm', size_output_file, MemoryConfigPath)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_armllvm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_armllvm_Sections']
+        add_memory_type_to_sections(sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
 
 
     except Exception as e:
