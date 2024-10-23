@@ -12,7 +12,8 @@
         "output_map_path": "D:\\gcc_arm_none_eabi\\Madonna_MemUsageScript\\Madonna_MemUsageScript\\output_map_file.txt",
         "size_utility_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-size.exe",
         "strip_utility_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-strip.exe",
-        "addr2line_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-addr2line.exe"
+        "addr2line_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-addr2line.exe",
+        "objcopy_path": "D:\\gcc_arm_none_eabi\\gcc-arm-none-eabi-10.3-2021.10-win32\\gcc-arm-none-eabi-10.3-2021.10\\bin\\arm-none-eabi-objcopy.exe"
 
         },
         "tricore": {
@@ -25,9 +26,11 @@
          "readelf_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-readelf.exe",
          "size_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-size.exe",
          "strip_utility_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-strip.exe",
-         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe",
+         "objcopy_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-objcopy.exe"
+
         },
-        "ti_cgt_tms470": {
+        "ti_cgt_arm": {
          "map_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.map",
          "elf_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.out",
          "linkerScript_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\tm4c123gh6pm.cmd",
@@ -37,19 +40,20 @@
          "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armreadelf.exe",
          "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\armsize.exe",
          "strip_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armstrip.exe",
-         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+         "objcopy_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\armobjcopy.exe"
+
         },
       "ti_cgt_armllvm": {
          "map_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.map",
          "elf_path": "D:\\Interrupt_driver_tivac\\System Control\\Debug__TICLANG\\SystemControl.out",
          "linkerScript_path": "D:\\Interrupt_driver_tivac\\System Control\\tm4c123gh6pm.cmd",
          "binary_file_path": "D:\\Interrupt_driver_tivac\\HC-05_UART\\Debug\\HC-05_UART.out",
-         "nm_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armnm.exe",
+         "nm_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\tiarmnm.exe",
          "objdump_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmobjdump.exe",
-         "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armreadelf.exe",
+         "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\tiarmreadelf.exe",
          "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmsize.exe",
          "strip_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmstrip.exe",
-         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+         "objcopy_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\tiarmobjcopy.exe"
       },
       "ti-cgt-msp430": {
          "map_path": "C:\\Users\\DELL\\workspace_ccstheia\\msp430afe_ta_01.c\\Debug\\msp430afe_ta_01.c.map",
@@ -60,8 +64,8 @@
          "objdump_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmobjdump.exe",
          "readelf_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-arm_20.2.7.LTS\\bin\\bin\\armreadelf.exe",
          "size_utility_path": "D:\\CodeComposer\\ccs\\tools\\compiler\\ti-cgt-armllvm_2.1.2.LTS\\bin\\tiarmsize.exe",
-         "strip_utility_path": "D:\\CCSTUDIO-THEIA\\CCSTheia1.5.1.00003_win64\\CCSTheia1.5.1.00003_win64\\ti\\ccstheia151\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.1.LTS\\bin\\strip430.exe",
-         "addr2line_path": "D:\\HighTecTricore_EntryToolChain\\toolchains\\tricore\\v4.9.3.0-infineon-1.0\\bin\\tricore-addr2line.exe"
+         "strip_utility_path": "D:\\CCSTUDIO-THEIA\\CCSTheia1.5.1.00003_win64\\CCSTheia1.5.1.00003_win64\\ti\\ccstheia151\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.1.LTS\\bin\\strip430.exe"
+
       }
     },
     "toolchains_output_files": {
@@ -75,7 +79,8 @@
             "assembly_file_txt": "Assembly_Output.txt",
             "size_sections_file_txt": "SizeOutput.txt",
             "addr2line_file_txt": "Addr2line.txt",
-            "stripped_file_elf": "StrippedElf.elf"
+            "stripped_file_elf": "StrippedElf.elf",
+            "section_file_elf": "arm_none_eabi_SectionFile.elf"
         },
         "tricore": {
             "map_file_parsing_csv": "Mapfile_Parsing_tricore.csv",
@@ -89,17 +94,17 @@
             "addr2line_file_txt": "HighTech_addr2line.txt",
             "stripped_file_elf": "HighTech_StrippedElf.elf"
         },
-      "ti_cgt_tms470": {
-            "map_file_parsing_csv": "Mapfile_Parsing_ti_cgt_tms470.csv",
-            "nm_objects_file_txt": "nm_Objects_ti_cgt_tms470.txt",
-            "elf_objects_file_csv": "elf_Objects_ti_cgt_tms470.csv",
-            "linked_memory_file_csv": "Linked_Memory_ti_cgt_tms470.csv",
-            "mismatch_memory_file_csv": "Linked_Mismatch_ti_cgt_tms470.csv",
-            "memory_usage_file_csv": "Memory_consumption_ti_cgt_tms470.csv",
-            "assembly_file_txt": "ti_cgt_tms470_Assembly_Output.txt",
-            "size_sections_file_txt": "ti_cgt_tms470_SizeOutput.txt",
-            "addr2line_file_txt": "ti_cgt_tms470_addr2line.txt",
-            "stripped_file_elf": "ti_cgt_tms470_StrippedElf.out"
+      "ti_cgt_arm": {
+            "map_file_parsing_csv": "Mapfile_Parsing_ti_cgt_arm.csv",
+            "nm_objects_file_txt": "nm_Objects_ti_cgt_arm.txt",
+            "elf_objects_file_csv": "elf_Objects_ti_cgt_arm.csv",
+            "linked_memory_file_csv": "Linked_Memory_ti_cgt_arm.csv",
+            "mismatch_memory_file_csv": "Linked_Mismatch_ti_cgt_arm.csv",
+            "memory_usage_file_csv": "Memory_consumption_ti_cgt_arm.csv",
+            "assembly_file_txt": "ti_cgt_arm_Assembly_Output.txt",
+            "size_sections_file_txt": "ti_cgt_arm_SizeOutput.txt",
+            "addr2line_file_txt": "ti_cgt_arm_addr2line.txt",
+            "stripped_file_elf": "ti_cgt_arm_StrippedElf.out"
       },
       "ti_cgt_armllvm": {
             "map_file_parsing_csv": "Mapfile_Parsing_ti_cgt_armllvm.csv",
@@ -136,7 +141,8 @@
         "readelf_command": "{readelf_path} {readelf_flags} {binary_file_path}",
         "size_command": "{size_path} {size_flags} {binary_file_path} > {SizeFile_txt} ",
         "strip_command": "{strip_path} {strip_flags} {binary_file_path} {strip_output_flag} {stripped_elf}",
-        "addr2line_command": "{addr2line_Path} {ExecutableName_flag}{binary_file_path} {flags} {HexadecimalAddress} > {addr2line_Output_txt}"
+        "addr2line_command": "{addr2line_Path} {ExecutableName_flag}{binary_file_path} {flags} {HexadecimalAddress} > {addr2line_Output_txt}",
+        "objcopy_only_section_command": "{objcopy_path} {only_section_flag}{section_name}  {in_file}  {out_file}"
     },
 
     "toolchains_command_flags": {
@@ -167,6 +173,9 @@
         "DisplayFunctionName": "-f",
         "StripDirectoryName": "-s",
         "ExecutableName": "--exe="
+      },
+      "ObjCopy_flags": {
+        "OnlyCopySection": "--only-section="
       }
     }
 }

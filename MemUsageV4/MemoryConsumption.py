@@ -345,12 +345,6 @@ def create_memory_consumption_csv(sections, memory_regions,
 
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
     try:
         MemoryConfigPath = "Memory_Config.json"
@@ -427,42 +421,42 @@ if __name__ == "__main__":
         MemConsumptionFile=ToolChain_Config['toolchains_output_files']['tricore']['memory_usage_file_csv']
         create_memory_consumption_csv(sections_dict, mem_regions_dict,filename=MemConsumptionFile)
 
-        # ================================ for ti_cgt_tms470 =================================
-        linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_tms470'][
+        # ================================ for ti_cgt_arm =================================
+        linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_arm'][
             'linkerScript_path']
         memory_block_content = extract_memory_block(linker_file_path)
         print(memory_block_content)
         memory_regions = parse_memory_regions(memory_block_content)
-        print("************ti_cgt_tms470*************")
+        print("************ti_cgt_arm*************")
         print(memory_regions)
         MemoryConfigPath = "Memory_Config.json"
-        print_memory_regions_as_json('ti_cgt_tms470',memory_regions, MemoryConfigPath)
-        size_output_file=ToolChain_Config['toolchains_output_files']['ti_cgt_tms470']['size_sections_file_txt']
-        Parse_and_Save_Size_Output('ti_cgt_tms470', size_output_file, MemoryConfigPath)
+        print_memory_regions_as_json('ti_cgt_arm',memory_regions, MemoryConfigPath)
+        size_output_file=ToolChain_Config['toolchains_output_files']['ti_cgt_arm']['size_sections_file_txt']
+        Parse_and_Save_Size_Output('ti_cgt_arm', size_output_file, MemoryConfigPath)
 
 
         Memory_Config = json_handler.load_config(MemoryConfigPath)
-        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
-        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
+        mem_regions_dict = Memory_Config['ti_cgt_arm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_arm_Sections']
         add_memory_type_to_sections(sections_dict, mem_regions_dict)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
 
         Memory_Config = json_handler.load_config(MemoryConfigPath)
-        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
-        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
-        add_consumed_percentage_to_sections('ti_cgt_tms470', sections_dict, mem_regions_dict)
+        mem_regions_dict = Memory_Config['ti_cgt_arm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_arm_Sections']
+        add_consumed_percentage_to_sections('ti_cgt_arm', sections_dict, mem_regions_dict)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
 
         Memory_Config = json_handler.load_config(MemoryConfigPath)
-        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
-        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
+        mem_regions_dict = Memory_Config['ti_cgt_arm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_arm_Sections']
         add_consumed_size_to_memory_regions(sections_dict, mem_regions_dict)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
 
         Memory_Config = json_handler.load_config(MemoryConfigPath)
-        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
-        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
-        MemConsumptionFile=ToolChain_Config['toolchains_output_files']['ti_cgt_tms470']['memory_usage_file_csv']
+        mem_regions_dict = Memory_Config['ti_cgt_arm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_arm_Sections']
+        MemConsumptionFile=ToolChain_Config['toolchains_output_files']['ti_cgt_arm']['memory_usage_file_csv']
         create_memory_consumption_csv(sections_dict, mem_regions_dict,filename=MemConsumptionFile)
 
         # ================================ for ti_cgt_armllvm =================================

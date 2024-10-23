@@ -643,7 +643,7 @@
     ],
     "tricore_total_size_decimal_Bytes": 2975417,
     "tricore_total_size_hexa_Bytes": "0x2d66b9",
-    "ti_cgt_tms470_MemoryRegions": [
+    "ti_cgt_arm_MemoryRegions": [
         {
             "name": "FLASH",
             "attributes": "RX",
@@ -665,7 +665,7 @@
             "PercentageConsumedSize": 14.453125
         }
     ],
-    "ti_cgt_tms470_Sections": [
+    "ti_cgt_arm_Sections": [
         {
             "SectionName": ".intvecs",
             "SectionSize_Decimal_Bytes": 620,
@@ -867,8 +867,8 @@
             "consumed_percentage_MemType": 0.0099
         }
     ],
-    "ti_cgt_tms470_total_size_decimal_Bytes": 134794,
-    "ti_cgt_tms470_total_size_hexa_Bytes": "0x20e8a",
+    "ti_cgt_arm_total_size_decimal_Bytes": 134794,
+    "ti_cgt_arm_total_size_hexa_Bytes": "0x20e8a",
     "ti_cgt_armllvm_MemoryRegions": [
         {
             "name": "FLASH",

@@ -1,0 +1,30 @@
+Section Name,Section Size in Bytes (Decimal Format),Section Size in Bytes (Hexadecimal Format),Section Address,Memory Name,Consumed Percentage from MemoryType
+.intvecs,620,0x26c,0,FLASH,0.2365
+.text,6254,0x186e,0x26c,FLASH,2.3857
+.const,1128,0x468,0x1adc,FLASH,0.4303
+.cinit,272,0x110,0x1f48,FLASH,0.1038
+.pinit,0,0,0,FLASH,0.0
+.init_array,0,0,0,FLASH,0.0
+.vtable,0,0,0,FLASH,0.0
+.data,612,0x264,0x20000e1c,SRAM,1.8677
+.bss,3612,0xe1c,0x20000000,SRAM,11.0229
+.sysmem,0,0,0,FLASH,0.0
+.stack,512,0x200,0x20001080,SRAM,1.5625
+.TI.noinit,0,0,0,FLASH,0.0
+.TI.persistent,0,0,0,FLASH,0.0
+__llvm_prf_cnts,0,0,0x20000000,SRAM,0.0
+.debug_info,68297,0x10ac9,0,FLASH,26.0532
+.debug_line,10313,0x2849,0,FLASH,3.9341
+.debug_frame,3116,0xc2c,0,FLASH,1.1887
+.debug_abbrev,9245,0x241d,0,FLASH,3.5267
+.debug_str,18327,0x4797,0,FLASH,6.9912
+.debug_aranges,1200,0x4b0,0,FLASH,0.4578
+.debug_pubnames,5483,0x156b,0,FLASH,2.0916
+.debug_pubtypes,5689,0x1639,0,FLASH,2.1702
+Veneer$$CMSE,0,0,0,FLASH,0.0
+.ARM.attributes,88,0x58,0,FLASH,0.0336
+.TI.section.flags,26,0x1a,0,FLASH,0.0099
+
+Memory Name,Attributes,Origin Address,Length in Hexa Bytes,Length in Decimal Bytes,End Address,Consumed Size,Percentage Consumed Size
+FLASH,RX,0x00000000,0x40000,262144,0x40000,130058,49.613189697265625
+SRAM,RWX,0x20000000,0x8000,32768,0x20008000,4736,14.453125

@@ -61,6 +61,56 @@ def run_objdump_command(toolchain_name, specific_flag_key=None,tool_flag_name='g
         print(f"Error output: {e.stderr}")
         return None
 
+def run_objcopy_onlysection_command(toolchain_name, specific_flag_key=None,tool_flag_name='gnu_command_flags', Section=".data"):
+    # Retrieve toolchain-specific paths and settings
+    toolchain_config = config['toolchains_binary-utilities_filePaths'].get(toolchain_name)
+    if not toolchain_config:
+        raise ValueError(f"Toolchain '{toolchain_name}' is not defined in the configuration.")
+
+    binary_file_path = toolchain_config['binary_file_path']
+    supported_extensions = config.get('supported_extensions', ['.elf', '.out'])
+
+    # Get the file extension of the binary file
+    file_extension = os.path.splitext(binary_file_path)[-1].lower()
+
+    # Check if the file extension is supported
+    if file_extension not in supported_extensions:
+        raise ValueError(
+            f"Unsupported binary file extension '{file_extension}'. Supported types: {supported_extensions}")
+
+    # Fetch the objdump command template from the configuration
+    objcopy_only_section_command_template = config['gnu_commands']['objcopy_only_section_command']
+
+    # Handle specific flags if provided
+    objcopy_onlysection_flags_dict = config['toolchains_command_flags'][tool_flag_name]['ObjCopy_flags']
+    if specific_flag_key:
+        flag_keys = [key.strip() for key in specific_flag_key.split(',')]
+        objcopy_onlysection_flags = " ".join(objcopy_onlysection_flags_dict.get(key, '') for key in flag_keys if key in objcopy_onlysection_flags_dict)
+    else:
+        objcopy_onlysection_flags = config.get('default_objdump_flags', '--only-section=')  # Default flag if none provided
+
+    # Construct the objdump command using the template
+    objcopy_only_section_command = objcopy_only_section_command_template.format(
+        objcopy_path=toolchain_config['objcopy_path'],
+        only_section_flag=objcopy_onlysection_flags.strip(),
+        section_name=Section.strip(),
+        in_file=binary_file_path,
+        out_file=config['toolchains_output_files'][toolchain_name]['section_file_elf']
+    )
+
+    print("Constructed objcopy only section command:", objcopy_only_section_command)  # Debug: Show the command being run
+
+    try:
+        # Run the constructed command
+        result = subprocess.run(objcopy_only_section_command, shell=True, check=True, capture_output=True, text=True)
+        print("objcopy only section command ran successfully!")
+        print("Raw output:", result.stdout)  # Debug: Print raw output
+        return result.stdout.strip()  # Return the stdout output
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output: {e.stderr}")
+        return None
+
 
 def run_size_command(toolchain_name, specific_flag_key=None,tool_flag_name='gnu_command_flags'):
     # Retrieve toolchain-specific paths and settings
@@ -276,7 +326,7 @@ if __name__ == "__main__":
 
         # To use the "tricore" toolchain
         run_objdump_command(toolchain_name="tricore")
-        run_objdump_command(toolchain_name="ti_cgt_tms470")
+        run_objdump_command(toolchain_name="ti_cgt_arm")
         run_objdump_command(toolchain_name="ti_cgt_armllvm")
 
 
@@ -293,9 +343,10 @@ if __name__ == "__main__":
 
         run_size_command(toolchain_name="arm_none_eabi", specific_flag_key='format,SizeHexaDecimal')
         run_size_command(toolchain_name="tricore", specific_flag_key='format,SizeHexaDecimal')
-        run_size_command(toolchain_name="ti_cgt_tms470", specific_flag_key='format,SizeHexaDecimal')
+        run_size_command(toolchain_name="ti_cgt_arm", specific_flag_key='format,SizeHexaDecimal')
         run_size_command(toolchain_name="ti_cgt_armllvm", specific_flag_key='format,SizeHexaDecimal')
 
+        run_objcopy_onlysection_command(toolchain_name="arm_none_eabi")
 
     except Exception as e:
         print("Error loading configurations:", e)
