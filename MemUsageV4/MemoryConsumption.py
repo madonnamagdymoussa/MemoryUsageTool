@@ -225,11 +225,12 @@ def add_memory_type_to_sections(sections, memory_regions):
             for region in memory_regions:
                 origin = int(region.get("origin", "0"), 16)
                 end_address = int(region.get("end_address", "0"), 16)
-
                 # Check if the section address is within the range of the memory region
                 if origin <= section_address < end_address:
                     # Add the memory type to the section dictionary
                     section["MemoryType"] = region.get("name", "Unknown")
+                    secname= region.get("name", "Unknown")
+                    print(f"section nameee is {section["MemoryType"]} ")
                     memory_type_found = True
                     break  # Stop searching once a match is found
 
@@ -253,14 +254,21 @@ if __name__ == "__main__":
         memory_regions = parse_memory_regions(memory_block_content)
         MemoryConfigPath = "Memory_Config.json"
         print_memory_regions_as_json('arm_none_eabi',memory_regions, MemoryConfigPath)
-        #toolchains_output_files
+
         size_output_file=ToolChain_Config['toolchains_output_files']['arm_none_eabi']['size_sections_file_txt']
         Parse_and_Save_Size_Output('arm_none_eabi', size_output_file, MemoryConfigPath)
-        Memory_Config=json_handler.load_config('Memory_Config.json')
-        mem_regions_dict=Memory_Config['arm_none_eabi_MemoryRegions']
+
+        Memory_Config = json_handler.load_config('Memory_Config.json')
+        mem_regions_dict = Memory_Config['arm_none_eabi_MemoryRegions']
         sections_dict = Memory_Config['arm_none_eabi_Sections']
         #if(mem_regions_dict and sections_dict):
+        print("******************* Section dict *******************")
+        print(sections_dict)
+        print("******************* mem dict *******************")
+        print(mem_regions_dict)
+
         add_memory_type_to_sections(sections_dict, mem_regions_dict)
+        json_handler.save_config('Memory_Config.json', Memory_Config)
         # ================================ for tricore =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['tricore'][
             'linkerScript_path']

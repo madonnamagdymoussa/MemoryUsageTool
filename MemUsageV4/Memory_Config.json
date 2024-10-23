@@ -22,133 +22,155 @@
             "SectionName": ".vectors",
             "SectionSize_Decimal_Bytes": 28,
             "SectionSize_Hexa_Bytes": "0x1c",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".rodata",
             "SectionSize_Decimal_Bytes": 3282,
             "SectionSize_Hexa_Bytes": "0xcd2",
-            "SectionAddress": "0x1c"
+            "SectionAddress": "0x1c",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".text",
             "SectionSize_Decimal_Bytes": 5872,
             "SectionSize_Hexa_Bytes": "0x16f0",
-            "SectionAddress": "0xcf0"
+            "SectionAddress": "0xcf0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".data",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0x0",
-            "SectionAddress": "0x20000000"
+            "SectionAddress": "0x20000000",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.DMA_ChannelMapSelectRegisters",
             "SectionSize_Decimal_Bytes": 16,
             "SectionSize_Hexa_Bytes": "0x10",
-            "SectionAddress": "0x20000000"
+            "SectionAddress": "0x20000000",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.DMAChannel30_MemToMem",
             "SectionSize_Decimal_Bytes": 16,
             "SectionSize_Hexa_Bytes": "0x10",
-            "SectionAddress": "0x20000010"
+            "SectionAddress": "0x20000010",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.Pt_DMAChannel30_MemToMem",
             "SectionSize_Decimal_Bytes": 4,
             "SectionSize_Hexa_Bytes": "0x4",
-            "SectionAddress": "0x20000020"
+            "SectionAddress": "0x20000020",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.GPIO_BIT_BAND_Registers",
             "SectionSize_Decimal_Bytes": 24,
             "SectionSize_Hexa_Bytes": "0x18",
-            "SectionAddress": "0x20000024"
+            "SectionAddress": "0x20000024",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.GPIO_ConfigurePin_PF4",
             "SectionSize_Decimal_Bytes": 2,
             "SectionSize_Hexa_Bytes": "0x2",
-            "SectionAddress": "0x2000003c"
+            "SectionAddress": "0x2000003c",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.GPIO_ConfigurePin_PF1",
             "SectionSize_Decimal_Bytes": 2,
             "SectionSize_Hexa_Bytes": "0x2",
-            "SectionAddress": "0x20000040"
+            "SectionAddress": "0x20000040",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".data.GPIO_ConfigurePin_PF0",
             "SectionSize_Decimal_Bytes": 2,
             "SectionSize_Hexa_Bytes": "0x2",
-            "SectionAddress": "0x20000044"
+            "SectionAddress": "0x20000044",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".bss",
             "SectionSize_Decimal_Bytes": 9528,
             "SectionSize_Hexa_Bytes": "0x2538",
-            "SectionAddress": "0x20000400"
+            "SectionAddress": "0x20000400",
+            "MemoryType": "sram"
         },
         {
             "SectionName": ".debug_info",
             "SectionSize_Decimal_Bytes": 30632,
             "SectionSize_Hexa_Bytes": "0x77a8",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_abbrev",
             "SectionSize_Decimal_Bytes": 4806,
             "SectionSize_Hexa_Bytes": "0x12c6",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_loc",
             "SectionSize_Decimal_Bytes": 9534,
             "SectionSize_Hexa_Bytes": "0x253e",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_aranges",
             "SectionSize_Decimal_Bytes": 1312,
             "SectionSize_Hexa_Bytes": "0x520",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_ranges",
             "SectionSize_Decimal_Bytes": 1016,
             "SectionSize_Hexa_Bytes": "0x3f8",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_line",
             "SectionSize_Decimal_Bytes": 7833,
             "SectionSize_Hexa_Bytes": "0x1e99",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_str",
             "SectionSize_Decimal_Bytes": 16149,
             "SectionSize_Hexa_Bytes": "0x3f15",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".comment",
             "SectionSize_Decimal_Bytes": 73,
             "SectionSize_Hexa_Bytes": "0x49",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".ARM.attributes",
             "SectionSize_Decimal_Bytes": 46,
             "SectionSize_Hexa_Bytes": "0x2e",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         },
         {
             "SectionName": ".debug_frame",
             "SectionSize_Decimal_Bytes": 6144,
             "SectionSize_Hexa_Bytes": "0x1800",
-            "SectionAddress": "0x0"
+            "SectionAddress": "0x0",
+            "MemoryType": "flash"
         }
     ],
     "arm_none_eabi_total_size_decimal_Bytes": 96321,
