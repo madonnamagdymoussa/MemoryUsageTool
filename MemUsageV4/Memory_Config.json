@@ -6,7 +6,9 @@
             "origin": "0x00000000",
             "length_hexa_bytes": "0x20000000",
             "length_decimal_bytes": 536870912,
-            "end_address": "0x20000000"
+            "end_address": "0x20000000",
+            "Consumed_Size": 86727,
+            "PercentageConsumedSize": 0.01615416258573532
         },
         {
             "name": "sram",
@@ -14,7 +16,9 @@
             "origin": "0x20000000",
             "length_hexa_bytes": "0x20000000",
             "length_decimal_bytes": 536870912,
-            "end_address": "0x40000000"
+            "end_address": "0x40000000",
+            "Consumed_Size": 9594,
+            "PercentageConsumedSize": 0.0017870217561721802
         }
     ],
     "arm_none_eabi_Sections": [
@@ -23,154 +27,176 @@
             "SectionSize_Decimal_Bytes": 28,
             "SectionSize_Hexa_Bytes": "0x1c",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".rodata",
             "SectionSize_Decimal_Bytes": 3282,
             "SectionSize_Hexa_Bytes": "0xcd2",
             "SectionAddress": "0x1c",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0006
         },
         {
             "SectionName": ".text",
             "SectionSize_Decimal_Bytes": 5872,
             "SectionSize_Hexa_Bytes": "0x16f0",
             "SectionAddress": "0xcf0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0011
         },
         {
             "SectionName": ".data",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0x0",
             "SectionAddress": "0x20000000",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.DMA_ChannelMapSelectRegisters",
             "SectionSize_Decimal_Bytes": 16,
             "SectionSize_Hexa_Bytes": "0x10",
             "SectionAddress": "0x20000000",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.DMAChannel30_MemToMem",
             "SectionSize_Decimal_Bytes": 16,
             "SectionSize_Hexa_Bytes": "0x10",
             "SectionAddress": "0x20000010",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.Pt_DMAChannel30_MemToMem",
             "SectionSize_Decimal_Bytes": 4,
             "SectionSize_Hexa_Bytes": "0x4",
             "SectionAddress": "0x20000020",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.GPIO_BIT_BAND_Registers",
             "SectionSize_Decimal_Bytes": 24,
             "SectionSize_Hexa_Bytes": "0x18",
             "SectionAddress": "0x20000024",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.GPIO_ConfigurePin_PF4",
             "SectionSize_Decimal_Bytes": 2,
             "SectionSize_Hexa_Bytes": "0x2",
             "SectionAddress": "0x2000003c",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.GPIO_ConfigurePin_PF1",
             "SectionSize_Decimal_Bytes": 2,
             "SectionSize_Hexa_Bytes": "0x2",
             "SectionAddress": "0x20000040",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data.GPIO_ConfigurePin_PF0",
             "SectionSize_Decimal_Bytes": 2,
             "SectionSize_Hexa_Bytes": "0x2",
             "SectionAddress": "0x20000044",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".bss",
             "SectionSize_Decimal_Bytes": 9528,
             "SectionSize_Hexa_Bytes": "0x2538",
             "SectionAddress": "0x20000400",
-            "MemoryType": "sram"
+            "MemoryType": "sram",
+            "consumed_percentage_MemType": 0.0018
         },
         {
             "SectionName": ".debug_info",
             "SectionSize_Decimal_Bytes": 30632,
             "SectionSize_Hexa_Bytes": "0x77a8",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0057
         },
         {
             "SectionName": ".debug_abbrev",
             "SectionSize_Decimal_Bytes": 4806,
             "SectionSize_Hexa_Bytes": "0x12c6",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0009
         },
         {
             "SectionName": ".debug_loc",
             "SectionSize_Decimal_Bytes": 9534,
             "SectionSize_Hexa_Bytes": "0x253e",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0018
         },
         {
             "SectionName": ".debug_aranges",
             "SectionSize_Decimal_Bytes": 1312,
             "SectionSize_Hexa_Bytes": "0x520",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0002
         },
         {
             "SectionName": ".debug_ranges",
             "SectionSize_Decimal_Bytes": 1016,
             "SectionSize_Hexa_Bytes": "0x3f8",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0002
         },
         {
             "SectionName": ".debug_line",
             "SectionSize_Decimal_Bytes": 7833,
             "SectionSize_Hexa_Bytes": "0x1e99",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0015
         },
         {
             "SectionName": ".debug_str",
             "SectionSize_Decimal_Bytes": 16149,
             "SectionSize_Hexa_Bytes": "0x3f15",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.003
         },
         {
             "SectionName": ".comment",
             "SectionSize_Decimal_Bytes": 73,
             "SectionSize_Hexa_Bytes": "0x49",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".ARM.attributes",
             "SectionSize_Decimal_Bytes": 46,
             "SectionSize_Hexa_Bytes": "0x2e",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".debug_frame",
             "SectionSize_Decimal_Bytes": 6144,
             "SectionSize_Hexa_Bytes": "0x1800",
             "SectionAddress": "0x0",
-            "MemoryType": "flash"
+            "MemoryType": "flash",
+            "consumed_percentage_MemType": 0.0011
         }
     ],
     "arm_none_eabi_total_size_decimal_Bytes": 96321,
@@ -182,7 +208,9 @@
             "origin": "0x80000000",
             "length_hexa_bytes": "0x200000",
             "length_decimal_bytes": 2097152,
-            "end_address": "0x80200000"
+            "end_address": "0x80200000",
+            "Consumed_Size": 11594,
+            "PercentageConsumedSize": 0.5528450012207031
         },
         {
             "name": "int_flash1",
@@ -190,7 +218,9 @@
             "origin": "0x80200000",
             "length_hexa_bytes": "0x200000",
             "length_decimal_bytes": 2097152,
-            "end_address": "0x80400000"
+            "end_address": "0x80400000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "pspr_cpu0",
@@ -198,7 +228,9 @@
             "origin": "0x70100000",
             "length_hexa_bytes": "0x6000",
             "length_decimal_bytes": 24576,
-            "end_address": "0x70106000"
+            "end_address": "0x70106000",
+            "Consumed_Size": 128,
+            "PercentageConsumedSize": 0.5208333333333333
         },
         {
             "name": "pspr_cpu1",
@@ -206,7 +238,9 @@
             "origin": "0x60100000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x60108000"
+            "end_address": "0x60108000",
+            "Consumed_Size": 128,
+            "PercentageConsumedSize": 0.390625
         },
         {
             "name": "pspr_cpu2",
@@ -214,7 +248,9 @@
             "origin": "0x50100000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x50108000"
+            "end_address": "0x50108000",
+            "Consumed_Size": 128,
+            "PercentageConsumedSize": 0.390625
         },
         {
             "name": "dspr_cpu0",
@@ -222,7 +258,9 @@
             "origin": "0x70000000",
             "length_hexa_bytes": "0x1c000",
             "length_decimal_bytes": 114688,
-            "end_address": "0x7001c000"
+            "end_address": "0x7001c000",
+            "Consumed_Size": 24576,
+            "PercentageConsumedSize": 21.428571428571427
         },
         {
             "name": "dspr_cpu1",
@@ -230,7 +268,9 @@
             "origin": "0x60000000",
             "length_hexa_bytes": "0x1e000",
             "length_decimal_bytes": 122880,
-            "end_address": "0x6001e000"
+            "end_address": "0x6001e000",
+            "Consumed_Size": 20480,
+            "PercentageConsumedSize": 16.666666666666664
         },
         {
             "name": "dspr_cpu2",
@@ -238,7 +278,9 @@
             "origin": "0x50000000",
             "length_hexa_bytes": "0x1e000",
             "length_decimal_bytes": 122880,
-            "end_address": "0x5001e000"
+            "end_address": "0x5001e000",
+            "Consumed_Size": 20480,
+            "PercentageConsumedSize": 16.666666666666664
         },
         {
             "name": "lmu",
@@ -246,7 +288,9 @@
             "origin": "0xB0000000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0xb0008000"
+            "end_address": "0xb0008000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "lmu_cached",
@@ -254,7 +298,9 @@
             "origin": "0x90000000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x90008000"
+            "end_address": "0x90008000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "bmhd_0",
@@ -262,7 +308,9 @@
             "origin": "0xa0000000",
             "length_hexa_bytes": "0x20",
             "length_decimal_bytes": 32,
-            "end_address": "0xa0000020"
+            "end_address": "0xa0000020",
+            "Consumed_Size": 32,
+            "PercentageConsumedSize": 100.0
         },
         {
             "name": "bmhd_1",
@@ -270,7 +318,9 @@
             "origin": "0xa0020000",
             "length_hexa_bytes": "0x20",
             "length_decimal_bytes": 32,
-            "end_address": "0xa0020020"
+            "end_address": "0xa0020020",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "bmhd_2",
@@ -278,7 +328,9 @@
             "origin": "0xa000ffe0",
             "length_hexa_bytes": "0x20",
             "length_decimal_bytes": 32,
-            "end_address": "0xa0010000"
+            "end_address": "0xa0010000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         },
         {
             "name": "bmhd_3",
@@ -286,7 +338,9 @@
             "origin": "0xa001ffe0",
             "length_hexa_bytes": "0x20",
             "length_decimal_bytes": 32,
-            "end_address": "0xa0020000"
+            "end_address": "0xa0020000",
+            "Consumed_Size": 0,
+            "PercentageConsumedSize": 0.0
         }
     ],
     "tricore_Sections": [
@@ -295,259 +349,296 @@
             "SectionSize_Decimal_Bytes": 32,
             "SectionSize_Hexa_Bytes": "0x20",
             "SectionAddress": "0xa0000000",
-            "MemoryType": "bmhd_0"
+            "MemoryType": "bmhd_0",
+            "consumed_percentage_MemType": 100.0
         },
         {
             "SectionName": ".crt0_boot",
             "SectionSize_Decimal_Bytes": 12,
             "SectionSize_Hexa_Bytes": "0xc",
             "SectionAddress": "0x80000020",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0006
         },
         {
             "SectionName": ".bsp_trap_reset",
             "SectionSize_Decimal_Bytes": 596,
             "SectionSize_Hexa_Bytes": "0x254",
             "SectionAddress": "0x80000100",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0284
         },
         {
             "SectionName": ".CPU0.bsp_isr_vector_table",
             "SectionSize_Decimal_Bytes": 2048,
             "SectionSize_Hexa_Bytes": "0x800",
             "SectionAddress": "0x80000800",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0977
         },
         {
             "SectionName": ".CPU1.bsp_isr_vector_table",
             "SectionSize_Decimal_Bytes": 2048,
             "SectionSize_Hexa_Bytes": "0x800",
             "SectionAddress": "0x80001000",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0977
         },
         {
             "SectionName": ".CPU2.bsp_isr_vector_table",
             "SectionSize_Decimal_Bytes": 2048,
             "SectionSize_Hexa_Bytes": "0x800",
             "SectionAddress": "0x80001800",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0977
         },
         {
             "SectionName": ".CPU0.bsp_isr_ram_table",
             "SectionSize_Decimal_Bytes": 128,
             "SectionSize_Hexa_Bytes": "0x80",
             "SectionAddress": "0x70100000",
-            "MemoryType": "pspr_cpu0"
+            "MemoryType": "pspr_cpu0",
+            "consumed_percentage_MemType": 0.5208
         },
         {
             "SectionName": ".CPU1.bsp_isr_ram_table",
             "SectionSize_Decimal_Bytes": 128,
             "SectionSize_Hexa_Bytes": "0x80",
             "SectionAddress": "0x60100000",
-            "MemoryType": "pspr_cpu1"
+            "MemoryType": "pspr_cpu1",
+            "consumed_percentage_MemType": 0.3906
         },
         {
             "SectionName": ".CPU2.bsp_isr_ram_table",
             "SectionSize_Decimal_Bytes": 128,
             "SectionSize_Hexa_Bytes": "0x80",
             "SectionAddress": "0x50100000",
-            "MemoryType": "pspr_cpu2"
+            "MemoryType": "pspr_cpu2",
+            "consumed_percentage_MemType": 0.3906
         },
         {
             "SectionName": ".CPU0.csa",
             "SectionSize_Decimal_Bytes": 16384,
             "SectionSize_Hexa_Bytes": "0x4000",
             "SectionAddress": "0x70000000",
-            "MemoryType": "dspr_cpu0"
+            "MemoryType": "dspr_cpu0",
+            "consumed_percentage_MemType": 14.2857
         },
         {
             "SectionName": ".CPU1.csa",
             "SectionSize_Decimal_Bytes": 16384,
             "SectionSize_Hexa_Bytes": "0x4000",
             "SectionAddress": "0x60000000",
-            "MemoryType": "dspr_cpu1"
+            "MemoryType": "dspr_cpu1",
+            "consumed_percentage_MemType": 13.3333
         },
         {
             "SectionName": ".CPU2.csa",
             "SectionSize_Decimal_Bytes": 16384,
             "SectionSize_Hexa_Bytes": "0x4000",
             "SectionAddress": "0x50000000",
-            "MemoryType": "dspr_cpu2"
+            "MemoryType": "dspr_cpu2",
+            "consumed_percentage_MemType": 13.3333
         },
         {
             "SectionName": ".CPU0.stack",
             "SectionSize_Decimal_Bytes": 4096,
             "SectionSize_Hexa_Bytes": "0x1000",
             "SectionAddress": "0x70004000",
-            "MemoryType": "dspr_cpu0"
+            "MemoryType": "dspr_cpu0",
+            "consumed_percentage_MemType": 3.5714
         },
         {
             "SectionName": ".CPU1.stack",
             "SectionSize_Decimal_Bytes": 4096,
             "SectionSize_Hexa_Bytes": "0x1000",
             "SectionAddress": "0x60004000",
-            "MemoryType": "dspr_cpu1"
+            "MemoryType": "dspr_cpu1",
+            "consumed_percentage_MemType": 3.3333
         },
         {
             "SectionName": ".CPU2.stack",
             "SectionSize_Decimal_Bytes": 4096,
             "SectionSize_Hexa_Bytes": "0x1000",
             "SectionAddress": "0x50004000",
-            "MemoryType": "dspr_cpu2"
+            "MemoryType": "dspr_cpu2",
+            "consumed_percentage_MemType": 3.3333
         },
         {
             "SectionName": ".code",
             "SectionSize_Decimal_Bytes": 4422,
             "SectionSize_Hexa_Bytes": "0x1146",
             "SectionAddress": "0x80002000",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.2109
         },
         {
             "SectionName": ".rodata",
             "SectionSize_Decimal_Bytes": 64,
             "SectionSize_Hexa_Bytes": "0x40",
             "SectionAddress": "0x80003148",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0031
         },
         {
             "SectionName": ".ctors",
             "SectionSize_Decimal_Bytes": 8,
             "SectionSize_Hexa_Bytes": "0x8",
             "SectionAddress": "0x80003188",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0004
         },
         {
             "SectionName": ".heap",
             "SectionSize_Decimal_Bytes": 4096,
             "SectionSize_Hexa_Bytes": "0x1000",
             "SectionAddress": "0x70005000",
-            "MemoryType": "dspr_cpu0"
+            "MemoryType": "dspr_cpu0",
+            "consumed_percentage_MemType": 3.5714
         },
         {
             "SectionName": ".CPU0.clear_sec",
             "SectionSize_Decimal_Bytes": 40,
             "SectionSize_Hexa_Bytes": "0x28",
             "SectionAddress": "0x80003190",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0019
         },
         {
             "SectionName": ".CPU0.copy_sec",
             "SectionSize_Decimal_Bytes": 72,
             "SectionSize_Hexa_Bytes": "0x48",
             "SectionAddress": "0x800031b8",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0034
         },
         {
             "SectionName": ".CPU1.clear_sec",
             "SectionSize_Decimal_Bytes": 16,
             "SectionSize_Hexa_Bytes": "0x10",
             "SectionAddress": "0x80003200",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0008
         },
         {
             "SectionName": ".CPU1.copy_sec",
             "SectionSize_Decimal_Bytes": 36,
             "SectionSize_Hexa_Bytes": "0x24",
             "SectionAddress": "0x80003210",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0017
         },
         {
             "SectionName": ".CPU2.clear_sec",
             "SectionSize_Decimal_Bytes": 16,
             "SectionSize_Hexa_Bytes": "0x10",
             "SectionAddress": "0x80003234",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0008
         },
         {
             "SectionName": ".CPU2.copy_sec",
             "SectionSize_Decimal_Bytes": 36,
             "SectionSize_Hexa_Bytes": "0x24",
             "SectionAddress": "0x80003244",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0017
         },
         {
             "SectionName": ".crt0_config",
             "SectionSize_Decimal_Bytes": 132,
             "SectionSize_Hexa_Bytes": "0x84",
             "SectionAddress": "0x80003268",
-            "MemoryType": "int_flash0"
+            "MemoryType": "int_flash0",
+            "consumed_percentage_MemType": 0.0063
         },
         {
             "SectionName": ".comment",
             "SectionSize_Decimal_Bytes": 83,
             "SectionSize_Hexa_Bytes": "0x53",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_aranges",
             "SectionSize_Decimal_Bytes": 1080,
             "SectionSize_Hexa_Bytes": "0x438",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_info",
             "SectionSize_Decimal_Bytes": 69488,
             "SectionSize_Hexa_Bytes": "0x10f70",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_abbrev",
             "SectionSize_Decimal_Bytes": 2433,
             "SectionSize_Hexa_Bytes": "0x981",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_line",
             "SectionSize_Decimal_Bytes": 26408,
             "SectionSize_Hexa_Bytes": "0x6728",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_frame",
             "SectionSize_Decimal_Bytes": 1400,
             "SectionSize_Hexa_Bytes": "0x578",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_str",
             "SectionSize_Decimal_Bytes": 654,
             "SectionSize_Hexa_Bytes": "0x28e",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_loc",
             "SectionSize_Decimal_Bytes": 212,
             "SectionSize_Hexa_Bytes": "0xd4",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_ranges",
             "SectionSize_Decimal_Bytes": 528,
             "SectionSize_Hexa_Bytes": "0x210",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".version_info",
             "SectionSize_Decimal_Bytes": 71713,
             "SectionSize_Hexa_Bytes": "0x11821",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         },
         {
             "SectionName": ".debug_macro",
             "SectionSize_Decimal_Bytes": 2723872,
             "SectionSize_Hexa_Bytes": "0x299020",
             "SectionAddress": "0x0",
-            "MemoryType": "None"
+            "MemoryType": "None",
+            "consumed_percentage_MemType": null
         }
     ],
     "tricore_total_size_decimal_Bytes": 2975417,
@@ -559,7 +650,9 @@
             "origin": "0x00000000",
             "length_hexa_bytes": "0x40000",
             "length_decimal_bytes": 262144,
-            "end_address": "0x40000"
+            "end_address": "0x40000",
+            "Consumed_Size": 130058,
+            "PercentageConsumedSize": 49.613189697265625
         },
         {
             "name": "SRAM",
@@ -567,7 +660,9 @@
             "origin": "0x20000000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x20008000"
+            "end_address": "0x20008000",
+            "Consumed_Size": 4736,
+            "PercentageConsumedSize": 14.453125
         }
     ],
     "ti_cgt_tms470_Sections": [
@@ -576,175 +671,200 @@
             "SectionSize_Decimal_Bytes": 620,
             "SectionSize_Hexa_Bytes": "0x26c",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.2365
         },
         {
             "SectionName": ".text",
             "SectionSize_Decimal_Bytes": 6254,
             "SectionSize_Hexa_Bytes": "0x186e",
             "SectionAddress": "0x26c",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 2.3857
         },
         {
             "SectionName": ".const",
             "SectionSize_Decimal_Bytes": 1128,
             "SectionSize_Hexa_Bytes": "0x468",
             "SectionAddress": "0x1adc",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.4303
         },
         {
             "SectionName": ".cinit",
             "SectionSize_Decimal_Bytes": 272,
             "SectionSize_Hexa_Bytes": "0x110",
             "SectionAddress": "0x1f48",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.1038
         },
         {
             "SectionName": ".pinit",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".init_array",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".vtable",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data",
             "SectionSize_Decimal_Bytes": 612,
             "SectionSize_Hexa_Bytes": "0x264",
             "SectionAddress": "0x20000e1c",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 1.8677
         },
         {
             "SectionName": ".bss",
             "SectionSize_Decimal_Bytes": 3612,
             "SectionSize_Hexa_Bytes": "0xe1c",
             "SectionAddress": "0x20000000",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 11.0229
         },
         {
             "SectionName": ".sysmem",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".stack",
             "SectionSize_Decimal_Bytes": 512,
             "SectionSize_Hexa_Bytes": "0x200",
             "SectionAddress": "0x20001080",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 1.5625
         },
         {
             "SectionName": ".TI.noinit",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".TI.persistent",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": "__llvm_prf_cnts",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0x20000000",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".debug_info",
             "SectionSize_Decimal_Bytes": 68297,
             "SectionSize_Hexa_Bytes": "0x10ac9",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 26.0532
         },
         {
             "SectionName": ".debug_line",
             "SectionSize_Decimal_Bytes": 10313,
             "SectionSize_Hexa_Bytes": "0x2849",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 3.9341
         },
         {
             "SectionName": ".debug_frame",
             "SectionSize_Decimal_Bytes": 3116,
             "SectionSize_Hexa_Bytes": "0xc2c",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 1.1887
         },
         {
             "SectionName": ".debug_abbrev",
             "SectionSize_Decimal_Bytes": 9245,
             "SectionSize_Hexa_Bytes": "0x241d",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 3.5267
         },
         {
             "SectionName": ".debug_str",
             "SectionSize_Decimal_Bytes": 18327,
             "SectionSize_Hexa_Bytes": "0x4797",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 6.9912
         },
         {
             "SectionName": ".debug_aranges",
             "SectionSize_Decimal_Bytes": 1200,
             "SectionSize_Hexa_Bytes": "0x4b0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.4578
         },
         {
             "SectionName": ".debug_pubnames",
             "SectionSize_Decimal_Bytes": 5483,
             "SectionSize_Hexa_Bytes": "0x156b",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 2.0916
         },
         {
             "SectionName": ".debug_pubtypes",
             "SectionSize_Decimal_Bytes": 5689,
             "SectionSize_Hexa_Bytes": "0x1639",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 2.1702
         },
         {
             "SectionName": "Veneer$$CMSE",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".ARM.attributes",
             "SectionSize_Decimal_Bytes": 88,
             "SectionSize_Hexa_Bytes": "0x58",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0336
         },
         {
             "SectionName": ".TI.section.flags",
             "SectionSize_Decimal_Bytes": 26,
             "SectionSize_Hexa_Bytes": "0x1a",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0099
         }
     ],
     "ti_cgt_tms470_total_size_decimal_Bytes": 134794,
@@ -756,7 +876,9 @@
             "origin": "0x00000000",
             "length_hexa_bytes": "0x40000",
             "length_decimal_bytes": 262144,
-            "end_address": "0x40000"
+            "end_address": "0x40000",
+            "Consumed_Size": 130058,
+            "PercentageConsumedSize": 49.613189697265625
         },
         {
             "name": "SRAM",
@@ -764,7 +886,9 @@
             "origin": "0x20000000",
             "length_hexa_bytes": "0x8000",
             "length_decimal_bytes": 32768,
-            "end_address": "0x20008000"
+            "end_address": "0x20008000",
+            "Consumed_Size": 4736,
+            "PercentageConsumedSize": 14.453125
         }
     ],
     "ti_cgt_armllvm_Sections": [
@@ -773,175 +897,200 @@
             "SectionSize_Decimal_Bytes": 620,
             "SectionSize_Hexa_Bytes": "0x26c",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.2365
         },
         {
             "SectionName": ".text",
             "SectionSize_Decimal_Bytes": 6254,
             "SectionSize_Hexa_Bytes": "0x186e",
             "SectionAddress": "0x26c",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 2.3857
         },
         {
             "SectionName": ".const",
             "SectionSize_Decimal_Bytes": 1128,
             "SectionSize_Hexa_Bytes": "0x468",
             "SectionAddress": "0x1adc",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.4303
         },
         {
             "SectionName": ".cinit",
             "SectionSize_Decimal_Bytes": 272,
             "SectionSize_Hexa_Bytes": "0x110",
             "SectionAddress": "0x1f48",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.1038
         },
         {
             "SectionName": ".pinit",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".init_array",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".vtable",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".data",
             "SectionSize_Decimal_Bytes": 612,
             "SectionSize_Hexa_Bytes": "0x264",
             "SectionAddress": "0x20000e1c",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 1.8677
         },
         {
             "SectionName": ".bss",
             "SectionSize_Decimal_Bytes": 3612,
             "SectionSize_Hexa_Bytes": "0xe1c",
             "SectionAddress": "0x20000000",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 11.0229
         },
         {
             "SectionName": ".sysmem",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".stack",
             "SectionSize_Decimal_Bytes": 512,
             "SectionSize_Hexa_Bytes": "0x200",
             "SectionAddress": "0x20001080",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 1.5625
         },
         {
             "SectionName": ".TI.noinit",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".TI.persistent",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": "__llvm_prf_cnts",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0x20000000",
-            "MemoryType": "SRAM"
+            "MemoryType": "SRAM",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".debug_info",
             "SectionSize_Decimal_Bytes": 68297,
             "SectionSize_Hexa_Bytes": "0x10ac9",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 26.0532
         },
         {
             "SectionName": ".debug_line",
             "SectionSize_Decimal_Bytes": 10313,
             "SectionSize_Hexa_Bytes": "0x2849",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 3.9341
         },
         {
             "SectionName": ".debug_frame",
             "SectionSize_Decimal_Bytes": 3116,
             "SectionSize_Hexa_Bytes": "0xc2c",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 1.1887
         },
         {
             "SectionName": ".debug_abbrev",
             "SectionSize_Decimal_Bytes": 9245,
             "SectionSize_Hexa_Bytes": "0x241d",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 3.5267
         },
         {
             "SectionName": ".debug_str",
             "SectionSize_Decimal_Bytes": 18327,
             "SectionSize_Hexa_Bytes": "0x4797",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 6.9912
         },
         {
             "SectionName": ".debug_aranges",
             "SectionSize_Decimal_Bytes": 1200,
             "SectionSize_Hexa_Bytes": "0x4b0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.4578
         },
         {
             "SectionName": ".debug_pubnames",
             "SectionSize_Decimal_Bytes": 5483,
             "SectionSize_Hexa_Bytes": "0x156b",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 2.0916
         },
         {
             "SectionName": ".debug_pubtypes",
             "SectionSize_Decimal_Bytes": 5689,
             "SectionSize_Hexa_Bytes": "0x1639",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 2.1702
         },
         {
             "SectionName": "Veneer$$CMSE",
             "SectionSize_Decimal_Bytes": 0,
             "SectionSize_Hexa_Bytes": "0",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0
         },
         {
             "SectionName": ".ARM.attributes",
             "SectionSize_Decimal_Bytes": 88,
             "SectionSize_Hexa_Bytes": "0x58",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0336
         },
         {
             "SectionName": ".TI.section.flags",
             "SectionSize_Decimal_Bytes": 26,
             "SectionSize_Hexa_Bytes": "0x1a",
             "SectionAddress": "0",
-            "MemoryType": "FLASH"
+            "MemoryType": "FLASH",
+            "consumed_percentage_MemType": 0.0099
         }
     ],
     "ti_cgt_armllvm_total_size_decimal_Bytes": 134794,

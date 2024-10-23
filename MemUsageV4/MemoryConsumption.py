@@ -209,8 +209,6 @@ def Parse_and_Save_Size_Output(toolchain_name, size_output_file, output_json_fil
         print(f"An error occurred: {e}")
         return None
 
-
-
 def add_memory_type_to_sections(sections, memory_regions):
     # Iterate over each section in the high_tech_sections list
     for section in sections:
@@ -242,6 +240,117 @@ def add_memory_type_to_sections(sections, memory_regions):
 
     return sections
 
+def add_consumed_percentage_to_sections(toolchain_name,sections, memory_regions):
+    # Create a mapping of memory region names to their total sizes
+    MemoryRegionName = toolchain_name + "_MemoryRegions"
+    SectionName = toolchain_name + "_Sections"
+    memory_region_sizes = {region["name"]: region["length_decimal_bytes"] for region in memory_regions}
+
+    # Iterate over each section to calculate and add the consumed percentage
+    for section in sections:
+        memory_type = section.get("MemoryType")
+
+        # Check if the section has a valid memory type and corresponding memory region size
+        if memory_type in memory_region_sizes:
+            # Get the section size in bytes
+            section_size = section.get("SectionSize_Decimal_Bytes", 0)
+
+            # Get the total memory size of the corresponding memory type
+            total_memory_size = memory_region_sizes[memory_type]
+
+            # Calculate the consumed percentage
+            consumed_percentage = (section_size / total_memory_size) * 100
+
+            # Add the calculated percentage to the section dictionary
+            section["consumed_percentage_MemType"] = round(consumed_percentage,
+                                                           4)  # Round to 4 decimal places for clarity
+        else:
+            # If no matching memory type is found, set the percentage to None or an appropriate value
+            section["consumed_percentage_MemType"] = None
+
+    return sections
+
+
+def add_consumed_size_to_memory_regions(sections, memory_regions):
+    # Initialize consumed size for each memory region
+    for region in memory_regions:
+        region["Consumed_Size"] = 0
+
+    # Sum up the section sizes based on their MemoryType
+    for section in sections:
+        memory_type = section.get("MemoryType")
+        section_size = section.get("SectionSize_Decimal_Bytes", 0)
+
+        # Find the corresponding memory region and add the section size
+        for region in memory_regions:
+            if region.get("name") == memory_type:
+                region["Consumed_Size"] += section_size
+                break
+
+    # Calculate the percentage consumed for each memory region
+    for region in memory_regions:
+        total_memory_size = region.get("length_decimal_bytes", 0)
+        consumed_size = region.get("Consumed_Size", 0)
+
+        if total_memory_size > 0:
+            region["PercentageConsumedSize"] = (consumed_size / total_memory_size) * 100
+        else:
+            region["PercentageConsumedSize"] = 0.0  # Handle edge case where total size is zero
+
+    return memory_regions
+
+
+def create_memory_consumption_csv(sections, memory_regions,
+                                  filename=None):
+    # Open the CSV file in write mode
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        # Write the first table for HighTechSections
+        writer.writerow(["Section Name", "Section Size in Bytes (Decimal Format)",
+                         "Section Size in Bytes (Hexadecimal Format)", "Section Address",
+                         "Memory Name", "Consumed Percentage from MemoryType"])
+
+        for section in sections:
+            writer.writerow([
+                section.get("SectionName", "N/A"),
+                section.get("SectionSize_Decimal_Bytes", "N/A"),
+                section.get("SectionSize_Hexa_Bytes", "N/A"),
+                section.get("SectionAddress", "N/A"),
+                section.get("MemoryType", "N/A"),
+                section.get("consumed_percentage_MemType", "N/A")
+            ])
+
+        # Leave a blank line between the two tables
+        writer.writerow([])
+
+        # Write the second table for HighTechMemoryRegions
+        writer.writerow(["Memory Name", "Attributes", "Origin Address",
+                         "Length in Hexa Bytes", "Length in Decimal Bytes",
+                         "End Address", "Consumed Size", "Percentage Consumed Size"])
+
+        for region in memory_regions:
+            writer.writerow([
+                region.get("name", "N/A"),
+                region.get("attributes", "N/A"),
+                region.get("origin", "N/A"),
+                region.get("length_hexa_bytes", "N/A"),
+                region.get("length_decimal_bytes", "N/A"),
+                region.get("end_address", "N/A"),
+                region.get("Consumed_Size", "N/A"),
+                region.get("PercentageConsumedSize", "N/A")
+            ])
+
+    print(f"Memory consumption details have been written to {filename}.")
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     try:
         MemoryConfigPath = "Memory_Config.json"
@@ -264,6 +373,23 @@ if __name__ == "__main__":
         add_memory_type_to_sections(sections_dict, mem_regions_dict)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
 
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['arm_none_eabi_MemoryRegions']
+        sections_dict = Memory_Config['arm_none_eabi_Sections']
+        add_consumed_percentage_to_sections('arm_none_eabi', sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['arm_none_eabi_MemoryRegions']
+        sections_dict = Memory_Config['arm_none_eabi_Sections']
+        add_consumed_size_to_memory_regions(sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['arm_none_eabi_MemoryRegions']
+        sections_dict = Memory_Config['arm_none_eabi_Sections']
+        MemConsumptionFile=ToolChain_Config['toolchains_output_files']['arm_none_eabi']['memory_usage_file_csv']
+        create_memory_consumption_csv(sections_dict, mem_regions_dict,filename=MemConsumptionFile)
 
         # ================================ for tricore =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['tricore'][
@@ -282,6 +408,24 @@ if __name__ == "__main__":
         add_memory_type_to_sections(sections_dict_tricore, mem_regions_dict_tricore)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
 
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['tricore_MemoryRegions']
+        sections_dict = Memory_Config['tricore_Sections']
+        add_consumed_percentage_to_sections('tricore', sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['tricore_MemoryRegions']
+        sections_dict = Memory_Config['tricore_Sections']
+        add_consumed_size_to_memory_regions(sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['tricore_MemoryRegions']
+        sections_dict = Memory_Config['tricore_Sections']
+        MemConsumptionFile=ToolChain_Config['toolchains_output_files']['tricore']['memory_usage_file_csv']
+        create_memory_consumption_csv(sections_dict, mem_regions_dict,filename=MemConsumptionFile)
 
         # ================================ for ti_cgt_tms470 =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_tms470'][
@@ -303,6 +447,24 @@ if __name__ == "__main__":
         add_memory_type_to_sections(sections_dict, mem_regions_dict)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
 
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
+        add_consumed_percentage_to_sections('ti_cgt_tms470', sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
+        add_consumed_size_to_memory_regions(sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_tms470_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_tms470_Sections']
+        MemConsumptionFile=ToolChain_Config['toolchains_output_files']['ti_cgt_tms470']['memory_usage_file_csv']
+        create_memory_consumption_csv(sections_dict, mem_regions_dict,filename=MemConsumptionFile)
+
         # ================================ for ti_cgt_armllvm =================================
         linker_file_path = ToolChain_Config['toolchains_binary-utilities_filePaths']['ti_cgt_armllvm'][
             'linkerScript_path']
@@ -319,6 +481,24 @@ if __name__ == "__main__":
         sections_dict = Memory_Config['ti_cgt_armllvm_Sections']
         add_memory_type_to_sections(sections_dict, mem_regions_dict)
         json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_armllvm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_armllvm_Sections']
+        add_consumed_percentage_to_sections('ti_cgt_armllvm', sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_armllvm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_armllvm_Sections']
+        add_consumed_size_to_memory_regions(sections_dict, mem_regions_dict)
+        json_handler.save_config(MemoryConfigPath, Memory_Config)
+
+        Memory_Config = json_handler.load_config(MemoryConfigPath)
+        mem_regions_dict = Memory_Config['ti_cgt_armllvm_MemoryRegions']
+        sections_dict = Memory_Config['ti_cgt_armllvm_Sections']
+        MemConsumptionFile=ToolChain_Config['toolchains_output_files']['ti_cgt_armllvm']['memory_usage_file_csv']
+        create_memory_consumption_csv(sections_dict, mem_regions_dict,filename=MemConsumptionFile)
 
 
     except Exception as e:

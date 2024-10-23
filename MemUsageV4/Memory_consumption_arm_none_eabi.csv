@@ -1,0 +1,27 @@
+Section Name,Section Size in Bytes (Decimal Format),Section Size in Bytes (Hexadecimal Format),Section Address,Memory Name,Consumed Percentage from MemoryType
+.vectors,28,0x1c,0x0,flash,0.0
+.rodata,3282,0xcd2,0x1c,flash,0.0006
+.text,5872,0x16f0,0xcf0,flash,0.0011
+.data,0,0x0,0x20000000,sram,0.0
+.data.DMA_ChannelMapSelectRegisters,16,0x10,0x20000000,sram,0.0
+.data.DMAChannel30_MemToMem,16,0x10,0x20000010,sram,0.0
+.data.Pt_DMAChannel30_MemToMem,4,0x4,0x20000020,sram,0.0
+.data.GPIO_BIT_BAND_Registers,24,0x18,0x20000024,sram,0.0
+.data.GPIO_ConfigurePin_PF4,2,0x2,0x2000003c,sram,0.0
+.data.GPIO_ConfigurePin_PF1,2,0x2,0x20000040,sram,0.0
+.data.GPIO_ConfigurePin_PF0,2,0x2,0x20000044,sram,0.0
+.bss,9528,0x2538,0x20000400,sram,0.0018
+.debug_info,30632,0x77a8,0x0,flash,0.0057
+.debug_abbrev,4806,0x12c6,0x0,flash,0.0009
+.debug_loc,9534,0x253e,0x0,flash,0.0018
+.debug_aranges,1312,0x520,0x0,flash,0.0002
+.debug_ranges,1016,0x3f8,0x0,flash,0.0002
+.debug_line,7833,0x1e99,0x0,flash,0.0015
+.debug_str,16149,0x3f15,0x0,flash,0.003
+.comment,73,0x49,0x0,flash,0.0
+.ARM.attributes,46,0x2e,0x0,flash,0.0
+.debug_frame,6144,0x1800,0x0,flash,0.0011
+
+Memory Name,Attributes,Origin Address,Length in Hexa Bytes,Length in Decimal Bytes,End Address,Consumed Size,Percentage Consumed Size
+flash,RX,0x00000000,0x20000000,536870912,0x20000000,86727,0.01615416258573532
+sram,RWX,0x20000000,0x20000000,536870912,0x40000000,9594,0.0017870217561721802
